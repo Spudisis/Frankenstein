@@ -1,0 +1,12 @@
+/* :root[data-theme="light"] {
+  --color-bgc-header: ;
+} */
+:root {
+  --color-bgc-header: #2c2c2c;
+  --color-border: #e6e6e6;
+  --color-bg: rgba(255, 255, 255, 1);
+  --color-bgc-button-active: #2c2c2c;
+}
+
+:root[data-theme="dark"] {
+}

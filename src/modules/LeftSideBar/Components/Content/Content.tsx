@@ -1,20 +1,20 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { ContentProp, ContentWrapper } from "../../../../UI/SideBar/Content/Content";
-import ApplicationData, { Module, ScreenMas, SectionEnum } from "../../../../store/Application";
+import App, { Module, ScreenMas, SectionEnum } from "../../../../store/Application";
 import { Details } from "../../../../UI";
-import { HeaderFooter } from "../Headerfooter.tsx/HeaderFooter";
+import { HeaderFooter } from "../HeaderFooter/HeaderFooter";
 
-export const Content = observer(({ overflow }: ContentProp) => {
+export const Content = observer(({ overflow }: Pick<ContentProp, "overflow">) => {
   const handleChangeTarget = (obj: Module) => {
-    ApplicationData.setTarget(obj);
+    App.setTarget(obj);
 
-    ApplicationData.section !== SectionEnum.options && ApplicationData.changeSection(SectionEnum.options);
+    App.section !== SectionEnum.options && App.changeSection(SectionEnum.options);
   };
 
   const ScreensOptions =
-    ApplicationData.ApplicationScreens &&
-    ApplicationData.ApplicationScreens.map((elem: ScreenMas) => {
+    App.ApplicationScreens &&
+    App.ApplicationScreens.map((elem: ScreenMas) => {
       return (
         <Details
           name={elem.name}
@@ -51,13 +51,13 @@ export const Content = observer(({ overflow }: ContentProp) => {
   return (
     <ContentWrapper overflow={overflow}>
       <div>
-        {Object.keys(ApplicationData.ApplicationFooter).length !== 0 && (
-          <HeaderFooter data={ApplicationData.ApplicationFooter} handleChangeTarget={handleChangeTarget} />
+        {Object.keys(App.ApplicationFooter).length !== 0 && (
+          <HeaderFooter data={App.ApplicationFooter} handleChangeTarget={handleChangeTarget} />
         )}
       </div>
       <div>
-        {Object.keys(ApplicationData.ApplicationHeader).length !== 0 && (
-          <HeaderFooter data={ApplicationData.ApplicationHeader} handleChangeTarget={handleChangeTarget} />
+        {Object.keys(App.ApplicationHeader).length !== 0 && (
+          <HeaderFooter data={App.ApplicationHeader} handleChangeTarget={handleChangeTarget} />
         )}
       </div>
 
@@ -66,7 +66,7 @@ export const Content = observer(({ overflow }: ContentProp) => {
           namePrivate={"Screens"}
           name="Screens"
           click={handleChangeTarget}
-          options={ApplicationData.ApplicationScreens}
+          options={App.ApplicationScreens}
         >
           {ScreensOptions}
         </Details>

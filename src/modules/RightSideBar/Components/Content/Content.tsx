@@ -6,15 +6,16 @@ import ApplicationData, { Module, ScreenMas, SectionEnum } from "../../../../sto
 import { FindOption } from "../FindOption/FindOption";
 import { Pictures } from "../Pictures/Pictures";
 import { useDrop } from "react-dnd";
+import { DropDND, ItemTypesDND } from "../../../../components/CustomDNDHook";
 
-export const Content = observer(({ overflow }: ContentProp) => {
+export const Content = observer(({ overflow }: Pick<ContentProp, "overflow">) => {
   const handleChangeSection = (section: SectionEnum) => {
     ApplicationData.changeSection(section);
   };
   const section = ApplicationData.section;
 
-  const [_, drop]: any = useDrop(() => ({
-    accept: "any",
+  const [, drop]: DropDND = useDrop(() => ({
+    accept: [ItemTypesDND.Button, ItemTypesDND.Footer, ItemTypesDND.Header],
     drop: (item: ScreenMas | Module) => handleDeleteDND(item),
   }));
 

@@ -2,25 +2,26 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import styled from "styled-components";
 import { CustomDNDHook } from "../../components";
-import { Module, ScreenMas, typeFH } from "../../store/Application";
+import { ItemTypesDND } from "../../components/CustomDNDHook";
+import { FindComponent } from "../../modules/ApplicationWrapper/Components/FindComponent/FindComponent";
+import { FHObject, Module, typeFH } from "../../store/Application";
 import { BlockEmpty } from "../../UI";
 
 import { Button } from "../Buttons/Button";
-type Prop = Partial<Omit<ScreenMas, "name">>;
+type Prop = Omit<FHObject, "name"> & { parent: typeFH | string };
 
-export const MainFooter = observer((footer: Prop) => {
-  const { id, options, modules } = footer;
-  const { drag, isDragging } = CustomDNDHook({ name: "any", options: footer });
-  const parent = typeFH.Footer;
+export const MainFooter = observer((props: Prop) => {
+  const { id, options, modules } = props;
+  const { drag, isDragging } = CustomDNDHook({ name: ItemTypesDND.Footer, options: props });
   return (
     <BlockEmpty ref={drag} isDragging={isDragging}>
       <StyledFooter {...options}>
-        {modules &&
-          modules.map((elem: Module | undefined) => {
-            if (typeof elem !== "undefined" && elem.namePrivate === "Button") {
-              return <Button key={elem.id} options={elem.options} elem={elem} parent={parent} />;
-            }
-          })}
+        {React.useMemo(
+          () => (
+            <FindComponent modules={modules} parent={props.parent} />
+          ),
+          [modules, id]
+        )}
       </StyledFooter>
     </BlockEmpty>
   );

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { CreateScreen } from "./Components/CreateScreen/CreateScreen";
 import { Screen } from "./Components/Screen/Screen";
 import ApplicationData, { ScreenMas } from "../../store/Application";
+import { ApplicationWrapperStyled, Container } from "../../UI";
 
 export const ApplicationWrapper = observer(() => {
   const mas = ApplicationData.ApplicationScreens;
@@ -11,6 +12,7 @@ export const ApplicationWrapper = observer(() => {
     <Container>
       <ApplicationWrapperStyled>
         {mas &&
+          mas.length !== 0 &&
           mas.map((elem: ScreenMas, index: number) => {
             return <Screen margin="20px" elem={elem} key={index} />;
           })}
@@ -19,26 +21,3 @@ export const ApplicationWrapper = observer(() => {
     </Container>
   );
 });
-
-const ApplicationWrapperStyled = styled.div`
-  display: flex;
-  height: 100%;
-  align-items: center;
-`;
-
-const Container = styled.div`
-  display: block;
-  overflow: auto;
-  width: 100%;
-  height: 100%;
-  background-color: #e0e0e0;
-  &::-webkit-scrollbar {
-    width: 10px;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: #ececec;
-  }
-  &::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px rgb(0, 0, 0);
-  }
-`;

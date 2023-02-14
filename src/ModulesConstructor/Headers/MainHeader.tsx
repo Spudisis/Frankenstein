@@ -1,27 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-import { Module, ScreenMas, typeFH } from "../../store/Application";
-import { Button } from "../Buttons/Button";
-import { useDrop } from "react-dnd";
+import { FHObject, typeFH } from "../../store/Application";
+
 import { observer } from "mobx-react-lite";
-import App from "../../store/Application";
+
 import { CustomDNDHook } from "../../components";
-import { HeaderBlocks } from "./ModulesHeader";
+import { FindComponent } from "../../modules/ApplicationWrapper/Components/FindComponent/FindComponent";
 import { BlockEmpty } from "../../UI";
+import { ItemTypesDND } from "../../components/CustomDNDHook";
 
-type Prop = Partial<Omit<ScreenMas, "name">>;
+type Prop = Omit<FHObject, "name"> & { parent: typeFH | string };
 
-export const MainHeader = observer((header: Prop) => {
-  const { id, options, modules } = header;
+export const MainHeader = observer((props: Prop) => {
+  const { id, options, modules } = props;
 
-  const { drag, isDragging } = CustomDNDHook({ name: "any", options: header });
+  const { drag, isDragging } = CustomDNDHook({ name: ItemTypesDND.Header, options: props });
 
   return (
     <BlockEmpty ref={drag} isDragging={isDragging}>
       <HeaderConstructor {...options}>
         {React.useMemo(
           () => (
-            <HeaderBlocks modules={modules} />
+            <FindComponent modules={modules} parent={props.parent} />
           ),
           [modules, id]
         )}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Block, Button, Wrapper } from "../../UI";
-import { HeaderWrapper } from "./UI/Header";
+import { HeaderWrapper } from "../../UI";
 import { HeaderLogo } from "./Components/HeaderLogo/HeaderLogo";
 import { HeaderNameSite } from "./Components/HeaderNameSite/HeaderNameSite";
 

@@ -15,3 +15,6 @@ export { MobileMain } from "./MobileMain/MobileMain";
 export { HeaderOptionsInput } from "./OptionsInput/Header/HeaderOptionsInput";
 export { BlockEmpty } from "./EmptyBlock";
 export { AbsoluteWrapperBlock } from "./AbsoluteWrapperBlock/AbsoluteWrapperBlock";
+export { HeaderWrapper } from "./Header/Header";
+export { ApplicationWrapperStyled } from "./ApplicationMain/ApplicationWrapperStyled";
+export { Container } from "./ApplicationMain/Container";

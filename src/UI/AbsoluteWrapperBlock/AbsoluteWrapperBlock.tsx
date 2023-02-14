@@ -8,7 +8,7 @@ type Props = {
   bottom?: string;
 };
 
-export const AbsoluteWrapperBlock = ({ top, bottom, refDrag }: Props & PropDrag) => {
+export const AbsoluteWrapperBlock = ({ top, bottom, refDrag }: Props & { refDrag: PropDrag }) => {
   return <Absolute top={top} bottom={bottom} ref={refDrag}></Absolute>;
 };
 

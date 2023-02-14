@@ -1,6 +1,6 @@
 import React from "react";
 import { ButtonHideSideBar } from "../../components";
-import { SideBar } from "../../UI/SideBar/SideBar";
+import { SideBar } from "../../UI";
 import { Content } from "./Components/Content/Content";
 
 export const LeftSideBar = () => {

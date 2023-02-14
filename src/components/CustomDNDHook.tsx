@@ -1,5 +1,5 @@
 import React from "react";
-import { useDrag } from "react-dnd";
+import { ConnectDropTarget, useDrag } from "react-dnd";
 import { typeFH } from "../store/Application";
 
 export type PropsDNDHook = {
@@ -7,11 +7,22 @@ export type PropsDNDHook = {
   options: any;
   parent?: string | typeFH;
 };
-export type PropDrag = {
-  refDrag: any;
+export type PropDrag = ConnectDropTarget;
+
+export type TypeItemTypesDND = {};
+
+export const ItemTypesDND = {
+  Header: "Header",
+  Footer: "Footer",
+  Any: "any",
+  Main: "Main",
+  Button: "Button"
 };
+
+export type DropDND = [any, PropDrag];
+
 export const CustomDNDHook = ({ name, options, parent }: PropsDNDHook) => {
-  const [collected, drag] = useDrag(() => ({
+  const [collected, drag, dragPreview] = useDrag(() => ({
     type: name,
     item: { ...options, parent },
     collect: (monitor) => ({
@@ -20,5 +31,6 @@ export const CustomDNDHook = ({ name, options, parent }: PropsDNDHook) => {
   }));
 
   const isDragging = collected.isDragging;
-  return { collected, isDragging, drag };
+
+  return { collected, isDragging, drag, dragPreview };
 };

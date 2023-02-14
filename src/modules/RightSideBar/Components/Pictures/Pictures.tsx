@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { PicturesRows } from "../../../../components/PicturesRows/PicturesRows";
 
 import { CreateId } from "../../../../components";
+import { ItemTypesDND } from "../../../../components/CustomDNDHook";
 export const Pictures = observer(() => {
   const masImg = [
     {
@@ -87,7 +88,7 @@ export const Pictures = observer(() => {
       options: {
         name: "Footer1",
         namePrivate: "Footer",
-        id: "a1411",
+        id: "a1411ыврфыпыв",
         options: {
           height: "50px",
           backgroundColor: "red",
@@ -156,8 +157,8 @@ export const Pictures = observer(() => {
   ];
   return (
     <>
-      <PicturesRows type={"Header"} masImg={masImg} />
-      <PicturesRows type={"Footer"} masImg={masImg2} />
+      <PicturesRows type={ItemTypesDND.Header} masImg={masImg} />
+      <PicturesRows type={ItemTypesDND.Footer} masImg={masImg2} />
     </>
   );
 });

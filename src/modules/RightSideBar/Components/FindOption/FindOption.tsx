@@ -7,14 +7,13 @@ import App from "../../../../store/Application";
 import { Button } from "../../../../ModulesConstructor";
 import { ButtonOptions } from "../../../../components/ButtonOptions/ButtonOptions";
 
-// type PropOptions = Pick<Module, "options" | "id" | "name" | "namePrivate">;
 export const FindOption = observer(() => {
   const target = App.target;
   const [masOptions, setMasOptions] = React.useState<ReactElement[]>([]);
   const idHeader = App.ApplicationHeader.id;
   const idFooter = App.ApplicationFooter.id;
   React.useEffect(() => {
-    const mas = [];
+    const mas: ReactElement[] = [];
     if (target.id === idHeader || target.id === idFooter) {
       mas.push(
         <HeaderFooterOptions

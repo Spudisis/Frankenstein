@@ -15,6 +15,8 @@ export type Option = any | OptionsFH;
 
 export type id = string;
 
+export type Modules = (Module | undefined)[] | undefined;
+
 export type Module = {
   name: Name;
   namePrivate: string;
@@ -26,7 +28,7 @@ export interface ScreenMas {
   name: Name;
   namePrivate: string;
   id: id;
-  modules?: (Module | undefined)[] | undefined;
+  modules?: Modules;
   options?: Option;
 }
 
@@ -55,10 +57,41 @@ export type ParentElem = {
   parent?: string | typeFH;
 };
 
+type ButtonScreenAdd = Module & { parent?: string };
+
 export type FHObject = Partial<ScreenMas>;
 
 class ApplicationData {
-  ApplicationScreens: ScreenMas[] = [{ name: "11", namePrivate: "screen", id: "1445114", options: {} }];
+  ApplicationScreens: ScreenMas[] = [
+    {
+      name: "11",
+      namePrivate: "screen",
+      id: "1445114",
+      options: {},
+      modules: [
+        {
+          name: "5111кпвы",
+          namePrivate: "Button",
+          options: {
+            name: "but9",
+            height: "50px",
+            width: "90px",
+          },
+          id: CreateId(),
+        },
+        {
+          name: "5111кпвы",
+          namePrivate: "Button",
+          options: {
+            name: "but9",
+            height: "50px",
+            width: "90px",
+          },
+          id: CreateId(),
+        },
+      ],
+    },
+  ];
   ApplicationFooter: FHObject = {
     name: "111",
     namePrivate: "Footer",
@@ -142,7 +175,7 @@ class ApplicationData {
   changeSection(section: SectionEnum) {
     this.section = section;
   }
-  changeFooterHeader(privateName: typeFH, obj: any) {
+  changeFooterHeader(privateName: typeFH, obj: FHObject) {
     if (privateName === typeFH.Header) {
       this.ApplicationHeader = obj;
     }
@@ -150,7 +183,35 @@ class ApplicationData {
       this.ApplicationFooter = obj;
     }
   }
-
+  changeModules({ item, id }: { item: ButtonScreenAdd; id: string }) {
+    console.log(item, id);
+    if (id === item.parent) {
+      return null;
+    }
+    const copyItem = Object.assign({}, item);
+    delete copyItem["parent"];
+    const mas = this.ApplicationScreens.map((screen) => {
+      console.log(screen.id, item.parent);
+      if (screen.id === item.parent) {
+        const modules = screen.modules?.filter((module) => {
+          if (module !== undefined && module.id !== item.id) {
+            return module;
+          }
+          return null;
+        });
+        return { ...screen, modules: modules };
+      }
+      if (screen.id === id) {
+        if (screen.modules) {
+          return { ...screen, modules: [...screen.modules, copyItem] };
+        } else {
+          return { ...screen, modules: [copyItem] };
+        }
+      }
+      return screen;
+    });
+    this.ApplicationScreens = mas;
+  }
   deleteModulesOrBlock({ parent, options, name, namePrivate, id }: ParentElem & (ScreenMas | Module)) {
     if (this.target.id === id) {
       this.target = initialTarget;
@@ -174,7 +235,20 @@ class ApplicationData {
         return null;
       });
     } else {
-      // МОДУЛИ СО СТРАНИЦЫ
+      const map = this.ApplicationScreens.map((elem) => {
+        if (elem.id === parent) {
+          const modules = elem.modules?.filter((module) => {
+            if (module !== undefined && module.id !== id) {
+              return module;
+            }
+            return null;
+          });
+
+          return { ...elem, modules };
+        }
+        return elem;
+      });
+      this.ApplicationScreens = map;
     }
   }
 

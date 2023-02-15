@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { PicturesRows } from "../../../../components/PicturesRows/PicturesRows";
 
 import { CreateId } from "../../../../components";
-import { ItemTypesDND } from "../../../../components/CustomDNDHook";
+import { ItemTypesDND } from "../../../../components/CustomDragNDrop/CustomDNDHook";
 export const Pictures = observer(() => {
   const masImg = [
     {

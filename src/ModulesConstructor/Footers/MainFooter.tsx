@@ -2,13 +2,12 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import styled from "styled-components";
 import { CustomDNDHook } from "../../components";
-import { ItemTypesDND } from "../../components/CustomDNDHook";
+import { ItemTypesDND } from "../../components/CustomDragNDrop/CustomDNDHook";
 import { FindComponent } from "../../modules/ApplicationWrapper/Components/FindComponent/FindComponent";
 import { FHObject, Module, typeFH } from "../../store/Application";
 import { BlockEmpty } from "../../UI";
 
-import { Button } from "../Buttons/Button";
-type Prop = Omit<FHObject, "name"> & { parent: typeFH | string };
+type Prop = Omit<FHObject, "name"> & { parent?: typeFH | string };
 
 export const MainFooter = observer((props: Prop) => {
   const { id, options, modules } = props;
@@ -29,6 +28,7 @@ export const MainFooter = observer((props: Prop) => {
 
 const StyledFooter = styled.div<any>`
   height: ${(props) => (props.height ? props.height : "150px")};
-  border: 1px solid black;
+  border-radius: 0px 0px 25px 25px;
+  overflow: hidden;
   background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "yellow")};
 `;

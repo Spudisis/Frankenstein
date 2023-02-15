@@ -9,7 +9,7 @@ import { MainConstructor, MainFooter, MainHeader } from "../../../../ModulesCons
 
 import { useDrop } from "react-dnd";
 
-import { DropDND, ItemTypesDND } from "../../../../components/CustomDNDHook";
+import { DropDND, ItemTypesDND } from "../../../../components/CustomDragNDrop/CustomDNDHook";
 
 type ScreenProps = ParamsScreen & { elem: ScreenMas };
 

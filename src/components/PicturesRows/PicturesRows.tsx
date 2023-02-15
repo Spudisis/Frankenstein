@@ -1,25 +1,21 @@
 import { Grid, Pictures } from "../../UI";
+import React from "react";
+import { CustomDNDHook } from "../CustomDragNDrop/CustomDNDHook";
+import { getEmptyImage } from "react-dnd-html5-backend";
+import { Picture } from "./Picture";
+import { CustomDragLayer } from "../CustomDragNDrop/CustomDragLayer";
 
-import { CustomDNDHook } from "../CustomDNDHook";
+export type TypePicture = string;
 
-export const PicturesRows = ({ masImg, type }: { masImg: any[]; type: string }) => {
+export const PicturesRows = ({ masImg, type }: { masImg: any[]; type: TypePicture }) => {
   return (
-    <Grid columns="repeat(2, 1fr)" rowGap="10px">
-      {masImg.map((elem, index) => {
-        const options = elem.options;
-        const DND = CustomDNDHook({ name: type, options });
-
-        return (
-          <Pictures
-            refDrag={DND.drag}
-            isDragging={DND.isDragging}
-            src={elem.src}
-            alt={elem.alt}
-            name={elem.options.name}
-            key={index}
-          />
-        );
-      })}
-    </Grid>
+    <>
+      <CustomDragLayer />
+      <Grid columns="repeat(2, 1fr)" rowGap="10px">
+        {masImg.map((elem, index) => {
+          return <Picture elem={elem} type={type} key={elem.options.id} />;
+        })}
+      </Grid>
+    </>
   );
 };

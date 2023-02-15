@@ -18,3 +18,4 @@ export { AbsoluteWrapperBlock } from "./AbsoluteWrapperBlock/AbsoluteWrapperBloc
 export { HeaderWrapper } from "./Header/Header";
 export { ApplicationWrapperStyled } from "./ApplicationMain/ApplicationWrapperStyled";
 export { Container } from "./ApplicationMain/Container";
+export { MaxWidth } from "./CustomLayoutDND/MaxWidth";

@@ -2,7 +2,7 @@ import React from "react";
 import { CustomDNDHook } from "../../../../components";
 import { FHObject, Module, typeFH } from "../../../../store/Application";
 import { Button } from "../../../../ModulesConstructor/Buttons/Button";
-import { PropsDNDHook } from "../../../../components/CustomDNDHook";
+import { PropsDNDHook } from "../../../../components/CustomDragNDrop/CustomDNDHook";
 
 export const FindComponent = ({ modules, parent }: Pick<FHObject, "modules"> & Pick<PropsDNDHook, "parent">) => {
   return (

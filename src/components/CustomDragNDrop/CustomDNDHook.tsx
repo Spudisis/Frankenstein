@@ -1,6 +1,6 @@
 import React from "react";
 import { ConnectDropTarget, useDrag } from "react-dnd";
-import { typeFH } from "../store/Application";
+import { typeFH } from "../../store/Application";
 
 export type PropsDNDHook = {
   name: string;
@@ -18,7 +18,7 @@ export const ItemTypesDND = {
   Main: "Main",
   Button: "Button",
   PicturesHeader: "PicturesHeader",
-  PicturesFooter: "PicturesFooter"
+  PicturesFooter: "PicturesFooter",
 };
 
 export type DropDND = [any, PropDrag];

@@ -216,6 +216,7 @@ class ApplicationData {
     if (this.target.id === id) {
       this.target = initialTarget;
     }
+
     if (namePrivate === "Footer") {
       this.ApplicationFooter = {};
     } else if (namePrivate === "Header") {

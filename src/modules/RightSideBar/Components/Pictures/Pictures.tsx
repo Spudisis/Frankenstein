@@ -157,8 +157,8 @@ export const Pictures = observer(() => {
   ];
   return (
     <>
-      <PicturesRows type={ItemTypesDND.Header} masImg={masImg} />
-      <PicturesRows type={ItemTypesDND.Footer} masImg={masImg2} />
+      <PicturesRows type={ItemTypesDND.PicturesHeader} masImg={masImg} />
+      <PicturesRows type={ItemTypesDND.PicturesFooter} masImg={masImg2} />
     </>
   );
 });

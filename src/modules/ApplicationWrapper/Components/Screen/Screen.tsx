@@ -18,11 +18,11 @@ export const Screen = observer(({ margin, elem }: ScreenProps) => {
   const footer = Application.ApplicationFooter;
 
   const [, dropHeader]: DropDND = useDrop(() => ({
-    accept: ItemTypesDND.Header,
+    accept: ItemTypesDND.PicturesHeader,
     drop: (item: FHObject) => SetNewHeader(typeFH.Header, item),
   }));
   const [, dropFooter]: DropDND = useDrop(() => ({
-    accept: ItemTypesDND.Footer,
+    accept: ItemTypesDND.PicturesFooter,
     drop: (item: FHObject) => SetNewHeader(typeFH.Footer, item),
   }));
   const [, dropMain]: DropDND = useDrop(() => ({

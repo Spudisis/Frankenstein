@@ -28,11 +28,13 @@ const PictureStyled = styled.div<Partial<PicturesProp>>`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0);
   border: 1px solid black;
   overflow: hidden;
   align-self: center;
   justify-self: center;
   opacity: ${(props) => (props.isDragging ? "0.5" : "1")};
+  ${(props) => (props.isDragging ? "background-color: gray;" : "")};
 
   img {
     opacity: ${(props) => (props.isDragging ? "0.5" : "1")};

@@ -16,7 +16,9 @@ export const ItemTypesDND = {
   Footer: "Footer",
   Any: "any",
   Main: "Main",
-  Button: "Button"
+  Button: "Button",
+  PicturesHeader: "PicturesHeader",
+  PicturesFooter: "PicturesFooter"
 };
 
 export type DropDND = [any, PropDrag];

@@ -1,15 +1,65 @@
-import { Module } from "../../store/Application";
+import { ButtonScreenAdd, FHObject, Module } from "../../store/Application";
 import { StyledButtonFullControlled } from "../../UI/Button/ButtonFullControlled";
 
-import { CustomDNDHook } from "../../components";
 import { ItemTypesDND, PropsDNDHook } from "../../components/CustomDragNDrop/CustomDNDHook";
 
-export const Button = ({ elem, parent }: { elem: Module } & Pick<PropsDNDHook, "parent">) => {
-  const DnDModule = CustomDNDHook({ name: ItemTypesDND.Button, options: elem, parent: parent });
-  const options = elem.options;
+import { useDrag, useDrop } from "react-dnd";
+
+export const Button = ({
+  elem,
+  parent,
+  MoveCardFunc,
+  FindIndex,
+}: { elem: Module; MoveCardFunc: any; FindIndex: any } & Pick<PropsDNDHook, "parent">) => {
+  const find = FindIndex(elem.id);
+  const originalIndex = find ? find.index : -1;
+
+  const [{ isDragging }, drag] = useDrag(
+    () => ({
+      type: ItemTypesDND.Button,
+      item: { ...elem, parent, originalIndex },
+      collect: (monitor) => ({
+        isDragging: monitor.isDragging(),
+      }),
+      end: (item, monitor) => {
+        const { id: droppedId, originalIndex } = item;
+
+        const didDrop = monitor.didDrop();
+
+        if (!didDrop) {
+          console.log(droppedId, originalIndex);
+          MoveCardFunc({ draggedId: droppedId, originalIndex });
+        }
+      },
+    }),
+    [parent, originalIndex, elem.id, MoveCardFunc]
+  );
+
+  const [, drop] = useDrop(
+    () => ({
+      accept: ItemTypesDND.Button,
+      hover({ id: draggedId }: ButtonScreenAdd) {
+        // console.log(draggedId, elem.id);
+        if (draggedId !== elem.id) {
+          const find = FindIndex(elem.id);
+
+          if (find) {
+            const { index: overIndex } = find;
+
+            MoveCardFunc({ draggedId, originalIndex: overIndex });
+          }
+        }
+      },
+    }),
+    [parent, FindIndex, MoveCardFunc]
+  );
   return (
-    <StyledButtonFullControlled ref={DnDModule.drag} isDragging={DnDModule.isDragging} {...options}>
-      {options.name ? options.name : "name"}
+    <StyledButtonFullControlled
+      ref={(node: HTMLButtonElement) => drag(drop(node))}
+      isDragging={isDragging}
+      {...elem.options}
+    >
+      {elem.options.name ? elem.options.name : "name"}
     </StyledButtonFullControlled>
   );
 };

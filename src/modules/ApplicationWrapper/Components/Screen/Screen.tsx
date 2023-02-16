@@ -3,13 +3,14 @@ import React from "react";
 import styled from "styled-components";
 import { AbsoluteWrapperBlock, FooterMobile, HeaderMobile, MobileMain, ScreenStyle, Wrapper } from "../../../../UI";
 import { ParamsScreen } from "../../../../UI/ScreenStyled/ScreenStyled";
-import Application, { ScreenMas, typeFH, FHObject, Module } from "../../../../store/Application";
+import Application, { ScreenMas, typeFH, FHObject, Module, ButtonScreenAdd } from "../../../../store/Application";
 
 import { MainConstructor, MainFooter, MainHeader } from "../../../../ModulesConstructor";
 
 import { useDrop } from "react-dnd";
 
 import { DropDND, ItemTypesDND } from "../../../../components/CustomDragNDrop/CustomDNDHook";
+import { changeTarget } from "../../../../components";
 
 type ScreenProps = ParamsScreen & { elem: ScreenMas };
 
@@ -27,7 +28,7 @@ export const Screen = observer(({ margin, elem }: ScreenProps) => {
   }));
   const [, dropMain]: DropDND = useDrop(() => ({
     accept: [ItemTypesDND.Main, ItemTypesDND.Button],
-    drop: (item: any) => SetNewModuleScreen(item),
+    drop: (item: ButtonScreenAdd) => SetNewModuleScreen(item),
   }));
 
   const SetNewHeader = (type: typeFH, item: FHObject) => {
@@ -35,9 +36,9 @@ export const Screen = observer(({ margin, elem }: ScreenProps) => {
     Application.changeFooterHeader(type, item);
   };
 
-  const SetNewModuleScreen = (item: any) => {
+  const SetNewModuleScreen = (item: ButtonScreenAdd) => {
     const id = elem.id;
-    console.log(id);
+
     Application.changeModules({ item, id });
   };
 

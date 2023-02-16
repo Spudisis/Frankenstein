@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import ApplicationData, { Module, ScreenMas, SectionEnum } from "../../../../store/Application";
 import { FindOption } from "../FindOption/FindOption";
 import { Pictures } from "../Pictures/Pictures";
-import { useDrop } from "react-dnd";
+import { DropTargetMonitor, useDrop } from "react-dnd";
 import { DropDND, ItemTypesDND } from "../../../../components/CustomDragNDrop/CustomDNDHook";
 
 export const Content = observer(({ overflow }: Pick<ContentProp, "overflow">) => {
@@ -14,9 +14,13 @@ export const Content = observer(({ overflow }: Pick<ContentProp, "overflow">) =>
   };
   const section = ApplicationData.section;
 
-  const [, drop]: DropDND = useDrop(() => ({
+  const [{ canDrop, isOver }, drop]: DropDND = useDrop(() => ({
     accept: [ItemTypesDND.Button, ItemTypesDND.Footer, ItemTypesDND.Header],
     drop: (item: ScreenMas | Module) => handleDeleteDND(item),
+    collect: (monitor: DropTargetMonitor) => ({
+      canDrop: monitor.canDrop(),
+      isOver: monitor.isOver(),
+    }),
   }));
 
   const handleDeleteDND = (item: ScreenMas | Module) => {
@@ -25,7 +29,11 @@ export const Content = observer(({ overflow }: Pick<ContentProp, "overflow">) =>
   };
 
   return (
-    <ContentWrapper overflow={overflow} refDND={drop}>
+    <ContentWrapper
+      overflow={overflow}
+      refDND={drop}
+      bgcColor={canDrop && isOver ? "rgba(132, 0, 0, 0.4)" : canDrop ? "gray" : ""}
+    >
       <Wrapper height="auto" borderBottom={"1px solid black"}>
         <Button
           name="pictures"

@@ -10,6 +10,8 @@ interface ButtonProp {
   paddingLeft?: string;
   fontSize?: string;
   active?: boolean;
+  background?: string;
+  left?: boolean;
 }
 type paramsButtonsProp<T> = {
   name: string;
@@ -26,9 +28,11 @@ export const Button = <_, T>({
   prop,
   fontSize,
   paddingLeft,
+  left,
   changeProp,
   children,
   active,
+  background,
 }: ButtonProp & paramsButtonsProp<T> & Partial<ChildrenProp>) => {
   const handleClick = () => {
     console.log(prop, typeof changeProp === "function");
@@ -45,6 +49,8 @@ export const Button = <_, T>({
       fontSize={fontSize}
       paddingLeft={paddingLeft}
       active={active}
+      background={background}
+      left={left}
       onClick={changeProp && (() => handleClick())}
     >
       {name}
@@ -64,13 +70,15 @@ const ButtonStyled = styled.button<ButtonStyledT>`
   border: var(--color-border);
   white-space: nowrap;
   overflow: hidden;
-  background-color: var(--color-bg);
+  background-color: ${(props) => props.background || "var(--color-bg)"};
   box-sizing: content-box;
   padding: ${(props) => props.padding || "5px"};
   padding-left: ${(props) => props.paddingLeft || "auto"};
   margin: ${(props) => props.margin || "0px"};
   cursor: pointer;
   font-size: ${(props) => props.fontSize || "18px"};
+  ${(props)=>
+    props.left ? `display:flex; justify-content:flex-start;` : ''}
   ${(props) =>
     props.active
       ? `background-color: var(--color-bgc-button-active); 

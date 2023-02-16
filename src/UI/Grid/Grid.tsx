@@ -23,6 +23,6 @@ const GridStyled = styled.div<GridProp>`
   grid-template-rows: ${(props) => props.rows || "auto"};
   grid-column-gap: ${(props) => props.columnGap || "0px"};
   grid-row-gap: ${(props) => props.rowGap || "0px"};
-
+  margin: 10px 0px;
   align-items: center;
 `;

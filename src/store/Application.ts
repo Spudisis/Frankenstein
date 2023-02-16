@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { CreateId } from "../components";
-
+import update from "immutability-helper";
 const initialTarget = {
   parent: "",
   namePrivate: "",
@@ -57,7 +57,7 @@ export type ParentElem = {
   parent?: string | typeFH;
 };
 
-type ButtonScreenAdd = Module & { parent?: string };
+export type ButtonScreenAdd = Module & { parent?: string; originalIndex?: number };
 
 export type FHObject = Partial<ScreenMas>;
 
@@ -70,22 +70,122 @@ class ApplicationData {
       options: {},
       modules: [
         {
-          name: "5111кпвы",
+          name: "1",
           namePrivate: "Button",
           options: {
             name: "but9",
             height: "50px",
-            width: "90px",
+            width: "100%",
           },
           id: CreateId(),
         },
         {
-          name: "5111кпвы",
+          name: "2",
+          namePrivate: "Button",
+          options: {
+            name: "dsfhdf",
+            height: "50px",
+            width: "100%",
+          },
+          id: CreateId(),
+        },
+        {
+          name: "3",
+          namePrivate: "Button",
+          options: {
+            name: "рыварвы45",
+            height: "50px",
+            width: "100%",
+          },
+          id: CreateId(),
+        },
+        {
+          name: "4",
+          namePrivate: "Button",
+          options: {
+            name: "н45рйукрйуиук",
+            height: "50px",
+            width: "100%",
+          },
+          id: CreateId(),
+        },
+        {
+          name: "1",
           namePrivate: "Button",
           options: {
             name: "but9",
             height: "50px",
-            width: "90px",
+            width: "100%",
+          },
+          id: CreateId(),
+        },
+        {
+          name: "2",
+          namePrivate: "Button",
+          options: {
+            name: "dsfhdf",
+            height: "50px",
+            width: "100%",
+          },
+          id: CreateId(),
+        },
+        {
+          name: "3",
+          namePrivate: "Button",
+          options: {
+            name: "рыварвы45",
+            height: "50px",
+            width: "100%",
+          },
+          id: CreateId(),
+        },
+        {
+          name: "4",
+          namePrivate: "Button",
+          options: {
+            name: "н45рйукрйуиук",
+            height: "50px",
+            width: "100%",
+          },
+          id: CreateId(),
+        },
+        {
+          name: "1",
+          namePrivate: "Button",
+          options: {
+            name: "but9",
+            height: "50px",
+            width: "100%",
+          },
+          id: CreateId(),
+        },
+        {
+          name: "2",
+          namePrivate: "Button",
+          options: {
+            name: "dsfhdf",
+            height: "50px",
+            width: "100%",
+          },
+          id: CreateId(),
+        },
+        {
+          name: "3",
+          namePrivate: "Button",
+          options: {
+            name: "рыварвы45",
+            height: "50px",
+            width: "100%",
+          },
+          id: CreateId(),
+        },
+        {
+          name: "4",
+          namePrivate: "Button",
+          options: {
+            name: "н45рйукрйуиук",
+            height: "50px",
+            width: "100%",
           },
           id: CreateId(),
         },
@@ -280,7 +380,18 @@ class ApplicationData {
       });
       this.ApplicationFooter.modules = mas;
     } else {
-      //ПОИСК МОДУЛЕЙ НА СТРАНИЦАХ
+      this.ApplicationScreens = this.ApplicationScreens.map((screen) => {
+        if (screen.id === parent && screen.modules) {
+          const modules = screen.modules.map((module) => {
+            if (typeof module !== "undefined" && module.id === id) {
+              return { ...module, options };
+            }
+            return module;
+          });
+          return { ...screen, modules };
+        }
+        return screen;
+      });
     }
     this.target.options = { ...this.target.options, ...options };
   }
@@ -318,6 +429,14 @@ class ApplicationData {
   }
   setTarget(obj: Module) {
     this.target = obj;
+  }
+  changePositionBlock(newModules: any, parent: any) {
+    this.ApplicationScreens = this.ApplicationScreens.map((screen) => {
+      if (screen.id === parent) {
+        return { ...screen, modules: newModules };
+      }
+      return screen;
+    });
   }
 }
 const App = new ApplicationData();

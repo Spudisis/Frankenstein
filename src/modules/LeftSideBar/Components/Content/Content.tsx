@@ -1,4 +1,5 @@
 import { observer } from "mobx-react-lite";
+import { changeTarget } from "../../../../components";
 import React from "react";
 import { ContentProp, ContentWrapper } from "../../../../UI/SideBar/Content/Content";
 import App, { Module, ScreenMas, SectionEnum } from "../../../../store/Application";
@@ -6,12 +7,9 @@ import { Details } from "../../../../UI";
 import { HeaderFooter } from "../HeaderFooter/HeaderFooter";
 
 export const Content = observer(({ overflow }: Pick<ContentProp, "overflow">) => {
-  const handleChangeTarget = (obj: Module) => {
-    App.setTarget(obj);
+  
 
-    App.section !== SectionEnum.options && App.changeSection(SectionEnum.options);
-  };
-
+  const target = App.target;
   const ScreensOptions =
     App.ApplicationScreens &&
     App.ApplicationScreens.map((elem: ScreenMas) => {
@@ -21,8 +19,10 @@ export const Content = observer(({ overflow }: Pick<ContentProp, "overflow">) =>
           id={elem.id}
           key={elem.id}
           namePrivate={elem.namePrivate}
-          click={handleChangeTarget}
+          click={changeTarget}
           options={elem.options}
+          active={elem.id === target.id}
+          nesting={1}
         >
           <>
             {elem.modules &&
@@ -30,14 +30,16 @@ export const Content = observer(({ overflow }: Pick<ContentProp, "overflow">) =>
                 if (typeof module !== "undefined")
                   return (
                     <Details
-                      namePrivate={elem.namePrivate}
+                      namePrivate={module.namePrivate}
                       id={module.id}
                       name={module.name}
                       key={module.id}
-                      click={handleChangeTarget}
+                      click={changeTarget}
                       options={module.options}
                       parent={elem.id}
                       last={true}
+                      active={module.id === target.id}
+                      nesting={2}
                     >
                       <></>
                     </Details>
@@ -52,12 +54,12 @@ export const Content = observer(({ overflow }: Pick<ContentProp, "overflow">) =>
     <ContentWrapper overflow={overflow}>
       <div>
         {Object.keys(App.ApplicationFooter).length !== 0 && (
-          <HeaderFooter data={App.ApplicationFooter} handleChangeTarget={handleChangeTarget} />
+          <HeaderFooter data={App.ApplicationFooter} handleChangeTarget={changeTarget} target={target} />
         )}
       </div>
       <div>
         {Object.keys(App.ApplicationHeader).length !== 0 && (
-          <HeaderFooter data={App.ApplicationHeader} handleChangeTarget={handleChangeTarget} />
+          <HeaderFooter data={App.ApplicationHeader} handleChangeTarget={changeTarget} target={target} />
         )}
       </div>
 
@@ -65,8 +67,9 @@ export const Content = observer(({ overflow }: Pick<ContentProp, "overflow">) =>
         <Details
           namePrivate={"Screens"}
           name="Screens"
-          click={handleChangeTarget}
+          click={changeTarget}
           options={App.ApplicationScreens}
+          nesting={0}
         >
           {ScreensOptions}
         </Details>

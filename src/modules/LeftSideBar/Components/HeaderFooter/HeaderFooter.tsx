@@ -1,14 +1,15 @@
 import { observer } from "mobx-react-lite";
-import React from "react";
-import { FHObject, Module, ScreenMas, typeFH } from "../../../../store/Application";
+
+import { FHObject, Module, ParentElem, typeFH } from "../../../../store/Application";
 import { Details } from "../../../../UI";
 
 type Props = {
   data: FHObject;
   handleChangeTarget: (obj: Module) => void;
+  target: Module & ParentElem
 };
 
-export const HeaderFooter = observer(({ data, handleChangeTarget }: Props) => {
+export const HeaderFooter = observer(({ data, handleChangeTarget, target }: Props) => {
   return (
     <>
       <Details
@@ -16,8 +17,10 @@ export const HeaderFooter = observer(({ data, handleChangeTarget }: Props) => {
         name={data.name ? data.name : "Нет name"}
         click={handleChangeTarget}
         options={data.options}
+        active={data.id === target.id}
         last={data.modules && data.modules.length !== 0 ? false : true}
         id={data.id}
+        nesting={0}
       >
         <>
           {data.modules &&
@@ -28,6 +31,7 @@ export const HeaderFooter = observer(({ data, handleChangeTarget }: Props) => {
                 return (
                   <Details
                     namePrivate={module.namePrivate}
+                    active={module.id === target.id}
                     id={module.id}
                     name={module.name}
                     key={module.id}
@@ -35,6 +39,7 @@ export const HeaderFooter = observer(({ data, handleChangeTarget }: Props) => {
                     options={module.options}
                     last={true}
                     parent={data.namePrivate === "Footer" ? typeFH.Footer : typeFH.Header}
+                    nesting={1}
                   >
                     <></>
                   </Details>

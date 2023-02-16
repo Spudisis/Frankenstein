@@ -18,6 +18,11 @@ type PropDetails = {
 
 type prop = any;
 
+type PropStyled = {
+  nesting: number;
+  active?: boolean;
+};
+
 export const Details = ({
   children,
   name,
@@ -27,7 +32,9 @@ export const Details = ({
   id,
   parent,
   namePrivate,
-}: Partial<ChildrenProp> & PropDetails & ParentElem) => {
+  active,
+  nesting,
+}: Partial<ChildrenProp> & PropDetails & ParentElem & PropStyled) => {
   const [open, setOpen] = React.useState(true);
 
   const handleOpen = (open: boolean) => {
@@ -40,19 +47,32 @@ export const Details = ({
 
   return (
     <DetailsStyled>
-      <ElementHead>
+      <ElementHead nesting={nesting} active={active}>
         {!last && (
-          <Button changeProp={handleOpen} name="" prop={open} width="auto" fontSize="16px" padding="3px">
+          <Button
+            changeProp={handleOpen}
+            name=""
+            prop={open}
+            width="auto"
+            fontSize="16px"
+            padding="10px"
+            background="inherit"
+          >
             {open ? <FontAwesomeIcon icon={faMinus} /> : <FontAwesomeIcon icon={faPlus} />}
           </Button>
         )}
         <Button
+          left={true}
           changeProp={handleSetTarget}
           name={name}
+          padding={"10px 0px"}
+          margin={"0px 0px 0px 10px"}
           prop=""
+          height="100%"
           fontSize="inherit"
-          width="auto"
+          width="100%"
           paddingLeft={last ? "20px" : ""}
+          background="inherit"
         ></Button>
       </ElementHead>
 
@@ -67,15 +87,19 @@ const DetailsStyled = styled.div`
   cursor: pointer;
   position: relative;
   padding: initial;
-  & > div {
-    padding-left: 20px;
-  }
 `;
 
-const ElementHead = styled.div`
+const ElementHead = styled.div<PropStyled>`
   display: flex;
 
   width: 100%;
-  padding: 5px;
-  border-bottom: 1px solid black;
+  padding: 0px 5px;
+  padding-left: ${(props) => (props.nesting ? props.nesting * 25 + "px" : "0px")};
+  border: 1px solid white;
+  ${(props) => (props.active ? "border: 1px solid #adadad" : "")};
+  @media screen and (hover: hover) {
+    :hover {
+      border: 1px solid #adadad;
+    }
+  }
 `;

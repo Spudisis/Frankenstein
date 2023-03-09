@@ -1,10 +1,10 @@
 import React from "react";
-import { CustomDNDHook } from "../../../../components";
-import { FHObject, Module, ScreenMas, typeFH } from "../../../../store/Application";
+
+import { FHObject, Module } from "../../../../store/Application";
 import { Button } from "../../../../ModulesConstructor/Buttons/Button";
 import { PropsDNDHook } from "../../../../components/CustomDragNDrop/CustomDNDHook";
 import App from "../../../../store/Application";
-import { observer } from "mobx-react-lite";
+
 import update from "immutability-helper";
 
 export const FindComponent = ({ modules, parent }: Pick<FHObject, "modules"> & Pick<PropsDNDHook, "parent">) => {
@@ -12,25 +12,29 @@ export const FindComponent = ({ modules, parent }: Pick<FHObject, "modules"> & P
     (id: string) => {
       if (typeof parent === "string") {
         if (modules) {
-          const card = modules.filter((c: Module | undefined) => typeof c !== "undefined" && `${c.id}` === id)[0];
+          const card = modules.filter((c: Module | undefined) => typeof c !== "undefined" && c.id === id)[0];
           if (card) {
             return {
               card,
               index: modules.indexOf(card),
             };
           } else {
-            throw new Error("Нету такого модуля");
+            return {
+              card,
+              index: modules.length,
+            };
           }
         }
+
         throw new Error("Нет скрина или модуля");
       }
       return null;
     },
-    [modules]
+    [modules, parent]
   );
 
   const MoveCardFunc = React.useCallback(
-    ({ draggedId, originalIndex }: any) => {
+    ({ draggedId, originalIndex }: { draggedId: string; originalIndex: number }) => {
       const cardNIndex = FindIndex(draggedId);
       if (cardNIndex) {
         const { card, index } = cardNIndex;
@@ -44,7 +48,7 @@ export const FindComponent = ({ modules, parent }: Pick<FHObject, "modules"> & P
       }
       return null;
     },
-    [FindIndex, modules]
+    [FindIndex, modules, parent]
   );
 
   return (

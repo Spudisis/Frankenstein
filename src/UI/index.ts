@@ -19,3 +19,18 @@ export { HeaderWrapper } from "./Header/Header";
 export { ApplicationWrapperStyled } from "./ApplicationMain/ApplicationWrapperStyled";
 export { Container } from "./ApplicationMain/Container";
 export { MaxWidth } from "./CustomLayoutDND/MaxWidth";
+export { Bgc } from "./BgcWrapper/Bgc";
+export { Image } from "./StartPage/image";
+export { WrapperStart } from "./StartPage/WrapperStart";
+
+export { AuthInput } from "./Auth/AuthInput/AuthInput";
+export { WrapperAuth } from "./Auth/WrapperAuth/WrapperAuth";
+export { Head } from "./Auth/Head/Head";
+export { CustomCheckBox } from "./CustomCheckBox/CustomCheckBox";
+export { DefaultButton } from "./Button/DefaultButton";
+export { EmptyButton } from "./Button/EmptyButton";
+export { SignWithStyled } from "./Auth/SignWith/SignWithStyled";
+export { CheckAuthOrRegP } from "./Auth/CheckAuthOrRegP/CheckAuthOrRegP";
+export { CaptchaWrapper } from "./Auth/CaptchaWrapper/CaptchaWrapper";
+export { FormWrapper } from "./Auth/WrapperAuth/WrapperForm";
+export { ErrorLabel } from "./Auth/ErrorMessage/LabelError";

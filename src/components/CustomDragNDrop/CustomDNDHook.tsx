@@ -1,3 +1,4 @@
+
 import React from "react";
 import { ConnectDropTarget, useDrag } from "react-dnd";
 import { typeFH } from "../../store/Application";
@@ -29,7 +30,9 @@ export const CustomDNDHook = ({ name, options, parent }: PropsDNDHook) => {
     item: { ...options, parent },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
+      
     }),
+
   }));
 
   const isDragging = collected.isDragging;

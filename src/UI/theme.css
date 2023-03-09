@@ -5,7 +5,12 @@
   --color-bgc-header: #2c2c2c;
   --color-border: #e6e6e6;
   --color-bg: rgba(255, 255, 255, 1);
-  --color-bgc-button-active: #2c2c2c;
+  --color-bgc-button-active: #3e3d3d;
+  --color-bgc-button-hover: black;
+
+  --color-button: white;
+  --br-button: 10px;
+  --color-bgc-helloPage: #171717;
 }
 
 :root[data-theme="dark"] {

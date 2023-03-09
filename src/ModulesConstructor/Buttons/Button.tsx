@@ -11,7 +11,7 @@ export const Button = ({
   MoveCardFunc,
   FindIndex,
 }: { elem: Module; MoveCardFunc: any; FindIndex: any } & Pick<PropsDNDHook, "parent">) => {
-  const find = FindIndex(elem.id);
+  const find = FindIndex(elem.id, parent);
   const originalIndex = find ? find.index : -1;
 
   const [{ isDragging }, drag] = useDrag(
@@ -28,7 +28,7 @@ export const Button = ({
 
         if (!didDrop) {
           console.log(droppedId, originalIndex);
-          MoveCardFunc({ draggedId: droppedId, originalIndex });
+          MoveCardFunc({ draggedId: droppedId, originalIndex, parentButton: parent });
         }
       },
     }),

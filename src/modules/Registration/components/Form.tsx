@@ -16,6 +16,7 @@ export interface IFormInput {
   password: string;
   passwordRepeat: number;
   checkBox: boolean;
+  accessCode: string;
 }
 
 const formSchema = yup.object().shape({

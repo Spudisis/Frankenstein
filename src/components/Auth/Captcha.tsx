@@ -19,7 +19,7 @@ export const Captcha = ({ captchaRes, setCaptchaRes }: Props) => {
   //не решена проблема, капча загружает сразу же свой враппер, только позже содержимое
   return (
     <CaptchaWrapper
-      captchaRes={ref.current?.children.length === 2 ? captchaRes : null}
+      captchaRes={ref.current?.children ? captchaRes : null}
       ref={ref}
     >
       <>

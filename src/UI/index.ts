@@ -34,3 +34,5 @@ export { CheckAuthOrRegP } from "./Auth/CheckAuthOrRegP/CheckAuthOrRegP";
 export { CaptchaWrapper } from "./Auth/CaptchaWrapper/CaptchaWrapper";
 export { FormWrapper } from "./Auth/WrapperAuth/WrapperForm";
 export { ErrorLabel } from "./Auth/ErrorMessage/LabelError";
+export { StyledRestorePass } from "./Auth/StyledRestorePass/StyledRestorePass";
+export { WrapperCode, ButtonCode } from "./Auth/AuthInput/wrapperCode";

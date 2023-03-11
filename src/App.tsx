@@ -1,13 +1,20 @@
 import React from "react";
 import json from "./example.json";
 import { Header } from "./modules";
-import { Auth, CreateApplication, Registration, StartPage } from "./pages";
+import {
+  Auth,
+  CreateApplication,
+  Registration,
+  RestorePassPage,
+  StartPage,
+} from "./pages";
 import { Routes, Route, redirect } from "react-router-dom";
 import {
   HelloPage,
   main,
   Authorization,
   Registration as RegistrationPath,
+  RestorePassword,
 } from "./routes";
 
 function App() {
@@ -20,6 +27,7 @@ function App() {
     <div className="App">
       {window.location.pathname !== HelloPage &&
         window.location.pathname !== Authorization &&
+        window.location.pathname !== RestorePassword &&
         window.location.pathname !== RegistrationPath && <Header />}
 
       <Routes>
@@ -27,6 +35,7 @@ function App() {
         <Route path={main} element={<CreateApplication />} />
         <Route path={Authorization} element={<Auth />} />
         <Route path={RegistrationPath} element={<Registration />} />
+        <Route path={RestorePassword} element={<RestorePassPage />} />
       </Routes>
     </div>
   );

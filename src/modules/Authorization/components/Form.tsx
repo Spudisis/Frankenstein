@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Email, Password, SignWith } from "../../../components";
 import { DefaultButton, Head, WrapperAuth, FormWrapper } from "../../../UI";
 import { IFormInput } from "../../Registration/components/Form";
+import { RestorePassword } from "./RestorePassword";
 
 const formSchema = yup.object().shape({
   Email: yup
@@ -40,7 +41,7 @@ export const Form = () => {
         <Head text={"Вход"} />
         <Email register={register} errors={errors}></Email>
         <Password register={register} errors={errors} />
-
+        <RestorePassword />
         <DefaultButton text="Войти" fontSize={32} marginT={60} />
         <SignWith />
       </FormWrapper>

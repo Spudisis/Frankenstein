@@ -6,15 +6,18 @@ export type PropsErrorsBool = {
   error?: boolean;
 };
 
-export const AuthInput = ({ children, error }: ChildrenProp & PropsErrorsBool) => {
+export const AuthInput = ({
+  children,
+  error,
+}: ChildrenProp & PropsErrorsBool) => {
   return <Input error={error}>{children}</Input>;
 };
 
 const Input = styled.div<PropsErrorsBool>`
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
-  & > label:first-child {
+  & label:first-child {
     font-size: 20px;
     display: flex;
     flex-direction: column;
@@ -34,15 +37,16 @@ const Input = styled.div<PropsErrorsBool>`
     height: 60px;
     padding-left: 15px;
     font-size: 25px;
-    margin-bottom: 16px;
+
     @media screen and (max-width: 1800px) {
       height: 40px;
       font-size: 22px;
-      margin-bottom: 12px;
     }
     @media screen and (max-width: 500px) {
       font-size: 18px;
-      margin-bottom: 5px;
     }
+  }
+  @media screen and (max-width: 1800px) {
+    margin-bottom: 18px;
   }
 `;

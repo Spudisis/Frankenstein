@@ -5,3 +5,5 @@ export { ApplicationWrapper } from "./ApplicationWrapper";
 export { StartModule } from "./StartPageModule";
 export { Registration } from "./Registration";
 export { Authorization } from "./Authorization";
+export { RestorePassForm } from "./RestorePasswordForm";
+export { RestorePassInputs } from "../components/RestorePassword/RestorePassInputs";

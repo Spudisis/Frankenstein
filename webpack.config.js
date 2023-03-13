@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   entry: "./src/index.tsx",
   output: {
@@ -8,8 +10,10 @@ module.exports = {
   devtool: "source-map",
 
   resolve: {
-    // Добавить разрешения '.ts' и '.tsx' к обрабатываемым
     extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+    // alias: {
+    //   "@": path.resolve(__dirname, "*"),
+    // },
   },
 
   module: {

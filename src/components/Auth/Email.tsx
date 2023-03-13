@@ -2,6 +2,7 @@ import React from "react";
 import { FieldErrors } from "react-hook-form";
 
 import { UseFormRegister } from "react-hook-form/dist/types/form";
+import { Trans } from "react-i18next";
 import { IFormInput } from "../../modules/Registration/components/Form";
 import { AuthInput, ErrorLabel } from "../../UI";
 
@@ -16,7 +17,7 @@ export const Email = ({ register, errors }: PropsEmailInput) => {
     <AuthInput error={errors.Email?.message ? true : false}>
       <>
         <label>
-          Email
+          <Trans i18nKey="Auth.Email">Email</Trans>
           <input
             aria-invalid={errors.Email?.type ? true : false}
             {...register("Email")}
@@ -25,7 +26,9 @@ export const Email = ({ register, errors }: PropsEmailInput) => {
         </label>
         <>
           {errors.Email?.message && (
-            <ErrorLabel>{errors.Email?.message}</ErrorLabel>
+            <ErrorLabel>
+              <Trans i18nKey={`Auth.errors.${errors.Email?.message}`}></Trans>
+            </ErrorLabel>
           )}
         </>
       </>

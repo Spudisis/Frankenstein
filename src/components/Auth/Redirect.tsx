@@ -10,8 +10,8 @@ export enum FormType {
 }
 
 type Props = {
-  text: string;
-  textButton: string;
+  text: string | JSX.Element;
+  textButton: string | JSX.Element;
   Form: FormType;
 };
 

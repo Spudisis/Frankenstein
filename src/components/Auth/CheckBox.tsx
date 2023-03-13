@@ -1,4 +1,5 @@
 import React from "react";
+import { Trans } from "react-i18next";
 import { CustomCheckBox, ErrorLabel } from "../../UI";
 import { PropsEmailInput } from "./Email";
 
@@ -11,12 +12,17 @@ export const CheckBox = ({ register, errors }: PropsEmailInput) => {
             aria-invalid={errors.checkBox?.type ? true : false}
             type="checkbox"
             {...register("checkBox")}
-            
           />
-          <span>Согласен на обработку личных данных</span>
+          <span>
+            <Trans i18nKey="Auth.AcceptPersonData">
+              Согласен на обработку личных данных
+            </Trans>
+          </span>
         </label>
         {errors.checkBox?.message && (
-          <ErrorLabel>{errors.checkBox?.message}</ErrorLabel>
+          <ErrorLabel>
+            <Trans i18nKey={`Auth.errors.${errors.checkBox?.message}`}></Trans>
+          </ErrorLabel>
         )}
       </>
     </CustomCheckBox>

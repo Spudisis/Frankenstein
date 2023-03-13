@@ -1,7 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 
-export const Head = ({ text }: { text: string }) => {
+import styled from "styled-components";
+import { JsxElement } from "typescript";
+
+export const Head = ({ text }: { text: string| JSX.Element }) => {
   return <Head3h>{text}</Head3h>;
 };
 

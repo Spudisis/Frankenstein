@@ -6,20 +6,21 @@ import { Email, Password, SignWith } from "../../../components";
 import { DefaultButton, Head, WrapperAuth, FormWrapper } from "../../../UI";
 import { IFormInput } from "../../Registration/components/Form";
 import { RestorePassword } from "./RestorePassword";
+import { Trans } from "react-i18next";
 
 const formSchema = yup.object().shape({
   Email: yup
     .string()
-    .required("Required")
+    .required("required")
     .matches(
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i,
-      "It's not Email"
+      "EmailMatches"
     ),
   password: yup
     .string()
-    .required("Password is required")
-    .min(3, "Min 3 length")
-    .max(20, "Max 20 length"),
+    .required("requiredPassword")
+    .min(3, "minPassLen")
+    .max(20, "maxPassLen"),
 });
 
 export const Form = () => {
@@ -35,14 +36,17 @@ export const Form = () => {
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     console.log(data);
   };
+
+  const ButtonText = <Trans i18nKey="Auth.Authorization.ButtonAuth">Войти</Trans>;
+  const HeadText = <Trans i18nKey="Auth.Authorization.titleAuth">Вход</Trans>;
   return (
     <WrapperAuth>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <Head text={"Вход"} />
+        <Head text={HeadText} />
         <Email register={register} errors={errors}></Email>
         <Password register={register} errors={errors} />
         <RestorePassword />
-        <DefaultButton text="Войти" fontSize={32} marginT={60} />
+        <DefaultButton text={ButtonText} fontSize={32} marginT={60} />
         <SignWith />
       </FormWrapper>
     </WrapperAuth>

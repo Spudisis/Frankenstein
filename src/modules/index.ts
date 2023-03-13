@@ -7,3 +7,4 @@ export { Registration } from "./Registration";
 export { Authorization } from "./Authorization";
 export { RestorePassForm } from "./RestorePasswordForm";
 export { RestorePassInputs } from "../components/RestorePassword/RestorePassInputs";
+export { SelectLanguage } from "./SelectLanguage";

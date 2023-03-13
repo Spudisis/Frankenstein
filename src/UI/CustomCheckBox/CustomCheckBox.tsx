@@ -12,9 +12,8 @@ export const CustomCheckBox = ({
 
 const CheckBox = styled.div<PropsErrorsBool>`
   position: relative;
-  padding-bottom: 10px;
+  margin-bottom: 10px;
   @media screen and (max-width: 500px) {
-    padding-bottom: 0px;
     margin-top: 10px;
   }
   label {

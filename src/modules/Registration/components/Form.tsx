@@ -10,6 +10,7 @@ import {
   SignWith,
 } from "../../../components";
 import { DefaultButton, Head, WrapperAuth, FormWrapper } from "../../../UI";
+import { Trans } from "react-i18next";
 
 export interface IFormInput {
   Email: string;
@@ -22,23 +23,20 @@ export interface IFormInput {
 const formSchema = yup.object().shape({
   Email: yup
     .string()
-    .required("Required")
-    .matches(
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i,
-      "It's not Email"
-    ),
+    .required("required")
+    .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i, "EmailMatches"),
   password: yup
     .string()
-    .required("Password is required")
-    .min(3, "Min 3 length")
-    .max(20, "Max 20 length"),
+    .required("requiredPassword")
+    .min(3, "minPassLen")
+    .max(20, "maxPassLen"),
   passwordRepeat: yup
     .string()
-    .required("Confirm Password is required")
-    .min(3, "Min 3 length")
-    .max(20, "Max 20 length")
-    .oneOf([yup.ref("password")], "Passwords do not match"),
-  checkBox: yup.bool().oneOf([true], "Field must be checked"),
+    .required("confirmReqPass")
+    .min(3, "minPassLen")
+    .max(20, "maxPassLen")
+    .oneOf([yup.ref("password")], "AccessPass"),
+  checkBox: yup.bool().oneOf([true], "checkBox"),
 });
 
 export const Form = () => {
@@ -60,10 +58,19 @@ export const Form = () => {
     console.log(data);
   };
 
+  const HeadText = (
+    <Trans i18nKey="Auth.Registration.titleRegistration">Registration</Trans>
+  );
+  const ButtonText = (
+    <Trans i18nKey="Auth.Registration.ButtonRegistration">
+      Зарегистрироваться
+    </Trans>
+  );
+
   return (
     <WrapperAuth>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <Head text={"Регистрация"} />
+        <Head text={HeadText} />
         <Email register={register} errors={errors}></Email>
         <Password register={register} errors={errors} />
         <Password register={register} repeatPass errors={errors} />
@@ -72,7 +79,7 @@ export const Form = () => {
 
         <Captcha setCaptchaRes={setCaptchaRes} captchaRes={captchaRes} />
 
-        <DefaultButton text="Зарегистрироваться" fontSize={32} />
+        <DefaultButton text={ButtonText} fontSize={32} />
       </FormWrapper>
     </WrapperAuth>
   );

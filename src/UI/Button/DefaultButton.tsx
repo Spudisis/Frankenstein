@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 type props = {
-  text: string;
+  text: string | JSX.Element;
   fontSize?: number;
   marginT?: number;
   onClick?: () => void;

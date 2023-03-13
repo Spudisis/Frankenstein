@@ -1,0 +1,36 @@
+{
+  "helloPage": {
+    "title": "Create your custom app",
+    "buttonName": "Sign in"
+  },
+  "Auth": {
+    "Authorization": {
+      "titleAuth": "Authorization",
+      "ButtonAuth": "Sign in",
+      "TextRedirectRegButton": "Sign up",
+      "TextRedirectReg": "Don't have an account yet?"
+    },
+    "Registration": {
+      "titleRegistration": "Registration",
+      "ButtonRegistration": "Sign up",
+      "TextRedirectAuth": "Already have an account?",
+      "TextRedirectAuthButton": "Sign in"
+    },
+    "errors": {
+      "required": "Email is required",
+      "EmailMatches": "It's not Email",
+      "requiredPassword": "Password is required",
+      "minPassLen": "Min length 3",
+      "maxPassLen": "Max length 20",
+      "confirmReqPass": "Confirm Password is required",
+      "AccessPass": "Passwords do not match",
+      "checkBox": "Field must be checked"
+    },
+    "Email": "Email",
+    "Password": "Password",
+    "RepeatPassword": "Repeat password",
+    "ForgetPass": "Forger password?",
+    "SignWith": "Sign with...",
+    "AcceptPersonData": "I agree to the processing of personal data"
+  }
+}

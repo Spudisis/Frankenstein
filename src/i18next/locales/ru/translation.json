@@ -1,0 +1,36 @@
+{
+  "helloPage": {
+    "title": "Создайте своё приложение",
+    "buttonName": "Войти"
+  },
+  "Auth": {
+    "Authorization": {
+      "titleAuth": "Вход",
+      "ButtonAuth": "Войти",
+      "TextRedirectRegButton": "Зарегистрируйтесь",
+      "TextRedirectReg": "Еще нет аккаунта?"
+    },
+    "Registration": {
+      "titleRegistration": "Регистрация",
+      "ButtonRegistration": "Зарегистрироваться",
+      "TextRedirectAuth": "Уже есть аккаунт?",
+      "TextRedirectAuthButton": "Авторизируйтесь"
+    },
+    "errors": {
+      "required": "Обязательное поле",
+      "EmailMatches": "Это не Email",
+      "requiredPassword": "Пароль обязательное поле",
+      "minPassLen": "Минимальная длина 3",
+      "maxPassLen": "Максимальная длина 20",
+      "confirmReqPass": "Повтор пароля обязателен",
+      "AccessPass": "Пароли не совпадают",
+      "checkBox": "Обязательно"
+    },
+    "Email": "Email",
+    "Password": "Пароль",
+    "RepeatPassword": "Повторите пароль",
+    "ForgetPass": "Забыли пароль?",
+    "SignWith": "Войти через...",
+    "AcceptPersonData": "Согласен на обработку личных данных"
+  }
+}

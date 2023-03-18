@@ -48,6 +48,10 @@ const WrapperStartPage = styled.div`
     @media screen and (max-width: 500px) {
       font-size: 26px;
     }
+    @media screen and (max-width: 360px) {
+      font-size: 22px;
+      line-height: 24px;
+    }
   }
   h1 {
     font-weight: 700;

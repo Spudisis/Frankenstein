@@ -11,7 +11,7 @@ export const Root = ({ children, overflow }: ChildrenProp & Prop) => {
 };
 
 const RootStyled = styled.div<Prop>`
-  height: calc(100vh - 50px);
+  height: calc(100vh - 80px);
   display: flex;
   position: relative;
   overflow: ${(props) => props.overflow || "auto"};

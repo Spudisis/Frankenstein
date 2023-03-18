@@ -16,6 +16,12 @@
       "TextRedirectAuth": "Уже есть аккаунт?",
       "TextRedirectAuthButton": "Авторизируйтесь"
     },
+    "PassRecovery": {
+      "ButtonName": "Восстановить пароль",
+      "title": "Восстановление пароля",
+      "AccessCode": "Код подтверждения",
+      "giveMeCode": "Получить код"
+    },
     "errors": {
       "required": "Обязательное поле",
       "EmailMatches": "Это не Email",
@@ -24,7 +30,9 @@
       "maxPassLen": "Максимальная длина 20",
       "confirmReqPass": "Повтор пароля обязателен",
       "AccessPass": "Пароли не совпадают",
-      "checkBox": "Обязательно"
+      "checkBox": "Обязательно",
+      "AccessCodeLength": "6-значное",
+      "CheckEmail": "Проверьте свою почту"
     },
     "Email": "Email",
     "Password": "Пароль",

@@ -16,6 +16,12 @@
       "TextRedirectAuth": "Already have an account?",
       "TextRedirectAuthButton": "Sign in"
     },
+    "PassRecovery": {
+      "ButtonName": "Restore password",
+      "title": "Password recovery",
+      "AccessCode": "Access code",
+      "giveMeCode": "Send code"
+    },
     "errors": {
       "required": "Email is required",
       "EmailMatches": "It's not Email",
@@ -24,7 +30,9 @@
       "maxPassLen": "Max length 20",
       "confirmReqPass": "Confirm Password is required",
       "AccessPass": "Passwords do not match",
-      "checkBox": "Field must be checked"
+      "checkBox": "Field must be checked",
+      "AccessCodeLength": "6 characters",
+      "CheckEmail": "Check Email"
     },
     "Email": "Email",
     "Password": "Password",

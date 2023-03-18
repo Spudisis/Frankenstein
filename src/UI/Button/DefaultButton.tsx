@@ -5,14 +5,28 @@ type props = {
   text: string | JSX.Element;
   fontSize?: number;
   marginT?: number;
+  margin?: string;
+  padding?: string;
+  width?: string;
   onClick?: () => void;
 };
 
-export const DefaultButton = ({ text, fontSize, marginT, onClick }: props) => {
+export const DefaultButton = ({
+  text,
+  fontSize,
+  marginT,
+  onClick,
+  margin,
+  padding,
+  width,
+}: props) => {
   return (
     <StyledButton
       fontSize={fontSize}
       marginT={marginT}
+      margin={margin}
+      padding={padding}
+      width={width}
       onClick={() => onClick && onClick()}
     >
       {text}
@@ -24,7 +38,9 @@ const StyledButton = styled.button<Omit<props, "text">>`
   border: 1px solid var(--color-bgc-button-active);
   font-size: ${(props) => props.fontSize + "px" || "16px"};
   border-radius: var(--br-button);
-  padding: 10px 0px;
+  margin : ${(props) => props.margin || "auto"};
+  width: ${(props) => props.width || "auto"};
+  padding: ${(props) => props.padding || "10px 0px"};
   color: var(--color-button);
   display: flex;
   cursor: pointer;

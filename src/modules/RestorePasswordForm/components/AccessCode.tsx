@@ -1,5 +1,6 @@
 import React from "react";
 import { UseFormSetError } from "react-hook-form";
+import { Trans } from "react-i18next";
 
 import { PropsEmailInput } from "../../../components/Auth/Email";
 import { AuthInput, ButtonCode, ErrorLabel, WrapperCode } from "../../../UI";
@@ -27,7 +28,7 @@ export const AccessCode = ({
       sendCode && setTime((time) => time - 1);
     }, 1000);
     if (sendCode) {
-      setError("accessCode", { message: "Check Email" });
+      setError("accessCode", { message: "CheckEmail" });
     }
     return () => {
       clearInterval(interval);
@@ -42,7 +43,8 @@ export const AccessCode = ({
   return (
     <AuthInput error={errors.accessCode?.message ? true : false}>
       <label>
-        Access code
+        <Trans i18nKey={"Auth.PassRecovery.AccessCode"}>Access code</Trans>
+
         <WrapperCode>
           <input
             {...register("accessCode")}
@@ -53,13 +55,22 @@ export const AccessCode = ({
             onClick={() => handleClick()}
             disabled={sendCode ? true : false}
           >
-            {!sendCode ? "Получить код" : time}
+            {!sendCode ? (
+              <Trans i18nKey={"Auth.PassRecovery.giveMeCode"}>Send code</Trans>
+            ) : (
+              time
+            )}
           </ButtonCode>
         </WrapperCode>
       </label>
       <>
         {errors.accessCode?.message && (
-          <ErrorLabel>{errors.accessCode?.message}</ErrorLabel>
+          <ErrorLabel>
+            {" "}
+            <Trans
+              i18nKey={`Auth.errors.${errors.accessCode?.message}`}
+            ></Trans>
+          </ErrorLabel>
         )}
       </>
     </AuthInput>

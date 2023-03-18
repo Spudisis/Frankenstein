@@ -6,31 +6,25 @@ import { DefaultButton, FormWrapper, Head, WrapperAuth } from "../../../UI";
 import { RestorePassInputs } from "../../../components/RestorePassword/RestorePassInputs";
 import { IFormInput } from "../../Registration/components/Form";
 import { AccessCode } from "./AccessCode";
+import { Trans } from "react-i18next";
 
 const formSchema = yup.object().shape({
   Email: yup
     .string()
-    .required("Required")
-    .matches(
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i,
-      "It's not Email"
-    ),
+    .required("required")
+    .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i, "EmailMatches"),
   password: yup
     .string()
-    .required("Password is required")
-    .min(3, "Min 3 length")
-    .max(20, "Max 20 length"),
+    .required("requiredPassword")
+    .min(3, "minPassLen")
+    .max(20, "maxPassLen"),
   passwordRepeat: yup
     .string()
-    .required("Confirm Password is required")
-    .min(3, "Min 3 length")
-    .max(20, "Max 20 length")
-    .oneOf([yup.ref("password")], "Passwords do not match"),
-  accessCode: yup
-    .string()
-    .required("Required")
-    .min(6, "6 length")
-    .max(6, "6 length"),
+    .required("confirmReqPass")
+    .min(3, "minPassLen")
+    .max(20, "maxPassLen")
+    .oneOf([yup.ref("password")], "AccessPass"),
+  accessCode: yup.string().required("required").length(6, "AccessCodeLength"),
 });
 
 export const Form = () => {
@@ -55,15 +49,22 @@ export const Form = () => {
       !values.Email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i) ||
       errors.Email
     ) {
-      return setError("Email", { message: "No email" });
+      return setError("Email", { message: "required" });
     }
     setSendInterval(true);
   };
   //при отправке вешать Loading, выдавать ошибку если код неверный
+
+  const TextButton = (
+    <Trans i18nKey={"Auth.PassRecovery.ButtonName"}>Password recovery</Trans>
+  );
+  const TextHead = (
+    <Trans i18nKey={"Auth.PassRecovery.title"}>Restore password</Trans>
+  );
   return (
     <WrapperAuth>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <Head text="Восстановление пароля" />
+        <Head text={TextHead} />
         <RestorePassInputs errors={errors} register={register} />
         <AccessCode
           errors={errors}
@@ -74,7 +75,7 @@ export const Form = () => {
           setError={setError}
         />
 
-        <DefaultButton text="Восстановить пароль" fontSize={32} />
+        <DefaultButton text={TextButton} fontSize={32} />
       </FormWrapper>
     </WrapperAuth>
   );

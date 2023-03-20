@@ -8,6 +8,7 @@ import {
   RestorePassPage,
   StartPage,
   MainPage,
+  TemplatesPage,
 } from "./pages";
 import { Routes, Route, redirect } from "react-router-dom";
 import {
@@ -17,6 +18,7 @@ import {
   Registration as RegistrationPath,
   RestorePassword,
   main,
+  templates,
 } from "./routes";
 
 function App() {
@@ -45,11 +47,12 @@ function App() {
 
       <Routes>
         <Route path={HelloPage} element={<StartPage />} />
-        <Route path={build} element={<CreateApplication />} />
         <Route path={Authorization} element={<Auth />} />
         <Route path={RegistrationPath} element={<Registration />} />
         <Route path={RestorePassword} element={<RestorePassPage />} />
         <Route path={main} element={<MainPage />}></Route>
+        <Route path={build} element={<CreateApplication />} />
+        <Route path={templates} element={<TemplatesPage />}></Route>
       </Routes>
     </div>
   );

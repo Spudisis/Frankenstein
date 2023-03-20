@@ -10,3 +10,9 @@ export const ApplicationWrapperStyled = styled.div`
     display: grid;
   }
 `;
+
+export const ApplicationBuild = styled.div`
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+`;

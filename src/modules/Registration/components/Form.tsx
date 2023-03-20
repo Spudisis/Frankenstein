@@ -79,7 +79,7 @@ export const Form = () => {
 
         <Captcha setCaptchaRes={setCaptchaRes} captchaRes={captchaRes} />
 
-        <DefaultButton text={ButtonText} fontSize={32} />
+        <DefaultButton text={ButtonText} fontSize={32} width="100%" />
       </FormWrapper>
     </WrapperAuth>
   );

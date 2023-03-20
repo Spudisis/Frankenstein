@@ -57,7 +57,10 @@ export type ParentElem = {
   parent?: string | typeFH;
 };
 
-export type ButtonScreenAdd = Module & { parent?: string; originalIndex?: number };
+export type ButtonScreenAdd = Module & {
+  parent?: string;
+  originalIndex?: number;
+};
 
 export type FHObject = Partial<ScreenMas>;
 
@@ -255,7 +258,7 @@ class ApplicationData {
     },
   };
 
-  section = SectionEnum.pictures;
+  section = SectionEnum.options;
   target: Module & ParentElem = initialTarget;
 
   constructor() {
@@ -312,7 +315,13 @@ class ApplicationData {
     });
     this.ApplicationScreens = mas;
   }
-  deleteModulesOrBlock({ parent, options, name, namePrivate, id }: ParentElem & (ScreenMas | Module)) {
+  deleteModulesOrBlock({
+    parent,
+    options,
+    name,
+    namePrivate,
+    id,
+  }: ParentElem & (ScreenMas | Module)) {
     if (this.target.id === id) {
       this.target = initialTarget;
     }
@@ -322,19 +331,23 @@ class ApplicationData {
     } else if (namePrivate === "Header") {
       this.ApplicationHeader = {};
     } else if (parent === typeFH.Header) {
-      this.ApplicationHeader.modules = this.ApplicationHeader.modules?.filter((elem) => {
-        if (typeof elem !== "undefined" && elem.id !== id) {
-          return elem;
+      this.ApplicationHeader.modules = this.ApplicationHeader.modules?.filter(
+        (elem) => {
+          if (typeof elem !== "undefined" && elem.id !== id) {
+            return elem;
+          }
+          return null;
         }
-        return null;
-      });
+      );
     } else if (parent === typeFH.Footer) {
-      this.ApplicationFooter.modules = this.ApplicationFooter.modules?.filter((elem) => {
-        if (typeof elem !== "undefined" && elem.id !== id) {
-          return elem;
+      this.ApplicationFooter.modules = this.ApplicationFooter.modules?.filter(
+        (elem) => {
+          if (typeof elem !== "undefined" && elem.id !== id) {
+            return elem;
+          }
+          return null;
         }
-        return null;
-      });
+      );
     } else {
       const map = this.ApplicationScreens.map((elem) => {
         if (elem.id === parent) {
@@ -355,29 +368,43 @@ class ApplicationData {
 
   changeOptionHeaderFooter(privateName: typeFH, obj: OptionsFH) {
     if (privateName === typeFH.Header) {
-      this.ApplicationHeader = { ...this.ApplicationHeader, options: { ...this.ApplicationHeader.options, ...obj } };
+      this.ApplicationHeader = {
+        ...this.ApplicationHeader,
+        options: { ...this.ApplicationHeader.options, ...obj },
+      };
     }
     if (privateName === typeFH.Footer) {
-      this.ApplicationFooter = { ...this.ApplicationFooter, options: { ...this.ApplicationFooter.options, ...obj } };
+      this.ApplicationFooter = {
+        ...this.ApplicationFooter,
+        options: { ...this.ApplicationFooter.options, ...obj },
+      };
     }
     this.target.options = { ...this.target.options, ...obj };
   }
-  findAndChangeOptionModules({ parent, id, options }: ParentElem & { id: id } & { options: Option }) {
+  findAndChangeOptionModules({
+    parent,
+    id,
+    options,
+  }: ParentElem & { id: id } & { options: Option }) {
     if (parent === typeFH.Header) {
-      const mas = this.ApplicationHeader.modules?.map((Module: Module | undefined) => {
-        if (typeof Module !== "undefined" && Module.id === id) {
-          return { ...Module, options: { ...Module.options, ...options } };
+      const mas = this.ApplicationHeader.modules?.map(
+        (Module: Module | undefined) => {
+          if (typeof Module !== "undefined" && Module.id === id) {
+            return { ...Module, options: { ...Module.options, ...options } };
+          }
+          return Module;
         }
-        return Module;
-      });
+      );
       this.ApplicationHeader.modules = mas;
     } else if (parent === typeFH.Footer) {
-      const mas = this.ApplicationFooter.modules?.map((Module: Module | undefined) => {
-        if (typeof Module !== "undefined" && Module.id === id) {
-          return { ...Module, options: { ...Module.options, ...options } };
+      const mas = this.ApplicationFooter.modules?.map(
+        (Module: Module | undefined) => {
+          if (typeof Module !== "undefined" && Module.id === id) {
+            return { ...Module, options: { ...Module.options, ...options } };
+          }
+          return Module;
         }
-        return Module;
-      });
+      );
       this.ApplicationFooter.modules = mas;
     } else {
       this.ApplicationScreens = this.ApplicationScreens.map((screen) => {
@@ -395,23 +422,31 @@ class ApplicationData {
     }
     this.target.options = { ...this.target.options, ...options };
   }
-  findAndChangeNameModules({ parent, id, name }: ParentElem & { id: id } & { name: Name }) {
+  findAndChangeNameModules({
+    parent,
+    id,
+    name,
+  }: ParentElem & { id: id } & { name: Name }) {
     if (parent === typeFH.Header) {
-      const mas = this.ApplicationHeader.modules?.map((Module: Module | undefined) => {
-        if (typeof Module !== "undefined" && Module.id === id) {
-          console.log({ ...Module, name });
-          return { ...Module, name };
+      const mas = this.ApplicationHeader.modules?.map(
+        (Module: Module | undefined) => {
+          if (typeof Module !== "undefined" && Module.id === id) {
+            console.log({ ...Module, name });
+            return { ...Module, name };
+          }
+          return Module;
         }
-        return Module;
-      });
+      );
       this.ApplicationHeader.modules = mas;
     } else if (parent === typeFH.Footer) {
-      const mas = this.ApplicationFooter.modules?.map((Module: Module | undefined) => {
-        if (typeof Module !== "undefined" && Module.id === id) {
-          return { ...Module, name };
+      const mas = this.ApplicationFooter.modules?.map(
+        (Module: Module | undefined) => {
+          if (typeof Module !== "undefined" && Module.id === id) {
+            return { ...Module, name };
+          }
+          return Module;
         }
-        return Module;
-      });
+      );
       this.ApplicationFooter.modules = mas;
     } else {
       //ПОИСК МОДУЛЕЙ НА СТРАНИЦАХ

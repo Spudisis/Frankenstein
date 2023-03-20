@@ -1,15 +1,35 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import styled from "styled-components";
-import { AbsoluteWrapperBlock, FooterMobile, HeaderMobile, MobileMain, ScreenStyle, Wrapper } from "../../../../UI";
+import {
+  AbsoluteWrapperBlock,
+  FooterMobile,
+  HeaderMobile,
+  MobileMain,
+  ScreenStyle,
+  Wrapper,
+} from "../../../../UI";
 import { ParamsScreen } from "../../../../UI/ScreenStyled/ScreenStyled";
-import Application, { ScreenMas, typeFH, FHObject, Module, ButtonScreenAdd } from "../../../../store/Application";
+import Application, {
+  ScreenMas,
+  typeFH,
+  FHObject,
+  Module,
+  ButtonScreenAdd,
+} from "../../../../store/Application";
 
-import { MainConstructor, MainFooter, MainHeader } from "../../../../ModulesConstructor";
+import {
+  MainConstructor,
+  MainFooter,
+  MainHeader,
+} from "../../../../ModulesConstructor";
 
 import { useDrop } from "react-dnd";
 import Dragging from "../../../../store/DraggingFH";
-import { DropDND, ItemTypesDND } from "../../../../components/CustomDragNDrop/CustomDNDHook";
+import {
+  DropDND,
+  ItemTypesDND,
+} from "../../../../components/CustomDragNDrop/CustomDNDHook";
 
 type ScreenProps = ParamsScreen & { elem: ScreenMas };
 
@@ -43,7 +63,14 @@ export const Screen = observer(({ margin, elem }: ScreenProps) => {
 
   return (
     <ScreenStyle margin={margin}>
-      <Wrapper justify="space-between" direction="column" height="100%" position="relative">
+      <Wrapper
+        justify="space-between"
+        direction="column"
+        height="100%"
+        position="relative"
+        padding={"0px"}
+        background="#D9D9D9"
+      >
         {/* Проверяем наличие ключей у хедера, если есть, показываем хедер, если нет - проверяем в каком состоянии драггинг для сета
           хедера и футера, при тру - показывается прозрачный блок, в который можно сетнуть хедер/футер, при фолс - пустой блок
         */}
@@ -52,13 +79,20 @@ export const Screen = observer(({ margin, elem }: ScreenProps) => {
             <MainHeader {...{ ...header, parent: typeFH.Header }} />
           </HeaderMobile>
         ) : Dragging.draggingActive ? (
-          <AbsoluteWrapperBlock refDrag={dropHeader} top={"0px"}></AbsoluteWrapperBlock>
+          <AbsoluteWrapperBlock
+            refDrag={dropHeader}
+            top={"0px"}
+          ></AbsoluteWrapperBlock>
         ) : (
           <div></div>
         )}
 
         <MobileMain refDrag={dropMain}>
-          <>{elem.modules && elem.modules.length !== 0 && <MainConstructor {...elem} />}</>
+          <>
+            {elem.modules && elem.modules.length !== 0 && (
+              <MainConstructor {...elem} />
+            )}
+          </>
         </MobileMain>
 
         {/* та же логика, что и у хедера */}
@@ -67,7 +101,10 @@ export const Screen = observer(({ margin, elem }: ScreenProps) => {
             <MainFooter {...{ ...footer, parent: typeFH.Footer }} />
           </FooterMobile>
         ) : Dragging.draggingActive ? (
-          <AbsoluteWrapperBlock refDrag={dropFooter} bottom={"0px"}></AbsoluteWrapperBlock>
+          <AbsoluteWrapperBlock
+            refDrag={dropFooter}
+            bottom={"0px"}
+          ></AbsoluteWrapperBlock>
         ) : (
           <div></div>
         )}

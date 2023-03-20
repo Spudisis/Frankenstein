@@ -8,9 +8,21 @@ type WrapperProp = ChildrenProp & {
   direction?: string;
   position?: string;
   overflow?: string;
+  padding?: string;
+  background?: string;
 };
 
-export const Wrapper = ({ children, justify, height, borderBottom, direction, position, overflow }: WrapperProp) => {
+export const Wrapper = ({
+  children,
+  justify,
+  height,
+  borderBottom,
+  direction,
+  position,
+  overflow,
+  padding,
+  background,
+}: WrapperProp) => {
   return (
     <WrapperStyled
       justify={justify}
@@ -19,6 +31,8 @@ export const Wrapper = ({ children, justify, height, borderBottom, direction, po
       direction={direction}
       position={position}
       overflow={overflow}
+      padding={padding}
+      background={background}
     >
       {children}
     </WrapperStyled>
@@ -28,6 +42,7 @@ export const Wrapper = ({ children, justify, height, borderBottom, direction, po
 type WrapperStyledProp = Omit<WrapperProp, "children">;
 
 const WrapperStyled = styled.div<WrapperStyledProp>`
+  padding: ${(props) => props.padding || "0px 10px"};
   display: flex;
   justify-content: ${(props) => props.justify || "space-between"};
   width: 100%;
@@ -36,6 +51,7 @@ const WrapperStyled = styled.div<WrapperStyledProp>`
   height: ${(props) => props.height || "inherit"};
   align-items: center;
   max-height: 100%;
+  background: ${(props) => props.background || "inherit"};
   overflow: ${(props) => props.overflow || "none"};
   position: ${(props) => props.position || "static"};
 `;

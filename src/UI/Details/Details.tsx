@@ -54,19 +54,22 @@ export const Details = ({
             name=""
             prop={open}
             width="auto"
-            fontSize="16px"
-            padding="10px"
+            fontSize="14px"
+            padding="2px 10px 2px 10px"
             background="inherit"
           >
-            {open ? <FontAwesomeIcon icon={faMinus} /> : <FontAwesomeIcon icon={faPlus} />}
+            {open ? (
+              <FontAwesomeIcon icon={faMinus} />
+            ) : (
+              <FontAwesomeIcon icon={faPlus} />
+            )}
           </Button>
         )}
         <Button
           left={true}
           changeProp={handleSetTarget}
           name={name}
-          padding={"10px 0px"}
-          margin={"0px 0px 0px 10px"}
+          padding={"2px 10px 2px 0px"}
           prop=""
           height="100%"
           fontSize="inherit"
@@ -94,12 +97,13 @@ const ElementHead = styled.div<PropStyled>`
 
   width: 100%;
   padding: 0px 5px;
-  padding-left: ${(props) => (props.nesting ? props.nesting * 25 + "px" : "0px")};
-  border: 1px solid white;
+  padding-left: ${(props) =>
+    props.nesting ? props.nesting * 30 + "px" : "0px"};
+
   ${(props) => (props.active ? "border: 1px solid #adadad" : "")};
-  @media screen and (hover: hover) {
+  /* @media screen and (hover: hover) {
     :hover {
       border: 1px solid #adadad;
     }
-  }
+  } */
 `;

@@ -11,7 +11,13 @@ type PicturesProp = {
   refDrag?: ConnectDragSource;
 };
 
-export const Pictures = ({ src, alt, name, refDrag, isDragging }: PicturesProp) => {
+export const Pictures = ({
+  src,
+  alt,
+  name,
+  refDrag,
+  isDragging,
+}: PicturesProp) => {
   return (
     <PictureStyled ref={refDrag} isDragging={isDragging}>
       <img src={src} alt={alt} />
@@ -28,14 +34,14 @@ const PictureStyled = styled.div<Partial<PicturesProp>>`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background-color: white;
-  border: 1px solid black;
+  background-color: #3e3d3d;
+  border: 1px solid #3e3d3d;
   overflow: hidden;
   align-self: center;
   justify-self: center;
   opacity: ${(props) => (props.isDragging ? "0.5" : "1")};
   ${(props) => (props.isDragging ? "background-color: gray;" : "")};
-
+  color: white;
   img {
     opacity: ${(props) => (props.isDragging ? "0.5" : "1")};
     object-fit: cover;

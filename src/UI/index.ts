@@ -16,7 +16,10 @@ export { HeaderOptionsInput } from "./OptionsInput/Header/HeaderOptionsInput";
 export { BlockEmpty } from "./EmptyBlock";
 export { AbsoluteWrapperBlock } from "./AbsoluteWrapperBlock/AbsoluteWrapperBlock";
 export { HeaderWrapper } from "./Header/Header";
-export { ApplicationWrapperStyled } from "./ApplicationMain/ApplicationWrapperStyled";
+export {
+  ApplicationWrapperStyled,
+  ApplicationBuild,
+} from "./ApplicationMain/ApplicationWrapperStyled";
 export { Container } from "./ApplicationMain/Container";
 export { MaxWidth } from "./CustomLayoutDND/MaxWidth";
 export { Bgc } from "./BgcWrapper/Bgc";
@@ -36,3 +39,4 @@ export { FormWrapper } from "./Auth/WrapperAuth/WrapperForm";
 export { ErrorLabel } from "./Auth/ErrorMessage/LabelError";
 export { StyledRestorePass } from "./Auth/StyledRestorePass/StyledRestorePass";
 export { WrapperCode, ButtonCode } from "./Auth/AuthInput/wrapperCode";
+export { SidebarName } from "./SideBar/SidebarName";

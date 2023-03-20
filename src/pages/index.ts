@@ -4,3 +4,4 @@ export { Auth } from "./Auth/Auth";
 export { Registration } from "./Registration/Registration";
 export { RestorePassPage } from "./RestorePassword/RestorePassPage";
 export { MainPage } from "./Main/MainPage";
+export {TemplatesPage} from './Templates/TemplatesPage'

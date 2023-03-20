@@ -7,7 +7,7 @@ export const CreateApplication = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <Root overflow="hidden">
-        <Wrapper>
+        <Wrapper padding={"0px"}>
           <LeftSideBar />
           <ApplicationWrapper />
           <RightSideBar />

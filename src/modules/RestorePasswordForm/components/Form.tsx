@@ -75,7 +75,7 @@ export const Form = () => {
           setError={setError}
         />
 
-        <DefaultButton text={TextButton} fontSize={32} />
+        <DefaultButton text={TextButton} fontSize={32} width="100%"/>
       </FormWrapper>
     </WrapperAuth>
   );

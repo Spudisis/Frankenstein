@@ -7,18 +7,15 @@ export const HeaderOptionsInput = ({ children }: ChildrenProp) => {
 };
 
 const StyledOptionsInputs = styled.div`
+  color: white;
   display: grid;
   padding: 5px;
   grid-template-columns: repeat(2, 1fr);
   font-size: 18px;
   border-bottom: 1px solid black;
   input {
+    color: white;
+    background-color: inherit;
     width: 200px;
-  }
-  @media screen and (hover: hover) {
-    input:hover {
-      color: #5b5959;
-      border-right: 3px solid black;
-    }
   }
 `;

@@ -19,9 +19,17 @@ export const CreateScreen = observer(({ margin }: ParamsScreen) => {
     ApplicationData.addScreen();
   };
   return (
-    <ScreenStyle margin={margin}>
+    <ScreenStyle margin={margin} NewScreen>
       <CreateScreenWrapper>
-        <Button changeProp={handleCreate} prop={""} name="" width="300px" height="300px" fontSize="50px">
+        <Button
+          changeProp={handleCreate}
+          prop={""}
+          name=""
+          width="300px"
+          height="300px"
+          fontSize="50px"
+          background="inherit"
+        >
           <FontAwesomeIcon icon={faPlus} />
         </Button>
       </CreateScreenWrapper>

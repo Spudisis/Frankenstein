@@ -1,5 +1,6 @@
 import React from "react";
-import { Block, Button, DefaultButton, Wrapper } from "../../UI";
+import styled from "styled-components";
+import { Block, Wrapper } from "../../UI";
 import { HeaderWrapper } from "../../UI";
 import { HeaderLogo } from "./Components/HeaderLogo/HeaderLogo";
 import { HeaderNameSite } from "./Components/HeaderNameSite/HeaderNameSite";
@@ -9,38 +10,38 @@ export const Header = () => {
     <HeaderWrapper>
       <Wrapper>
         <Block>
-          <DefaultButton
-            text="Main"
-            margin="0px 10px 0px 0px"
-            width="125px"
-            fontSize={18}
-          />
-          <DefaultButton
-            text="Templates"
-            margin="0px 10px 0px 0px"
-            width="125px"
-            fontSize={18}
-          />
-        </Block>
-        <Block>
-          <HeaderLogo />
           <HeaderNameSite />
         </Block>
         <Block>
-          <DefaultButton
-            text="Build"
-            margin="0px 10px 0px 0px"
-            width="125px"
-            fontSize={18}
-          />
-          <DefaultButton
-            text="Профиль"
-            margin="0px 10px 0px 0px"
-            width="125px"
-            fontSize={18}
-          />
+          <HeaderLogo />
+        </Block>
+        <Block>
+          <ButtonHeader>Build</ButtonHeader>
+          <ButtonHeader>Profile</ButtonHeader>
         </Block>
       </Wrapper>
     </HeaderWrapper>
   );
 };
+
+const ButtonHeader = styled.button`
+  background-color: var(--color-bgc-button-active);
+  border: 1px solid var(--color-bgc-button-active);
+  font-size: 18px;
+  border-radius: var(--br-button);
+  margin: 0px 10px;
+  width: 125px;
+  padding: 10px 0px;
+  color: var(--color-button);
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  transition: 0.2s ease;
+  @media screen and (hover: hover) {
+    &:hover {
+      background-color: var(--color-bgc-button-hover);
+    }
+  }
+`;

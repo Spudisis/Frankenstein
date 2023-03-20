@@ -12,10 +12,7 @@ const formSchema = yup.object().shape({
   Email: yup
     .string()
     .required("required")
-    .matches(
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i,
-      "EmailMatches"
-    ),
+    .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i, "EmailMatches"),
   password: yup
     .string()
     .required("requiredPassword")
@@ -37,7 +34,9 @@ export const Form = () => {
     console.log(data);
   };
 
-  const ButtonText = <Trans i18nKey="Auth.Authorization.ButtonAuth">Войти</Trans>;
+  const ButtonText = (
+    <Trans i18nKey="Auth.Authorization.ButtonAuth">Войти</Trans>
+  );
   const HeadText = <Trans i18nKey="Auth.Authorization.titleAuth">Вход</Trans>;
   return (
     <WrapperAuth>
@@ -46,7 +45,12 @@ export const Form = () => {
         <Email register={register} errors={errors}></Email>
         <Password register={register} errors={errors} />
         <RestorePassword />
-        <DefaultButton text={ButtonText} fontSize={32} marginT={60} />
+        <DefaultButton
+          text={ButtonText}
+          fontSize={32}
+          marginT={60}
+          width="100%"
+        />
         <SignWith />
       </FormWrapper>
     </WrapperAuth>

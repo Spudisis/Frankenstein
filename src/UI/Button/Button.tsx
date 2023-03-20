@@ -62,23 +62,23 @@ export const Button = <_, T>({
 type ButtonStyledT = Omit<ButtonProp, "name">;
 
 const ButtonStyled = styled.button<ButtonStyledT>`
+  color: var(--color-text);
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100%"};
   text-overflow: clip;
-  border-radius: 5px;
+
   outline: none;
-  border: var(--color-border);
+  border: #3e3d3d;
   white-space: nowrap;
   overflow: hidden;
-  background-color: ${(props) => props.background || "var(--color-bg)"};
+  background-color: ${(props) => props.background || "black"};
   box-sizing: content-box;
   padding: ${(props) => props.padding || "5px"};
   padding-left: ${(props) => props.paddingLeft || "auto"};
   margin: ${(props) => props.margin || "0px"};
   cursor: pointer;
   font-size: ${(props) => props.fontSize || "18px"};
-  ${(props)=>
-    props.left ? `display:flex; justify-content:flex-start;` : ''}
+  ${(props) => (props.left ? `display:flex; justify-content:flex-start;` : "")}
   ${(props) =>
     props.active
       ? `background-color: var(--color-bgc-button-active); 
@@ -88,7 +88,7 @@ const ButtonStyled = styled.button<ButtonStyledT>`
       : ""}
   @media screen and (hover: hover) {
     &:hover {
-      color: red;
+      background-color: var(--color-bgc-button-active);
     }
   }
 `;

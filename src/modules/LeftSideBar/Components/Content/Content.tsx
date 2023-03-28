@@ -1,15 +1,10 @@
 import { observer } from "mobx-react-lite";
 import { changeTarget } from "../../../../components";
-import React from "react";
 import {
   ContentProp,
   ContentWrapper,
 } from "../../../../UI/SideBar/Content/Content";
-import App, {
-  Module,
-  ScreenMas,
-  SectionEnum,
-} from "../../../../store/Application";
+import App, { Module, ScreenMas } from "../../../../store/Application";
 import { Details, SidebarName } from "../../../../UI";
 import { HeaderFooter } from "../HeaderFooter/HeaderFooter";
 

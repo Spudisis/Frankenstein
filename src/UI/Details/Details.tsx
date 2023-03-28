@@ -5,7 +5,7 @@ import React from "react";
 import styled from "styled-components";
 import { ChildrenProp } from "../ChildrenProp";
 import { Button } from "../Button/Button";
-import { ParentElem, typeFH } from "../../store/Application";
+import { Module, ParentElem, typeFH } from "../../store/Application";
 
 type PropDetails = {
   name: string;
@@ -13,7 +13,7 @@ type PropDetails = {
   last?: boolean;
   id?: string;
   namePrivate: string;
-  click: (p: prop) => void;
+  click: (obj: Module, parent: ParentElem) => void;
 };
 
 type prop = any;
@@ -42,7 +42,9 @@ export const Details = ({
   };
 
   const handleSetTarget = () => {
-    click({ options, name, id, namePrivate, parent });
+    if (id) {
+      return click({ options, name, id, namePrivate }, { parent });
+    }
   };
 
   return (

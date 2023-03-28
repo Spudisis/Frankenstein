@@ -5,7 +5,7 @@ import { Details } from "../../../../UI";
 
 type Props = {
   data: FHObject;
-  handleChangeTarget: (obj: Module) => void;
+  handleChangeTarget: (obj: Module, parent: ParentElem) => void;
   target: Module & ParentElem
 };
 

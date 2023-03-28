@@ -12,6 +12,7 @@ interface ButtonProp {
   active?: boolean;
   background?: string;
   left?: boolean;
+  hover?: boolean;
 }
 type paramsButtonsProp<T> = {
   name: string;
@@ -33,6 +34,7 @@ export const Button = <_, T>({
   children,
   active,
   background,
+  hover = true,
 }: ButtonProp & paramsButtonsProp<T> & Partial<ChildrenProp>) => {
   const handleClick = () => {
     console.log(prop, typeof changeProp === "function");
@@ -51,6 +53,7 @@ export const Button = <_, T>({
       active={active}
       background={background}
       left={left}
+      hover={hover}
       onClick={changeProp && (() => handleClick())}
     >
       {name}
@@ -81,14 +84,17 @@ const ButtonStyled = styled.button<ButtonStyledT>`
   ${(props) => (props.left ? `display:flex; justify-content:flex-start;` : "")}
   ${(props) =>
     props.active
-      ? `background-color: var(--color-bgc-button-active); 
-          border-radius:0px; 
-          margin:0px; 
+      ? `background-color: var(--color-bgc-button-active);
+          border-radius:0px;
+          margin:0px;
           color:white; `
       : ""}
-  @media screen and (hover: hover) {
-    &:hover {
-      background-color: var(--color-bgc-button-active);
-    }
-  }
+
+    @media screen and (hover: hover) {
+    ${(props) =>
+      props.hover
+        ? `&:hover {
+      background-color: var(--color-bgc-button-active)`
+        : ""}
+  } ;
 `;

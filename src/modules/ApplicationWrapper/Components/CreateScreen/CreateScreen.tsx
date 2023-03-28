@@ -29,6 +29,7 @@ export const CreateScreen = observer(({ margin }: ParamsScreen) => {
           height="300px"
           fontSize="50px"
           background="inherit"
+          hover={false}
         >
           <FontAwesomeIcon icon={faPlus} />
         </Button>

@@ -53,6 +53,7 @@ const Border = styled.div<ParamsScreen>`
   overflow: hidden;
   border-radius: 25px;
   background-color: ${(props) => (props.NewScreen ? "#1C1B1B" : "white")};
+
   width: calc(100% - 8px);
   height: calc(100% - 8px);
 `;

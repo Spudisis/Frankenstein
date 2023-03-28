@@ -7,21 +7,28 @@ import App from "../../../../store/Application";
 
 import update from "immutability-helper";
 
-export const FindComponent = ({ modules, parent }: Pick<FHObject, "modules"> & Pick<PropsDNDHook, "parent">) => {
+export const FindComponent = ({
+  modules,
+  parent,
+}: Pick<FHObject, "modules"> & Pick<PropsDNDHook, "parent">) => {
   const FindIndex = React.useCallback(
     (id: string) => {
       if (typeof parent === "string") {
         if (modules) {
-          const card = modules.filter((c: Module | undefined) => typeof c !== "undefined" && c.id === id)[0];
+          const card = modules.filter(
+            (c: Module | undefined) => typeof c !== "undefined" && c.id === id
+          )[0];
           if (card) {
             return {
               card,
               index: modules.indexOf(card),
+              id,
             };
           } else {
             return {
               card,
               index: modules.length,
+              id,
             };
           }
         }
@@ -34,17 +41,25 @@ export const FindComponent = ({ modules, parent }: Pick<FHObject, "modules"> & P
   );
 
   const MoveCardFunc = React.useCallback(
-    ({ draggedId, originalIndex }: { draggedId: string; originalIndex: number }) => {
+    ({
+      draggedId,
+      originalIndex,
+    }: {
+      draggedId: string;
+      originalIndex: number;
+    }) => {
       const cardNIndex = FindIndex(draggedId);
+
       if (cardNIndex) {
-        const { card, index } = cardNIndex;
+        const { card, index, id } = cardNIndex;
+
         const newModules = update(modules, {
           $splice: [
             [index, 1],
             [originalIndex, 0, card],
           ],
         });
-        App.changePositionBlock(newModules, parent);
+        App.changePositionBlock(newModules, parent, id);
       }
       return null;
     },
@@ -58,7 +73,13 @@ export const FindComponent = ({ modules, parent }: Pick<FHObject, "modules"> & P
           if (typeof elem !== "undefined") {
             if (elem.namePrivate === "Button") {
               return (
-                <Button MoveCardFunc={MoveCardFunc} FindIndex={FindIndex} elem={elem} key={elem.id} parent={parent} />
+                <Button
+                  MoveCardFunc={MoveCardFunc}
+                  FindIndex={FindIndex}
+                  elem={elem}
+                  key={elem.id}
+                  parent={parent}
+                />
               );
             }
           }

@@ -287,14 +287,13 @@ class ApplicationData {
     }
   }
   changeModules({ item, id }: { item: ButtonScreenAdd; id: string }) {
-    console.log(item, id);
     if (id === item.parent) {
       return null;
     }
+    console.log(item, id);
     const copyItem = Object.assign({}, item);
     delete copyItem["parent"];
     const mas = this.ApplicationScreens.map((screen) => {
-      console.log(screen.id, item.parent);
       if (screen.id === item.parent) {
         const modules = screen.modules?.filter((module) => {
           if (module !== undefined && module.id !== item.id) {
@@ -302,9 +301,15 @@ class ApplicationData {
           }
           return null;
         });
+
         return { ...screen, modules: modules };
       }
       if (screen.id === id) {
+        //если перетаскиваемый элемент в таргете, то надо сменить его родителя в таргете, чтобы можно было дальше изменять не кликая повторно
+        if (this.target.id === item.id) {
+          this.target = { ...this.target, parent: screen.id };
+        }
+        //end
         if (screen.modules) {
           return { ...screen, modules: [...screen.modules, copyItem] };
         } else {
@@ -462,10 +467,10 @@ class ApplicationData {
     }
     this.target.name = elem;
   }
-  setTarget(obj: Module) {
-    this.target = obj;
+  setTarget(obj: Module, parent: ParentElem) {
+    this.target = { ...obj, ...parent };
   }
-  changePositionBlock(newModules: any, parent: any) {
+  changePositionBlock(newModules: any, parent: any, id: string) {
     this.ApplicationScreens = this.ApplicationScreens.map((screen) => {
       if (screen.id === parent) {
         return { ...screen, modules: newModules };

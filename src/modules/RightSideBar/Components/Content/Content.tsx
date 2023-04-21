@@ -2,11 +2,12 @@ import React from "react";
 import { Section, Wrapper, ContentWrapper, Button } from "../../../../UI";
 import { ContentProp } from "../../../../UI/SideBar/Content/Content";
 import { observer } from "mobx-react-lite";
-import ApplicationData, {
+import ApplicationData from "../../../../store/Application";
+import {
   Module,
   ScreenMas,
   SectionEnum,
-} from "../../../../store/Application";
+} from "../../../../store/types/ApplicationTypes";
 import { FindOption } from "../FindOption/FindOption";
 import { Pictures } from "../Pictures/Pictures";
 import { DropTargetMonitor, useDrop } from "react-dnd";

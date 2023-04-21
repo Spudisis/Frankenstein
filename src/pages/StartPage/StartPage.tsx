@@ -4,6 +4,7 @@ import { SelectLanguage, StartModule } from "../../modules";
 export const StartPage = () => {
   return (
     <>
+      <SelectLanguage />
       <StartModule />
     </>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FHObject, typeFH } from "../../store/Application";
+import { FHObject, typeFH } from "../../store/types/ApplicationTypes";
 
 import { observer } from "mobx-react-lite";
 

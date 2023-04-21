@@ -15,4 +15,4 @@ class ProjectAgent extends BasicAgent {
     return res;
   }
 }
-export const User = new ProjectAgent();
+export const Project = new ProjectAgent();

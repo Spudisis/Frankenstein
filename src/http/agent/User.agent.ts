@@ -18,7 +18,17 @@ class UserAgent extends BasicAgent {
     const res = await this._http.get(`/user/${id}`);
     return res;
   }
-
-
+  async refreshToken() {
+    const res = await this._http.get(`/user/refreshToken`);
+    return res;
+  }
+  async getCodeForRestore(body: any) {
+    const res = await this._http.post(`/user/getCodeRestore`, body);
+    return res;
+  }
+  async restorePassword(body: any) {
+    const res = await this._http.patch(`/user/restorePassword`, body);
+    return res;
+  }
 }
 export const User = new UserAgent();

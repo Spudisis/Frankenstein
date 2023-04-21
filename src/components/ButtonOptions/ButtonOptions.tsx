@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Module, ParentElem, typeFH } from "../../store/Application";
+import { Module, ParentElem, typeFH } from "../../store/types/ApplicationTypes";
 import { CustomHook } from "../CustomHook";
 import { Input } from "../OptionsInputs";
 import App from "../../store/Application";

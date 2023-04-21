@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { CheckAuthOrRegP, EmptyButton, WrapperAuth } from "../../UI";
 
 import { useNavigate } from "react-router-dom";
-import { Authorization, Registration } from "../../routes";
+import { Authorization, Registration } from "../../routes/urlsPages";
 export enum FormType {
   "Auth",
   "Registration",

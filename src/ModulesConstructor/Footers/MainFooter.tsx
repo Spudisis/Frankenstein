@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { CustomDNDHook } from "../../components";
 import { ItemTypesDND } from "../../components/CustomDragNDrop/CustomDNDHook";
 import { FindComponent } from "../../modules/ApplicationWrapper/Components/FindComponent/FindComponent";
-import { FHObject, Module, typeFH } from "../../store/Application";
+import { FHObject, Module, typeFH } from "../../store/types/ApplicationTypes";
 import { BlockEmpty } from "../../UI";
 
 type Prop = Omit<FHObject, "name"> & { parent?: typeFH | string };

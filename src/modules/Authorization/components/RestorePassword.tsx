@@ -1,7 +1,7 @@
 import React from "react";
 import { Trans } from "react-i18next";
 import { Link } from "react-router-dom";
-import { RestorePassword as RPass } from "../../../routes/index";
+import { RestorePassword as RPass } from "../../../routes/urlsPages";
 import { StyledRestorePass } from "../../../UI";
 
 export const RestorePassword = () => {

@@ -11,7 +11,9 @@ import {
 } from "../../../components";
 import { DefaultButton, Head, WrapperAuth, FormWrapper } from "../../../UI";
 import { Trans } from "react-i18next";
-
+import { observer } from "mobx-react-lite";
+import { AuthStore } from "../../../store/Auth";
+import { STATUS_LOADING } from "../../../store/types/StatusLoading";
 export interface IFormInput {
   Email: string;
   password: string;
@@ -39,7 +41,7 @@ const formSchema = yup.object().shape({
   checkBox: yup.bool().oneOf([true], "checkBox"),
 });
 
-export const Form = () => {
+export const Form = observer(() => {
   const {
     register,
     formState: { errors },
@@ -48,14 +50,14 @@ export const Form = () => {
     mode: "onBlur",
     resolver: yupResolver(formSchema),
   });
-
+  const StatusLoading = AuthStore.loading === STATUS_LOADING.LOADING;
   const [captchaRes, setCaptchaRes] = React.useState<boolean | null>(null);
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     if (!captchaRes) {
       return setCaptchaRes(false);
     }
-    console.log(data);
+    AuthStore.Registration({ Email: data.Email, password: data.password });
   };
 
   const HeadText = (
@@ -79,8 +81,13 @@ export const Form = () => {
 
         <Captcha setCaptchaRes={setCaptchaRes} captchaRes={captchaRes} />
 
-        <DefaultButton text={ButtonText} fontSize={32} width="100%" />
+        <DefaultButton
+          text={ButtonText}
+          fontSize={32}
+          width="100%"
+          disabled={StatusLoading}
+        />
       </FormWrapper>
     </WrapperAuth>
   );
-};
+});

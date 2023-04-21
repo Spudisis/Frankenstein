@@ -3,7 +3,8 @@ import React from "react";
 import styled from "styled-components";
 import { CreateScreen } from "./Components/CreateScreen/CreateScreen";
 import { Screen } from "./Components/Screen/Screen";
-import ApplicationData, { ScreenMas } from "../../store/Application";
+import ApplicationData from "../../store/Application";
+import { ScreenMas } from "../../store/types/ApplicationTypes";
 import { ApplicationBuild, Container } from "../../UI";
 
 export const ApplicationWrapper = observer(() => {

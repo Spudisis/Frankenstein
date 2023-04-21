@@ -1,5 +1,6 @@
 import React from "react";
 
+import { StyledLogo } from "./HeaderLogo.styles";
 export const HeaderLogo = () => {
-  return <div></div>;
+  return <StyledLogo />;
 };

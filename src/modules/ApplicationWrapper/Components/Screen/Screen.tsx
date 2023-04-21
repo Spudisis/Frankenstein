@@ -10,14 +10,14 @@ import {
   Wrapper,
 } from "../../../../UI";
 import { ParamsScreen } from "../../../../UI/ScreenStyled/ScreenStyled";
-import Application, {
+import Application from "../../../../store/Application";
+import {
   ScreenMas,
   typeFH,
   FHObject,
   Module,
   ButtonScreenAdd,
-} from "../../../../store/Application";
-
+} from "../../../../store/types/ApplicationTypes";
 import {
   MainConstructor,
   MainFooter,

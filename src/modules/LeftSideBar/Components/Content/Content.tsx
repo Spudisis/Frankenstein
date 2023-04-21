@@ -4,7 +4,8 @@ import {
   ContentProp,
   ContentWrapper,
 } from "../../../../UI/SideBar/Content/Content";
-import App, { Module, ScreenMas } from "../../../../store/Application";
+import App from "../../../../store/Application";
+import { Module, ScreenMas } from "../../../../store/types/ApplicationTypes";
 import { Details, SidebarName } from "../../../../UI";
 import { HeaderFooter } from "../HeaderFooter/HeaderFooter";
 

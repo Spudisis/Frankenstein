@@ -1,7 +1,7 @@
 import React from "react";
 import { WrapperStart } from "../../../UI";
 import { Link } from "react-router-dom";
-import { Authorization } from "../../../routes";
+import { Authorization } from "../../../routes/urlsPages";
 import { Trans } from "react-i18next";
 export const Hello = () => {
   return (

@@ -5,7 +5,7 @@ import React from "react";
 import styled from "styled-components";
 import { ChildrenProp } from "../ChildrenProp";
 import { Button } from "../Button/Button";
-import { Module, ParentElem, typeFH } from "../../store/Application";
+import { Module, ParentElem, typeFH } from "../../store/types/ApplicationTypes";
 
 type PropDetails = {
   name: string;

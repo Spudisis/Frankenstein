@@ -1,12 +1,12 @@
 import React from "react";
-import styled from "styled-components";
+import { Head } from "./HeaderNameSite.styles";
+import { Link } from "react-router-dom";
+import { main } from "../../../../routes/urlsPages";
 
 export const HeaderNameSite = () => {
-  return <Head>Frankenstein</Head>;
+  return (
+    <Head>
+      <Link to={main}>Frankenstein</Link>
+    </Head>
+  );
 };
-
-const Head = styled.h1`
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 39px;
-`;

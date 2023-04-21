@@ -1,5 +1,6 @@
 import React from "react";
+import { Header } from "../../modules";
 
 export const TemplatesPage = () => {
-  return <div>TemplatesPage</div>;
+  return <div><Header /></div>;
 };

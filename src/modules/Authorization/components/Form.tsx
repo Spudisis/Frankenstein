@@ -7,6 +7,9 @@ import { DefaultButton, Head, WrapperAuth, FormWrapper } from "../../../UI";
 import { IFormInput } from "../../Registration/components/Form";
 import { RestorePassword } from "./RestorePassword";
 import { Trans } from "react-i18next";
+import { observer } from "mobx-react-lite";
+import { AuthStore } from "../../../store/Auth";
+import { STATUS_LOADING } from "../../../store/types/StatusLoading";
 
 const formSchema = yup.object().shape({
   Email: yup
@@ -20,7 +23,7 @@ const formSchema = yup.object().shape({
     .max(20, "maxPassLen"),
 });
 
-export const Form = () => {
+export const Form = observer(() => {
   const {
     register,
     formState: { errors },
@@ -29,9 +32,9 @@ export const Form = () => {
     mode: "onBlur",
     resolver: yupResolver(formSchema),
   });
-
+  const StatusLoading = AuthStore.loading === STATUS_LOADING.LOADING;
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    console.log(data);
+    AuthStore.Authorization({ Email: data.Email, password: data.password });
   };
 
   const ButtonText = (
@@ -50,9 +53,10 @@ export const Form = () => {
           fontSize={32}
           marginT={60}
           width="100%"
+          disabled={StatusLoading}
         />
         <SignWith />
       </FormWrapper>
     </WrapperAuth>
   );
-};
+});

@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { FHObject, Module, ParentElem, typeFH } from "../../../../store/Application";
+import { FHObject, Module, ParentElem, typeFH } from "../../../../store/types/ApplicationTypes";
 import { Details } from "../../../../UI";
 
 type Props = {

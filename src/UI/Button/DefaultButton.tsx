@@ -9,6 +9,7 @@ type props = {
   padding?: string;
   width?: string;
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 export const DefaultButton = ({
@@ -19,6 +20,7 @@ export const DefaultButton = ({
   margin,
   padding,
   width,
+  disabled = false,
 }: props) => {
   return (
     <StyledButton
@@ -28,29 +30,32 @@ export const DefaultButton = ({
       padding={padding}
       width={width}
       onClick={() => onClick && onClick()}
+      disabled={disabled}
     >
       {text}
     </StyledButton>
   );
 };
 const StyledButton = styled.button<Omit<props, "text">>`
-  background-color: var(--color-bgc-button-active);
+  background-color: ${(props) =>
+    !props.disabled ? `var(--color-bgc-button-active)` : "gray"};
   border: 1px solid var(--color-bgc-button-active);
   font-size: ${(props) => props.fontSize + "px" || "16px"};
   border-radius: var(--br-button);
-  margin : ${(props) => props.margin || "auto"};
+  margin: ${(props) => props.margin || "auto"};
   width: ${(props) => props.width || "auto"};
   padding: ${(props) => props.padding || "10px 0px"};
   color: var(--color-button);
   display: flex;
-  cursor: pointer;
+  cursor: ${(props) => (!props.disabled ? `pointer` : "wait")};
   align-items: center;
   text-align: center;
   justify-content: center;
   transition: 0.2s ease;
   ${(props) => (props.marginT ? "margin-top: " + props.marginT + "px" : "")};
   &:hover {
-    background-color: var(--color-bgc-button-hover);
+    background-color: ${(props) =>
+      !props.disabled ? `var(--color-bgc-button-hover)` : "gray"};
   }
   @media screen and (max-width: 1800px) {
     padding: 5px 0;

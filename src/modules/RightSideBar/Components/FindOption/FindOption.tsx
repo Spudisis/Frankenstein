@@ -1,5 +1,5 @@
 import React from "react";
-import { Module } from "../../../../store/Application";
+import { Module } from "../../../../store/types/ApplicationTypes";
 import { ReactElement } from "react";
 import { HeaderFooterOptions } from "../../../../components/";
 import { observer } from "mobx-react-lite";

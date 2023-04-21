@@ -1,6 +1,19 @@
 import { makeAutoObservable } from "mobx";
 import { CreateId } from "../components";
-import update from "immutability-helper";
+
+import {
+  ButtonScreenAdd,
+  FHObject,
+  Module,
+  ParentElem,
+  ScreenMas,
+  SectionEnum,
+  typeFH,
+  id,
+  Name,
+  Option,
+  OptionsFH,
+} from "./types/ApplicationTypes";
 const initialTarget = {
   parent: "",
   namePrivate: "",
@@ -8,61 +21,6 @@ const initialTarget = {
   name: "",
   options: {},
 };
-
-export type Name = string;
-
-export type Option = any | OptionsFH;
-
-export type id = string;
-
-export type Modules = (Module | undefined)[] | undefined;
-
-export type Module = {
-  name: Name;
-  namePrivate: string;
-  options: Option;
-  id: id;
-};
-
-export interface ScreenMas {
-  name: Name;
-  namePrivate: string;
-  id: id;
-  modules?: Modules;
-  options?: Option;
-}
-
-// interface ApplicationT {
-//   footer?: ScreenMas;
-//   header?: ScreenMas;
-//   screens?: ScreenMas[];
-// }
-
-export enum typeFH {
-  "Header",
-  "Footer",
-}
-
-type OptionsFH = {
-  backgroundColor?: string;
-  height?: string;
-};
-
-export enum SectionEnum {
-  "pictures",
-  "options",
-}
-
-export type ParentElem = {
-  parent?: string | typeFH;
-};
-
-export type ButtonScreenAdd = Module & {
-  parent?: string;
-  originalIndex?: number;
-};
-
-export type FHObject = Partial<ScreenMas>;
 
 class ApplicationData {
   ApplicationScreens: ScreenMas[] = [

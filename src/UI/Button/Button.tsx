@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { SectionEnum } from "../../store/Application";
+import { SectionEnum } from "../../store/types/ApplicationTypes";
 import { ChildrenProp } from "../ChildrenProp";
 interface ButtonProp {
   width?: string;

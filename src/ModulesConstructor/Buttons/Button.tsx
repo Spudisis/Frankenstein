@@ -1,4 +1,4 @@
-import { ButtonScreenAdd, FHObject, Module } from "../../store/Application";
+import { ButtonScreenAdd, FHObject, Module } from "../../store/types/ApplicationTypes";
 import { StyledButtonFullControlled } from "../../UI/Button/ButtonFullControlled";
 
 import {

@@ -40,5 +40,9 @@
     "ForgetPass": "Forger password?",
     "SignWith": "Sign with...",
     "AcceptPersonData": "I agree to the processing of personal data"
+  },
+  "UsersProjects": {
+    "name": "My projects",
+    "lastUpd": "Latest update: "
   }
 }

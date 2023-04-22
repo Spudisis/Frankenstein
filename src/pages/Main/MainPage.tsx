@@ -1,6 +1,14 @@
 import React from "react";
-import { Header } from "../../modules";
+import { Header, ProjectsUser } from "src/modules";
+import { Bgc, DefaultWrapper } from "src/UI";
 
 export const MainPage = () => {
-  return <div><Header /></div>;
+  return (
+    <Bgc>
+      <Header />
+      <DefaultWrapper>
+        <ProjectsUser />
+      </DefaultWrapper>
+    </Bgc>
+  );
 };

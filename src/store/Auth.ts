@@ -8,7 +8,7 @@ class Auth {
     makeAutoObservable(this, {}, { deep: true });
   }
   private statusLoading: STATUS_LOADING = STATUS_LOADING.SUCCESS;
-  private authStatus = false;
+  private authStatus = true;
   private userInfo = {
     id: 12,
   };

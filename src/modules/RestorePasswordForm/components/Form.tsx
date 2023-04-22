@@ -8,13 +8,13 @@ import {
   StyledErrorReq,
   WrapperAuth,
 } from "../../../UI";
-import { RestorePassInputs } from "components/RestorePassword/RestorePassInputs";
+import { RestorePassInputs } from "src/components/RestorePassword/RestorePassInputs";
 import { IFormInput } from "../../Registration/components/Form.types";
 import { AccessCode } from "./AccessCode";
 import { Trans } from "react-i18next";
 import { observer } from "mobx-react-lite";
-import { AuthStore } from "../../../store/Auth";
-import { STATUS_LOADING } from "../../../store/types/StatusLoading";
+import { AuthStore } from "src/store/Auth";
+import { STATUS_LOADING } from "src/store/types/StatusLoading";
 import { RESOLVER } from "./Form.schema";
 import { ERROR_MESSAGES } from "./Form.constants";
 

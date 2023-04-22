@@ -41,3 +41,5 @@ export { StyledRestorePass } from "./Auth/StyledRestorePass/StyledRestorePass";
 export { WrapperCode, ButtonCode } from "./Auth/AuthInput/wrapperCode";
 export { SidebarName } from "./SideBar/SidebarName";
 export { StyledErrorReq } from "./ErrorReq/ErrorReq";
+export { NameSection } from "./NameSection/NameSection";
+export { DefaultWrapper } from "./WrapperDefault/WrapperDefault";

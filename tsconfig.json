@@ -15,19 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "baseUrl": ".",
-    "paths": {
-      // "__mocks__/*": ["src/__mocks__/*"],
-      // "app/*": ["src/app/*"],
-      // "assets/*": ["src/assets/*"],
-      // "constants/*": ["src/constants/*"],
-      "routes/*": ["src/routes/*"],
-      "components/*": ["src/components/*"],
-      // "domains/*": ["src/domains/*"],
-      // "helpers/*": ["src/helpers/*"],
-      "modules/*": ["src/modules/*"],
-      "pages/*": ["src/pages/*"]
-      // "http/*": ["src/http/*"]
-    },
+
     "jsx": "react-jsx"
   },
   "include": ["./src", "node_modules/example"]

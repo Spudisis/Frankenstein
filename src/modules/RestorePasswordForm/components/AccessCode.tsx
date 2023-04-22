@@ -4,7 +4,7 @@ import { Trans } from "react-i18next";
 
 import { PropsEmailInput } from "../../../components/Auth/Email";
 import { AuthInput, ButtonCode, ErrorLabel, WrapperCode } from "../../../UI";
-import { IFormInput } from "../../Registration/components/Form";
+import { IFormInput } from "../../Registration/components/Form.types";
 
 type Props = {
   handleClick: () => void;
@@ -66,7 +66,6 @@ export const AccessCode = ({
       <>
         {errors.accessCode?.message && (
           <ErrorLabel>
-            {" "}
             <Trans
               i18nKey={`Auth.errors.${errors.accessCode?.message}`}
             ></Trans>

@@ -5,8 +5,12 @@ import { HeaderWrapper } from "../../UI";
 import { HeaderLogo } from "./Components/HeaderLogo/HeaderLogo";
 import { HeaderNameSite } from "./Components/HeaderNameSite/HeaderNameSite";
 import { Button } from "./Components/ButtonHead/ButtonHead";
-
-export const Header = () => {
+import { Link } from "react-router-dom";
+import { PROFILE, build } from "../../routes/urlsPages";
+import { observer } from "mobx-react-lite";
+import { AuthStore } from "../../store/Auth";
+export const Header = observer(() => {
+  const idUser = AuthStore.user.id;
   return (
     <HeaderWrapper>
       <Wrapper>
@@ -17,10 +21,14 @@ export const Header = () => {
           <HeaderLogo />
         </Block>
         <Block>
-          <Button text={"Build"} />
-          <Button text={"Profile"} />
+          <Link to={build}>
+            <Button text={"Build"} />
+          </Link>
+          <Link to={PROFILE + idUser}>
+            <Button text={"Profile"} />
+          </Link>
         </Block>
       </Wrapper>
     </HeaderWrapper>
   );
-};
+});

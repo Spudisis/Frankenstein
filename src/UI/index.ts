@@ -40,3 +40,4 @@ export { ErrorLabel } from "./Auth/ErrorMessage/LabelError";
 export { StyledRestorePass } from "./Auth/StyledRestorePass/StyledRestorePass";
 export { WrapperCode, ButtonCode } from "./Auth/AuthInput/wrapperCode";
 export { SidebarName } from "./SideBar/SidebarName";
+export { StyledErrorReq } from "./ErrorReq/ErrorReq";

@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+
 import {
   Captcha,
   CheckBox,
@@ -9,46 +8,23 @@ import {
   Password,
   SignWith,
 } from "../../../components";
-import { DefaultButton, Head, WrapperAuth, FormWrapper } from "../../../UI";
+import { DefaultButton, Head, WrapperAuth, FormWrapper, StyledErrorReq } from "../../../UI";
 import { Trans } from "react-i18next";
 import { observer } from "mobx-react-lite";
 import { AuthStore } from "../../../store/Auth";
 import { STATUS_LOADING } from "../../../store/types/StatusLoading";
-export interface IFormInput {
-  Email: string;
-  password: string;
-  passwordRepeat: number;
-  checkBox: boolean;
-  accessCode: string;
-}
-
-const formSchema = yup.object().shape({
-  Email: yup
-    .string()
-    .required("required")
-    .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i, "EmailMatches"),
-  password: yup
-    .string()
-    .required("requiredPassword")
-    .min(3, "minPassLen")
-    .max(20, "maxPassLen"),
-  passwordRepeat: yup
-    .string()
-    .required("confirmReqPass")
-    .min(3, "minPassLen")
-    .max(20, "maxPassLen")
-    .oneOf([yup.ref("password")], "AccessPass"),
-  checkBox: yup.bool().oneOf([true], "checkBox"),
-});
+import { RESOLVER } from "./Form.schema";
+import { IFormInput } from "./Form.types";
 
 export const Form = observer(() => {
   const {
     register,
     formState: { errors },
     handleSubmit,
+    setError,
   } = useForm<IFormInput>({
     mode: "onBlur",
-    resolver: yupResolver(formSchema),
+    resolver: RESOLVER,
   });
   const StatusLoading = AuthStore.loading === STATUS_LOADING.LOADING;
   const [captchaRes, setCaptchaRes] = React.useState<boolean | null>(null);
@@ -87,6 +63,9 @@ export const Form = observer(() => {
           width="100%"
           disabled={StatusLoading}
         />
+        {AuthStore.loading === STATUS_LOADING.ERROR && (
+          <StyledErrorReq>Произошла непредвиденная ошибка</StyledErrorReq>
+        )}
       </FormWrapper>
     </WrapperAuth>
   );

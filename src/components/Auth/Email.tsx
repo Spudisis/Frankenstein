@@ -3,7 +3,7 @@ import { FieldErrors } from "react-hook-form";
 
 import { UseFormRegister } from "react-hook-form/dist/types/form";
 import { Trans } from "react-i18next";
-import { IFormInput } from "../../modules/Registration/components/Form";
+import { IFormInput } from "../../modules/Registration/components/Form.types";
 import { AuthInput, ErrorLabel } from "../../UI";
 
 export type PropsEmailInput = {

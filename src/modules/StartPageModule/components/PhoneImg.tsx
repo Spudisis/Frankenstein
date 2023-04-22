@@ -9,7 +9,7 @@ export const PhoneImg = () => {
       <picture>
         <source srcSet={phoneAvif} type="image/avif" />
         <source srcSet={phoneWebp} type="image/webp" />
-        <img src={phone} alt="phoneBgc" />
+        <img src={phone} alt="phone" />
       </picture>
     </Image>
   );

@@ -1,4 +1,4 @@
-import { IFormInput } from "../../modules/Registration/components/Form";
+import { IFormInput } from "../../modules/Registration/components/Form.types";
 import { BasicAgent } from "./Basic";
 
 class UserAgent extends BasicAgent {
@@ -22,11 +22,13 @@ class UserAgent extends BasicAgent {
     const res = await this._http.get(`/user/refreshToken`);
     return res;
   }
-  async getCodeForRestore(body: any) {
+  async getCodeForRestore(body: Pick<IFormInput, "Email">) {
     const res = await this._http.post(`/user/getCodeRestore`, body);
     return res;
   }
-  async restorePassword(body: any) {
+  async restorePassword(
+    body: Pick<IFormInput, "Email" | "password" | "accessCode">
+  ) {
     const res = await this._http.patch(`/user/restorePassword`, body);
     return res;
   }

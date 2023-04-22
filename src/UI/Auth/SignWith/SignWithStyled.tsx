@@ -7,9 +7,9 @@ export const SignWithStyled = ({ children }: ChildrenProp) => {
 };
 const StyledSignWith = styled.div`
   color: white;
-  margin: 11px 0;
+  margin: 11px 0 0px;
   h4 {
-    margin: 6px 0;
+    margin: 6px 0 0px;
     font-size: 20px;
     @media screen and (max-width: 1800px) {
       font-size: 18px;
@@ -19,9 +19,9 @@ const StyledSignWith = styled.div`
     }
   }
   @media screen and (max-width: 1800px) {
-    margin: 8px 0;
+    margin: 8px 0 0px;
   }
   @media screen and (max-width: 500px) {
-    margin: 6px 0;
+    margin: 6px 0 0px;
   }
 `;

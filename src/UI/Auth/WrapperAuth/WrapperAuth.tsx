@@ -10,7 +10,7 @@ export const WrapperAuth = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 600px;
-  margin: 10px 0px;
+  margin: 5px 0px;
   @media screen and (max-width: 768px) {
     box-shadow: none;
     border-radius: 0px;

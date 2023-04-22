@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Auth,
   CreateApplication,
@@ -7,6 +6,7 @@ import {
   StartPage,
   MainPage,
   TemplatesPage,
+  Profile,
 } from "../pages";
 import { Routes, Route } from "react-router-dom";
 import {
@@ -17,11 +17,13 @@ import {
   RestorePassword,
   main,
   templates,
+  PROFILE_LINK,
 } from "./urlsPages";
 import { ProtectedRoute } from "./PrivateRoute/PrivateRoute";
+import { AuthStore } from "../store/Auth";
 
 export const Routers = () => {
-  const auth = false;
+  const { auth } = AuthStore;
   return (
     <Routes>
       {/* не авторизован */}
@@ -79,6 +81,14 @@ export const Routers = () => {
         element={
           <ProtectedRoute auth={auth}>
             <TemplatesPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={PROFILE_LINK}
+        element={
+          <ProtectedRoute auth={auth}>
+            <Profile />
           </ProtectedRoute>
         }
       />

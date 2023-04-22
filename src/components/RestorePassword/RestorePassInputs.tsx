@@ -1,6 +1,4 @@
 import React from "react";
-import { FieldErrors, UseFormRegister } from "react-hook-form/dist/types";
-import { IFormInput } from "../../modules/Registration/components/Form";
 import { Email, PropsEmailInput } from "../Auth/Email";
 import { Password } from "../Auth/Password";
 

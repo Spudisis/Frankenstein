@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, ProjectsUser } from "src/modules";
+import { AvailableProjects, Header, ProjectsUser } from "src/modules";
 import { Bgc, DefaultWrapper } from "src/UI";
 
 export const MainPage = () => {
@@ -8,6 +8,7 @@ export const MainPage = () => {
       <Header />
       <DefaultWrapper>
         <ProjectsUser />
+        <AvailableProjects />
       </DefaultWrapper>
     </Bgc>
   );

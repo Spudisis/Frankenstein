@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { SectionEnum } from "./types/ApplicationTypes";
+import { SectionEnum } from "../domains/ApplicationTypes";
 
 class SelectButton {
   constructor() {

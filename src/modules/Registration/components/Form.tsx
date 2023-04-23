@@ -8,11 +8,17 @@ import {
   Password,
   SignWith,
 } from "../../../components";
-import { DefaultButton, Head, WrapperAuth, FormWrapper, StyledErrorReq } from "../../../UI";
+import {
+  DefaultButton,
+  Head,
+  WrapperAuth,
+  FormWrapper,
+  StyledErrorReq,
+} from "../../../UI";
 import { Trans } from "react-i18next";
 import { observer } from "mobx-react-lite";
 import { AuthStore } from "../../../store/Auth";
-import { STATUS_LOADING } from "../../../store/types/StatusLoading";
+import { STATUS_LOADING } from "../../../domains";
 import { RESOLVER } from "./Form.schema";
 import { IFormInput } from "./Form.types";
 

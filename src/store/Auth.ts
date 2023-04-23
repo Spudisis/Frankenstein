@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { IFormInput } from "../modules/Registration/components/Form.types";
-import { STATUS_LOADING } from "./types/StatusLoading";
+import { STATUS_LOADING } from "../domains";
 import { User } from "../http/agent/User.agent";
 
 class Auth {

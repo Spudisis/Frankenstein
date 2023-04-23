@@ -1,14 +1,12 @@
 import { makeAutoObservable } from "mobx";
-import { MiniatureProjectsMock } from "src/__mocks__";
 import { MiniatureProjects } from "src/domains";
-import { Project } from "src/http";
 import { STATUS_LOADING } from "src/domains";
-
+import { Project } from "src/http";
+import { MiniatureProjectsMock } from "src/__mocks__";
 class Store {
   constructor() {
     makeAutoObservable(this, {});
   }
-
   private statusLoading = STATUS_LOADING.SUCCESS;
   size = 0;
   projects: MiniatureProjects[] = [];
@@ -18,10 +16,11 @@ class Store {
   set loading(value) {
     this.statusLoading = value;
   }
-  async initialProjects(id: number) {
+
+  async getProjects() {
     try {
       this.loading = STATUS_LOADING.LOADING;
-      // const data = await Project.getUserProjects(id);
+      // const data = await Project.getProjects();
       this.projects = MiniatureProjectsMock;
       this.size = MiniatureProjectsMock.length;
 
@@ -35,4 +34,4 @@ class Store {
   }
 }
 
-export const StoreProjectsUser = new Store();
+export const StoreProjects = new Store();

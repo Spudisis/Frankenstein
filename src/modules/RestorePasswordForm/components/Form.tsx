@@ -14,7 +14,7 @@ import { AccessCode } from "./AccessCode";
 import { Trans } from "react-i18next";
 import { observer } from "mobx-react-lite";
 import { AuthStore } from "src/store/Auth";
-import { STATUS_LOADING } from "src/store/types/StatusLoading";
+import { STATUS_LOADING } from "src/domains";
 import { RESOLVER } from "./Form.schema";
 import { ERROR_MESSAGES } from "./Form.constants";
 

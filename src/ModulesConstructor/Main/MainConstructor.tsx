@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { FindComponent } from "../../modules/ApplicationWrapper/Components/FindComponent/FindComponent";
-import { ScreenMas } from "../../store/types/ApplicationTypes";
+import { ScreenMas } from "../../domains/ApplicationTypes";
 
 export const MainConstructor = observer((elem: ScreenMas) => {
   const { id, modules } = elem;

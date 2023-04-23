@@ -16,7 +16,7 @@ export const StyledWrapper = styled.div`
     grid-template-columns: repeat(1, 400px);
   }
   @media screen and (max-width: 440px) {
-    grid-template-columns: repeat(1, 300px);
+    grid-template-columns: repeat(1, 290px);
   }
 `;
 

@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Module, ParentElem, typeFH } from "../../store/types/ApplicationTypes";
+import { Module, ParentElem, typeFH } from "../../domains/ApplicationTypes";
 import { CustomHook } from "../CustomHook";
 import { Input } from "../OptionsInputs";
 import App from "../../store/Application";
@@ -16,11 +16,15 @@ export const ButtonOptions = observer(
     const inputName = CustomHook(name ? name : "name");
     const inputHeight = CustomHook(options.height ? options.height : "auto");
     const inputWidth = CustomHook(options.width ? options.width : "auto");
-    const borderRadius = CustomHook(options.borderRadius ? options.borderRadius : "5px");
+    const borderRadius = CustomHook(
+      options.borderRadius ? options.borderRadius : "5px"
+    );
     const color = CustomHook(options.color ? options.color : "black");
     const padding = CustomHook(options.padding ? options.padding : "2px");
     const margin = CustomHook(options.margin ? options.margin : "0px");
-    const inputBgcColor = CustomHook(options.backgroundColor ? options.backgroundColor : "white");
+    const inputBgcColor = CustomHook(
+      options.backgroundColor ? options.backgroundColor : "white"
+    );
 
     React.useEffect(() => {
       const name = inputName.value;
@@ -43,7 +47,11 @@ export const ButtonOptions = observer(
     return (
       <>
         <Input label="Название:" input={inputName} typeInput="text" />
-        <Input label="Текст в кнопке:" input={inputNameInside} typeInput="text" />
+        <Input
+          label="Текст в кнопке:"
+          input={inputNameInside}
+          typeInput="text"
+        />
         <Input label="Высота:" input={inputHeight} typeInput="text" />
         <Input label="Ширина:" input={inputWidth} typeInput="text" />
         <Input label="Цвет фона:" input={inputBgcColor} typeInput="text" />

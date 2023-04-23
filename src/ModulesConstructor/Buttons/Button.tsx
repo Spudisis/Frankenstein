@@ -1,4 +1,8 @@
-import { ButtonScreenAdd, FHObject, Module } from "../../store/types/ApplicationTypes";
+import {
+  ButtonScreenAdd,
+  FHObject,
+  Module,
+} from "../../domains/ApplicationTypes";
 import { StyledButtonFullControlled } from "../../UI/Button/ButtonFullControlled";
 
 import {
@@ -23,7 +27,7 @@ export const Button = ({
 
   const handleSetTarget = () => {
     const { options, id, namePrivate, name } = elem;
-    changeTarget({ options, name, id, namePrivate }, {parent});
+    changeTarget({ options, name, id, namePrivate }, { parent });
   };
 
   const [{ isDragging }, drag] = useDrag(

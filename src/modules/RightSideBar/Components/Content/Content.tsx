@@ -7,7 +7,7 @@ import {
   Module,
   ScreenMas,
   SectionEnum,
-} from "../../../../store/types/ApplicationTypes";
+} from "../../../../domains/ApplicationTypes";
 import { FindOption } from "../FindOption/FindOption";
 import { Pictures } from "../Pictures/Pictures";
 import { DropTargetMonitor, useDrop } from "react-dnd";

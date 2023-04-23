@@ -1,13 +1,19 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Email, Password, SignWith } from "../../../components";
-import { DefaultButton, Head, WrapperAuth, FormWrapper, StyledErrorReq } from "../../../UI";
+import {
+  DefaultButton,
+  Head,
+  WrapperAuth,
+  FormWrapper,
+  StyledErrorReq,
+} from "../../../UI";
 import { IFormInput } from "../../Registration/components/Form.types";
 import { RestorePassword } from "./RestorePassword";
 import { Trans } from "react-i18next";
 import { observer } from "mobx-react-lite";
 import { AuthStore } from "../../../store/Auth";
-import { STATUS_LOADING } from "../../../store/types/StatusLoading";
+import { STATUS_LOADING } from "../../../domains";
 import { RESOLVER } from "./Form.schema";
 
 export const Form = observer(() => {

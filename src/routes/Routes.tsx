@@ -11,7 +11,7 @@ import {
 import { Routes, Route } from "react-router-dom";
 import {
   HelloPage,
-  build,
+  BUILD,
   Authorization,
   Registration as RegistrationPath,
   RestorePassword,
@@ -69,7 +69,7 @@ export const Routers = () => {
         }
       />
       <Route
-        path={build}
+        path={BUILD}
         element={
           <ProtectedRoute auth={auth}>
             <CreateApplication />

@@ -9,3 +9,4 @@ export { RestorePassForm } from "./RestorePasswordForm";
 export { RestorePassInputs } from "../components/RestorePassword/RestorePassInputs";
 export { SelectLanguage } from "./SelectLanguage";
 export { ProjectsUser } from "./ProjectsUser";
+export { AvailableProjects } from "./AvailableProjects";

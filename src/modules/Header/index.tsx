@@ -6,7 +6,7 @@ import { HeaderLogo } from "./Components/HeaderLogo/HeaderLogo";
 import { HeaderNameSite } from "./Components/HeaderNameSite/HeaderNameSite";
 import { Button } from "./Components/ButtonHead/ButtonHead";
 import { Link } from "react-router-dom";
-import { PROFILE, build } from "../../routes/urlsPages";
+import { PROFILE, BUILD } from "../../routes/urlsPages";
 import { observer } from "mobx-react-lite";
 import { AuthStore } from "../../store/Auth";
 export const Header = observer(() => {
@@ -21,7 +21,7 @@ export const Header = observer(() => {
           <HeaderLogo />
         </Block>
         <Block>
-          <Link to={build}>
+          <Link to={BUILD}>
             <Button text={"Build"} />
           </Link>
           <Link to={PROFILE + idUser}>

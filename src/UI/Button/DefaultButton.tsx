@@ -10,6 +10,7 @@ type props = {
   width?: string;
   onClick?: () => void;
   disabled?: boolean;
+  padding1800?: string;
 };
 
 export const DefaultButton = ({
@@ -21,6 +22,7 @@ export const DefaultButton = ({
   padding,
   width,
   disabled = false,
+  padding1800,
 }: props) => {
   return (
     <StyledButton
@@ -31,6 +33,7 @@ export const DefaultButton = ({
       width={width}
       onClick={() => onClick && onClick()}
       disabled={disabled}
+      padding1800={padding1800}
     >
       {text}
     </StyledButton>
@@ -58,7 +61,7 @@ const StyledButton = styled.button<Omit<props, "text">>`
       !props.disabled ? `var(--color-bgc-button-hover)` : "gray"};
   }
   @media screen and (max-width: 1800px) {
-    padding: 5px 0;
+    padding: ${(props) => props.padding1800 || "5px 0"};
     font-size: ${(props) =>
       props.fontSize ? props.fontSize * 0.8 + "px" : "14px"};
   }

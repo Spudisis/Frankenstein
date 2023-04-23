@@ -1,5 +1,5 @@
 import React from "react";
-import { Module } from "../../../../store/types/ApplicationTypes";
+import { Module } from "../../../../domains/ApplicationTypes";
 import { ReactElement } from "react";
 import { HeaderFooterOptions } from "../../../../components/";
 import { observer } from "mobx-react-lite";
@@ -39,5 +39,7 @@ export const FindOption = observer(() => {
     setMasOptions(mas);
   }, [target]);
 
-  return <div>{masOptions.length !== 0 ? masOptions : "отсутствуют настройки"}</div>;
+  return (
+    <div>{masOptions.length !== 0 ? masOptions : "отсутствуют настройки"}</div>
+  );
 });

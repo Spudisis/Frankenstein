@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { CreateScreen } from "./Components/CreateScreen/CreateScreen";
 import { Screen } from "./Components/Screen/Screen";
 import ApplicationData from "../../store/Application";
-import { ScreenMas } from "../../store/types/ApplicationTypes";
+import { ScreenMas } from "../../domains/ApplicationTypes";
 import { ApplicationBuild, Container } from "../../UI";
 
 export const ApplicationWrapper = observer(() => {

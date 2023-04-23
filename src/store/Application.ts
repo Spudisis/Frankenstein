@@ -13,7 +13,7 @@ import {
   Name,
   Option,
   OptionsFH,
-} from "./types/ApplicationTypes";
+} from "../domains/ApplicationTypes";
 const initialTarget = {
   parent: "",
   namePrivate: "",

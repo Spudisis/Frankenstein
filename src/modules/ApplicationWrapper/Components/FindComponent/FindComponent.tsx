@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FHObject, Module } from "../../../../store/types/ApplicationTypes";
+import { FHObject, Module } from "../../../../domains/ApplicationTypes";
 import { Button } from "../../../../ModulesConstructor/Buttons/Button";
 import { PropsDNDHook } from "../../../../components/CustomDragNDrop/CustomDNDHook";
 import App from "../../../../store/Application";

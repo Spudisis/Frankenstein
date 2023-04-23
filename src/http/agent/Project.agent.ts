@@ -8,6 +8,12 @@ class ProjectAgent extends BasicAgent {
     const res = await this._http.get(`/projects/${id}`);
     return res;
   }
+  async getUserProjects(id: number, limit = 10, offset = 0) {
+    const res = await this._http.get(
+      `/projectsUser?limit=${limit}&offset=${offset}`
+    );
+    return res;
+  }
   async getProjects(limit = 10, offset = 0) {
     const res = await this._http.get(
       `/projects?limit=${limit}&offset=${offset}`

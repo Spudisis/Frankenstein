@@ -17,7 +17,7 @@ import {
   FHObject,
   Module,
   ButtonScreenAdd,
-} from "../../../../store/types/ApplicationTypes";
+} from "../../../../domains/ApplicationTypes";
 import {
   MainConstructor,
   MainFooter,

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { SectionEnum } from "../../store/types/ApplicationTypes";
+import { SectionEnum } from "../../domains/ApplicationTypes";
 import { ChildrenProp } from "../ChildrenProp";
 interface ButtonProp {
   width?: string;
@@ -96,5 +96,5 @@ const ButtonStyled = styled.button<ButtonStyledT>`
         ? `&:hover {
       background-color: var(--color-bgc-button-active)`
         : ""}
-  } ;
+  }
 `;

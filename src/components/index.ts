@@ -1,4 +1,3 @@
-
 export { ButtonHideSideBar } from "./ButtonHideSideBar/ButtonHideSideBar";
 export { CreateId } from "./CreateId/CreateId";
 export { HeaderFooterOptions } from "./HeaderFooterOptions/HeaderFooterOptions";
@@ -11,3 +10,5 @@ export { CheckBox } from "./Auth/CheckBox";
 export { SignWith } from "./Auth/SignWith";
 export { Captcha } from "./Auth/Captcha";
 export { RedirectToAuth } from "./Auth/Redirect";
+export * from "./ItemProject";
+export * from "./WrapperProjects";

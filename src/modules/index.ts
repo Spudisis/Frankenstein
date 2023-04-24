@@ -10,3 +10,5 @@ export { RestorePassInputs } from "../components/RestorePassword/RestorePassInpu
 export { SelectLanguage } from "./SelectLanguage";
 export { ProjectsUser } from "./ProjectsUser";
 export { AvailableProjects } from "./AvailableProjects";
+export * from "./Profile";
+export * from "./Loader";

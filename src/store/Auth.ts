@@ -8,7 +8,7 @@ class Auth {
   constructor() {
     makeAutoObservable(this, {}, { deep: true });
   }
-  private statusLoading: STATUS_LOADING = STATUS_LOADING.SUCCESS;
+  private statusLoading: STATUS_LOADING = STATUS_LOADING.LOADING;
   private authStatus = false;
   private modalOpen = false;
   private userInfo: any = {
@@ -43,28 +43,6 @@ class Auth {
     this.modalOpen = value;
   }
 
-  async GetInfoByUserId(id: string) {
-    try {
-      this.loading = STATUS_LOADING.LOADING;
-      const res = await User.getInfoByUserId(id);
-      this.loading = STATUS_LOADING.SUCCESS;
-    } catch (error) {
-      console.log(error);
-      this.loading = STATUS_LOADING.ERROR;
-    }
-  }
-  async logout() {
-    try {
-      this.loading = STATUS_LOADING.LOADING;
-      const res = await User.logout();
-      this.auth = false;
-      this.loading = STATUS_LOADING.SUCCESS;
-    } catch (error) {
-      console.log(error);
-      this.loading = STATUS_LOADING.ERROR;
-    }
-  }
-
   async checkAuth() {
     try {
       const { data } = await axios.get(
@@ -80,6 +58,8 @@ class Auth {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      this.loading = STATUS_LOADING.SUCCESS;
     }
   }
 }

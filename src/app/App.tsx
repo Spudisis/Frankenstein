@@ -7,7 +7,10 @@ import { Routers } from "src/routes/Routes";
 import "src/UI/theme.css";
 import "src/UI/resize.css";
 import { AuthStore } from "src/store/Auth";
-function App() {
+import { observer } from "mobx-react-lite";
+import { STATUS_LOADING } from "src/domains";
+import { Loader } from "src/modules";
+const App = observer(() => {
   const { i18n } = useTranslation();
   const locale = navigator.language;
   React.useEffect(() => {
@@ -17,11 +20,13 @@ function App() {
     i18n.changeLanguage(locale);
   }, [locale]);
 
+  const loading = AuthStore.loading === STATUS_LOADING.LOADING;
+
   return (
     <BrowserRouter>
-      <Routers />
+      {loading && !AuthStore.auth ? <Loader /> : <Routers />}
     </BrowserRouter>
   );
-}
+});
 
 export default App;

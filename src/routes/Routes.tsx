@@ -23,12 +23,16 @@ import { ProtectedRoute } from "./PrivateRoute/PrivateRoute";
 import { AuthStore } from "../store/Auth";
 import { observer } from "mobx-react-lite";
 import { ModalAccessEmail } from "src/components";
+import { STATUS_LOADING } from "src/domains";
+import { Loader } from "src/modules";
 
 export const Routers = observer(() => {
   const { auth } = AuthStore;
+  
   return (
     <Routes>
       {/* не авторизован */}
+
       <Route
         path={HelloPage}
         element={

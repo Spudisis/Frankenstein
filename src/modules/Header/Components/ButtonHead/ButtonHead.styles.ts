@@ -19,4 +19,12 @@ export const ButtonHeader = styled.button`
       background-color: var(--color-bgc-button-hover);
     }
   }
+  @media screen and (max-width: 840px) {
+    margin: 0 5px;
+    width: 100px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 150px;
+    font-size: 22px;
+  }
 `;

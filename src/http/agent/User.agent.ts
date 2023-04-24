@@ -3,14 +3,20 @@ import { BasicAgent } from "./Basic";
 
 class UserAgent extends BasicAgent {
   constructor() {
-    super("localhost");
+    super(process.env.REACT_APP_URL_BACK + "person", { withCredentials: true });
   }
   async Registration(body: Pick<IFormInput, "Email" | "password">) {
-    const res = await this._http.post(`/registration`, body);
+    const res = await this._http.post(`/registration`, {
+      email: body.Email,
+      password: body.password,
+    });
     return res;
   }
   async Authorization(body: Pick<IFormInput, "Email" | "password">) {
-    const res = await this._http.post(`/authorization`, body);
+    const res = await this._http.post(`/login`, {
+      email: body.Email,
+      password: body.password,
+    });
     return res;
   }
 
@@ -19,17 +25,27 @@ class UserAgent extends BasicAgent {
     return res;
   }
   async refreshToken() {
-    const res = await this._http.get(`/user/refreshToken`);
+    const res = await this._http.get(`/refresh`);
+    return res;
+  }
+  async logout() {
+    const res = await this._http.post("/logout");
     return res;
   }
   async getCodeForRestore(body: Pick<IFormInput, "Email">) {
-    const res = await this._http.post(`/user/getCodeRestore`, body);
+    const res = await this._http.post(`/getCodeRestore`, {
+      email: body.Email,
+    });
     return res;
   }
   async restorePassword(
     body: Pick<IFormInput, "Email" | "password" | "accessCode">
   ) {
-    const res = await this._http.patch(`/user/restorePassword`, body);
+    const res = await this._http.patch(`/restorePassword`, {
+      email: body.Email,
+      password: body.password,
+      accessCode: body.accessCode,
+    });
     return res;
   }
 }

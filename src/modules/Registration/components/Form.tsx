@@ -17,8 +17,8 @@ import {
 } from "../../../UI";
 import { Trans } from "react-i18next";
 import { observer } from "mobx-react-lite";
-import { AuthStore } from "../../../store/Auth";
-import { STATUS_LOADING } from "../../../domains";
+import { StoreReg } from "../store";
+import { STATUS_LOADING } from "src/domains";
 import { RESOLVER } from "./Form.schema";
 import { IFormInput } from "./Form.types";
 
@@ -32,14 +32,14 @@ export const Form = observer(() => {
     mode: "onBlur",
     resolver: RESOLVER,
   });
-  const StatusLoading = AuthStore.loading === STATUS_LOADING.LOADING;
+  const StatusLoading = StoreReg.loading === STATUS_LOADING.LOADING;
   const [captchaRes, setCaptchaRes] = React.useState<boolean | null>(null);
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     if (!captchaRes) {
       return setCaptchaRes(false);
     }
-    AuthStore.Registration({ Email: data.Email, password: data.password });
+    StoreReg.Registration({ Email: data.Email, password: data.password });
   };
 
   const HeadText = (
@@ -69,8 +69,8 @@ export const Form = observer(() => {
           width="100%"
           disabled={StatusLoading}
         />
-        {AuthStore.loading === STATUS_LOADING.ERROR && (
-          <StyledErrorReq>Произошла непредвиденная ошибка</StyledErrorReq>
+        {StoreReg.loading === STATUS_LOADING.ERROR && (
+          <StyledErrorReq>{StoreReg.error}</StyledErrorReq>
         )}
       </FormWrapper>
     </WrapperAuth>

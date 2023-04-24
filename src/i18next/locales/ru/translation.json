@@ -26,7 +26,7 @@
       "required": "Обязательное поле",
       "EmailMatches": "Это не Email",
       "requiredPassword": "Пароль обязательное поле",
-      "minPassLen": "Минимальная длина 3",
+      "minPassLen": "Минимальная длина 5",
       "maxPassLen": "Максимальная длина 20",
       "confirmReqPass": "Повтор пароля обязателен",
       "AccessPass": "Пароли не совпадают",

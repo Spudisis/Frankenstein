@@ -11,6 +11,7 @@ type Props = {
   sendCode: boolean;
   setSendInterval: (b: boolean) => void;
   setError: UseFormSetError<IFormInput>;
+  disabled: boolean;
 };
 
 export const AccessCode = ({
@@ -20,6 +21,7 @@ export const AccessCode = ({
   sendCode,
   setSendInterval,
   setError,
+  disabled,
 }: PropsEmailInput & Props) => {
   const [time, setTime] = React.useState(60);
 
@@ -53,7 +55,7 @@ export const AccessCode = ({
           />
           <ButtonCode
             onClick={() => handleClick()}
-            disabled={sendCode ? true : false}
+            disabled={sendCode || disabled ? true : false}
           >
             {!sendCode ? (
               <Trans i18nKey={"Auth.PassRecovery.giveMeCode"}>Send code</Trans>

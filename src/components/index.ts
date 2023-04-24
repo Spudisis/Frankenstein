@@ -12,3 +12,4 @@ export { Captcha } from "./Auth/Captcha";
 export { RedirectToAuth } from "./Auth/Redirect";
 export * from "./ItemProject";
 export * from "./WrapperProjects";
+export * from "./ModalAccessEmail";

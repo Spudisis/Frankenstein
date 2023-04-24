@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Email, Password, SignWith } from "../../../components";
+import { Email, ModalAccessEmail, Password, SignWith } from "src/components";
 import {
   DefaultButton,
   Head,
@@ -12,7 +12,7 @@ import { IFormInput } from "../../Registration/components/Form.types";
 import { RestorePassword } from "./RestorePassword";
 import { Trans } from "react-i18next";
 import { observer } from "mobx-react-lite";
-import { AuthStore } from "../../../store/Auth";
+import { AuthFormStore } from "../store";
 import { STATUS_LOADING } from "../../../domains";
 import { RESOLVER } from "./Form.schema";
 
@@ -25,9 +25,12 @@ export const Form = observer(() => {
     mode: "onBlur",
     resolver: RESOLVER,
   });
-  const StatusLoading = AuthStore.loading === STATUS_LOADING.LOADING;
+  const StatusLoading = AuthFormStore.loading === STATUS_LOADING.LOADING;
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    AuthStore.Authorization({ Email: data.Email, password: data.password });
+    const res = AuthFormStore.Authorization({
+      Email: data.Email,
+      password: data.password,
+    });
   };
 
   const ButtonText = (
@@ -48,8 +51,8 @@ export const Form = observer(() => {
           width="100%"
           disabled={StatusLoading}
         />
-        {AuthStore.loading === STATUS_LOADING.ERROR && (
-          <StyledErrorReq>Произошла непредвиденная ошибка</StyledErrorReq>
+        {AuthFormStore.loading === STATUS_LOADING.ERROR && (
+          <StyledErrorReq>{AuthFormStore.error}</StyledErrorReq>
         )}
         <SignWith />
       </FormWrapper>

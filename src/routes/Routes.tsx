@@ -21,8 +21,10 @@ import {
 } from "./urlsPages";
 import { ProtectedRoute } from "./PrivateRoute/PrivateRoute";
 import { AuthStore } from "../store/Auth";
+import { observer } from "mobx-react-lite";
+import { ModalAccessEmail } from "src/components";
 
-export const Routers = () => {
+export const Routers = observer(() => {
   const { auth } = AuthStore;
   return (
     <Routes>
@@ -31,7 +33,10 @@ export const Routers = () => {
         path={HelloPage}
         element={
           <ProtectedRoute redirectPath={main} auth={!auth}>
-            <StartPage />
+            <>
+              {AuthStore.modal && <ModalAccessEmail />}
+              <StartPage />
+            </>
           </ProtectedRoute>
         }
       />
@@ -39,7 +44,10 @@ export const Routers = () => {
         path={Authorization}
         element={
           <ProtectedRoute redirectPath={main} auth={!auth}>
-            <Auth />
+            <>
+              {AuthStore.modal && <ModalAccessEmail />}
+              <Auth />
+            </>
           </ProtectedRoute>
         }
       />
@@ -47,7 +55,10 @@ export const Routers = () => {
         path={RegistrationPath}
         element={
           <ProtectedRoute redirectPath={main} auth={!auth}>
-            <Registration />
+            <>
+              {AuthStore.modal && <ModalAccessEmail />}
+              <Registration />
+            </>
           </ProtectedRoute>
         }
       />
@@ -55,7 +66,10 @@ export const Routers = () => {
         path={RestorePassword}
         element={
           <ProtectedRoute redirectPath={main} auth={!auth}>
-            <RestorePassPage />
+            <>
+              {AuthStore.modal && <ModalAccessEmail />}
+              <RestorePassPage />
+            </>
           </ProtectedRoute>
         }
       />
@@ -94,4 +108,4 @@ export const Routers = () => {
       />
     </Routes>
   );
-};
+});

@@ -13,10 +13,9 @@ import { IFormInput } from "../../Registration/components/Form.types";
 import { AccessCode } from "./AccessCode";
 import { Trans } from "react-i18next";
 import { observer } from "mobx-react-lite";
-import { AuthStore } from "src/store/Auth";
+import { RestoreStore } from "../store/store";
 import { STATUS_LOADING } from "src/domains";
 import { RESOLVER } from "./Form.schema";
-import { ERROR_MESSAGES } from "./Form.constants";
 
 export const Form = observer(() => {
   const {
@@ -29,19 +28,16 @@ export const Form = observer(() => {
     mode: "onBlur",
     resolver: RESOLVER,
   });
-  const [errorMsg, setErrorMsg] = React.useState(ERROR_MESSAGES.unknownError);
-  const StatusLoading = AuthStore.loading === STATUS_LOADING.LOADING;
+
+  const StatusLoading = RestoreStore.loading === STATUS_LOADING.LOADING;
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const { Email, password, accessCode } = data;
-    const res = await AuthStore.restorePassword({
+    await RestoreStore.restorePassword({
       Email,
       password,
       accessCode,
     });
-    // if (!res) setErrorMsg(ERROR_MESSAGES.invalidCode);
-    //тут надо обработать если такой email уже есть
-    // setErrorMsg(ERROR_MESSAGES.invalidEmail)
   };
   const [sendCode, setSendInterval] = React.useState(false);
   const handleClick = async () => {
@@ -54,10 +50,9 @@ export const Form = observer(() => {
       return setError("Email", { message: "required" });
     }
 
-    const data = await AuthStore.getCodeForRestore({ Email: values.Email });
+    const data = await RestoreStore.getCodeForRestore({ Email: values.Email });
     if (data) setSendInterval(true);
   };
-  // выдавать ошибку если код неверный
 
   const TextButton = (
     <Trans i18nKey={"Auth.PassRecovery.ButtonName"}>Password recovery</Trans>
@@ -77,6 +72,7 @@ export const Form = observer(() => {
           sendCode={sendCode}
           setSendInterval={setSendInterval}
           setError={setError}
+          disabled={StatusLoading}
         />
 
         <DefaultButton
@@ -85,8 +81,8 @@ export const Form = observer(() => {
           width="100%"
           disabled={StatusLoading}
         />
-        {AuthStore.loading === STATUS_LOADING.ERROR && (
-          <StyledErrorReq>{errorMsg}</StyledErrorReq>
+        {RestoreStore.loading === STATUS_LOADING.ERROR && (
+          <StyledErrorReq>{RestoreStore.error}</StyledErrorReq>
         )}
       </FormWrapper>
     </WrapperAuth>

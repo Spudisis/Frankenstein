@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { IFormInput } from "../modules/Registration/components/Form.types";
 import { STATUS_LOADING } from "../domains";
 import { User } from "../http/agent/User.agent";
+import axios from "axios";
 
 class Auth {
   constructor() {
@@ -9,7 +10,8 @@ class Auth {
   }
   private statusLoading: STATUS_LOADING = STATUS_LOADING.SUCCESS;
   private authStatus = false;
-  private userInfo = {
+  private modalOpen = false;
+  private userInfo: any = {
     id: 12,
   };
 
@@ -34,56 +36,13 @@ class Auth {
     this.userInfo = value;
   }
 
-  async Authorization(body: Pick<IFormInput, "Email" | "password">) {
-    try {
-      this.loading = STATUS_LOADING.LOADING;
-      console.log(body);
+  get modal() {
+    return this.modalOpen;
+  }
+  set modal(value) {
+    this.modalOpen = value;
+  }
 
-      const data = await User.Authorization(body);
-      this.loading = STATUS_LOADING.SUCCESS;
-    } catch (error) {
-      console.log(error);
-      this.loading = STATUS_LOADING.ERROR;
-    }
-  }
-  async Registration(body: Pick<IFormInput, "Email" | "password">) {
-    try {
-      this.loading = STATUS_LOADING.LOADING;
-      console.log(body);
-
-      const data = await User.Registration(body);
-      this.loading = STATUS_LOADING.SUCCESS;
-    } catch (error) {
-      console.log(error);
-      this.loading = STATUS_LOADING.ERROR;
-    }
-  }
-  async getCodeForRestore(body: Pick<IFormInput, "Email">): Promise<boolean> {
-    try {
-      this.loading = STATUS_LOADING.LOADING;
-      const res = await User.getCodeForRestore(body);
-      this.loading = STATUS_LOADING.SUCCESS;
-      return true;
-    } catch (error) {
-      console.log(error);
-      this.loading = STATUS_LOADING.ERROR;
-      return false;
-    }
-  }
-  async restorePassword(
-    body: Pick<IFormInput, "Email" | "password" | "accessCode">
-  ): Promise<boolean> {
-    try {
-      this.loading = STATUS_LOADING.LOADING;
-      const res = await User.restorePassword(body);
-      this.loading = STATUS_LOADING.SUCCESS;
-      return true;
-    } catch (error) {
-      console.log(error);
-      this.loading = STATUS_LOADING.ERROR;
-      return false;
-    }
-  }
   async GetInfoByUserId(id: string) {
     try {
       this.loading = STATUS_LOADING.LOADING;
@@ -92,6 +51,35 @@ class Auth {
     } catch (error) {
       console.log(error);
       this.loading = STATUS_LOADING.ERROR;
+    }
+  }
+  async logout() {
+    try {
+      this.loading = STATUS_LOADING.LOADING;
+      const res = await User.logout();
+      this.auth = false;
+      this.loading = STATUS_LOADING.SUCCESS;
+    } catch (error) {
+      console.log(error);
+      this.loading = STATUS_LOADING.ERROR;
+    }
+  }
+
+  async checkAuth() {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_URL_BACK}person/refresh`,
+        { withCredentials: true }
+      );
+      localStorage.setItem("token", data.accessToken);
+      this.userInfo = data.user;
+      if (data.user.isActivated) {
+        this.auth = true;
+      } else {
+        this.modal = true;
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 }

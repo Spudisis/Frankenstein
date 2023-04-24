@@ -25,4 +25,8 @@ export const ButtonCode = styled.button.attrs({ type: "button" })`
   &:hover {
     background-color: var(--color-bgc-button-hover);
   }
+  &:disabled {
+    background-color: var(--color-bgc-button-active);
+    cursor: wait;
+  }
 `;

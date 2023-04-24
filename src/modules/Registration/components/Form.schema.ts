@@ -9,12 +9,12 @@ const FORM_SCHEMA = yup.object().shape({
   password: yup
     .string()
     .required("requiredPassword")
-    .min(3, "minPassLen")
+    .min(5, "minPassLen")
     .max(20, "maxPassLen"),
   passwordRepeat: yup
     .string()
     .required("confirmReqPass")
-    .min(3, "minPassLen")
+    .min(5, "minPassLen")
     .max(20, "maxPassLen")
     .oneOf([yup.ref("password")], "AccessPass"),
   checkBox: yup.bool().oneOf([true], "checkBox"),

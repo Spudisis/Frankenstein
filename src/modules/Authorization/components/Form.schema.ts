@@ -8,7 +8,7 @@ const FORM_SCHEMA = yup.object().shape({
   password: yup
     .string()
     .required("requiredPassword")
-    .min(3, "minPassLen")
+    .min(5, "minPassLen")
     .max(20, "maxPassLen"),
 });
 export const RESOLVER = yupResolver(FORM_SCHEMA)

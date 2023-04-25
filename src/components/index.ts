@@ -13,3 +13,7 @@ export { RedirectToAuth } from "./Auth/Redirect";
 export * from "./ItemProject";
 export * from "./WrapperProjects";
 export * from "./ModalAccessEmail";
+export * from "./PaymentWrapper";
+export * from "./PaymentBuff";
+export * from "./PaymentBuffElem";
+export * from "./NamePage";

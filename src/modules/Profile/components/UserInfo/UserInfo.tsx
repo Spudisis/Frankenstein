@@ -5,15 +5,12 @@ import { Block, InfoField, NameField, Wrapper } from "./UserInfo.styles";
 
 export const UserInfo = observer(() => {
   const { user } = StoreProfile;
+
   return (
     <Wrapper>
       <Block>
-        <NameField>Name</NameField>
-        <InfoField>{user?.name}</InfoField>
-      </Block>
-      <Block>
-        <NameField>Surname</NameField>
-        <InfoField>{user?.surname}</InfoField>
+        <NameField>nickname</NameField>
+        <InfoField>{user?.nickname}</InfoField>
       </Block>
       <Block>
         <NameField>Email</NameField>

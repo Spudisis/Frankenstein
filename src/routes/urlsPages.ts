@@ -10,3 +10,4 @@ export const templates = "/templates";
 export const PROFILE = "/profile/";
 export const PROFILE_ID = ":userId";
 export const PROFILE_LINK = PROFILE + PROFILE_ID;
+export const PAYMENT = PROFILE + "payment/";

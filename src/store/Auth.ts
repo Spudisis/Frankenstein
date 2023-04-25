@@ -1,7 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { IFormInput } from "../modules/Registration/components/Form.types";
-import { STATUS_LOADING } from "../domains";
-import { User } from "../http/agent/User.agent";
+import { STATUS_LOADING, UserInfoGlobal } from "../domains";
 import axios from "axios";
 
 class Auth {
@@ -11,9 +9,7 @@ class Auth {
   private statusLoading: STATUS_LOADING = STATUS_LOADING.LOADING;
   private authStatus = false;
   private modalOpen = false;
-  private userInfo: any = {
-    id: 12,
-  };
+  private userInfo: UserInfoGlobal | null = null;
 
   get auth() {
     return this.authStatus;

@@ -1,9 +1,8 @@
 import { makeAutoObservable } from "mobx";
 import { STATUS_LOADING, UserInfoProfile } from "src/domains";
 import { User } from "src/http";
-import { AuthStore } from "src/store/Auth";
 
-class Store {
+class Payment {
   constructor() {
     makeAutoObservable(this, {});
   }
@@ -11,14 +10,6 @@ class Store {
 
   private userInfo: UserInfoProfile | null = null;
 
-  private id: null | string = null;
-  userSelf = false;
-  get idUser() {
-    return this.id;
-  }
-  set idUser(value) {
-    this.id = value;
-  }
   get loading() {
     return this.statusLoading;
   }
@@ -31,18 +22,6 @@ class Store {
   }
   set user(value) {
     this.userInfo = value;
-  }
-
-  async logout() {
-    try {
-      this.loading = STATUS_LOADING.LOADING;
-      await User.logout();
-      AuthStore.auth = false;
-      this.loading = STATUS_LOADING.SUCCESS;
-    } catch (error) {
-      console.log(error);
-      this.loading = STATUS_LOADING.ERROR;
-    }
   }
 
   async getUser(id: string) {
@@ -59,4 +38,4 @@ class Store {
   }
 }
 
-export const StoreProfile = new Store();
+export const PaymentStore = new Payment();

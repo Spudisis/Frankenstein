@@ -24,10 +24,12 @@ export class BasicAgent {
         ) {
           originRequest._isRetry = true;
           try {
-            const { data } = await axios.post<any>(
-              `${process.env.REACT_APP_URL_BACK}/person/refresh`
+            const { data } = await axios.get<any>(
+              `${process.env.REACT_APP_URL_BACK}person/refresh`,
+              { withCredentials: true }
             );
-            localStorage.setItem("token", data.access_token);
+
+            localStorage.setItem("token", data.accessToken);
             return this._http.request(originRequest);
           } catch (e: any) {
             console.log("Не авторизован");

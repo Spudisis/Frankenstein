@@ -6,6 +6,7 @@ import { observer } from "mobx-react-lite";
 
 export const ActionUser = observer(() => {
   const loading = StoreProfile.loading === STATUS_LOADING.LOADING;
+  
   return (
     <StyledWrapper>
       <StyledButton disabled={loading}>Редактировать</StyledButton>

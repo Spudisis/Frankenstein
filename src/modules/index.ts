@@ -12,3 +12,4 @@ export { ProjectsUser } from "./ProjectsUser";
 export { AvailableProjects } from "./AvailableProjects";
 export * from "./Profile";
 export * from "./Loader";
+export * from "./Payment";

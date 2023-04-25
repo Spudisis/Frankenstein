@@ -6,3 +6,4 @@ export { RestorePassPage } from "./RestorePassword/RestorePassPage";
 export { MainPage } from "./Main/MainPage";
 export { TemplatesPage } from "./Templates/TemplatesPage";
 export { Profile } from "./Profile/Profile";
+export { Payment } from "./Payment/Payment";

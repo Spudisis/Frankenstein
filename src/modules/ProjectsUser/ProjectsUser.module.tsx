@@ -5,6 +5,7 @@ import { Wrapper } from "src/components/WrapperProjects";
 import { observer } from "mobx-react-lite";
 
 export const ProjectsUser = observer(() => {
+  //сделать так, чтобы в личном профиле в своем акке выдавало свои проекты, а при просмотре чужого акка - его проекты
   const id = 1;
   const { projects, loading, size } = StoreProjectsUser;
   React.useEffect(() => {

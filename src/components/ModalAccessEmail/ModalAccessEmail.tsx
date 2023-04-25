@@ -34,7 +34,7 @@ export const ModalAccessEmail = observer(() => {
         </ButtonClose>
         <Info>
           Вы зарегистрированы, проверьте почту для подтверждения:{" "}
-          {AuthStore.user.email}
+          {AuthStore.user?.email}
         </Info>
       </ModalContent>
     </Modal>

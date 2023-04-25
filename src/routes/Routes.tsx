@@ -7,6 +7,7 @@ import {
   MainPage,
   TemplatesPage,
   Profile,
+  Payment,
 } from "../pages";
 import { Routes, Route } from "react-router-dom";
 import {
@@ -18,6 +19,8 @@ import {
   main,
   templates,
   PROFILE_LINK,
+  PAYMENT,
+  PROFILE_ID,
 } from "./urlsPages";
 import { ProtectedRoute } from "./PrivateRoute/PrivateRoute";
 import { AuthStore } from "../store/Auth";
@@ -28,7 +31,7 @@ import { Loader } from "src/modules";
 
 export const Routers = observer(() => {
   const { auth } = AuthStore;
-  
+
   return (
     <Routes>
       {/* не авторизован */}
@@ -107,6 +110,14 @@ export const Routers = observer(() => {
         element={
           <ProtectedRoute auth={auth}>
             <Profile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={PAYMENT + PROFILE_ID}
+        element={
+          <ProtectedRoute auth={auth}>
+            <Payment />
           </ProtectedRoute>
         }
       />

@@ -3,8 +3,7 @@ export type UserInfoProfile = {
   email: string;
   id: number;
   isActivated: boolean;
-  name: string;
-  surname: string;
+  nickname: string;
   tiers: string;
   updatedAt: string;
 };

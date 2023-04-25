@@ -11,7 +11,7 @@ export const Links = observer(() => {
       <Link to={BUILD}>
         <Button text={"Build"} />
       </Link>
-      <Link to={PROFILE + AuthStore.user.id}>
+      <Link to={PROFILE + AuthStore.user?.id}>
         <Button text={"Profile"} />
       </Link>
     </>

@@ -1,17 +1,17 @@
 import { Bgc, DefaultWrapper } from "src/UI";
+import { NamePage } from "src/components";
 import { Header, ProjectsUser, Profile as ProfileModule } from "src/modules";
 
 export const Profile = () => {
   return (
-    <div>
-      <Bgc>
-        <Header />
-        <DefaultWrapper>
-          <ProfileModule />
+    <Bgc>
+      <Header />
+      <DefaultWrapper>
+        <NamePage name={"Profile"} />
+        <ProfileModule />
 
-          <ProjectsUser />
-        </DefaultWrapper>
-      </Bgc>
-    </div>
+        <ProjectsUser />
+      </DefaultWrapper>
+    </Bgc>
   );
 };

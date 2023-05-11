@@ -1,3 +1,4 @@
+import { ChangeInfoT } from "src/domains";
 import { IFormInput } from "../../modules/Registration/components/Form.types";
 import { BasicAgent } from "./Basic";
 
@@ -46,6 +47,11 @@ class UserAgent extends BasicAgent {
       password: body.password,
       accessCode: body.accessCode,
     });
+    return res;
+  }
+
+  async changeInfoUser(body: ChangeInfoT) {
+    const res = await this._http.patch(`/changeInfoUser`, body);
     return res;
   }
 }

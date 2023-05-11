@@ -8,7 +8,8 @@ import {
   TemplatesPage,
   Profile,
   Payment,
-} from "../pages";
+  ChangeProfile,
+} from "src/pages";
 import { Routes, Route } from "react-router-dom";
 import {
   HelloPage,
@@ -21,13 +22,12 @@ import {
   PROFILE_LINK,
   PAYMENT,
   PROFILE_ID,
+  CHANGE_PROFILE,
 } from "./urlsPages";
 import { ProtectedRoute } from "./PrivateRoute/PrivateRoute";
 import { AuthStore } from "../store/Auth";
 import { observer } from "mobx-react-lite";
 import { ModalAccessEmail } from "src/components";
-import { STATUS_LOADING } from "src/domains";
-import { Loader } from "src/modules";
 
 export const Routers = observer(() => {
   const { auth } = AuthStore;
@@ -118,6 +118,14 @@ export const Routers = observer(() => {
         element={
           <ProtectedRoute auth={auth}>
             <Payment />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={CHANGE_PROFILE}
+        element={
+          <ProtectedRoute auth={auth}>
+            <ChangeProfile />
           </ProtectedRoute>
         }
       />

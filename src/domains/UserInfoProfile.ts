@@ -7,3 +7,5 @@ export type UserInfoProfile = {
   tiers: string;
   updatedAt: string;
 };
+
+export type UserInfoChange = Pick<UserInfoProfile, "nickname" | "tiers">;

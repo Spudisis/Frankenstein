@@ -1,22 +1,27 @@
 import React from "react";
-import { Module } from "../../../../domains/ApplicationTypes";
+
 import { ReactElement } from "react";
-import { HeaderFooterOptions } from "../../../../components/";
+import { HFOptions, ButtonOptions, WrapperOptions } from "../Options";
 import { observer } from "mobx-react-lite";
-import App from "../../../../store/Application";
-import { Button } from "../../../../ModulesConstructor";
-import { ButtonOptions } from "../../../../components/ButtonOptions/ButtonOptions";
+import App from "src/store/Application";
 
 export const FindOption = observer(() => {
   const target = App.target;
+  
   const [masOptions, setMasOptions] = React.useState<ReactElement[]>([]);
   const idHeader = App.ApplicationHeader.id;
   const idFooter = App.ApplicationFooter.id;
+
   React.useEffect(() => {
+    if (!target.id) {
+      return;
+    }
     const mas: ReactElement[] = [];
+    //на этом этапе уже имя меняется
+
     if (target.id === idHeader || target.id === idFooter) {
       mas.push(
-        <HeaderFooterOptions
+        <HFOptions
           key={target.id}
           namePrivate={target.namePrivate}
           options={target.options}
@@ -36,10 +41,26 @@ export const FindOption = observer(() => {
         />
       );
     }
+    if (target.namePrivate === "Wrapper") {
+      mas.push(
+        <WrapperOptions
+          key={target.id}
+          options={target.options}
+          id={target.id}
+          name={target.name}
+          namePrivate={target.namePrivate}
+          parent={target.parent}
+        />
+      );
+    }
     setMasOptions(mas);
   }, [target]);
 
   return (
-    <div>{masOptions.length !== 0 ? masOptions : "отсутствуют настройки"}</div>
+    <div>
+      {masOptions.length !== 0 && target.id
+        ? masOptions
+        : "отсутствуют настройки"}
+    </div>
   );
 });

@@ -20,6 +20,7 @@ export const ButtonHideSideBar = ({
   const handleClick = () => {
     changeVisible();
   };
+  
   return (
     <ButtonHide clickF={handleClick} rotate={deg} left={left} right={right}>
       <svg

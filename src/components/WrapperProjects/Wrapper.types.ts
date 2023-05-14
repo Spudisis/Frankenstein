@@ -7,4 +7,5 @@ export type WrapperTypes = {
   loading: STATUS_LOADING;
   sizeMin: number;
   nameSection: string;
+  createNewProject: () => void;
 };

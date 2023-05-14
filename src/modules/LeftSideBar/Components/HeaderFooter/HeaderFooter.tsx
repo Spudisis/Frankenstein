@@ -1,21 +1,15 @@
 import { observer } from "mobx-react-lite";
-
-import {
-  FHObject,
-  Module,
-  ParentElem,
-  typeFH,
-} from "../../../../domains/ApplicationTypes";
-import { Details } from "../../../../UI";
-
-type Props = {
-  data: FHObject;
-  handleChangeTarget: (obj: Module, parent: ParentElem) => void;
-  target: Module & ParentElem;
-};
+import React from "react";
+import { Module, typeFH } from "src/domains/ApplicationTypes";
+import { Details } from "src/UI";
+import { Props } from "./HeaderFooter.types";
+import App from "src/store/Application";
 
 export const HeaderFooter = observer(
   ({ data, handleChangeTarget, target }: Props) => {
+    React.useEffect(() => {
+      console.log("TARGETHeaderFooter:" + target.name);
+    }, [target]);
     return (
       <>
         <Details
@@ -33,7 +27,6 @@ export const HeaderFooter = observer(
               data.modules.length !== 0 &&
               data.modules.map((module: Module | undefined) => {
                 if (typeof module !== "undefined") {
-                  console.log(data.namePrivate);
                   return (
                     <Details
                       namePrivate={module.namePrivate}

@@ -1,33 +1,39 @@
 import {
-  ButtonScreenAdd,
-  FHObject,
+  ScreenAddElemeny,
   Module,
-} from "../../domains/ApplicationTypes";
-import { StyledButtonFullControlled } from "../../UI/Button/ButtonFullControlled";
-
+  ParentParent,
+} from "src/domains/ApplicationTypes";
+import { StyledButtonFullControlled } from "src/UI/Button/ButtonFullControlled";
 import {
   ItemTypesDND,
   PropsDNDHook,
-} from "../../components/CustomDragNDrop/CustomDNDHook";
-
+} from "src/components/CustomDragNDrop/CustomDNDHook";
 import { useDrag, useDrop } from "react-dnd";
-import { changeTarget } from "../../components";
+import { changeTarget } from "src/components";
 
 export const Button = ({
   elem,
   parent,
   MoveCardFunc,
   FindIndex,
+  ParentParent,
 }: { elem: Module; MoveCardFunc: any; FindIndex: any } & Pick<
   PropsDNDHook,
   "parent"
->) => {
+> &
+  Pick<ParentParent, "ParentParent">) => {
   const find = FindIndex(elem.id, parent);
   const originalIndex = find ? find.index : -1;
 
-  const handleSetTarget = () => {
+  const handleSetTarget = (e: MouseEvent) => {
     const { options, id, namePrivate, name } = elem;
-    changeTarget({ options, name, id, namePrivate }, { parent });
+
+    changeTarget(
+      { options, name, id, namePrivate },
+      { parent },
+      { ParentParent }
+    );
+    e.stopPropagation();
   };
 
   const [{ isDragging }, drag] = useDrag(
@@ -58,7 +64,7 @@ export const Button = ({
   const [, drop] = useDrop(
     () => ({
       accept: ItemTypesDND.Button,
-      hover({ id: draggedId }: ButtonScreenAdd) {
+      hover({ id: draggedId }: ScreenAddElemeny) {
         // console.log(draggedId, elem.id);
         if (draggedId !== elem.id) {
           const find = FindIndex(elem.id);
@@ -78,7 +84,7 @@ export const Button = ({
       ref={(node: HTMLButtonElement) => drag(drop(node))}
       isDragging={isDragging}
       {...elem.options}
-      onClick={() => handleSetTarget()}
+      onClick={(e: any) => handleSetTarget(e)}
     >
       {elem.options.name ? elem.options.name : "name"}
     </StyledButtonFullControlled>

@@ -2,7 +2,7 @@ import React from "react";
 import { Section, Wrapper, ContentWrapper, Button } from "../../../../UI";
 import { ContentProp } from "../../../../UI/SideBar/Content/Content";
 import { observer } from "mobx-react-lite";
-import ApplicationData from "../../../../store/Application";
+import ApplicationData from "src/store/Application";
 import {
   Module,
   ScreenMas,
@@ -24,7 +24,12 @@ export const Content = observer(
     const section = ApplicationData.section;
 
     const [{ canDrop, isOver }, drop]: DropDND = useDrop(() => ({
-      accept: [ItemTypesDND.Button, ItemTypesDND.Footer, ItemTypesDND.Header],
+      accept: [
+        ItemTypesDND.Button,
+        ItemTypesDND.Footer,
+        ItemTypesDND.Header,
+        ItemTypesDND.Wrapper,
+      ],
       drop: (item: ScreenMas | Module) => handleDeleteDND(item),
       collect: (monitor: DropTargetMonitor) => ({
         canDrop: monitor.canDrop(),

@@ -2,8 +2,10 @@ import React from "react";
 import { ButtonHideSideBar } from "../../components";
 import { SideBar } from "../../UI";
 import { Content } from "./Components/Content/Content";
+import { observer } from "mobx-react-lite";
+import App from "src/store/Application";
 
-export const RightSideBar = () => {
+export const RightSideBar = observer(() => {
   const [width, setWidth] = React.useState(350);
 
   const changeRight = () => {
@@ -20,4 +22,4 @@ export const RightSideBar = () => {
       <Content overflow={width ? "auto" : "hidden"} />
     </SideBar>
   );
-};
+});

@@ -1,5 +1,5 @@
-export { MainConstructor } from "./Main/MainConstructor";
+export { MainConstructor } from "../modules/ApplicationWrapper/Components/MainConstructor/MainConstructor";
 
 export { MainHeader } from "./Headers/MainHeader";
-export { Button } from "./Buttons/Button";
+
 export { MainFooter } from "./Footers/MainFooter";

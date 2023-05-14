@@ -18,7 +18,14 @@ import { observer } from "mobx-react-lite";
 import { Item } from "src/components";
 import { WrapperTypes } from "./Wrapper.types";
 export const Wrapper = observer(
-  ({ projects, size, loading, sizeMin, nameSection }: WrapperTypes) => {
+  ({
+    projects,
+    size,
+    loading,
+    sizeMin,
+    nameSection,
+    createNewProject,
+  }: WrapperTypes) => {
     const statusLoading = loading === STATUS_LOADING.LOADING;
 
     return (
@@ -59,15 +66,16 @@ export const Wrapper = observer(
           <>
             <ButtonWrapper>
               <InfoProject>Список проектов пуст</InfoProject>
-              <Link to={BUILD}>
-                <DefaultButton
-                  text="Создайте проект"
-                  margin="10px 10px 0px"
-                  padding="5px 10px"
-                  padding1800="5px 10px"
-                  disabled={statusLoading}
-                />
-              </Link>
+              {/* <Link to={BUILD}> */}
+              <DefaultButton
+                text="Создайте проект"
+                margin="10px 10px 0px"
+                padding="5px 10px"
+                padding1800="5px 10px"
+                disabled={statusLoading}
+                onClick={createNewProject}
+              />
+              {/* </Link> */}
             </ButtonWrapper>
           </>
         )}

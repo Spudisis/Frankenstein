@@ -5,7 +5,7 @@ import { Content } from "./Components/Content/Content";
 
 export const LeftSideBar = () => {
   const [width, setWidth] = React.useState(250);
-
+  const [section, setSection] = React.useState(true);
   const changeRight = () => {
     width ? setWidth(0) : setWidth(250);
   };
@@ -16,7 +16,11 @@ export const LeftSideBar = () => {
         right="-25px"
         deg={"0deg"}
       />
-      <Content overflow={width ? "auto" : "hidden"} />
+      <Content
+        overflow={width ? "auto" : "hidden"}
+        section={section}
+        setSection={setSection}
+      />
     </SideBar>
   );
 };

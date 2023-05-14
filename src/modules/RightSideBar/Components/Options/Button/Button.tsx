@@ -1,9 +1,9 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Module, ParentElem, typeFH } from "../../domains/ApplicationTypes";
-import { CustomHook } from "../CustomHook";
-import { Input } from "../OptionsInputs";
-import App from "../../store/Application";
+import { Module, ParentElem, typeFH } from "src/domains/ApplicationTypes";
+import { CustomHook } from "src/components/CustomHook";
+import { Input } from "../Input";
+import App from "src/store/Application";
 export const ButtonOptions = observer(
   ({
     options,
@@ -12,8 +12,8 @@ export const ButtonOptions = observer(
     id,
     parent,
   }: Pick<Module, "options" | "name" | "namePrivate" | "id"> & ParentElem) => {
-    const inputNameInside = CustomHook(options.name ? options.name : "name");
-    const inputName = CustomHook(name ? name : "name");
+    const inputNameInside = CustomHook(options.name ? options.name : "inside");
+    const inputName = CustomHook(name ? name : "outside");
     const inputHeight = CustomHook(options.height ? options.height : "auto");
     const inputWidth = CustomHook(options.width ? options.width : "auto");
     const borderRadius = CustomHook(
@@ -23,7 +23,7 @@ export const ButtonOptions = observer(
     const padding = CustomHook(options.padding ? options.padding : "2px");
     const margin = CustomHook(options.margin ? options.margin : "0px");
     const inputBgcColor = CustomHook(
-      options.backgroundColor ? options.backgroundColor : "white"
+      options.backgroundColor ? options.backgroundColor : ""
     );
 
     React.useEffect(() => {

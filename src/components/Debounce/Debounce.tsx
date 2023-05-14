@@ -8,13 +8,13 @@ export const Debounce = (cb: any) => {
       clearTimeout(i);
       i = setTimeout(() => {
         running = false;
-        console.log("aaaaaa");
+
         cb();
       }, 300);
     } else {
       i = setTimeout(() => {
         running = false;
-        console.log("aaaaaa");
+
         cb();
       }, 50);
     }

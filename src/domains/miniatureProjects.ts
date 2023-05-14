@@ -1,6 +1,10 @@
 export type MiniatureProjects = {
   id: number;
+  uid: string;
   name: string;
-  img: string;
-  latestUpd: string;
+  miniature: string;
+  statusAccess: boolean;
+  layout: string;
+  updatedAt: string;
+  createdAt: string;
 };

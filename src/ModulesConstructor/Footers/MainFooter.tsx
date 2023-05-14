@@ -1,13 +1,13 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import styled from "styled-components";
-import { CustomDNDHook } from "../../components";
+import { CustomDNDHook, changeTarget } from "../../components";
 import { ItemTypesDND } from "../../components/CustomDragNDrop/CustomDNDHook";
 import { FindComponent } from "../../modules/ApplicationWrapper/Components/FindComponent/FindComponent";
 import { FHObject, Module, typeFH } from "../../domains/ApplicationTypes";
 import { BlockEmpty } from "../../UI";
 
-type Prop = Omit<FHObject, "name"> & { parent?: typeFH | string };
+type Prop = FHObject & { parent?: typeFH | string };
 
 export const MainFooter = observer((props: Prop) => {
   const { id, options, modules } = props;
@@ -15,15 +15,20 @@ export const MainFooter = observer((props: Prop) => {
     name: ItemTypesDND.Footer,
     options: props,
   });
+  const setTarget = () => {
+    const { options, id, namePrivate, name } = props as Required<Prop>;
+   
+    const parent = "";
+    changeTarget({ options, name, id, namePrivate }, { parent });
+  };
   return (
     <BlockEmpty ref={drag} isDragging={isDragging}>
-      <StyledFooter {...options}>
-        {React.useMemo(
-          () => (
-            <FindComponent modules={modules} parent={props.parent} />
-          ),
-          [modules, id]
-        )}
+      <StyledFooter {...options} onClick={() => setTarget()}>
+        {React.useMemo(() => {
+          let moduleProp = modules as Module[];
+
+          return <FindComponent modules={moduleProp} parent={props.parent} />;
+        }, [modules, id])}
       </StyledFooter>
     </BlockEmpty>
   );

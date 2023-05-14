@@ -9,16 +9,29 @@ export type Modules = (Module | undefined)[] | undefined;
 export type Module = {
   name: Name;
   namePrivate: string;
-  options: Option;
+  options?: Option;
   id: id;
+  keyWord?: string;
 };
 
 export interface ScreenMas {
   name: Name;
   namePrivate: string;
   id: id;
+  modules?: SubModules[];
+  options?: Option;
+  keyWord?: string;
+  uncommonHeader?: FHObject;
+  uncommonFooter?: FHObject;
+}
+
+export interface SubModules {
+  name: Name;
+  namePrivate: string;
+  id: id;
   modules?: Modules;
   options?: Option;
+  keyWord?: string;
 }
 
 // interface ApplicationT {
@@ -46,9 +59,20 @@ export type ParentElem = {
   parent?: string | typeFH;
 };
 
-export type ButtonScreenAdd = Module & {
+export type ParentParent = {
+  ParentParent?: string;
+};
+
+export type ScreenAddElemeny = Module & {
   parent?: string;
   originalIndex?: number;
 };
 
-export type FHObject = Partial<ScreenMas>;
+export type FHObject = Partial<{
+  name: Name;
+  namePrivate: string;
+  id: id;
+  modules?: Modules;
+  options?: Option;
+  keyWord?: string;
+}>;

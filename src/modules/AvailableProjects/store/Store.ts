@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { MiniatureProjects } from "src/domains";
 import { STATUS_LOADING } from "src/domains";
 import { Project } from "src/http";
-import { MiniatureProjectsMock } from "src/__mocks__";
+
 class Store {
   constructor() {
     makeAutoObservable(this, {});
@@ -20,13 +20,32 @@ class Store {
   async getProjects() {
     try {
       this.loading = STATUS_LOADING.LOADING;
-      // const data = await Project.getProjects();
-      this.projects = MiniatureProjectsMock;
-      this.size = MiniatureProjectsMock.length;
+      const { data } = await Project.getProjects();
+
+      //удалить потом
+      this.size = 20;
 
       // this.size = data.size;
-      // this.projects = data.projects;
+      this.projects = data.projects;
+
       this.loading = STATUS_LOADING.SUCCESS;
+    } catch (error) {
+      console.log(error);
+      this.loading = STATUS_LOADING.ERROR;
+    }
+  }
+  async createNewProject() {
+    try {
+      this.loading = STATUS_LOADING.LOADING;
+      const options = {
+        projectName: "aboba",
+        statusAccess: true,
+      };
+
+      await Project.createProject(options);
+
+      this.loading = STATUS_LOADING.SUCCESS;
+      this.getProjects();
     } catch (error) {
       console.log(error);
       this.loading = STATUS_LOADING.ERROR;

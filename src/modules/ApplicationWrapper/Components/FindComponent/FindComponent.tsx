@@ -1,41 +1,49 @@
 import React from "react";
 
-import { FHObject, Module } from "../../../../domains/ApplicationTypes";
-import { Button } from "../../../../ModulesConstructor/Buttons/Button";
-import { PropsDNDHook } from "../../../../components/CustomDragNDrop/CustomDNDHook";
-import App from "../../../../store/Application";
+import {
+  FHObject,
+  Module,
+  Modules,
+  ParentParent,
+  SubModules,
+} from "src/domains/ApplicationTypes";
+import { Button } from "../Elements";
+import { PropsDNDHook } from "src/components/CustomDragNDrop/CustomDNDHook";
+import App from "src/store/Application";
 
 import update from "immutability-helper";
+import { WrapperCustom } from "../WrapperCustom";
 
 export const FindComponent = ({
   modules,
   parent,
-}: Pick<FHObject, "modules"> & Pick<PropsDNDHook, "parent">) => {
+  ParentParent,
+}: { modules: Module[] | SubModules[] } & Pick<PropsDNDHook, "parent"> &
+  Pick<ParentParent, "ParentParent">) => {
   const FindIndex = React.useCallback(
     (id: string) => {
-      if (typeof parent === "string") {
-        if (modules) {
-          const card = modules.filter(
-            (c: Module | undefined) => typeof c !== "undefined" && c.id === id
-          )[0];
-          if (card) {
-            return {
-              card,
-              index: modules.indexOf(card),
-              id,
-            };
-          } else {
-            return {
-              card,
-              index: modules.length,
-              id,
-            };
-          }
-        }
-
+      if (!(typeof parent === "string")) {
+        return null;
+      }
+      if (!modules) {
         throw new Error("Нет скрина или модуля");
       }
-      return null;
+
+      const card = modules.filter(
+        (c: Module | undefined) => typeof c !== "undefined" && c.id === id
+      )[0];
+      if (card) {
+        return {
+          card,
+          index: modules.indexOf(card),
+          id,
+        };
+      }
+      return {
+        card,
+        index: modules.length,
+        id,
+      };
     },
     [modules, parent]
   );
@@ -59,18 +67,30 @@ export const FindComponent = ({
             [originalIndex, 0, card],
           ],
         });
-        App.changePositionBlock(newModules, parent, id);
+        App.changePositionBlock(newModules, parent, ParentParent, id);
       }
       return null;
     },
-    [FindIndex, modules, parent]
+    [FindIndex, modules, parent, ParentParent]
   );
 
   return (
     <div>
       {modules &&
-        modules.map((elem: Module | undefined) => {
+        modules.map((elem: Module | SubModules | undefined) => {
           if (typeof elem !== "undefined") {
+            if (elem.namePrivate === "Wrapper") {
+              const obj = elem as SubModules;
+              return (
+                <WrapperCustom
+                  elem={obj}
+                  MoveCardFunc={MoveCardFunc}
+                  FindIndex={FindIndex}
+                  key={elem.id}
+                  parent={parent}
+                />
+              );
+            }
             if (elem.namePrivate === "Button") {
               return (
                 <Button

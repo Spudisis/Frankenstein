@@ -16,7 +16,7 @@ import {
   typeFH,
   FHObject,
   Module,
-  ButtonScreenAdd,
+  ScreenAddElemeny,
 } from "../../../../domains/ApplicationTypes";
 import {
   MainConstructor,
@@ -30,86 +30,95 @@ import {
   DropDND,
   ItemTypesDND,
 } from "../../../../components/CustomDragNDrop/CustomDNDHook";
+import { useThrottle } from "../Throttle";
 
-type ScreenProps = ParamsScreen & { elem: ScreenMas };
+type ScreenProps = ParamsScreen & { elem: ScreenMas } & {
+  throttledFunc: () => void;
+};
 
-export const Screen = observer(({ margin, elem }: ScreenProps) => {
-  const header = Application.ApplicationHeader;
-  const footer = Application.ApplicationFooter;
+export const Screen = observer(
+  ({ margin, elem, throttledFunc }: ScreenProps) => {
+    const header = Application.ApplicationHeader;
+    const footer = Application.ApplicationFooter;
 
-  const [, dropHeader]: DropDND = useDrop(() => ({
-    accept: ItemTypesDND.PicturesHeader,
-    drop: (item: FHObject) => SetNewHeader(typeFH.Header, item),
-  }));
-  const [, dropFooter]: DropDND = useDrop(() => ({
-    accept: ItemTypesDND.PicturesFooter,
-    drop: (item: FHObject) => SetNewHeader(typeFH.Footer, item),
-  }));
-  const [, dropMain]: DropDND = useDrop(() => ({
-    accept: [ItemTypesDND.Main, ItemTypesDND.Button],
-    drop: (item: ButtonScreenAdd) => SetNewModuleScreen(item),
-  }));
+    React.useEffect(() => {
+      throttledFunc(); // Вызываем функцию троттлинга при изменении зависимостей
+    }, [elem, elem.modules]);
 
-  const SetNewHeader = (type: typeFH, item: FHObject) => {
-    console.log(type);
-    Application.changeFooterHeader(type, item);
-  };
+    const [, dropHeader]: DropDND = useDrop(() => ({
+      accept: ItemTypesDND.PicturesHeader,
+      drop: (item: FHObject) => SetNewHeader(typeFH.Header, item),
+    }));
+    const [, dropFooter]: DropDND = useDrop(() => ({
+      accept: ItemTypesDND.PicturesFooter,
+      drop: (item: FHObject) => SetNewHeader(typeFH.Footer, item),
+    }));
+    const [, dropMain]: DropDND = useDrop(() => ({
+      accept: [ItemTypesDND.Main, ItemTypesDND.Button, ItemTypesDND.Wrapper],
+      drop: (item: ScreenAddElemeny) => SetNewModuleScreen(item),
+    }));
 
-  const SetNewModuleScreen = (item: ButtonScreenAdd) => {
-    const id = elem.id;
+    const SetNewHeader = (type: typeFH, item: FHObject) => {
+      console.log(type);
+      Application.changeFooterHeader(type, item);
+    };
 
-    Application.changeModules({ item, id });
-  };
+    const SetNewModuleScreen = (item: ScreenAddElemeny) => {
+      const id = elem.id;
+      console.log(item, id);
+      Application.changeModules({ item, id });
+    };
 
-  return (
-    <ScreenStyle margin={margin}>
-      <Wrapper
-        justify="space-between"
-        direction="column"
-        height="100%"
-        position="relative"
-        padding={"0px"}
-        background="#D9D9D9"
-      >
-        {/* Проверяем наличие ключей у хедера, если есть, показываем хедер, если нет - проверяем в каком состоянии драггинг для сета
+    return (
+      <ScreenStyle margin={margin}>
+        <Wrapper
+          justify="space-between"
+          direction="column"
+          height="100%"
+          position="relative"
+          padding={"0px"}
+          background="#D9D9D9"
+        >
+          {/* Проверяем наличие ключей у хедера, если есть, показываем хедер, если нет - проверяем в каком состоянии драггинг для сета
           хедера и футера, при тру - показывается прозрачный блок, в который можно сетнуть хедер/футер, при фолс - пустой блок
         */}
-        {Object.keys(header).length !== 0 ? (
-          <HeaderMobile refDrag={dropHeader}>
-            <MainHeader {...{ ...header, parent: typeFH.Header }} />
-          </HeaderMobile>
-        ) : Dragging.draggingActive ? (
-          <AbsoluteWrapperBlock
-            refDrag={dropHeader}
-            top={"0px"}
-          ></AbsoluteWrapperBlock>
-        ) : (
-          <div></div>
-        )}
+          {Object.keys(header).length !== 0 && header.id ? (
+            <HeaderMobile refDrag={dropHeader}>
+              <MainHeader {...{ ...header, parent: typeFH.Header }} />
+            </HeaderMobile>
+          ) : Dragging.draggingActive ? (
+            <AbsoluteWrapperBlock
+              refDrag={dropHeader}
+              top={"0px"}
+            ></AbsoluteWrapperBlock>
+          ) : (
+            <div></div>
+          )}
 
-        <MobileMain refDrag={dropMain}>
-          <>
-            {elem.modules && elem.modules.length !== 0 && (
-              <MainConstructor {...elem} />
-            )}
-          </>
-        </MobileMain>
+          <MobileMain refDrag={dropMain}>
+            <>
+              {elem.modules && elem.modules.length !== 0 && (
+                <MainConstructor {...elem} />
+              )}
+            </>
+          </MobileMain>
 
-        {/* та же логика, что и у хедера */}
-        {Object.keys(footer).length !== 0 ? (
-          <FooterMobile refDrag={dropFooter}>
-            <MainFooter {...{ ...footer, parent: typeFH.Footer }} />
-          </FooterMobile>
-        ) : Dragging.draggingActive ? (
-          <AbsoluteWrapperBlock
-            refDrag={dropFooter}
-            bottom={"0px"}
-          ></AbsoluteWrapperBlock>
-        ) : (
-          <div></div>
-        )}
-      </Wrapper>
-    </ScreenStyle>
-  );
-});
+          {/* та же логика, что и у хедера */}
+          {Object.keys(footer).length !== 0 && footer.id ? (
+            <FooterMobile refDrag={dropFooter}>
+              <MainFooter {...{ ...footer, parent: typeFH.Footer }} />
+            </FooterMobile>
+          ) : Dragging.draggingActive ? (
+            <AbsoluteWrapperBlock
+              refDrag={dropFooter}
+              bottom={"0px"}
+            ></AbsoluteWrapperBlock>
+          ) : (
+            <div></div>
+          )}
+        </Wrapper>
+      </ScreenStyle>
+    );
+  }
+);
 // 360 / 760

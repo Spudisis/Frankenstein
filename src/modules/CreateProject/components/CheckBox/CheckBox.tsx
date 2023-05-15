@@ -6,13 +6,13 @@ export const CheckBox = ({ register, errors }: PropsInputs) => {
   return (
     <CustomCheckBox error={errors.statusAccess?.message ? true : false}>
       <>
-        <label title="Приватный проект">
+        <label title="Открытый проект">
           <input
             aria-invalid={errors.statusAccess?.type ? true : false}
             type="checkbox"
             {...register("statusAccess")}
           />
-          <span>Приватный проект</span>
+          <span>Открытый проект</span>
         </label>
         {errors.statusAccess?.message && (
           <ErrorLabel>{errors.statusAccess?.message}</ErrorLabel>

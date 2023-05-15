@@ -10,6 +10,7 @@ import {
   ChangeProfile,
   CreateProject,
   CreateApplication,
+  NotFoundPage,
 } from "src/pages";
 import { Routes, Route } from "react-router-dom";
 import {
@@ -25,6 +26,7 @@ import {
   PROFILE_ID,
   CHANGE_PROFILE,
   PROJECTS,
+  NOT_FOUND,
 } from "./urlsPages";
 import { ProtectedRoute } from "./PrivateRoute/PrivateRoute";
 import { AuthStore } from "../store/Auth";
@@ -136,6 +138,14 @@ export const Routers = observer(() => {
         element={
           <ProtectedRoute auth={auth}>
             <ChangeProfile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={NOT_FOUND}
+        element={
+          <ProtectedRoute auth={auth}>
+            <NotFoundPage />
           </ProtectedRoute>
         }
       />

@@ -75,9 +75,11 @@ class ApplicationData {
       }
 
       this.loading = STATUS_LOADING.SUCCESS;
+      return true
     } catch (error) {
       console.log(error);
       this.loading = STATUS_LOADING.ERROR;
+      return false
     }
   }
 

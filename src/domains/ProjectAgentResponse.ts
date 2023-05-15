@@ -9,3 +9,7 @@ export type UserProjectType = {
 export type CreateProjectResponse = {
   projectUid: string;
 };
+
+export type DeleteProject = {
+  result: boolean;
+};

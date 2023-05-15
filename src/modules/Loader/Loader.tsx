@@ -5,7 +5,7 @@ export const Loader = () => {
   return (
     <Bgc>
       <div className={s.window}>
-        <div className={s.lds_dual_ring}></div>;
+        <div className={s.lds_dual_ring}></div>
       </div>
     </Bgc>
   );

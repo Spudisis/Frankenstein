@@ -5,6 +5,7 @@ import { Wrapper } from "src/components/WrapperProjects";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
 import { AuthStore } from "src/store/Auth";
+import { STATUS_LOADING } from "src/domains";
 
 export const ProjectsUser = observer(() => {
   const idHostUser = AuthStore.user?.id;
@@ -21,7 +22,7 @@ export const ProjectsUser = observer(() => {
       StoreProjectsUser.userIdProjects = null;
     }
   }, [userId, idHostUser]);
-  
+
   const CreateProject = () => {
     StoreProjectsUser.createNewProject();
   };

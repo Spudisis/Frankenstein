@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StylesPagination = styled.div`
+export const StylesPagination = styled.div<{ loading: boolean }>`
   ul {
     display: flex;
     justify-content: space-between;
@@ -10,9 +10,12 @@ export const StylesPagination = styled.div`
     li {
       margin: 0 10px;
       border-radius: 50%;
-      cursor: pointer;
+      cursor: ${(props) => (props.loading ? "wait" : "pointer")};
       display: block;
-      background-color: var(--color-bgc-button-active);
+      background-color: ${(props) =>
+        props.loading
+          ? "rgba(var(--color-bgc-button-active), 0.1)"
+          : "var(--color-bgc-button-active)"};
       border: 1px solid var(--color-bgc-button-active);
       width: 40px;
       height: 40px;

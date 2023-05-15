@@ -20,7 +20,11 @@ export const Item = ({
   return (
     <Link to={BUILD_URL + uid}>
       <Wrapper>
-        <Image src={miniature ? miniature : placeholder} alt={"project miniature"} />
+        <Image
+          src={miniature ? miniature : placeholder}
+          alt={`${name} project miniature`}
+          bgc={!miniature}
+        />
         <Info>
           <Title>{name}</Title>
           <LastEdit>

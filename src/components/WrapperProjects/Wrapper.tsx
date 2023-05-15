@@ -7,18 +7,15 @@ import {
   InfoProject,
 } from "./Wrapper.styles";
 import { MiniatureProjects } from "src/domains";
-
 import { DefaultButton, NameSection } from "src/UI";
 import { Trans } from "react-i18next";
-import { Link } from "react-router-dom";
-import { BUILD } from "src/routes/urlsPages";
 
 import { STATUS_LOADING } from "src/domains";
 import { observer } from "mobx-react-lite";
-import { Item } from "src/components";
+import { Item, SkeletonItem } from "src/components";
 import { WrapperTypes } from "./Wrapper.types";
-import ReactPaginate from "react-paginate";
 import { Paginate } from "./Paginate/Paginate";
+
 export const Wrapper = observer(
   ({
     projects,
@@ -31,7 +28,7 @@ export const Wrapper = observer(
     ShowMore,
   }: WrapperTypes) => {
     const statusLoading = loading === STATUS_LOADING.LOADING;
-
+    const emptyArray = Array(limit).fill(undefined);
     return (
       <Root>
         <NameSection>
@@ -48,9 +45,11 @@ export const Wrapper = observer(
         {projects.length > 0 ? (
           <>
             <StyledWrapper>
-              {projects.map((item: MiniatureProjects) => (
-                <Item key={item.id} {...item} />
-              ))}
+              {!statusLoading
+                ? projects.map((item: MiniatureProjects) => (
+                    <Item key={item.id} {...item} />
+                  ))
+                : emptyArray.map(() => <SkeletonItem />)}
             </StyledWrapper>
 
             {size > offset && (
@@ -60,6 +59,7 @@ export const Wrapper = observer(
                   limit={limit}
                   ShowMore={ShowMore}
                   statusLoading={statusLoading}
+                  page={offset - 1}
                 />
               </ButtonWrapper>
             )}

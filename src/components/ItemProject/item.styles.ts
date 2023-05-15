@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MinHeight } from "./item.constant";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -6,6 +7,7 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   height: 100%;
   width: 100%;
+  min-height: ${MinHeight} + px;
   justify-content: space-between;
   overflow: hidden;
   @media (hover: hover) {
@@ -15,9 +17,10 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Image = styled.img`
+export const Image = styled.img<{ bgc: boolean }>`
   object-fit: contain;
   height: 200px;
+  background-color: ${(props) => (props.bgc ? "#2c2c2c" : "")};
 `;
 
 export const Title = styled.h4`

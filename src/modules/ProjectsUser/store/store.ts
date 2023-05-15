@@ -31,6 +31,7 @@ class Store {
   async initialProjects() {
     try {
       this.loading = STATUS_LOADING.LOADING;
+
       if (!this.userIdProjects) {
         throw new Error("Нет id");
       }

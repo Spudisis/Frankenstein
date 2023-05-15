@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { autorun, makeAutoObservable } from "mobx";
 import { CreateId } from "../components";
 
 import {
@@ -26,10 +26,12 @@ import {
 } from "./Application.constant";
 
 class ApplicationData {
-  ApplicationScreens: ScreenMas[] = SCREEN_DEFAULT;
+  ApplicationScreens: ScreenMas[] | null = null;
   ApplicationFooter: FHObject = FOOTER_DEFAULT;
   ApplicationHeader: FHObject = HEADER_DEFAULT;
-
+  constructor() {
+    makeAutoObservable(this, {}, { deep: true });
+  }
   private projectInfo: ProjectDataType = PROJECT_INFO_DEFAULT;
   section = SectionEnum.options;
   target: Module & ParentElem & ParentParent = TARGET_DEFAULT;
@@ -48,15 +50,12 @@ class ApplicationData {
   set project(value) {
     this.project = value;
   }
-  constructor() {
-    makeAutoObservable(this, {}, { deep: true });
-  }
 
   async getProject(uid: string) {
     try {
       this.ApplicationFooter = FOOTER_DEFAULT;
       this.ApplicationHeader = HEADER_DEFAULT;
-      this.ApplicationScreens = SCREEN_DEFAULT;
+      this.ApplicationScreens = null;
       this.target = TARGET_DEFAULT;
 
       this.loading = STATUS_LOADING.LOADING;
@@ -84,7 +83,6 @@ class ApplicationData {
 
   async saveProject() {
     try {
-      this.loading = STATUS_LOADING.LOADING;
       const newLayout = JSON.stringify({
         header: this.ApplicationHeader,
         footer: this.ApplicationFooter,
@@ -95,15 +93,15 @@ class ApplicationData {
         projectUid: this.project.uid,
         newLayout,
       });
-
-      this.loading = STATUS_LOADING.SUCCESS;
     } catch (error) {
-      this.loading = STATUS_LOADING.ERROR;
       console.log(error);
     }
   }
 
   addScreen() {
+    if (!this.ApplicationScreens) {
+      return (this.ApplicationScreens = SCREEN_DEFAULT);
+    }
     this.ApplicationScreens?.push({
       name: "screen new",
       namePrivate: "newScreen",
@@ -132,6 +130,11 @@ class ApplicationData {
     console.log(item, id);
     const copyItem = Object.assign({}, item);
     delete copyItem["parent"];
+    delete copyItem["originalIndex"];
+    console.log(copyItem);
+    if (!this.ApplicationScreens) {
+      return null;
+    }
     const mas = this.ApplicationScreens.map((screen) => {
       if (screen.id === item.parent) {
         const modules = screen.modules?.filter((module) => {
@@ -155,8 +158,10 @@ class ApplicationData {
           return { ...screen, modules: [copyItem] };
         }
       }
+
       return screen;
     });
+
     this.ApplicationScreens = mas;
   }
 
@@ -194,6 +199,9 @@ class ApplicationData {
         }
       );
     } else {
+      if (!this.ApplicationScreens) {
+        return null;
+      }
       const map = this.ApplicationScreens.map((elem) => {
         if (elem.id === parent) {
           const modules = elem.modules?.filter((module) => {
@@ -252,6 +260,9 @@ class ApplicationData {
       );
       this.ApplicationFooter.modules = mas;
     } else {
+      if (!this.ApplicationScreens) {
+        return null;
+      }
       this.ApplicationScreens = this.ApplicationScreens.map((screen) => {
         if (screen.id === parent && screen.modules) {
           const modules = screen.modules.map((module) => {
@@ -320,6 +331,9 @@ class ApplicationData {
     ParentParent: any,
     id: string
   ) {
+    if (!this.ApplicationScreens) {
+      return null;
+    }
     this.ApplicationScreens = this.ApplicationScreens.map((screen) => {
       if (screen.id === parent) {
         if (!ParentParent) {

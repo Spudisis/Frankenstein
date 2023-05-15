@@ -31,6 +31,7 @@ import {
   ItemTypesDND,
 } from "../../../../components/CustomDragNDrop/CustomDNDHook";
 import { useThrottle } from "../Throttle";
+import { STATUS_LOADING } from "src/domains";
 
 type ScreenProps = ParamsScreen & { elem: ScreenMas } & {
   throttledFunc: () => void;
@@ -43,7 +44,8 @@ export const Screen = observer(
 
     React.useEffect(() => {
       throttledFunc(); // Вызываем функцию троттлинга при изменении зависимостей
-    }, [elem, elem.modules]);
+    }, [elem, elem.modules, header, footer, header.modules, footer.modules]);
+
 
     const [, dropHeader]: DropDND = useDrop(() => ({
       accept: ItemTypesDND.PicturesHeader,

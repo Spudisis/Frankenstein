@@ -14,7 +14,10 @@ export const ApplicationWrapper = observer(() => {
   const mas = ApplicationData.ApplicationScreens;
   const header = ApplicationData.ApplicationHeader;
   const footer = ApplicationData.ApplicationFooter;
-  const loading = ApplicationData.loading === STATUS_LOADING.SUCCESS;
+
+  React.useEffect(() => {
+    console.log("update!!");
+  }, [mas]);
   const SaveProjectThrottle = () => {
     console.log("save");
     App.saveProject();
@@ -24,13 +27,12 @@ export const ApplicationWrapper = observer(() => {
   React.useEffect(() => {
     throttledFunc(); // Вызываем функцию троттлинга при изменении зависимостей
   }, [mas, header, footer, header.modules, footer.modules]);
-  React.useEffect(() => {
-    console.log("req");
-  }, [footer]);
+
   React.useEffect(() => {
     const handleUnload = (event: BeforeUnloadEvent) => {
+      throttledFunc();
       event.preventDefault();
-      SaveProjectThrottle();
+      event.returnValue = "";
     };
     window.addEventListener("beforeunload", handleUnload);
     return () => {

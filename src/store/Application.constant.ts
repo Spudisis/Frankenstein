@@ -19,8 +19,8 @@ export const FOOTER_DEFAULT = {
 };
 export const SCREEN_DEFAULT = [
   {
-    name: "new screen",
-    namePrivate: "screen",
+    name: "screen new",
+    namePrivate: "newScreen",
     id: DEFAULT_ID,
     options: {},
     modules: [],

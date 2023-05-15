@@ -15,6 +15,8 @@ import { observer } from "mobx-react-lite";
 import { Item, SkeletonItem } from "src/components";
 import { WrapperTypes } from "./Wrapper.types";
 import { Paginate } from "./Paginate/Paginate";
+import { PROJECTS } from "src/routes/urlsPages";
+import { Link } from "react-router-dom";
 
 export const Wrapper = observer(
   ({
@@ -24,7 +26,7 @@ export const Wrapper = observer(
     offset,
     limit,
     nameSection,
-    createNewProject,
+    path,
     ShowMore,
   }: WrapperTypes) => {
     const statusLoading = loading === STATUS_LOADING.LOADING;
@@ -49,7 +51,7 @@ export const Wrapper = observer(
                 ? projects.map((item: MiniatureProjects) => (
                     <Item key={item.id} {...item} />
                   ))
-                : emptyArray.map(() => <SkeletonItem />)}
+                : emptyArray.map((_,index) => <SkeletonItem key={index}  />)}
             </StyledWrapper>
 
             {size > offset && (
@@ -68,16 +70,17 @@ export const Wrapper = observer(
           <>
             <ButtonWrapper>
               <InfoProject>Список проектов пуст</InfoProject>
-              {/* <Link to={BUILD}> */}
-              <DefaultButton
-                text="Создайте проект"
-                margin="10px 10px 0px"
-                padding="5px 10px"
-                padding1800="5px 10px"
-                disabled={statusLoading}
-                onClick={createNewProject}
-              />
-              {/* </Link> */}
+              {path !== PROJECTS && (
+                <Link to={PROJECTS}>
+                  <DefaultButton
+                    text="Создайте проект"
+                    margin="10px 10px 0px"
+                    padding="5px 10px"
+                    padding1800="5px 10px"
+                    disabled={statusLoading}
+                  />
+                </Link>
+              )}
             </ButtonWrapper>
           </>
         )}

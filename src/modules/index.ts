@@ -14,3 +14,5 @@ export * from "./Profile";
 export * from "./Loader";
 export * from "./Payment";
 export * from "./ProfileChange";
+export * from "./CreateProject";
+export * from "./LastUpdatedProject";

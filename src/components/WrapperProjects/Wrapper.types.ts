@@ -8,6 +8,7 @@ export type WrapperTypes = {
   nameSection: string;
   offset: number;
   limit: number;
-  createNewProject: () => void;
+
   ShowMore: (e: any) => void;
+  path?: string;
 };

@@ -1,4 +1,4 @@
-import { OptionCreate, ProjectDataType, UpdProjectType, UserProjectType } from "src/domains";
+import { CreateProjectResponse, MiniatureProjects, OptionCreate, ProjectDataType, UpdProjectType, UserProjectType } from "src/domains";
 import { BasicAgent } from "./Basic";
 
 class ProjectAgent extends BasicAgent {
@@ -10,7 +10,7 @@ class ProjectAgent extends BasicAgent {
   //have
   async createProject(params: OptionCreate) {
     console.log(params);
-    const res = await this._http.post(`/createnew`, params);
+    const res = await this._http.post<CreateProjectResponse>(`/createnew`, params);
     return res;
   }
   //have
@@ -42,6 +42,10 @@ class ProjectAgent extends BasicAgent {
   async updateProject(body: UpdProjectType) {
     const res = await this._http.patch(`/update`, body);
     return res;
+  }
+  async getLastUpdProject(){
+    const res = await this._http.get<MiniatureProjects>(`/last-update-project`)
+    return res
   }
 }
 export const Project = new ProjectAgent();

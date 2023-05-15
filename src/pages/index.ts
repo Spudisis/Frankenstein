@@ -8,3 +8,4 @@ export { TemplatesPage } from "./Templates/TemplatesPage";
 export { Profile } from "./Profile/Profile";
 export { Payment } from "./Payment/Payment";
 export * from "./ChangeProfile";
+export * from './CreateProject'

@@ -17,3 +17,4 @@ export * from "./PaymentWrapper";
 export * from "./PaymentBuff";
 export * from "./PaymentBuffElem";
 export * from "./NamePage";
+export * from './WrapperDoubleGrid'

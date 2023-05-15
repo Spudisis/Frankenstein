@@ -24,7 +24,7 @@ export const Paginate = ({
   }, []);
 
   return (
-    <StylesPagination loading={statusLoading}>
+    <StylesPagination load={statusLoading}>
       <ReactPaginate
         forcePage={page}
         onClick={statusLoading}

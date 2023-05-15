@@ -35,23 +35,6 @@ class Store {
       this.loading = STATUS_LOADING.ERROR;
     }
   }
-  async createNewProject() {
-    try {
-      this.loading = STATUS_LOADING.LOADING;
-      const options = {
-        projectName: "aboba",
-        statusAccess: true,
-      };
-
-      await Project.createProject(options);
-
-      this.loading = STATUS_LOADING.SUCCESS;
-      this.getProjects();
-    } catch (error) {
-      console.log(error);
-      this.loading = STATUS_LOADING.ERROR;
-    }
-  }
 }
 
 export const StoreProjects = new Store();

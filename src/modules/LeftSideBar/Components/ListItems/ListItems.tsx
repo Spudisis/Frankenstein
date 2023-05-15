@@ -28,7 +28,6 @@ export const ListItems = observer(() => {
             {elem.modules &&
               elem.modules.map((submodule: SubModules | undefined) => {
                 if (typeof submodule !== "undefined") {
-
                   return (
                     <Details
                       namePrivate={submodule.namePrivate}
@@ -52,7 +51,6 @@ export const ListItems = observer(() => {
                           submodule.modules.map(
                             (module: Module | undefined) => {
                               if (typeof module !== "undefined") {
-                               
                                 return (
                                   <Details
                                     namePrivate={module.namePrivate}
@@ -101,7 +99,7 @@ export const ListItems = observer(() => {
         )}
       </div>
 
-      {
+      {ScreensOptions && (
         <Details
           namePrivate={"Screens"}
           name="Screens"
@@ -111,7 +109,7 @@ export const ListItems = observer(() => {
         >
           {ScreensOptions}
         </Details>
-      }
+      )}
     </>
   );
 });

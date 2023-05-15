@@ -15,6 +15,8 @@ class Store {
   projects: MiniatureProjects[] = [];
   offset = 1;
   limit = 4;
+  locationPath = ''
+
   get loading() {
     return this.statusLoading;
   }
@@ -50,22 +52,6 @@ class Store {
       } else {
         console.log("unexpected error: ", error);
       }
-      this.loading = STATUS_LOADING.ERROR;
-    }
-  }
-  async createNewProject() {
-    try {
-      const options = {
-        projectName: "4141dadsaa",
-        statusAccess: true,
-      };
-      this.loading = STATUS_LOADING.LOADING;
-      await Project.createProject(options);
-
-      this.loading = STATUS_LOADING.SUCCESS;
-      this.initialProjects();
-    } catch (error) {
-      console.log(error);
       this.loading = STATUS_LOADING.ERROR;
     }
   }

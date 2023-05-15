@@ -1,0 +1,33 @@
+{
+  "header": {
+    "name": "header1",
+    "namePrivate": "Header",
+    "id": "a1411",
+    "options": { "height": "50px", "backgroundColor": "red" },
+    "modules": [
+      {
+        "name": "5111кпвы",
+        "namePrivate": "Button",
+        "options": { "name": "but9", "height": "50px", "width": "90px" },
+        "id": "063adf8e-8e7d-4eb2-b594-286e9af73b29"
+      }
+    ]
+  },
+  "footer": {
+    "namePrivate": "Footer",
+    "name": "",
+    "id": "",
+    "keyWord": "",
+    "modules": [],
+    "options": {}
+  },
+  "screens": [
+    {
+      "name": "screen new",
+      "namePrivate": "newScreen",
+      "id": "aa6d03c3-2a70-4b6a-81e1-5b586dd8dd39",
+      "options": {},
+      "modules": []
+    }
+  ]
+}

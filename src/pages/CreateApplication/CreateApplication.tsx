@@ -17,7 +17,7 @@ export const CreateApplication = () => {
       App.getProject(id);
     }
   }, [id]);
-  
+
   return (
     <>
       <Header />

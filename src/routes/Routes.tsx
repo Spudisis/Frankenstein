@@ -1,6 +1,5 @@
 import {
   Auth,
-  CreateApplication,
   Registration,
   RestorePassPage,
   StartPage,
@@ -9,6 +8,8 @@ import {
   Profile,
   Payment,
   ChangeProfile,
+  CreateProject,
+  CreateApplication,
 } from "src/pages";
 import { Routes, Route } from "react-router-dom";
 import {
@@ -23,6 +24,7 @@ import {
   PAYMENT,
   PROFILE_ID,
   CHANGE_PROFILE,
+  PROJECTS,
 } from "./urlsPages";
 import { ProtectedRoute } from "./PrivateRoute/PrivateRoute";
 import { AuthStore } from "../store/Auth";
@@ -86,6 +88,14 @@ export const Routers = observer(() => {
         element={
           <ProtectedRoute auth={auth}>
             <MainPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={PROJECTS}
+        element={
+          <ProtectedRoute auth={auth}>
+            <CreateProject />
           </ProtectedRoute>
         }
       />

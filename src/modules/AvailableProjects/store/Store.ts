@@ -10,6 +10,10 @@ class Store {
   private statusLoading = STATUS_LOADING.SUCCESS;
   size = 0;
   projects: MiniatureProjects[] = [];
+
+  limit = 8;
+  offset = 1;
+
   get loading() {
     return this.statusLoading;
   }
@@ -20,13 +24,10 @@ class Store {
   async getProjects() {
     try {
       this.loading = STATUS_LOADING.LOADING;
-      const { data } = await Project.getProjects();
+      const { data } = await Project.getProjects(this.limit, this.offset);
 
-      //удалить потом
-      this.size = 20;
-
-      // this.size = data.size;
-      this.projects = data.projects;
+      this.size = data.projects.count;
+      this.projects = data.projects.rows;
 
       this.loading = STATUS_LOADING.SUCCESS;
     } catch (error) {

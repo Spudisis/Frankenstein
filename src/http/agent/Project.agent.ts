@@ -1,4 +1,4 @@
-import { OptionCreate, ProjectDataType, UpdProjectType } from "src/domains";
+import { OptionCreate, ProjectDataType, UpdProjectType, UserProjectType } from "src/domains";
 import { BasicAgent } from "./Basic";
 
 class ProjectAgent extends BasicAgent {
@@ -24,21 +24,23 @@ class ProjectAgent extends BasicAgent {
     return res;
   }
   async getUserProjects(id: number, limit = 10, offset = 0) {
-    const res = await this._http.get(
-      `/projectsUser?limit=${limit}&offset=${offset}`
+    const res = await this._http.get<UserProjectType>(
+      `/my-projects?p=${offset}&l=${limit}&userId=${id}`
     );
     return res;
   }
   //have
-  async getProjects(limit = 10, offset = 0) {
-    const res: any = await this._http.get(`/public-projects`);
+  async getProjects(limit = 10, offset = 1) {
+    const res: any = await this._http.get(
+      `/public-projects?p=${offset}&l=${limit}`
+    );
     console.log(res);
     //?limit=${limit}&offset=${offset}
     return res;
   }
   //have
   async updateProject(body: UpdProjectType) {
-    const res = await this._http.post(`/update`, body);
+    const res = await this._http.patch(`/update`, body);
     return res;
   }
 }

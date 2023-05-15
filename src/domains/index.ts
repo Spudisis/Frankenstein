@@ -6,4 +6,5 @@ export * from "./userInfoGlobal";
 export * from "./ChangeUserInfo";
 export * from "./OptionCreateProject";
 export * from "./ProjectData";
-export * from './UpdateProject'
+export * from "./UpdateProject";
+export * from "./ProjectAgentResponse";

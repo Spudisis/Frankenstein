@@ -5,7 +5,9 @@ export type WrapperTypes = {
   projects: MiniatureProjects[];
   size: number;
   loading: STATUS_LOADING;
-  sizeMin: number;
   nameSection: string;
+  offset: number;
+  limit: number;
   createNewProject: () => void;
+  ShowMore: (e: any) => void;
 };

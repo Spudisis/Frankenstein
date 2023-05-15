@@ -7,31 +7,39 @@ import { useParams } from "react-router-dom";
 import { AuthStore } from "src/store/Auth";
 
 export const ProjectsUser = observer(() => {
-  //сделать так, чтобы в личном профиле в своем акке выдавало свои проекты, а при просмотре чужого акка - его проекты
   const idHostUser = AuthStore.user?.id;
   let { userId } = useParams();
 
-  const { projects, loading, size } = StoreProjectsUser;
+  const { projects, loading, size, offset, limit } = StoreProjectsUser;
 
   React.useEffect(() => {
     const id = Number(userId || idHostUser);
-    if (id) {
+    if (id && id !== StoreProjectsUser.userIdProjects) {
       StoreProjectsUser.userIdProjects = id;
-      StoreProjectsUser.initialProjects();
+    }
+    if (!id) {
+      StoreProjectsUser.userIdProjects = null;
     }
   }, [userId, idHostUser]);
+  
   const CreateProject = () => {
     StoreProjectsUser.createNewProject();
   };
+  const ShowMore = (event: any) => {
+    StoreProjectsUser.offset = event.selected + 1;
+  };
+
   return (
     <div>
       <Wrapper
+        ShowMore={ShowMore}
         createNewProject={CreateProject}
         nameSection={"Мои проекты"}
         projects={projects}
         loading={loading}
         size={size}
-        sizeMin={4}
+        limit={limit}
+        offset={offset}
       />
     </div>
   );

@@ -1,7 +1,8 @@
-import { makeAutoObservable } from "mobx";
+import { autorun, makeAutoObservable } from "mobx";
 import { MiniatureProjects } from "src/domains";
 import { Project } from "src/http";
 import { STATUS_LOADING } from "src/domains";
+import axios from "axios";
 
 class Store {
   constructor() {
@@ -12,7 +13,8 @@ class Store {
   private idUser: number | null = null;
   size = 0;
   projects: MiniatureProjects[] = [];
-
+  offset = 1;
+  limit = 4;
   get loading() {
     return this.statusLoading;
   }
@@ -29,15 +31,24 @@ class Store {
   async initialProjects() {
     try {
       this.loading = STATUS_LOADING.LOADING;
-      // const data = await Project.getUserProjects(this.userIdProjects);
-      this.projects = [];
-      this.size = 20;
+      if (!this.userIdProjects) {
+        throw new Error("Нет id");
+      }
+      const { data } = await Project.getUserProjects(
+        this.userIdProjects,
+        this.limit,
+        this.offset
+      );
+      this.size = data.userProjects.count;
 
-      // this.size = data.size;
-      // this.projects = data.projects;
+      this.projects = data.userProjects.rows;
       this.loading = STATUS_LOADING.SUCCESS;
     } catch (error) {
-      console.log(error);
+      if (axios.isAxiosError(error)) {
+        console.log("error message: ", error.message);
+      } else {
+        console.log("unexpected error: ", error);
+      }
       this.loading = STATUS_LOADING.ERROR;
     }
   }
@@ -60,3 +71,12 @@ class Store {
 }
 
 export const StoreProjectsUser = new Store();
+autorun(() => {
+  if (StoreProjectsUser.userIdProjects) {
+    StoreProjectsUser.initialProjects();
+  }
+  if (!StoreProjectsUser.userIdProjects) {
+    StoreProjectsUser.size = 0;
+    StoreProjectsUser.projects = [];
+  }
+});

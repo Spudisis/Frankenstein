@@ -17,14 +17,18 @@ import { STATUS_LOADING } from "src/domains";
 import { observer } from "mobx-react-lite";
 import { Item } from "src/components";
 import { WrapperTypes } from "./Wrapper.types";
+import ReactPaginate from "react-paginate";
+import { Paginate } from "./Paginate/Paginate";
 export const Wrapper = observer(
   ({
     projects,
     size,
     loading,
-    sizeMin,
+    offset,
+    limit,
     nameSection,
     createNewProject,
+    ShowMore,
   }: WrapperTypes) => {
     const statusLoading = loading === STATUS_LOADING.LOADING;
 
@@ -49,15 +53,13 @@ export const Wrapper = observer(
               ))}
             </StyledWrapper>
 
-            {size > sizeMin && (
+            {size > offset && (
               <ButtonWrapper>
-                <DefaultButton
-                  text="Show more"
-                  margin="10px 10px 0px"
-                  padding="5px 10px"
-                  padding1800="5px 10px"
-                  fontSize={20}
-                  disabled={statusLoading}
+                <Paginate
+                  size={size}
+                  limit={limit}
+                  ShowMore={ShowMore}
+                  statusLoading={statusLoading}
                 />
               </ButtonWrapper>
             )}

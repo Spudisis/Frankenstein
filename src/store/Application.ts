@@ -61,10 +61,10 @@ class ApplicationData {
 
       this.loading = STATUS_LOADING.LOADING;
       const { data } = await Project.getProjectById(uid);
-      const projectData = data.projectInfo;
-      this.projectInfo = projectData;
-      console.log(projectData);
-      const layout = JSON.parse(projectData.layout);
+
+      this.projectInfo = data;
+
+      const layout = JSON.parse(data.layout);
       if (layout.hasOwnProperty("footer")) {
         this.ApplicationFooter = layout.footer;
       }
@@ -90,7 +90,7 @@ class ApplicationData {
         footer: this.ApplicationFooter,
         screens: this.ApplicationScreens,
       });
-
+      console.log(this.projectInfo.uid);
       await Project.updateProject({
         projectUid: this.project.uid,
         newLayout,

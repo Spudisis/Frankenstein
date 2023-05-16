@@ -99,6 +99,7 @@ export const FindComponent = ({
                   elem={elem}
                   key={elem.id}
                   parent={parent}
+                  ParentParent={ParentParent}
                 />
               );
             }

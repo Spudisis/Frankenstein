@@ -1,6 +1,11 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Module, ParentElem, typeFH } from "src/domains/ApplicationTypes";
+import {
+  Module,
+  ParentElem,
+  ParentParent,
+  typeFH,
+} from "src/domains/ApplicationTypes";
 import { CustomHook } from "src/components/CustomHook";
 import { Input } from "../Input";
 import App from "src/store/Application";
@@ -11,8 +16,11 @@ export const ButtonOptions = observer(
     namePrivate,
     id,
     parent,
-  }: Pick<Module, "options" | "name" | "namePrivate" | "id"> & ParentElem) => {
-    const inputNameInside = CustomHook(options.name ? options.name : "inside");
+    ParentParent,
+  }: Pick<Module, "options" | "name" | "namePrivate" | "id"> &
+    ParentElem &
+    ParentParent) => {
+    const inputNameInside = CustomHook(options.name ? options.name : "");
     const inputName = CustomHook(name ? name : "outside");
     const inputHeight = CustomHook(options.height ? options.height : "auto");
     const inputWidth = CustomHook(options.width ? options.width : "auto");
@@ -28,7 +36,7 @@ export const ButtonOptions = observer(
 
     React.useEffect(() => {
       const name = inputName.value;
-      App.findAndChangeNameModules({ parent, id, name });
+      App.findAndChangeNameModules({ parent, id, name, ParentParent });
     }, [inputName]);
     React.useEffect(() => {
       const options = {
@@ -41,7 +49,7 @@ export const ButtonOptions = observer(
         name: inputNameInside.value,
         width: inputWidth.value,
       };
-      App.findAndChangeOptionModules({ parent, id, options });
+      App.findAndChangeOptionModules({ parent, id, options, ParentParent });
     }, [inputHeight, inputBgcColor, borderRadius, padding, color, margin]);
 
     return (

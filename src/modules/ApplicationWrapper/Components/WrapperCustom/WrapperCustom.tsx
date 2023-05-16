@@ -45,7 +45,7 @@ export const WrapperCustom = ({
     }),
     [parent, originalIndex, elem.id, MoveCardFunc]
   );
-  
+
   const [, drop] = useDrop(
     () => ({
       accept: ItemTypesDND.Button,
@@ -82,7 +82,11 @@ export const WrapperCustom = ({
       onClick={() => handleSetTarget()}
     >
       {/* <div ref={dropMain}> */}
-      <FindComponent modules={module} parent={id} />
+      <FindComponent
+        modules={module}
+        parent={parent as string}
+        ParentParent={id}
+      />
       {/* </div> */}
     </WrapperStyledDiv>
   );

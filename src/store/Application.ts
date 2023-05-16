@@ -75,11 +75,11 @@ class ApplicationData {
       }
 
       this.loading = STATUS_LOADING.SUCCESS;
-      return true
+      return true;
     } catch (error) {
       console.log(error);
       this.loading = STATUS_LOADING.ERROR;
-      return false
+      return false;
     }
   }
 
@@ -236,11 +236,14 @@ class ApplicationData {
     }
     this.target.options = { ...this.target.options, ...obj };
   }
+
+  //две функции практически одинаковые
   findAndChangeOptionModules({
     parent,
     id,
     options,
-  }: ParentElem & { id: id } & { options: Option }) {
+    ParentParent,
+  }: ParentElem & { id: id } & { options: Option } & ParentParent) {
     if (parent === typeFH.Header) {
       const mas = this.ApplicationHeader.modules?.map(
         (Module: Module | undefined) => {
@@ -265,11 +268,25 @@ class ApplicationData {
       if (!this.ApplicationScreens) {
         return null;
       }
+
       this.ApplicationScreens = this.ApplicationScreens.map((screen) => {
         if (screen.id === parent && screen.modules) {
           const modules = screen.modules.map((module) => {
             if (typeof module !== "undefined" && module.id === id) {
               return { ...module, options };
+            }
+            if (
+              typeof module !== "undefined" &&
+              module.modules &&
+              ParentParent === module.id
+            ) {
+              const updatedSubModules = module.modules.map((subModule) => {
+                if (typeof subModule !== "undefined" && subModule.id === id) {
+                  return { ...subModule, options };
+                }
+                return subModule;
+              });
+              return { ...module, modules: updatedSubModules };
             }
             return module;
           });
@@ -278,13 +295,15 @@ class ApplicationData {
         return screen;
       });
     }
+
     this.target.options = { ...this.target.options, ...options };
   }
   findAndChangeNameModules({
     parent,
     id,
     name,
-  }: ParentElem & { id: id } & { name: Name }) {
+    ParentParent,
+  }: ParentElem & { id: id } & { name: Name } & ParentParent) {
     if (parent === typeFH.Header) {
       const mas = this.ApplicationHeader.modules?.map(
         (Module: Module | undefined) => {
@@ -307,10 +326,41 @@ class ApplicationData {
       );
       this.ApplicationFooter.modules = mas;
     } else {
+      if (!this.ApplicationScreens) {
+        return null;
+      }
+      console.log(ParentParent);
+      this.ApplicationScreens = this.ApplicationScreens.map((screen) => {
+        if (screen.id === parent && screen.modules) {
+          const modules = screen.modules.map((module) => {
+            if (typeof module !== "undefined" && module.id === id) {
+              return { ...module, name };
+            }
+            if (
+              typeof module !== "undefined" &&
+              module.modules &&
+              ParentParent === module.id
+            ) {
+              const updatedSubModules = module.modules.map((subModule) => {
+                if (typeof subModule !== "undefined" && subModule.id === id) {
+                  return { ...subModule, name };
+                }
+                return subModule;
+              });
+              return { ...module, modules: updatedSubModules };
+            }
+            return module;
+          });
+          return { ...screen, modules };
+        }
+        return screen;
+      });
+
       //ПОИСК МОДУЛЕЙ НА СТРАНИЦАХ
     }
     this.target.options = { ...this.target, name };
   }
+
   changeName(type: typeFH, elem: Name) {
     if (type === typeFH.Footer) {
       this.ApplicationFooter.name = elem;

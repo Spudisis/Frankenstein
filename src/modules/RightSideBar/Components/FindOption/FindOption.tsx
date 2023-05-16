@@ -7,15 +7,18 @@ import App from "src/store/Application";
 
 export const FindOption = observer(() => {
   const target = App.target;
-  
+
   const [masOptions, setMasOptions] = React.useState<ReactElement[]>([]);
   const idHeader = App.ApplicationHeader.id;
   const idFooter = App.ApplicationFooter.id;
-
+  React.useEffect(() => {
+    console.log(target);
+  }, [target]);
   React.useEffect(() => {
     if (!target.id) {
       return;
     }
+    console.log(target);
     const mas: ReactElement[] = [];
     //на этом этапе уже имя меняется
 
@@ -38,6 +41,7 @@ export const FindOption = observer(() => {
           name={target.name}
           namePrivate={target.namePrivate}
           parent={target.parent}
+          ParentParent={target.ParentParent || ''}
         />
       );
     }

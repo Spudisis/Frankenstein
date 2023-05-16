@@ -19,6 +19,8 @@ export const ItemTypesDND = {
   Button: "Button",
   PicturesHeader: "PicturesHeader",
   PicturesFooter: "PicturesFooter",
+  PicturesButton: "PicturesButton",
+  PicturesWrapper: "PicturesWrapper",
   Wrapper: "Wrapper"
 };
 

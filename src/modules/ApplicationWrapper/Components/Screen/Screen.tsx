@@ -46,7 +46,6 @@ export const Screen = observer(
       throttledFunc(); // Вызываем функцию троттлинга при изменении зависимостей
     }, [elem, elem.modules, header, footer, header.modules, footer.modules]);
 
-
     const [, dropHeader]: DropDND = useDrop(() => ({
       accept: ItemTypesDND.PicturesHeader,
       drop: (item: FHObject) => SetNewHeader(typeFH.Header, item),
@@ -56,7 +55,13 @@ export const Screen = observer(
       drop: (item: FHObject) => SetNewHeader(typeFH.Footer, item),
     }));
     const [, dropMain]: DropDND = useDrop(() => ({
-      accept: [ItemTypesDND.Main, ItemTypesDND.Button, ItemTypesDND.Wrapper],
+      accept: [
+        ItemTypesDND.Main,
+        ItemTypesDND.Button,
+        ItemTypesDND.Wrapper,
+        ItemTypesDND.PicturesButton,
+        ItemTypesDND.PicturesWrapper,
+      ],
       drop: (item: ScreenAddElemeny) => SetNewModuleScreen(item),
     }));
 

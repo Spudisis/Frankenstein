@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 
 import { PicturesRows } from "../../../../components/PicturesRows/PicturesRows";
 
-import { CreateId } from "../../../../components";
+import { CreateId } from "src/components";
 import { ItemTypesDND } from "../../../../components/CustomDragNDrop/CustomDNDHook";
 export const Pictures = observer(() => {
   const masImg = [
@@ -155,10 +155,109 @@ export const Pictures = observer(() => {
       },
     },
   ];
+  const Buttons = [
+    {
+      src: "https://mobimg.b-cdn.net/v3/fetch/94/94c56e15f13f1de4740a76742b0b594f.jpeg",
+      alt: "dad",
+
+      options: {
+        name: "buttonfsa",
+        namePrivate: "Button",
+        id: CreateId(),
+        options: {
+          height: "30px",
+          backgroundColor: "green",
+        },
+      },
+    },
+    {
+      src: "https://mobimg.b-cdn.net/v3/fetch/94/94c56e15f13f1de4740a76742b0b594f.jpeg",
+      alt: "dad",
+
+      options: {
+        name: "button1",
+        namePrivate: "Button",
+        id: CreateId(),
+        options: {
+          height: "50px",
+          backgroundColor: "red",
+        },
+      },
+    },
+    {
+      src: "https://mobimg.b-cdn.net/v3/fetch/94/94c56e15f13f1de4740a76742b0b594f.jpeg",
+      alt: "dad",
+
+      options: {
+        name: "button3",
+        namePrivate: "Button",
+        id: CreateId(),
+        options: {
+          height: "50px",
+          backgroundColor: "pink",
+          width: "100%",
+        },
+      },
+    },
+  ];
+  const Wrapper = [
+    {
+      src: "https://mobimg.b-cdn.net/v3/fetch/94/94c56e15f13f1de4740a76742b0b594f.jpeg",
+      alt: "dad",
+
+      options: {
+        name: "wrapper1",
+        namePrivate: "Wrapper",
+        id: CreateId(),
+        options: {
+          display: "flex",
+          backgroundColor: "green",
+        },
+        modules: [
+          {
+            name: "buttonfsa",
+            namePrivate: "Button",
+            id: CreateId(),
+            options: {
+              height: "30px",
+              backgroundColor: "green",
+            },
+          },
+          {
+            name: "buttonfsa",
+            namePrivate: "Button",
+            id: CreateId(),
+            options: {
+              height: "30px",
+              backgroundColor: "yellow",
+            },
+          },
+        ],
+      },
+    },
+    {
+      src: "https://mobimg.b-cdn.net/v3/fetch/94/94c56e15f13f1de4740a76742b0b594f.jpeg",
+      alt: "dad",
+
+      options: {
+        name: "wrapper1",
+        namePrivate: "Wrapper",
+        id: CreateId(),
+        options: {
+          display: "flex",
+          backgroundColor: "red",
+        },
+        modules: [],
+      },
+    },
+  ];
+
   return (
     <>
       <PicturesRows type={ItemTypesDND.PicturesHeader} masImg={masImg} />
       <PicturesRows type={ItemTypesDND.PicturesFooter} masImg={masImg2} />
+      <PicturesRows type={ItemTypesDND.PicturesButton} masImg={Buttons} />
+      <PicturesRows type={ItemTypesDND.PicturesWrapper} masImg={Wrapper} />
     </>
   );
 });

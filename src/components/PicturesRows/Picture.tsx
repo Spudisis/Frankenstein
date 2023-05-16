@@ -8,9 +8,14 @@ export const Picture = ({ elem, type }: { elem: any; type: TypePicture }) => {
   const options = elem.options;
   const DND = CustomDNDHook({ name: type, options });
   const dragPreview = DND.dragPreview;
-  
+
   React.useEffect(() => {
-    if (type === ItemTypesDND.PicturesFooter || type === ItemTypesDND.PicturesHeader) {
+    if (
+      type === ItemTypesDND.PicturesFooter ||
+      type === ItemTypesDND.PicturesHeader ||
+      type === ItemTypesDND.PicturesButton ||
+      type === ItemTypesDND.PicturesWrapper
+    ) {
       Dragging.changeStatusDragging(DND.isDragging);
       console.log(DND.isDragging);
     }

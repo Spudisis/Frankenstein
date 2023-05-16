@@ -9,7 +9,7 @@
         "name": "5111кпвы",
         "namePrivate": "Button",
         "options": { "name": "but9", "height": "50px", "width": "90px" },
-        "id": "063adf8e-8e7d-4eb2-b594-286e9af73b29"
+        "id": "298ffe66-131d-4839-bca3-fd22b5b63675"
       }
     ]
   },
@@ -25,9 +25,39 @@
     {
       "name": "screen new",
       "namePrivate": "newScreen",
-      "id": "aa6d03c3-2a70-4b6a-81e1-5b586dd8dd39",
+      "id": "0116ebb7-8742-41f7-a61c-2fd1c50c04dc",
       "options": {},
       "modules": []
+    },
+    {
+      "name": "screen new",
+      "namePrivate": "newScreen",
+      "id": "f2f50b00-6b84-444e-992e-a30607b64950",
+      "modules": [],
+      "options": {}
+    },
+    {
+      "name": "screen new",
+      "namePrivate": "newScreen",
+      "id": "5f15fa22-468d-49b4-abca-1c4f995bd0a2",
+      "modules": [
+        {
+          "name": "buttonfsa",
+          "namePrivate": "Button",
+          "id": "92b5bba7-1512-489b-9c8b-094320ddbe7e",
+          "options": {
+            "borderRadius": "5px",
+            "height": "30px",
+            "backgroundColor": "green",
+            "padding": "2px",
+            "color": "black",
+            "margin": "0px",
+            "name": "вававфыфыв",
+            "width": "auto"
+          }
+        }
+      ],
+      "options": {}
     }
   ]
 }

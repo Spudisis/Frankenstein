@@ -5,6 +5,10 @@ import { MaxWidth } from "../../UI";
 import { ItemTypesDND } from "./CustomDNDHook";
 
 import { MainFooter, MainHeader } from "../../ModulesConstructor";
+import { Button } from "src/modules/ApplicationWrapper/Components/Elements";
+import { Module, SubModules } from "src/domains";
+import { MaxWidthButton } from "src/UI/CustomLayoutDND/MaxWidth";
+import { WrapperCustom } from "src/modules/ApplicationWrapper/Components";
 const layerStyles: CSSProperties = {
   position: "fixed",
   pointerEvents: "none",
@@ -35,14 +39,16 @@ export interface CustomDragLayerProps {
 }
 
 export const CustomDragLayer = () => {
-  const { itemType, isDragging, item, initialOffset } = useDragLayer((monitor) => ({
-    item: monitor.getItem(),
-    itemType: monitor.getItemType(),
-    //initialOffset currentOffset нужен чтобы превью могло перемещаться
+  const { itemType, isDragging, item, initialOffset } = useDragLayer(
+    (monitor) => ({
+      item: monitor.getItem(),
+      itemType: monitor.getItemType(),
+      //initialOffset currentOffset нужен чтобы превью могло перемещаться
 
-    initialOffset: monitor.getClientOffset(),
-    isDragging: monitor.isDragging(),
-  }));
+      initialOffset: monitor.getClientOffset(),
+      isDragging: monitor.isDragging(),
+    })
+  );
 
   function renderItem() {
     switch (itemType) {
@@ -58,6 +64,29 @@ export const CustomDragLayer = () => {
         return (
           <MaxWidth>
             <MainFooter {...item} />
+          </MaxWidth>
+        );
+      case ItemTypesDND.PicturesButton:
+        console.log(item);
+        return (
+          <MaxWidthButton>
+            <Button
+              elem={item as Module}
+              parent={""}
+              MoveCardFunc={() => console.log("scam2")}
+              FindIndex={() => console.log("scam")}
+            />
+          </MaxWidthButton>
+        );
+      case ItemTypesDND.PicturesWrapper:
+        return (
+          <MaxWidth>
+            <WrapperCustom
+              elem={item as SubModules}
+              parent={""}
+              MoveCardFunc={() => console.log("scam2")}
+              FindIndex={() => console.log("scam")}
+            />
           </MaxWidth>
         );
       default:

@@ -208,7 +208,7 @@ export const Pictures = observer(() => {
       options: {
         name: "wrapper1",
         namePrivate: "Wrapper",
-        id: CreateId(),
+        id: "sdgjsaojidgohiasdhoijgsa",
         options: {
           display: "flex",
           backgroundColor: "green",
@@ -217,7 +217,7 @@ export const Pictures = observer(() => {
           {
             name: "buttonfsa",
             namePrivate: "Button",
-            id: CreateId(),
+            id: "3498tyqgeheidsughoq",
             options: {
               height: "30px",
               backgroundColor: "green",
@@ -226,7 +226,7 @@ export const Pictures = observer(() => {
           {
             name: "buttonfsa",
             namePrivate: "Button",
-            id: CreateId(),
+            id: "asdgjhaewjdhSSDHGsdh",
             options: {
               height: "30px",
               backgroundColor: "yellow",
@@ -242,7 +242,7 @@ export const Pictures = observer(() => {
       options: {
         name: "wrapper1",
         namePrivate: "Wrapper",
-        id: CreateId(),
+        id: "g3j40goqwoefw",
         options: {
           display: "flex",
           backgroundColor: "red",

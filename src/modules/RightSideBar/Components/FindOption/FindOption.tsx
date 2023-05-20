@@ -20,7 +20,6 @@ export const FindOption = observer(() => {
     }
     console.log(target);
     const mas: ReactElement[] = [];
-    //на этом этапе уже имя меняется
 
     if (target.id === idHeader || target.id === idFooter) {
       mas.push(

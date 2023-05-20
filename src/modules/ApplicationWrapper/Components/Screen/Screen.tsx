@@ -66,13 +66,13 @@ export const Screen = observer(
     }));
 
     const SetNewHeader = (type: typeFH, item: FHObject) => {
-      console.log(type);
+      // console.log(type);
       Application.changeFooterHeader(type, item);
     };
 
     const SetNewModuleScreen = (item: ScreenAddElemeny) => {
       const id = elem.id;
-      console.log(item, id);
+      // console.log(item, id);
       Application.changeModules({ item, id });
     };
 

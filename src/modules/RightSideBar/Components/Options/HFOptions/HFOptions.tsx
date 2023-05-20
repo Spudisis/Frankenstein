@@ -13,7 +13,6 @@ export const HFOptions = observer(
   }: Pick<Module, "options" | "name" | "namePrivate">) => {
     const FH = namePrivate === "Header" ? typeFH.Header : typeFH.Footer;
 
-    //тут хуйня какая-то ебаная, приходят пустые параметры
     const inputName = CustomHook(name ? name : "button");
     const inputHeight = CustomHook(options.height ? options.height : "50px");
     const inputBgcColor = CustomHook(
@@ -29,7 +28,7 @@ export const HFOptions = observer(
       });
     }, [inputBgcColor]);
     React.useEffect(() => {
-     
+
       App.changeName(FH, inputName.value);
     }, [inputName]);
     return (

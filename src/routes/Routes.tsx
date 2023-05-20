@@ -39,7 +39,6 @@ export const Routers = observer(() => {
   return (
     <Routes>
       {/* не авторизован */}
-
       <Route
         path={HelloPage}
         element={

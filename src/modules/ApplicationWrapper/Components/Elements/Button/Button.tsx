@@ -39,7 +39,7 @@ export const Button = ({
   const [{ isDragging }, drag] = useDrag(
     () => ({
       type: ItemTypesDND.Button,
-      item: { ...elem, parent, originalIndex },
+      item: { ...elem, parent, ParentParent, originalIndex },
       collect: (monitor) => ({
         isDragging: monitor.isDragging(),
       }),
@@ -54,16 +54,17 @@ export const Button = ({
             draggedId: droppedId,
             originalIndex,
             parentButton: parent,
+            ParentParent: ParentParent
           });
         }
       },
     }),
-    [parent, originalIndex, elem.id, MoveCardFunc]
+    [parent, originalIndex, elem.id, MoveCardFunc, ParentParent]
   );
 
   const [, drop] = useDrop(
     () => ({
-      accept: ItemTypesDND.Button,
+      accept: [ItemTypesDND.Button, ItemTypesDND.Wrapper],
       hover({ id: draggedId }: ScreenAddElemeny) {
         // console.log(draggedId, elem.id);
         if (draggedId !== elem.id) {
@@ -77,7 +78,7 @@ export const Button = ({
         }
       },
     }),
-    [parent, FindIndex, MoveCardFunc]
+    [parent, FindIndex, MoveCardFunc, ParentParent]
   );
   return (
     <StyledButtonFullControlled

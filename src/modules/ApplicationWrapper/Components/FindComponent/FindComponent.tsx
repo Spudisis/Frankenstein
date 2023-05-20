@@ -22,9 +22,6 @@ export const FindComponent = ({
   Pick<ParentParent, "ParentParent">) => {
   const FindIndex = React.useCallback(
     (id: string) => {
-      if (!(typeof parent === "string")) {
-        return null;
-      }
       if (!modules) {
         throw new Error("Нет скрина или модуля");
       }
@@ -39,11 +36,8 @@ export const FindComponent = ({
           id,
         };
       }
-      return {
-        card,
-        index: modules.length,
-        id,
-      };
+
+      return null;
     },
     [modules, parent]
   );
@@ -67,6 +61,7 @@ export const FindComponent = ({
             [originalIndex, 0, card],
           ],
         });
+        // console.log("what:" + JSON.stringify(newModules));
         App.changePositionBlock(newModules, parent, ParentParent, id);
       }
       return null;

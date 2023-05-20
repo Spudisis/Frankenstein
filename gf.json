@@ -6,10 +6,19 @@
     "options": { "height": "50px", "backgroundColor": "red" },
     "modules": [
       {
-        "name": "5111кпвы",
+        "name": "3111",
         "namePrivate": "Button",
-        "options": { "name": "but9", "height": "50px", "width": "90px" },
-        "id": "298ffe66-131d-4839-bca3-fd22b5b63675"
+        "options": {
+          "name": "but9",
+          "height": "70px",
+          "width": "90px",
+          "borderRadius": "5px",
+          "backgroundColor": "red",
+          "padding": "2px",
+          "color": "black",
+          "margin": "0px"
+        },
+        "id": "f2cc2634-37ba-4498-a3fd-7c6f6d8e02f1"
       }
     ]
   },
@@ -23,41 +32,62 @@
   },
   "screens": [
     {
-      "name": "screen new",
+      "name": "wrapper1",
       "namePrivate": "newScreen",
-      "id": "0116ebb7-8742-41f7-a61c-2fd1c50c04dc",
+      "id": "5af57b87-75a3-4d54-994c-ae9d928a912d",
       "options": {},
-      "modules": []
-    },
-    {
-      "name": "screen new",
-      "namePrivate": "newScreen",
-      "id": "f2f50b00-6b84-444e-992e-a30607b64950",
-      "modules": [],
-      "options": {}
-    },
-    {
-      "name": "screen new",
-      "namePrivate": "newScreen",
-      "id": "5f15fa22-468d-49b4-abca-1c4f995bd0a2",
       "modules": [
         {
-          "name": "buttonfsa",
-          "namePrivate": "Button",
-          "id": "92b5bba7-1512-489b-9c8b-094320ddbe7e",
+          "name": "55111",
+          "namePrivate": "Wrapper",
+          "id": "sdgjsaojidgohiasdhoijgsa",
           "options": {
             "borderRadius": "5px",
-            "height": "30px",
-            "backgroundColor": "green",
+            "height": "auto",
+            "backgroundColor": "yellow",
+            "padding": "2px",
+            "color": "green",
+            "margin": "0px",
+            "width": "auto"
+          },
+          "modules": [
+            {
+              "name": "buttonfsa",
+              "namePrivate": "Button",
+              "id": "3498tyqgeheidsughoq",
+              "options": { "height": "30px", "backgroundColor": "green" }
+            },
+            {
+              "name": "buttonfsa",
+              "namePrivate": "Button",
+              "id": "asdgjhaewjdhSSDHGsdh",
+              "options": { "height": "30px", "backgroundColor": "yellow" }
+            }
+          ]
+        },
+        {
+          "name": "asdgdd",
+          "namePrivate": "Button",
+          "id": "aef9e994-8618-414e-8c90-925840cfab8f",
+          "options": {
+            "borderRadius": "5px",
+            "height": "110px",
+            "backgroundColor": "yellow",
             "padding": "2px",
             "color": "black",
             "margin": "0px",
-            "name": "вававфыфыв",
-            "width": "auto"
-          }
+            "name": "asdgasd",
+            "width": "100px"
+          },
+          "borderRadius": "11px",
+          "height": "90px",
+          "backgroundColor": "green",
+          "padding": "2px",
+          "color": "white",
+          "margin": "0px",
+          "width": "auto"
         }
-      ],
-      "options": {}
+      ]
     }
   ]
 }

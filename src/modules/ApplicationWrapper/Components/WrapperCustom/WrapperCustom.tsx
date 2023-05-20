@@ -4,8 +4,12 @@ import { FindComponent } from "../FindComponent/FindComponent";
 import { WrapperStyledDiv } from "./WrapperCustom.styles";
 import { WrapperCustomT } from "./WrapperCustom.types";
 import { useDrag, useDrop } from "react-dnd";
-import { ItemTypesDND } from "src/components/CustomDragNDrop/CustomDNDHook";
+import {
+  DropDND,
+  ItemTypesDND,
+} from "src/components/CustomDragNDrop/CustomDNDHook";
 import { changeTarget } from "src/components";
+import Application from "src/store/Application";
 
 export const WrapperCustom = ({
   elem,
@@ -46,16 +50,16 @@ export const WrapperCustom = ({
     [parent, originalIndex, elem.id, MoveCardFunc]
   );
 
+  //accept указывать все возможные элементы, на которые он может заменяться в порядке скрина
   const [, drop] = useDrop(
     () => ({
-      accept: ItemTypesDND.Button,
+      accept: [ItemTypesDND.Button, ItemTypesDND.Wrapper],
       hover({ id: draggedId }: ScreenAddElemeny) {
         if (draggedId !== elem.id) {
           const find = FindIndex(elem.id);
 
           if (find) {
             const { index: overIndex } = find;
-
             MoveCardFunc({ draggedId, originalIndex: overIndex });
           }
         }
@@ -64,30 +68,22 @@ export const WrapperCustom = ({
     [parent, FindIndex, MoveCardFunc]
   );
 
-  // const SetNewModuleScreen = (item: ScreenAddElemeny) => {
-  //   const id = elem.id;
-  //   console.log(item, id, parent);
-  //   Application.changeModulesWrapper({ item, id, parent });
-  // };
-  // const [, dropMain]: DropDND = useDrop(() => ({
-  //   accept: [ItemTypesDND.Main, ItemTypesDND.Button, ItemTypesDND.Wrapper],
-  //   drop: (item: ScreenAddElemeny) => SetNewModuleScreen(item),
-  // }));
-
   return (
-    <WrapperStyledDiv
-      ref={(node: HTMLButtonElement) => drag(drop(node))}
-      isDragging={isDragging}
-      {...options}
-      onClick={() => handleSetTarget()}
-    >
-      {/* <div ref={dropMain}> */}
-      <FindComponent
-        modules={module}
-        parent={parent as string}
-        ParentParent={id}
-      />
-      {/* </div> */}
-    </WrapperStyledDiv>
+    <div>
+      <WrapperStyledDiv
+        ref={(node: HTMLButtonElement) => drag(drop(node))}
+        isDragging={isDragging}
+        {...options}
+        onClick={() => handleSetTarget()}
+      >
+        {/* <div ref={dropMain}> */}
+        <FindComponent
+          modules={module}
+          parent={parent as string}
+          ParentParent={id}
+        />
+        {/* </div> */}
+      </WrapperStyledDiv>
+    </div>
   );
 };

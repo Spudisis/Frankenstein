@@ -4,6 +4,7 @@ import { Module, typeFH } from "src/domains/ApplicationTypes";
 import { Details } from "src/UI";
 import { Props } from "./HeaderFooter.types";
 import App from "src/store/Application";
+import { LayoutList } from "../LayoutList";
 
 export const HeaderFooter = observer(
   ({ data, handleChangeTarget, target }: Props) => {
@@ -23,32 +24,12 @@ export const HeaderFooter = observer(
           nesting={0}
         >
           <>
-            {data.modules &&
-              data.modules.length !== 0 &&
-              data.modules.map((module: Module | undefined) => {
-                if (typeof module !== "undefined") {
-                  return (
-                    <Details
-                      namePrivate={module.namePrivate}
-                      active={module.id === target.id}
-                      id={module.id}
-                      name={module.name}
-                      key={module.id}
-                      click={handleChangeTarget}
-                      options={module.options}
-                      last={true}
-                      parent={
-                        data.namePrivate === "Footer"
-                          ? typeFH.Footer
-                          : typeFH.Header
-                      }
-                      nesting={1}
-                    >
-                      <></>
-                    </Details>
-                  );
-                }
-              })}
+            <LayoutList
+              target={target}
+              subModule={data}
+              changeTarget={handleChangeTarget}
+              nesting={1}
+            />
           </>
         </Details>
       </>

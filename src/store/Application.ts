@@ -178,7 +178,8 @@ class ApplicationData {
     name,
     namePrivate,
     id,
-  }: ParentElem & (ScreenMas | Module)) {
+    ParentParent,
+  }: ParentElem & (ScreenMas | Module) & ParentParent) {
     if (this.target.id === id) {
       this.target = TARGET_DEFAULT;
     }
@@ -208,16 +209,32 @@ class ApplicationData {
       if (!this.ApplicationScreens) {
         return null;
       }
-      const map = this.ApplicationScreens.map((elem) => {
-        if (elem.id === parent) {
-          const modules = elem.modules?.filter((module) => {
-            if (module !== undefined && module.id !== id) {
-              return module;
-            }
-            return null;
-          });
 
-          return { ...elem, modules };
+      const map = this.ApplicationScreens.map((elem) => {
+        if (elem.id === parent && elem.modules) {
+          if (ParentParent) {
+            const modules = elem.modules.map((module) => {
+              console.log(module.id, ParentParent);
+              if (ParentParent === module.id) {
+                const mapSubModule = module.modules?.filter(
+                  (subModule) => subModule?.id !== id
+                );
+
+                //wrapper 1 object
+                return { ...module, modules: mapSubModule };
+              }
+              return module;
+            });
+            return { ...elem, modules: modules };
+          } else {
+            const modules = elem.modules?.filter((module) => {
+              if (module !== undefined && module.id !== id) {
+                return module;
+              }
+              return null;
+            });
+            return { ...elem, modules: modules };
+          }
         }
         return elem;
       });
@@ -241,7 +258,6 @@ class ApplicationData {
     this.target.options = { ...this.target.options, ...obj };
   }
 
-  //две функции практически одинаковые
   findAndChangeOptionModules({
     parent,
     id,

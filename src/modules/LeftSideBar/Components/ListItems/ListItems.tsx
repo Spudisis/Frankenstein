@@ -5,6 +5,7 @@ import { Module, ScreenMas, SubModules } from "src/domains";
 import App from "src/store/Application";
 import { changeTarget } from "src/components";
 import { HeaderFooter } from "../HeaderFooter/HeaderFooter";
+import { LayoutList } from "../LayoutList";
 
 export const ListItems = observer(() => {
   const target = App.target;
@@ -24,56 +25,15 @@ export const ListItems = observer(() => {
           nesting={1}
           last={elem.modules && elem.modules.length > 0 ? false : true}
         >
-          <>
-            {elem.modules &&
-              elem.modules.map((submodule: SubModules | undefined) => {
-                if (typeof submodule !== "undefined") {
-                  return (
-                    <Details
-                      namePrivate={submodule.namePrivate}
-                      id={submodule.id}
-                      name={submodule.name}
-                      key={submodule.id}
-                      click={changeTarget}
-                      options={submodule.options}
-                      parent={elem.id}
-                      last={
-                        submodule.modules && submodule.modules.length > 0
-                          ? false
-                          : true
-                      }
-                      active={submodule.id === target.id}
-                      nesting={2}
-                    >
-                      <>
-                        {submodule.modules &&
-                          submodule.modules.length > 0 &&
-                          submodule.modules.map(
-                            (module: Module | undefined) => {
-                              if (typeof module !== "undefined") {
-                                return (
-                                  <Details
-                                    namePrivate={module.namePrivate}
-                                    id={module.id}
-                                    name={module.name}
-                                    key={module.id}
-                                    click={changeTarget}
-                                    options={module.options}
-                                    parent={submodule.id}
-                                    last={true}
-                                    active={module.id === target.id}
-                                    nesting={3}
-                                  ></Details>
-                                );
-                              }
-                            }
-                          )}
-                      </>
-                    </Details>
-                  );
-                }
-              })}
-          </>
+          {
+            <LayoutList
+              target={target}
+              subModule={elem}
+              changeTarget={changeTarget}
+              key={elem.id}
+              nesting={2}
+            />
+          }
         </Details>
       );
     });

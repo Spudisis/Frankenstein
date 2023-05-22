@@ -10,7 +10,6 @@ export const LayoutList = ({
   changeTarget,
   nesting = 1,
 }: NestingLayout) => {
-  console.log(nesting, subModule);
   return (
     <>
       {subModule.modules &&

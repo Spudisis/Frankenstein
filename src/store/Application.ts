@@ -26,6 +26,8 @@ import {
   TARGET_DEFAULT,
 } from "./Application.constant";
 
+
+
 class ApplicationData {
   ApplicationScreens: ScreenMas[] | null = null;
   ApplicationFooter: FHObject = FOOTER_DEFAULT;
@@ -37,6 +39,10 @@ class ApplicationData {
   section = SectionEnum.options;
   target: Module & ParentElem & ParentParent = TARGET_DEFAULT;
   private statusLoading: STATUS_LOADING = STATUS_LOADING.LOADING;
+
+  //костыль
+
+  prevAddModuleId: String = "";
 
   get loading() {
     return this.statusLoading;
@@ -129,12 +135,15 @@ class ApplicationData {
     item,
     id,
     parent,
-  }: { item: ScreenAddElemeny; id: string } & ParentElem) {
+    ParentParent,
+    oldId,
+  }: { item: ScreenAddElemeny; id: string; oldId: string } & ParentElem &
+    ParentParent) {
     //если совпадает, то не добавляется
     if (id === item.parent) {
       return null;
     }
-    console.log(item.parent, parent, id);
+    console.log(item.parent, parent, id, oldId);
     const copyItem = Object.assign({}, item);
     delete copyItem["parent"];
     delete copyItem["originalIndex"];
@@ -145,7 +154,7 @@ class ApplicationData {
     const mas = this.ApplicationScreens.map((screen) => {
       if (screen.id === item.parent) {
         const modules = screen.modules?.filter((module) => {
-          if (module !== undefined && module.id !== item.id) {
+          if (module !== undefined && module.id !== oldId) {
             return module;
           }
           return null;
@@ -155,11 +164,26 @@ class ApplicationData {
       }
       if (screen.id === id) {
         //если перетаскиваемый элемент в таргете, то надо сменить его родителя в таргете, чтобы можно было дальше изменять не кликая повторно
-        if (this.target.id === item.id) {
+        if (this.target.id === oldId) {
           this.target = { ...this.target, parent: screen.id };
         }
         //end
         if (screen.modules) {
+          if (ParentParent) {
+            const addToTwoDeepModule = screen.modules.map((module) => {
+              if (module.id === ParentParent) {
+                if (module.modules) {
+                  return { ...module, modules: [...module.modules, copyItem] };
+                }
+                return { ...module, modules: [copyItem] };
+              }
+              return module;
+            });
+            return { ...screen, modules: addToTwoDeepModule };
+          }
+          if (this.prevAddModuleId === item.id) {
+            return screen;
+          }
           return { ...screen, modules: [...screen.modules, copyItem] };
         } else {
           return { ...screen, modules: [copyItem] };
@@ -168,7 +192,7 @@ class ApplicationData {
 
       return screen;
     });
-
+    this.prevAddModuleId = item.id;
     this.ApplicationScreens = mas;
   }
 
@@ -285,6 +309,7 @@ class ApplicationData {
       );
       this.ApplicationFooter.modules = mas;
     } else {
+      console.log("run");
       this.changeScreenParams({
         parent,
         ParentParent,
@@ -346,6 +371,7 @@ class ApplicationData {
     if (!this.ApplicationScreens) {
       return console.log("Нет скринов");
     }
+
     console.log(item, id, parent);
     this.ApplicationScreens = this.ApplicationScreens.map((screen) => {
       if (parent === screen.id) {
@@ -409,6 +435,7 @@ class ApplicationData {
     const screenFind = this.mappingCheckScreens({
       parent,
     });
+
     if (!screenFind) {
       console.log("Not found screen");
       return null;
@@ -514,34 +541,35 @@ class ApplicationData {
     //ЧЕК КАЖДЫЙ ТИП ДО ТОГО КАК ВЫЗВАТЬ ЭТУ ФУНКЦИЮ
     console.log(ParentParent);
     const newScreen: ScreenMas[] = [];
+
     if (!ParentParent) {
+      const upModule = screen.modules.map((elem) => {
+        if (elem.id === subModule.id) {
+          return { ...subModule, ...change };
+        }
+        return elem;
+      });
       newScreen.push({
         ...screen,
-        modules: [
-          ...screen.modules.filter((module) => module.id !== subModule.id),
-          {
-            ...subModule,
-            ...change,
-          },
-        ],
+        modules: upModule,
       });
       console.log(newScreen);
     } else {
+      const upModule = screen.modules.map((elem) => {
+        if (elem.id === subModule.id) {
+          const newModulesElem = elem.modules!.map((elemDeep) => {
+            if (elemDeep!.id === lastModule?.id) {
+              return { ...lastModule, ...change };
+            }
+            return elemDeep;
+          });
+          return { ...elem, modules: newModulesElem };
+        }
+        return elem;
+      });
       newScreen.push({
         ...screen,
-        modules: [
-          ...screen.modules.filter((module) => module.id !== subModule.id),
-          {
-            ...subModule,
-
-            modules: [
-              ...subModule.modules.filter(
-                (module) => module!.id !== lastModule!.id
-              ),
-              { ...lastModule, ...change },
-            ],
-          },
-        ],
+        modules: upModule,
       });
     }
 

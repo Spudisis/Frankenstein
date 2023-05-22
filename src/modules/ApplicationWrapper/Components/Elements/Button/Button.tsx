@@ -54,7 +54,7 @@ export const Button = ({
             draggedId: droppedId,
             originalIndex,
             parentButton: parent,
-            ParentParent: ParentParent
+            ParentParent: ParentParent,
           });
         }
       },
@@ -66,7 +66,6 @@ export const Button = ({
     () => ({
       accept: [ItemTypesDND.Button, ItemTypesDND.Wrapper],
       hover({ id: draggedId }: ScreenAddElemeny) {
-        // console.log(draggedId, elem.id);
         if (draggedId !== elem.id) {
           const find = FindIndex(elem.id);
 
@@ -87,7 +86,7 @@ export const Button = ({
       {...elem.options}
       onClick={(e: any) => handleSetTarget(e)}
     >
-      {elem.options.name ? elem.options.name : "name"}
+      {elem.options.name ? elem.options.name : ""}
     </StyledButtonFullControlled>
   );
 };

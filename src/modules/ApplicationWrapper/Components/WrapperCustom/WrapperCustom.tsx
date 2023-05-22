@@ -10,6 +10,8 @@ import {
 } from "src/components/CustomDragNDrop/CustomDNDHook";
 import { changeTarget } from "src/components";
 import Application from "src/store/Application";
+import { ChangeLayoutModule } from "src/utils";
+import { TestStore } from "../../store";
 
 export const WrapperCustom = ({
   elem,
@@ -53,8 +55,18 @@ export const WrapperCustom = ({
   //accept указывать все возможные элементы, на которые он может заменяться в порядке скрина
   const [, drop] = useDrop(
     () => ({
-      accept: [ItemTypesDND.Button, ItemTypesDND.Wrapper],
-      hover({ id: draggedId }: ScreenAddElemeny) {
+      accept: [
+        ItemTypesDND.Button,
+        ItemTypesDND.Wrapper,
+        ItemTypesDND.PicturesButton,
+      ],
+      drop: (item: ScreenAddElemeny) => {
+        TestStore.test = item.id;
+        ChangeLayoutModule({ item, id: String(parent), parent: elem.id });
+      },
+      hover(item: ScreenAddElemeny) {
+        const draggedId = item.id;
+
         if (draggedId !== elem.id) {
           const find = FindIndex(elem.id);
 
@@ -69,7 +81,7 @@ export const WrapperCustom = ({
   );
 
   return (
-    <div>
+    <>
       <WrapperStyledDiv
         ref={(node: HTMLButtonElement) => drag(drop(node))}
         isDragging={isDragging}
@@ -84,6 +96,6 @@ export const WrapperCustom = ({
         />
         {/* </div> */}
       </WrapperStyledDiv>
-    </div>
+    </>
   );
 };

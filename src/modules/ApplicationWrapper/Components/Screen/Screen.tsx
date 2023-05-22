@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import {
   AbsoluteWrapperBlock,
+  DefaultButton,
   FooterMobile,
   HeaderMobile,
   MobileMain,
@@ -32,6 +33,9 @@ import {
 } from "../../../../components/CustomDragNDrop/CustomDNDHook";
 import { useThrottle } from "../Throttle";
 import { STATUS_LOADING } from "src/domains";
+import { ChangeLayoutModule } from "src/utils";
+import { TestStore } from "../../store";
+
 
 type ScreenProps = ParamsScreen & { elem: ScreenMas } & {
   throttledFunc: () => void;
@@ -47,11 +51,11 @@ export const Screen = observer(
     }, [elem, elem.modules, header, footer, header.modules, footer.modules]);
 
     const [, dropHeader]: DropDND = useDrop(() => ({
-      accept: ItemTypesDND.PicturesHeader,
+      accept: [ItemTypesDND.PicturesHeader],
       drop: (item: FHObject) => SetNewHeader(typeFH.Header, item),
     }));
     const [, dropFooter]: DropDND = useDrop(() => ({
-      accept: ItemTypesDND.PicturesFooter,
+      accept: [ItemTypesDND.PicturesFooter],
       drop: (item: FHObject) => SetNewHeader(typeFH.Footer, item),
     }));
     const [, dropMain]: DropDND = useDrop(() => ({
@@ -61,19 +65,19 @@ export const Screen = observer(
         ItemTypesDND.Wrapper,
         ItemTypesDND.PicturesButton,
         ItemTypesDND.PicturesWrapper,
+        ItemTypesDND.PicturesText,
       ],
-      drop: (item: ScreenAddElemeny) => SetNewModuleScreen(item),
+      drop: (item: ScreenAddElemeny) => {
+        if (TestStore.test !== item.id) {
+          ChangeLayoutModule({ item, id: elem.id });
+        }
+        TestStore.test = "";
+      },
     }));
 
     const SetNewHeader = (type: typeFH, item: FHObject) => {
       // console.log(type);
       Application.changeFooterHeader(type, item);
-    };
-
-    const SetNewModuleScreen = (item: ScreenAddElemeny) => {
-      const id = elem.id;
-      // console.log(item, id);
-      Application.changeModules({ item, id });
     };
 
     return (

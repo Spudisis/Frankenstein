@@ -27,6 +27,7 @@
     "mobx-react-lite": "^3.4.0",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
+    "react-color": "^2.19.3",
     "react-content-loader": "^6.2.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
@@ -72,6 +73,7 @@
   },
   "devDependencies": {
     "@types/node-sass": "^4.11.3",
+    "@types/react-color": "^3.0.6",
     "@types/react-google-recaptcha": "^2.1.5",
     "@types/styled-components": "^5.1.26",
     "@types/uuid": "^9.0.0",

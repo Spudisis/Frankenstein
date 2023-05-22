@@ -17,6 +17,8 @@ export const Pictures = observer(() => {
         options: {
           height: "50px",
           backgroundColor: "red",
+          display: "flex",
+          JustifyContent: "space-between",
         },
         modules: [
           {
@@ -26,6 +28,8 @@ export const Pictures = observer(() => {
               name: "but9",
               height: "50px",
               width: "90px",
+              display: "flex",
+              JustifyContent: "center",
             },
             id: CreateId(),
           },
@@ -163,7 +167,7 @@ export const Pictures = observer(() => {
       options: {
         name: "buttonfsa",
         namePrivate: "Button",
-        id: CreateId(),
+        id: "sukablyat",
         options: {
           height: "30px",
           backgroundColor: "green",
@@ -210,8 +214,9 @@ export const Pictures = observer(() => {
         namePrivate: "Wrapper",
         id: "sdgjsaojidgohiasdhoijgsa",
         options: {
-          display: "flex",
           backgroundColor: "green",
+          display: "flex",
+          JustifyContent: "center",
         },
         modules: [
           {
@@ -248,6 +253,40 @@ export const Pictures = observer(() => {
           backgroundColor: "red",
         },
         modules: [],
+      },
+    },
+  ];
+
+  const Text = [
+    {
+      src: "https://mobimg.b-cdn.net/v3/fetch/94/94c56e15f13f1de4740a76742b0b594f.jpeg",
+      alt: "dad",
+
+      options: {
+        name: "header1",
+        namePrivate: "Header",
+        id: "a1411",
+        options: {
+          name: "text2",
+          namePrivate: "Text",
+          id: "4w5udsfhsd",
+          options: {
+            color: "yellow",
+          },
+        },
+      },
+    },
+    {
+      src: "https://img1.goodfon.ru/wallpaper/nbig/a/69/kartinka-3d-dikaya-koshka.jpg",
+      alt: "dad",
+
+      options: {
+        name: "text1",
+        namePrivate: "Text",
+        id: "4w5udsfhsd",
+        options: {
+          color: "white",
+        },
       },
     },
   ];

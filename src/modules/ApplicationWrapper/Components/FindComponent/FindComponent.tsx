@@ -65,12 +65,17 @@ export const FindComponent = ({
         App.changePositionBlock(newModules, parent, ParentParent, id);
       }
       return null;
+      // return {
+      // card,
+      // index: modules.length,
+      // id,
+      // };
     },
     [FindIndex, modules, parent, ParentParent]
   );
 
   return (
-    <div>
+    <>
       {modules &&
         modules.map((elem: Module | SubModules | undefined) => {
           if (typeof elem !== "undefined") {
@@ -100,6 +105,6 @@ export const FindComponent = ({
             }
           }
         })}
-    </div>
+    </>
   );
 };

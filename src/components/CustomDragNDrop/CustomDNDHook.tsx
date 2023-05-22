@@ -1,6 +1,7 @@
 import React from "react";
 import { ConnectDropTarget, useDrag } from "react-dnd";
 import { typeFH } from "../../domains/ApplicationTypes";
+import { CreateId } from "../CreateId/CreateId";
 
 export type PropsDNDHook = {
   name: string;
@@ -21,12 +22,15 @@ export const ItemTypesDND = {
   PicturesFooter: "PicturesFooter",
   PicturesButton: "PicturesButton",
   PicturesWrapper: "PicturesWrapper",
-  Wrapper: "Wrapper"
+  Wrapper: "Wrapper",
+  PicturesText: "PicturesText"
 };
 
 export type DropDND = [any, PropDrag];
 
 export const CustomDNDHook = ({ name, options, parent }: PropsDNDHook) => {
+  // console.log(options);
+
   const [collected, drag, dragPreview] = useDrag(() => ({
     type: name,
     item: { ...options, parent },

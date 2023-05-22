@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { CustomDNDHook, changeTarget } from "../../components";
 import { ItemTypesDND } from "../../components/CustomDragNDrop/CustomDNDHook";
 import { FindComponent } from "../../modules/ApplicationWrapper/Components/FindComponent/FindComponent";
@@ -17,7 +17,7 @@ export const MainFooter = observer((props: Prop) => {
   });
   const setTarget = () => {
     const { options, id, namePrivate, name } = props as Required<Prop>;
-   
+
     const parent = "";
     changeTarget({ options, name, id, namePrivate }, { parent });
   };
@@ -40,4 +40,19 @@ const StyledFooter = styled.div<any>`
   overflow: hidden;
   background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "yellow"};
+  display: ${(props) => props.display || "block"};
+  ${({ display }) =>
+    display === "flex"
+      ? css`
+          justify-content: ${(props: any) => props.JustifyContent || "space-evenly"};
+          align-items: ${(props: any) => props.AlignItems || ""};
+        `
+      : display === "grid"
+      ? css`
+          grid-template-columns: ${(props: any) =>
+            props.GridTemplateColumns || "repeat(2, 1fr)"};
+          grid-template-rows: ${(props: any) =>
+            props.GridTemplateRows || "auto"};
+        `
+      : ""}
 `;

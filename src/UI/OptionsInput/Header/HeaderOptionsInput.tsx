@@ -12,7 +12,8 @@ const StyledOptionsInputs = styled.div`
   padding: 5px;
   grid-template-columns: repeat(2, 1fr);
   font-size: 18px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid gray;
+  position: relative;
   input {
     color: white;
     background-color: inherit;

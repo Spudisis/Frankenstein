@@ -53,7 +53,6 @@ export const CustomDragLayer = () => {
   function renderItem() {
     switch (itemType) {
       case ItemTypesDND.PicturesHeader:
-        console.log(item);
         //если драгбл в руках это бокс
         return (
           <MaxWidth>
@@ -67,7 +66,6 @@ export const CustomDragLayer = () => {
           </MaxWidth>
         );
       case ItemTypesDND.PicturesButton:
-        console.log(item);
         return (
           <MaxWidthButton>
             <Button

@@ -1,13 +1,24 @@
 import React from "react";
-import Dragging from "../../store/DraggingFH";
+import Dragging from "src/store/DraggingFH";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import { CustomDNDHook, ItemTypesDND } from "../CustomDragNDrop/CustomDNDHook";
 import { TypePicture } from "./PicturesRows";
-import { Pictures } from "../../UI";
-export const Picture = ({ elem, type }: { elem: any; type: TypePicture }) => {
-  const options = elem.options;
-  const DND = CustomDNDHook({ name: type, options });
-  const dragPreview = DND.dragPreview;
+import { Pictures } from "src/UI";
+import { CreateId } from "../CreateId/CreateId";
+import { TypeElem } from "./Picture.types";
+export const Picture = ({
+  elem,
+  type,
+}: {
+  elem: TypeElem;
+  type: TypePicture;
+}) => {
+  const [item, setItem] = React.useState(elem);
+
+  const { dragPreview, isDragging, drag } = CustomDNDHook({
+    name: type,
+    options: item.options,
+  });
 
   React.useEffect(() => {
     if (
@@ -16,22 +27,22 @@ export const Picture = ({ elem, type }: { elem: any; type: TypePicture }) => {
       type === ItemTypesDND.PicturesButton ||
       type === ItemTypesDND.PicturesWrapper
     ) {
-      Dragging.changeStatusDragging(DND.isDragging);
-      console.log(DND.isDragging);
+      Dragging.changeStatusDragging(isDragging);
     }
-  }, [DND.isDragging]);
+  }, [isDragging]);
 
   React.useEffect(() => {
     dragPreview(getEmptyImage(), { captureDraggingState: true });
-  }, []);
+  }, [dragPreview]);
+
   return (
     <Pictures
-      refDrag={DND.drag}
-      isDragging={DND.isDragging}
-      src={elem.src}
-      alt={elem.alt}
-      name={elem.options.name}
-      key={elem.options.id}
+      refDrag={drag}
+      isDragging={isDragging}
+      src={item.src}
+      alt={item.alt}
+      name={item.options.name}
+      key={item.options.id}
     />
   );
 };

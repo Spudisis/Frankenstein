@@ -4,10 +4,17 @@ import { CustomDNDHook } from "../CustomDragNDrop/CustomDNDHook";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import { Picture } from "./Picture";
 import { CustomDragLayer } from "../CustomDragNDrop/CustomDragLayer";
+import App from "src/store/Application";
 
 export type TypePicture = string;
 
-export const PicturesRows = ({ masImg, type }: { masImg: any[]; type: TypePicture }) => {
+export const PicturesRows = ({
+  masImg,
+  type,
+}: {
+  masImg: any[];
+  type: TypePicture;
+}) => {
   return (
     <>
       <CustomDragLayer />

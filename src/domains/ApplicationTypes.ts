@@ -48,6 +48,7 @@ export enum typeFH {
 export type OptionsFH = {
   backgroundColor?: string;
   height?: string;
+  display?: string;
 };
 
 export enum SectionEnum {
@@ -63,7 +64,7 @@ export type ParentParent = {
   ParentParent?: string;
 };
 
-export type ScreenAddElemeny = Module & {
+export type ScreenAddElemeny = Module & SubModules & {
   parent?: string;
   originalIndex?: number;
 };

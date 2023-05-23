@@ -16,7 +16,7 @@ import {
   ParentParent,
   SubModules,
 } from "../domains/ApplicationTypes";
-import { ProjectDataType, STATUS_LOADING } from "src/domains";
+import { ChangeOptions, ProjectDataType, STATUS_LOADING } from "src/domains";
 import { Project } from "src/http";
 import {
   FOOTER_DEFAULT,
@@ -25,8 +25,6 @@ import {
   SCREEN_DEFAULT,
   TARGET_DEFAULT,
 } from "./Application.constant";
-
-
 
 class ApplicationData {
   ApplicationScreens: ScreenMas[] | null = null;
@@ -37,7 +35,7 @@ class ApplicationData {
   }
   private projectInfo: ProjectDataType = PROJECT_INFO_DEFAULT;
   section = SectionEnum.options;
-  target: Module & ParentElem & ParentParent = TARGET_DEFAULT;
+  target: Module & ParentElem & ParentParent & ChangeOptions = TARGET_DEFAULT;
   private statusLoading: STATUS_LOADING = STATUS_LOADING.LOADING;
 
   //костыль
@@ -107,6 +105,18 @@ class ApplicationData {
     }
   }
 
+  changeScreen(screen: ScreenMas) {
+    if (!this.ApplicationScreens) {
+      return null;
+    }
+    this.ApplicationScreens = this.ApplicationScreens.map((elem) => {
+      if (elem.id === screen.id) {
+        return screen;
+      }
+      return elem;
+    });
+  }
+
   addScreen() {
     if (!this.ApplicationScreens) {
       return (this.ApplicationScreens = SCREEN_DEFAULT);
@@ -123,6 +133,8 @@ class ApplicationData {
   changeSection(section: SectionEnum) {
     this.section = section;
   }
+
+  //save (check)
   changeFooterHeader(privateName: typeFH, obj: FHObject) {
     if (privateName === typeFH.Header) {
       this.ApplicationHeader = obj;
@@ -131,6 +143,7 @@ class ApplicationData {
       this.ApplicationFooter = obj;
     }
   }
+
   changeModules({
     item,
     id,
@@ -266,22 +279,6 @@ class ApplicationData {
     }
   }
 
-  changeOptionHeaderFooter(privateName: typeFH, obj: OptionsFH) {
-    if (privateName === typeFH.Header) {
-      this.ApplicationHeader = {
-        ...this.ApplicationHeader,
-        options: { ...this.ApplicationHeader.options, ...obj },
-      };
-    }
-    if (privateName === typeFH.Footer) {
-      this.ApplicationFooter = {
-        ...this.ApplicationFooter,
-        options: { ...this.ApplicationFooter.options, ...obj },
-      };
-    }
-    this.target.options = { ...this.target.options, ...obj };
-  }
-
   findAndChangeOptionModules({
     parent,
     id,
@@ -321,52 +318,16 @@ class ApplicationData {
     this.target.options = { ...this.target.options, ...options };
   }
 
-  changeName(type: typeFH, elem: Name) {
-    if (type === typeFH.Footer) {
-      this.ApplicationFooter.name = elem;
-    }
-    if (type === typeFH.Header) {
-      this.ApplicationHeader.name = elem;
-    }
-    this.target.name = elem;
-  }
-  setTarget(obj: Module, parent: ParentElem, ParentParent?: ParentParent) {
+
+  setTarget(obj: Module, { changeOptions }: ChangeOptions) {
     if (!obj.id) {
       return null;
     }
 
-    this.target = { ...obj, ...parent, ...ParentParent };
+    this.target = { ...obj, changeOptions };
   }
-  changePositionBlock(
-    newModules: any,
-    parent: any,
-    ParentParent: string | undefined,
-    id: string
-  ) {
-    if (!this.ApplicationScreens) {
-      return null;
-    }
-    this.ApplicationScreens = this.ApplicationScreens.map((screen) => {
-      if (screen.id !== parent) {
-        return screen;
-      }
-      if (!ParentParent || !screen.modules || !screen.modules.length) {
-        return { ...screen, modules: newModules };
-      }
-      // console.log(screen.modules);
-      // console.log(filtered);
-      const newSubModules = screen.modules.map((module) => {
-        // console.log(parent, screen.id, ParentParent, module);
-        if (ParentParent === module.id) {
-          return { ...module, modules: newModules };
-        }
-        return module;
-      });
-      // console.log(newSubModules);
-      return { ...screen, modules: newSubModules };
-      // return screen;
-    });
-  }
+
+  // Добавление модулей новых, изменить
   changeModulesWrapper({ item, id, parent }: any) {
     if (!this.ApplicationScreens) {
       return console.log("Нет скринов");
@@ -392,6 +353,7 @@ class ApplicationData {
       return screen;
     });
   }
+
   findAndChangeNameModules({
     parent,
     id,

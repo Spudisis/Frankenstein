@@ -1,12 +1,11 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Module, ParentElem, ParentParent } from "src/domains/ApplicationTypes";
+import { Module, ParentElem, ParentParent, ChangeOptions } from "src/domains";
 
 import { Input } from "../Input";
 import App from "src/store/Application";
 import { InputColorWheel } from "../InputColorWheel";
 import { TypesStyles } from "../Options.types";
-import { InputRange } from "../InputRange";
 
 export const ButtonOptions = observer(
   ({
@@ -14,11 +13,9 @@ export const ButtonOptions = observer(
     name,
     namePrivate,
     id,
-    parent,
-    ParentParent
+    changeOptions,
   }: Pick<Module, "options" | "name" | "namePrivate" | "id"> &
-    ParentElem &
-    ParentParent) => {
+    ChangeOptions) => {
     const [styles, setStyles] = React.useState<TypesStyles>({
       nameModule: name ? name : "",
       borderRadius: options.borderRadius ? options.borderRadius : "5px",
@@ -28,7 +25,7 @@ export const ButtonOptions = observer(
       color: options.color ? options.color : "black",
       margin: options.margin ? options.margin : "0px",
       name: options.name ? options.name : "",
-      width: options.width ? options.width : "auto"
+      width: options.width ? options.width : "auto",
     });
 
     const ChangeStyles = <T extends TypesStyles, K extends keyof T>(
@@ -39,21 +36,7 @@ export const ButtonOptions = observer(
     };
 
     React.useEffect(() => {
-      App.findAndChangeNameModules({
-        parent,
-        id,
-        name: styles.nameModule,
-        ParentParent
-      });
-    }, [styles.nameModule]);
-
-    React.useEffect(() => {
-      App.findAndChangeOptionModules({
-        parent,
-        id,
-        options: styles,
-        ParentParent
-      });
+      changeOptions({ options: styles, name: styles.nameModule });
     }, [styles]);
 
     return (

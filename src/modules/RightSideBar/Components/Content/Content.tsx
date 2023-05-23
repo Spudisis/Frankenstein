@@ -42,6 +42,29 @@ export const Content = observer(
       ApplicationData.deleteModulesOrBlock(item);
     };
 
+  //   drop: ({
+  //     elem,
+  //     deleteItem,
+  //   }: {
+  //     elem: ScreenMas | Module;
+  //     deleteItem: { deleteItem: DeleteFunc };
+  //   }) => handleDeleteDND(elem, deleteItem),
+  //   collect: (monitor: DropTargetMonitor) => ({
+  //     canDrop: monitor.canDrop(),
+  //     isOver: monitor.isOver(),
+  //   }),
+  // }));
+
+  // const handleDeleteDND = (
+  //   elem: ScreenMas | Module,
+  //   deleteItem: { deleteItem: DeleteFunc }
+  // ) => {
+  //   deleteItem.deleteItem(elem.id);
+  // };
+
+
+
+
     return (
       <ContentWrapper
         overflow={overflow}

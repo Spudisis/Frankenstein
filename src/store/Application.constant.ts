@@ -38,8 +38,7 @@ export const PROJECT_INFO_DEFAULT = {
   updatedAt: "",
 };
 export const TARGET_DEFAULT = {
-  parent: "",
-  ParentParent: "",
+  changeOptions: (opt: any) => console.log(""),
   namePrivate: "",
   id: "",
   name: "",

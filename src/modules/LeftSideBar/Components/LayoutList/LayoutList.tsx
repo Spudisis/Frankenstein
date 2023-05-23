@@ -21,7 +21,7 @@ export const LayoutList = ({
                 id={module.id}
                 name={module.name}
                 key={module.id}
-                click={changeTarget}
+                click={() => console.log("test")}
                 options={module.options}
                 parent={subModule.id}
                 last={
@@ -37,7 +37,7 @@ export const LayoutList = ({
                     <LayoutList
                       target={target}
                       subModule={module}
-                      changeTarget={changeTarget}
+                      changeTarget={() => console.log("test")}
                       nesting={nesting + 1}
                     />
                   )}

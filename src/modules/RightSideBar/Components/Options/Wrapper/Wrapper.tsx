@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { CustomHook } from "src/modules/RightSideBar/Components/Options/Input/CustomHook";
-import { Module, ParentElem } from "src/domains";
+import { Module, ParentElem, ChangeOptions } from "src/domains";
 import App from "src/store/Application";
 import { Input } from "../Input";
 import { TypesStyles } from "../Options.types";
@@ -13,8 +13,8 @@ export const WrapperOptions = ({
   name,
   namePrivate,
   id,
-  parent
-}: Pick<Module, "options" | "name" | "namePrivate" | "id"> & ParentElem) => {
+  changeOptions,
+}: Pick<Module, "options" | "name" | "namePrivate" | "id"> & ChangeOptions) => {
   const [styles, setStyles] = React.useState<TypesStyles>({
     color: options.color ? options.color : "black",
     nameModule: name ? name : "",
@@ -25,13 +25,11 @@ export const WrapperOptions = ({
     margin: options.margin ? options.margin : "0px",
     name: options.name ? options.name : "",
     width: options.width ? options.width : "auto",
-    display: options.display ? options.display : ""
+    display: options.display ? options.display : "",
   });
+
   React.useEffect(() => {
-    App.findAndChangeNameModules({ parent, id, name: styles.nameModule });
-  }, [styles.nameModule]);
-  React.useEffect(() => {
-    App.findAndChangeOptionModules({ parent, id, options: styles });
+    changeOptions({ options: styles, name: styles.nameModule });
   }, [styles]);
 
   const ChangeStyles = <T extends TypesStyles, K extends keyof T>(

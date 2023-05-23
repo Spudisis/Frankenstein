@@ -69,6 +69,7 @@ export const CustomDragLayer = () => {
         return (
           <MaxWidthButton>
             <Button
+              newModules={() => console.log("")}
               elem={item as Module}
               parent={""}
               MoveCardFunc={() => console.log("scam2")}
@@ -80,6 +81,7 @@ export const CustomDragLayer = () => {
         return (
           <MaxWidth>
             <WrapperCustom
+              newModules={() => console.log("")}
               elem={item as SubModules}
               parent={""}
               MoveCardFunc={() => console.log("scam2")}

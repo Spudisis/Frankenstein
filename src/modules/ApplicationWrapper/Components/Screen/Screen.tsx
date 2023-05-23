@@ -36,7 +36,6 @@ import { STATUS_LOADING } from "src/domains";
 import { ChangeLayoutModule } from "src/utils";
 import { TestStore } from "../../store";
 
-
 type ScreenProps = ParamsScreen & { elem: ScreenMas } & {
   throttledFunc: () => void;
 };
@@ -76,7 +75,6 @@ export const Screen = observer(
     }));
 
     const SetNewHeader = (type: typeFH, item: FHObject) => {
-      // console.log(type);
       Application.changeFooterHeader(type, item);
     };
 

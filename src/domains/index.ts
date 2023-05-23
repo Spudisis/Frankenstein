@@ -8,3 +8,6 @@ export * from "./OptionCreateProject";
 export * from "./ProjectData";
 export * from "./UpdateProject";
 export * from "./ProjectAgentResponse";
+export * from "./funcChangeOptions";
+// export * from "./deleteItemFunc";
+// export * from './dropElement'

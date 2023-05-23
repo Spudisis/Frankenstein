@@ -19,7 +19,7 @@ export const ListItems = observer(() => {
           id={elem.id}
           key={elem.id}
           namePrivate={elem.namePrivate}
-          click={changeTarget}
+          click={() => console.log("test")}
           options={elem.options}
           active={elem.id === target.id}
           nesting={1}
@@ -29,7 +29,7 @@ export const ListItems = observer(() => {
             <LayoutList
               target={target}
               subModule={elem}
-              changeTarget={changeTarget}
+              changeTarget={() => console.log("test")}
               key={elem.id}
               nesting={2}
             />
@@ -44,7 +44,7 @@ export const ListItems = observer(() => {
         {App.ApplicationFooter.id && (
           <HeaderFooter
             data={App.ApplicationFooter}
-            handleChangeTarget={changeTarget}
+            handleChangeTarget={() => console.log("test")}
             target={target}
           />
         )}
@@ -53,7 +53,7 @@ export const ListItems = observer(() => {
         {App.ApplicationHeader.id && (
           <HeaderFooter
             data={App.ApplicationHeader}
-            handleChangeTarget={changeTarget}
+            handleChangeTarget={() => console.log("test")}
             target={target}
           />
         )}
@@ -63,7 +63,7 @@ export const ListItems = observer(() => {
         <Details
           namePrivate={"Screens"}
           name="Screens"
-          click={changeTarget}
+          click={() => console.log("test")}
           options={App.ApplicationScreens}
           nesting={0}
         >

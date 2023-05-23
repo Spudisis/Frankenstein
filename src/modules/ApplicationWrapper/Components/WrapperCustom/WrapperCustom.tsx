@@ -1,5 +1,11 @@
 import React from "react";
-import { ScreenAddElemeny, Module } from "src/domains";
+import {
+  ScreenAddElemeny,
+  Module,
+  SubModules,
+  Modules,
+  ChangeOptionsProp,
+} from "src/domains";
 import { FindComponent } from "../FindComponent/FindComponent";
 import { WrapperStyledDiv } from "./WrapperCustom.styles";
 import { WrapperCustomT } from "./WrapperCustom.types";
@@ -12,73 +18,63 @@ import { changeTarget } from "src/components";
 import Application from "src/store/Application";
 import { ChangeLayoutModule } from "src/utils";
 import { TestStore } from "../../store";
+import { CustomDragHook } from "../customDragHook";
+import { CustomDropHook } from "../customDropHook";
 
 export const WrapperCustom = ({
   elem,
   MoveCardFunc,
   FindIndex,
   parent,
-}: WrapperCustomT) => {
-  const find = FindIndex(elem.id, parent);
-  const originalIndex = find ? find.index : -1;
+  newModules,
+}: WrapperCustomT & { newModules: (modules: any) => void }) => {
   const { options, modules, id } = elem;
   const module = modules as Module[];
 
-  const handleSetTarget = () => {
+  const handleSetTarget = (e: MouseEvent) => {
     const { options, id, namePrivate, name } = elem;
-    changeTarget({ options, name, id, namePrivate }, { parent });
+    changeTarget({ options, name, id, namePrivate }, { changeOptions });
+    e.stopPropagation();
+  };
+  const { isDragging, drag } = CustomDragHook({
+    elem,
+    parent,
+    FindIndex,
+    MoveCardFunc,
+    typeDrag: ItemTypesDND.Wrapper,
+  });
+
+  const dropFunc = (item: ScreenAddElemeny) => {
+    TestStore.test = item.id;
+    ChangeLayoutModule({ item, id: String(parent), parent: elem.id });
   };
 
-  const [{ isDragging }, drag] = useDrag(
-    () => ({
-      type: ItemTypesDND.Wrapper,
-      item: { ...elem, parent, originalIndex },
-      collect: (monitor) => ({
-        isDragging: monitor.isDragging(),
-      }),
-      end: (item, monitor) => {
-        const { id: droppedId, originalIndex } = item;
-        const didDrop = monitor.didDrop();
-        if (!didDrop) {
-          console.log(droppedId, originalIndex);
-          MoveCardFunc({
-            draggedId: droppedId,
-            originalIndex,
-            parentButton: parent,
-          });
-        }
-      },
-    }),
-    [parent, originalIndex, elem.id, MoveCardFunc]
-  );
+  const { drop } = CustomDropHook({
+    dropFunc,
+    MoveCardFunc,
+    elem,
+    FindIndex,
 
-  //accept указывать все возможные элементы, на которые он может заменяться в порядке скрина
-  const [, drop] = useDrop(
-    () => ({
-      accept: [
-        ItemTypesDND.Button,
-        ItemTypesDND.Wrapper,
-        ItemTypesDND.PicturesButton,
-      ],
-      drop: (item: ScreenAddElemeny) => {
-        TestStore.test = item.id;
-        ChangeLayoutModule({ item, id: String(parent), parent: elem.id });
-      },
-      hover(item: ScreenAddElemeny) {
-        const draggedId = item.id;
+    ItemAccess: [ItemTypesDND.PicturesButton, ItemTypesDND.PicturesWrapper],
+  });
 
-        if (draggedId !== elem.id) {
-          const find = FindIndex(elem.id);
+  const changeOptions = ({ options, name }: ChangeOptionsProp) => {
+    const newElem = {
+      ...elem,
+      name: name ? name : elem.name,
+      options: options ? options : elem.options,
+    };
+    newModules(newElem);
+  };
 
-          if (find) {
-            const { index: overIndex } = find;
-            MoveCardFunc({ draggedId, originalIndex: overIndex });
-          }
-        }
-      },
-    }),
-    [parent, FindIndex, MoveCardFunc]
-  );
+  const changeModules = (newEl: SubModules[] | Modules) => {
+    const newElem = {
+      ...elem,
+
+      modules: newEl,
+    };
+    newModules(newElem);
+  };
 
   return (
     <>
@@ -86,13 +82,14 @@ export const WrapperCustom = ({
         ref={(node: HTMLButtonElement) => drag(drop(node))}
         isDragging={isDragging}
         {...options}
-        onClick={() => handleSetTarget()}
+        onClick={(e: MouseEvent) => handleSetTarget(e)}
       >
         {/* <div ref={dropMain}> */}
         <FindComponent
           modules={module}
           parent={parent as string}
           ParentParent={id}
+          changeModules={changeModules}
         />
         {/* </div> */}
       </WrapperStyledDiv>

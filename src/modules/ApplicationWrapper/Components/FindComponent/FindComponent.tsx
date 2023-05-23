@@ -13,66 +13,33 @@ import App from "src/store/Application";
 
 import update from "immutability-helper";
 import { WrapperCustom } from "../WrapperCustom";
+import { FindIndexDecompose } from "../FindIndexDecompose";
+import { MoveCardDecompose } from "../MoveCardDecompose";
 
 export const FindComponent = ({
   modules,
   parent,
   ParentParent,
-}: { modules: Module[] | SubModules[] } & Pick<PropsDNDHook, "parent"> &
+  changeModules,
+}: {
+  modules: Module[] | SubModules[];
+  changeModules?: (modules: any) => void;
+} & Pick<PropsDNDHook, "parent"> &
   Pick<ParentParent, "ParentParent">) => {
-  const FindIndex = React.useCallback(
-    (id: string) => {
-      if (!modules) {
-        throw new Error("Нет скрина или модуля");
+  const { FindIndex } = FindIndexDecompose({ modules });
+
+  const { MoveCardFunc } = MoveCardDecompose({ modules, changeModules });
+
+  const newModules = (changeModule: any, id?: string) => {
+    const newModules = modules.map((elem) => {
+      if (elem.id === changeModule.id) {
+        return changeModule;
       }
+      return elem;
+    });
 
-      const card = modules.filter(
-        (c: Module | undefined) => typeof c !== "undefined" && c.id === id
-      )[0];
-      if (card) {
-        return {
-          card,
-          index: modules.indexOf(card),
-          id,
-        };
-      }
-
-      return null;
-    },
-    [modules, parent]
-  );
-
-  const MoveCardFunc = React.useCallback(
-    ({
-      draggedId,
-      originalIndex,
-    }: {
-      draggedId: string;
-      originalIndex: number;
-    }) => {
-      const cardNIndex = FindIndex(draggedId);
-
-      if (cardNIndex) {
-        const { card, index, id } = cardNIndex;
-
-        const newModules = update(modules, {
-          $splice: [
-            [index, 1],
-            [originalIndex, 0, card],
-          ],
-        });
-        // console.log("what:" + JSON.stringify(newModules));
-        App.changePositionBlock(newModules, parent, ParentParent, id);
-      }
-      return null;
-      // return {
-      // card,
-      // index: modules.length,
-      // id,
-      // };
-    },
-    [FindIndex, modules, parent, ParentParent]
-  );
+    changeModules && changeModules(newModules);
+  };
 
   return (
     <>
@@ -88,6 +55,7 @@ export const FindComponent = ({
                   FindIndex={FindIndex}
                   key={elem.id}
                   parent={parent}
+                  newModules={newModules}
                 />
               );
             }
@@ -100,6 +68,7 @@ export const FindComponent = ({
                   key={elem.id}
                   parent={parent}
                   ParentParent={ParentParent}
+                  newModules={newModules}
                 />
               );
             }

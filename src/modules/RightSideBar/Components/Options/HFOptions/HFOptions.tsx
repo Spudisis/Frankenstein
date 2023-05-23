@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 import { Input } from "../Input";
 import App from "src/store/Application";
-import { Module, typeFH } from "src/domains/ApplicationTypes";
+import { Module, typeFH, ChangeOptions } from "src/domains";
 import { CustomHook } from "src/modules/RightSideBar/Components/Options/Input/CustomHook";
 import { TypesStyles } from "../Options.types";
 import { InputColorWheel } from "../InputColorWheel";
@@ -12,8 +12,9 @@ export const HFOptions = observer(
   ({
     options,
     name,
-    namePrivate
-  }: Pick<Module, "options" | "name" | "namePrivate">) => {
+    namePrivate,
+    changeOptions,
+  }: Pick<Module, "options" | "name" | "namePrivate"> & ChangeOptions) => {
     const FH = namePrivate === "Header" ? typeFH.Header : typeFH.Footer;
 
     const [styles, setStyles] = React.useState<TypesStyles>({
@@ -26,18 +27,17 @@ export const HFOptions = observer(
       margin: options.margin ? options.margin : "0px",
       name: options.name ? options.name : "",
       width: options.width ? options.width : "auto",
-      display: options.display ? options.display : ""
+      display: options.display ? options.display : "",
     });
 
     React.useEffect(() => {
       const { height, backgroundColor, display } = styles;
-      App.changeOptionHeaderFooter(FH, { height, backgroundColor, display });
+      changeOptions({
+        options: { height, backgroundColor, display },
+        name: styles.nameModule,
+      });
     }, [styles]);
 
-    React.useEffect(() => {
-      const name = styles.nameModule;
-      App.changeName(FH, name);
-    }, [styles.nameModule]);
 
     const ChangeStyles = <T extends TypesStyles, K extends keyof T>(
       value: T[K],

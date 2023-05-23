@@ -5,12 +5,11 @@ import {
   ParentParent,
   SectionEnum,
 } from "../domains/ApplicationTypes";
+import { ChangeOptions } from "src/domains";
 export const changeTarget = (
   obj: Module,
-  parent: ParentElem,
-  ParentParent?: ParentParent
+  { changeOptions }: ChangeOptions
 ) => {
-  
-  App.setTarget(obj, parent, ParentParent);
+  App.setTarget(obj, { changeOptions });
   App.section !== SectionEnum.options && App.changeSection(SectionEnum.options);
 };

@@ -3,6 +3,7 @@ import {
   FHObject,
   Module,
   Modules,
+  ScreenAddElemeny,
   SubModules,
   typeFH,
 } from "../../domains/ApplicationTypes";
@@ -14,6 +15,8 @@ import { ItemTypesDND } from "../../components/CustomDragNDrop/CustomDNDHook";
 import { HeaderConstructor } from "./MainHeader.styles";
 import App from "src/store/Application";
 import { ChangeOptionsProp } from "src/domains";
+import { useDrop } from "react-dnd";
+import { CustomDropHook } from "../customDropHook";
 
 type Prop = FHObject & { parent?: typeFH | string };
 
@@ -24,16 +27,19 @@ export const MainHeader = observer((props: Prop) => {
     name: ItemTypesDND.Header,
     options: props,
   });
-
-  const setTarget = () => {
-    const parent = "";
-    changeTarget({ options, name, id, namePrivate }, { changeOptions });
-  };
-
+  
   const changeModules = (newModules: Modules | SubModules[]) => {
     const newSection = { ...props, modules: newModules };
     App.changeFooterHeader(typeFH.Header, newSection);
   };
+
+  const { drop } = CustomDropHook({ changeModules, modules });
+
+  const setTarget = () => {
+    changeTarget({ options, name, id, namePrivate }, { changeOptions });
+  };
+
+
   const changeOptions = ({ options, name }: ChangeOptionsProp) => {
     const newElem = {
       ...props,
@@ -43,7 +49,10 @@ export const MainHeader = observer((props: Prop) => {
     App.changeFooterHeader(typeFH.Header, newElem);
   };
   return (
-    <BlockEmpty ref={drag} isDragging={isDragging}>
+    <BlockEmpty
+      ref={(node: HTMLButtonElement) => drag(drop(node))}
+      isDragging={isDragging}
+    >
       <HeaderConstructor {...options} onClick={() => setTarget()}>
         {React.useMemo(() => {
           let moduleProp = modules as Module[];

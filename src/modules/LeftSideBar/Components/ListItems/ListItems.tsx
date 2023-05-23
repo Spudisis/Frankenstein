@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { Details, SidebarName } from "src/UI";
-import { Module, ScreenMas, SubModules } from "src/domains";
+import { Modules, ScreenMas, SubModules, typeFH } from "src/domains";
 import App from "src/store/Application";
 import { changeTarget } from "src/components";
 import { HeaderFooter } from "../HeaderFooter/HeaderFooter";
@@ -13,13 +13,18 @@ export const ListItems = observer(() => {
   const ScreensOptions =
     App.ApplicationScreens &&
     App.ApplicationScreens.map((elem: ScreenMas) => {
+      const changeModules = (modules: any) => {
+        const newScreen = { ...elem, modules: modules };
+        App.changeScreen(newScreen);
+      };
+
       return (
         <Details
           name={elem.name}
           id={elem.id}
           key={elem.id}
           namePrivate={elem.namePrivate}
-          click={() => console.log("test")}
+          click={() => console.log("")}
           options={elem.options}
           active={elem.id === target.id}
           nesting={1}
@@ -29,9 +34,10 @@ export const ListItems = observer(() => {
             <LayoutList
               target={target}
               subModule={elem}
-              changeTarget={() => console.log("test")}
+              changeTarget={changeTarget}
               key={elem.id}
               nesting={2}
+              changeModules={changeModules}
             />
           }
         </Details>
@@ -44,8 +50,9 @@ export const ListItems = observer(() => {
         {App.ApplicationFooter.id && (
           <HeaderFooter
             data={App.ApplicationFooter}
-            handleChangeTarget={() => console.log("test")}
+            handleChangeTarget={changeTarget}
             target={target}
+            parent={typeFH.Footer}
           />
         )}
       </div>
@@ -53,8 +60,9 @@ export const ListItems = observer(() => {
         {App.ApplicationHeader.id && (
           <HeaderFooter
             data={App.ApplicationHeader}
-            handleChangeTarget={() => console.log("test")}
+            handleChangeTarget={changeTarget}
             target={target}
+            parent={typeFH.Header}
           />
         )}
       </div>
@@ -63,7 +71,7 @@ export const ListItems = observer(() => {
         <Details
           namePrivate={"Screens"}
           name="Screens"
-          click={() => console.log("test")}
+          click={() => console.log("")}
           options={App.ApplicationScreens}
           nesting={0}
         >

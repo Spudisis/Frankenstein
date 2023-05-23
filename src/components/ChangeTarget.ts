@@ -6,10 +6,7 @@ import {
   SectionEnum,
 } from "../domains/ApplicationTypes";
 import { ChangeOptions } from "src/domains";
-export const changeTarget = (
-  obj: Module,
-  { changeOptions }: ChangeOptions
-) => {
+export const changeTarget = (obj: Module, { changeOptions }: ChangeOptions) => {
   App.setTarget(obj, { changeOptions });
   App.section !== SectionEnum.options && App.changeSection(SectionEnum.options);
 };

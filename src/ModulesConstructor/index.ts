@@ -3,3 +3,4 @@ export { MainConstructor } from "../modules/ApplicationWrapper/Components/MainCo
 export { MainHeader } from "./Headers/MainHeader";
 
 export { MainFooter } from "./Footers/MainFooter";
+export * from "./customDropHook";

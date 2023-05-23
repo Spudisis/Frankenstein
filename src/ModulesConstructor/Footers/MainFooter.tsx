@@ -14,11 +14,12 @@ import {
 import { BlockEmpty } from "../../UI";
 import App from "src/store/Application";
 import { ChangeOptionsProp } from "src/domains";
+import { CustomDropHook } from "../customDropHook";
 
 type Prop = FHObject & { parent?: typeFH | string };
 
 export const MainFooter = observer((props: Prop) => {
-  const { id, options, modules } = props;
+  const { id, options, modules } = props as Required<Prop>;
 
   const { drag, isDragging } = CustomDNDHook({
     name: ItemTypesDND.Footer,
@@ -35,6 +36,9 @@ export const MainFooter = observer((props: Prop) => {
     const newSection = { ...props, modules: newModules };
     App.changeFooterHeader(typeFH.Footer, newSection);
   };
+
+  const { drop } = CustomDropHook({ changeModules, modules });
+
   const changeOptions = ({ options, name }: ChangeOptionsProp) => {
     const newElem = {
       ...props,
@@ -43,8 +47,12 @@ export const MainFooter = observer((props: Prop) => {
     };
     App.changeFooterHeader(typeFH.Footer, newElem);
   };
+  
   return (
-    <BlockEmpty ref={drag} isDragging={isDragging}>
+    <BlockEmpty
+      ref={(node: HTMLButtonElement) => drag(drop(node))}
+      isDragging={isDragging}
+    >
       <StyledFooter {...options} onClick={() => setTarget()}>
         {React.useMemo(() => {
           let moduleProp = modules as Module[];

@@ -16,6 +16,7 @@ import {
   DropDND,
   ItemTypesDND,
 } from "../../../../components/CustomDragNDrop/CustomDNDHook";
+import App from "src/store/Application";
 
 export const Content = observer(
   ({ overflow }: Pick<ContentProp, "overflow">) => {
@@ -44,9 +45,10 @@ export const Content = observer(
       id,
       deleteItemFunc,
     }: Pick<ScreenAddElemeny, "id" | "deleteItemFunc">) => {
-      console.log(id);
-      if (deleteItemFunc) deleteItemFunc({ id });
-      else console.log("not found deleteItemFunc");
+      if (deleteItemFunc) {
+        App.clearTarget(id);
+        deleteItemFunc({ id });
+      } else console.log("not found deleteItemFunc");
     };
 
     //   drop: ({

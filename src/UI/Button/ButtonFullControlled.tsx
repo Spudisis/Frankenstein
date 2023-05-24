@@ -12,4 +12,5 @@ export const StyledButtonFullControlled = styled.button<any>`
   background-color: ${(props) => props.backgroundColor || "white"};
   padding: ${(props) => props.padding || "2px"};
   margin: ${(props) => props.margin || "0px"};
+  font-size: ${(props) => props.fontSize || "16px"};
 `;

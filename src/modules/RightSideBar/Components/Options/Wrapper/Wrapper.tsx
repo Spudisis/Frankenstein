@@ -12,8 +12,9 @@ import {
   OptionsGridColumns,
   OptionsJustify,
 } from "../Options.constant";
+import App from "src/store/Application";
 
-type WrapperStyles = Omit<TypesStyles, "name" | "fontSize">;
+type WrapperStyles = Omit<TypesStyles, "name" | "fontSize" | "actions">;
 
 export const WrapperOptions = ({
   options,
@@ -43,6 +44,10 @@ export const WrapperOptions = ({
 
   React.useEffect(() => {
     changeOptions({ options: styles, name: styles.nameModule });
+    App.setTarget(
+      { options: styles, name: styles.nameModule, namePrivate, id },
+      { changeOptions }
+    );
   }, [changeOptions, styles]);
 
   const ChangeStyles = <T,>(value: T[keyof T], property: keyof T) => {

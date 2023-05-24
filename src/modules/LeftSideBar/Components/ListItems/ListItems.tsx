@@ -1,7 +1,13 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { Details, SidebarName } from "src/UI";
-import { Modules, ScreenMas, SubModules, typeFH } from "src/domains";
+import {
+  ChangeOptionsProp,
+  Modules,
+  ScreenMas,
+  SubModules,
+  typeFH,
+} from "src/domains";
 import App from "src/store/Application";
 import { changeTarget } from "src/components";
 import { HeaderFooter } from "../HeaderFooter/HeaderFooter";
@@ -17,6 +23,14 @@ export const ListItems = observer(() => {
         const newScreen = { ...elem, modules: modules };
         App.changeScreen(newScreen);
       };
+      const changeOptionsF = ({ options, name }: ChangeOptionsProp) => {
+        const newElem = {
+          ...elem,
+          name: name ? name : elem.name,
+          options: options ? options : elem.options,
+        };
+        App.changeScreen(newElem);
+      };
 
       return (
         <Details
@@ -24,7 +38,7 @@ export const ListItems = observer(() => {
           id={elem.id}
           key={elem.id}
           namePrivate={elem.namePrivate}
-          click={() => console.log("")}
+          click={() => changeTarget(elem, { changeOptions: changeOptionsF })}
           options={elem.options}
           active={elem.id === target.id}
           nesting={1}

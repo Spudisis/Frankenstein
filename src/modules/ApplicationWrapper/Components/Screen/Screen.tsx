@@ -35,6 +35,7 @@ import { useThrottle } from "../Throttle";
 import { STATUS_LOADING } from "src/domains";
 import { ChangeLayoutModule } from "src/utils";
 import { TestStore } from "../../store";
+import { ModalChooseTargetScreenHF } from "../ModalChooseTargetScreenHF";
 
 type ScreenProps = ParamsScreen & { elem: ScreenMas } & {
   throttledFunc: () => void;
@@ -51,11 +52,11 @@ export const Screen = observer(
 
     const [, dropHeader]: DropDND = useDrop(() => ({
       accept: [ItemTypesDND.PicturesHeader],
-      drop: (item: FHObject) => SetNewHeader(typeFH.Header, item),
+      drop: (item: FHObject) => SetNewHF(typeFH.Header, item),
     }));
     const [, dropFooter]: DropDND = useDrop(() => ({
       accept: [ItemTypesDND.PicturesFooter],
-      drop: (item: FHObject) => SetNewHeader(typeFH.Footer, item),
+      drop: (item: FHObject) => SetNewHF(typeFH.Footer, item),
     }));
     const [, dropMain]: DropDND = useDrop(() => ({
       accept: [
@@ -74,12 +75,18 @@ export const Screen = observer(
       },
     }));
 
-    const SetNewHeader = (type: typeFH, item: FHObject) => {
-      Application.changeFooterHeader(type, item);
+    const SetNewHF = (type: typeFH, item: FHObject) => {
+      TestStore.item = item;
+      TestStore.typeFH = type;
+      TestStore.idScreen = elem.id;
+      TestStore.openModalChooseHFScreen = true;
     };
 
     return (
       <ScreenStyle margin={margin}>
+        <>
+          {TestStore.openModalChooseHFScreen && <ModalChooseTargetScreenHF />}
+        </>
         <Wrapper
           justify="space-between"
           direction="column"
@@ -91,18 +98,29 @@ export const Screen = observer(
           {/* Проверяем наличие ключей у хедера, если есть, показываем хедер, если нет - проверяем в каком состоянии драггинг для сета
           хедера и футера, при тру - показывается прозрачный блок, в который можно сетнуть хедер/футер, при фолс - пустой блок
         */}
-          {Object.keys(header).length !== 0 && header.id ? (
-            <HeaderMobile refDrag={dropHeader}>
-              <MainHeader {...{ ...header, parent: typeFH.Header }} />
-            </HeaderMobile>
-          ) : Dragging.draggingActive ? (
-            <AbsoluteWrapperBlock
-              refDrag={dropHeader}
-              top={"0px"}
-            ></AbsoluteWrapperBlock>
-          ) : (
-            <div></div>
-          )}
+          {
+            // elem.uncommonHeader &&
+            // Object.keys(elem.uncommonHeader).length !== 0 &&
+            // elem.uncommonHeader.id ? (
+            //   <HeaderMobile refDrag={dropHeader}>
+            //     <MainHeader
+            //       {...{ ...elem.uncommonHeader, parent: typeFH.Header }}
+            //     />
+            //   </HeaderMobile>
+            // ) :
+            Object.keys(header).length !== 0 && header.id ? (
+              <HeaderMobile refDrag={dropHeader}>
+                <MainHeader {...{ ...header, parent: typeFH.Header }} />
+              </HeaderMobile>
+            ) : Dragging.draggingActive ? (
+              <AbsoluteWrapperBlock
+                refDrag={dropHeader}
+                top={"0px"}
+              ></AbsoluteWrapperBlock>
+            ) : (
+              <div></div>
+            )
+          }
 
           <MobileMain refDrag={dropMain}>
             <>

@@ -1,24 +1,30 @@
 import React from "react";
 
 import { ReactElement } from "react";
-import { HFOptions, ButtonOptions, WrapperOptions, TextOptions } from "../Options";
+import {
+  HFOptions,
+  ButtonOptions,
+  WrapperOptions,
+  TextOptions,
+  ScreenOptions,
+} from "../Options";
 import { observer } from "mobx-react-lite";
 import App from "src/store/Application";
 
 export const FindOption = observer(() => {
   const target = App.target;
-
+  if (target.namePrivate === "newScreen") {
+    console.log(target.namePrivate);
+  }
   const [masOptions, setMasOptions] = React.useState<ReactElement[]>([]);
   const idHeader = App.ApplicationHeader.id;
   const idFooter = App.ApplicationFooter.id;
-  React.useEffect(() => {
-    console.log(target);
-  }, [target]);
+
   React.useEffect(() => {
     if (!target.id) {
-      return;
+      return setMasOptions([]);
     }
-    console.log(target);
+
     const mas: ReactElement[] = [];
 
     if (target.id === idHeader || target.id === idFooter) {
@@ -28,6 +34,7 @@ export const FindOption = observer(() => {
           namePrivate={target.namePrivate}
           options={target.options}
           name={target.name}
+          id={target.id}
           changeOptions={target.changeOptions}
         />
       );
@@ -59,6 +66,18 @@ export const FindOption = observer(() => {
     if (target.namePrivate === "Wrapper") {
       mas.push(
         <WrapperOptions
+          key={target.id}
+          options={target.options}
+          id={target.id}
+          name={target.name}
+          namePrivate={target.namePrivate}
+          changeOptions={target.changeOptions}
+        />
+      );
+    }
+    if (target.namePrivate === "newScreen") {
+      mas.push(
+        <ScreenOptions
           key={target.id}
           options={target.options}
           id={target.id}

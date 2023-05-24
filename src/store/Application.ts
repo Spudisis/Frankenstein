@@ -134,6 +134,25 @@ class ApplicationData {
     this.section = section;
   }
 
+  deleteScreen(id: string) {
+    if (this.ApplicationScreens) {
+      this.clearTarget();
+      this.ApplicationScreens = this.ApplicationScreens?.filter(
+        (elem) => elem.id !== id
+      );
+    }
+  }
+
+  clearTarget(id?: string) {
+    if (id) {
+      if (id === this.target.id) {
+        return (this.target = TARGET_DEFAULT);
+      }
+      return null;
+    }
+    return (this.target = TARGET_DEFAULT);
+  }
+
   //save (check)
   changeFooterHeader(privateName: typeFH, obj: FHObject) {
     if (privateName === typeFH.Header) {
@@ -142,6 +161,28 @@ class ApplicationData {
     if (privateName === typeFH.Footer) {
       this.ApplicationFooter = obj;
     }
+  }
+
+  changeFooterHeaderScreen(
+    privateName: typeFH,
+    obj: FHObject,
+    idScreen: string
+  ) {
+    if (!this.ApplicationScreens) {
+      return null;
+    }
+
+    this.ApplicationScreens = this.ApplicationScreens.map((elem) => {
+      if (idScreen === elem.id) {
+        if (privateName === typeFH.Footer) {
+          return { ...elem, uncommonFooter: obj };
+        }
+        if (privateName === typeFH.Header) {
+          return { ...elem, uncommonHeader: obj };
+        }
+      }
+      return elem;
+    });
   }
 
   changeModules({
@@ -317,7 +358,6 @@ class ApplicationData {
 
     this.target.options = { ...this.target.options, ...options };
   }
-
 
   setTarget(obj: Module, { changeOptions }: ChangeOptions) {
     if (!obj.id) {

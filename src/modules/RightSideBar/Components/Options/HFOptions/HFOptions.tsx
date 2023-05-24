@@ -11,6 +11,7 @@ import {
   OptionsGridColumns,
   OptionsJustify,
 } from "../Options.constant";
+import App from "src/store/Application";
 
 type HFStyles = Pick<
   TypesStyles,
@@ -30,8 +31,10 @@ export const HFOptions = observer(
     options,
     name,
     namePrivate,
+    id,
     changeOptions,
-  }: Pick<Module, "options" | "name" | "namePrivate"> & ChangeOptions) => {
+  }: Pick<Module, "options" | "name" | "namePrivate" | "id"> &
+    ChangeOptions) => {
     const [styles, setStyles] = React.useState<HFStyles>({
       nameModule: name ? name : "",
       height: options.height ? options.height : "auto",
@@ -51,6 +54,10 @@ export const HFOptions = observer(
         options: styles,
         name: styles.nameModule,
       });
+      App.setTarget(
+        { options: styles, name: styles.nameModule, namePrivate, id },
+        { changeOptions }
+      );
     }, [changeOptions, styles]);
 
     const ChangeStyles = <T,>(value: T[keyof T], property: keyof T) => {

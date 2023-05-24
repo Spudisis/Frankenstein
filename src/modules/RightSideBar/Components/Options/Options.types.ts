@@ -34,6 +34,14 @@ export type TypesStyles = {
   gridTemplateColumns: string;
   gridColumnGap: string;
   gridRowGap: string;
+  actions: Actions;
+};
+
+export type Actions = {
+  name: string;
+  options: {
+    screenId: string;
+  };
 };
 
 enum AlignItemsType {

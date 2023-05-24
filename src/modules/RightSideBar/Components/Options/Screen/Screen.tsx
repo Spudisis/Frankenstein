@@ -1,17 +1,14 @@
-import { observer } from "mobx-react-lite";
 import React from "react";
 import { ChangeOptions, Module } from "src/domains";
 import { TypesStyles } from "../Options.types";
 import { Input } from "../Input";
-import { InputColorWheel } from "../InputColorWheel";
 import App from "src/store/Application";
+import { DefaultButton } from "src/UI";
+import { observer } from "mobx-react-lite";
 
-type TextStyles = Pick<
-  TypesStyles,
-  "color" | "nameModule" | "name" | "fontSize"
->;
+type ScreenStyles = Pick<TypesStyles, "nameModule">;
 
-export const TextOptions = observer(
+export const ScreenOptions = observer(
   ({
     options,
     name,
@@ -20,14 +17,9 @@ export const TextOptions = observer(
     changeOptions,
   }: Pick<Module, "options" | "name" | "namePrivate" | "id"> &
     ChangeOptions) => {
-    const [styles, setStyles] = React.useState<TextStyles>({
+    const [styles, setStyles] = React.useState<ScreenStyles>({
       nameModule: name ? name : "",
-
-      color: options.color ? options.color : "black",
-      name: options.name ? options.name : "",
-      fontSize: options.fontSize ? options.fontSize : "16px",
     });
-
     const ChangeStyles = <T,>(value: T[keyof T], property: keyof T) => {
       setStyles({ ...styles, ...{ [property]: value } });
     };
@@ -43,32 +35,20 @@ export const TextOptions = observer(
 
     return (
       <>
-        <Input<TextStyles>
+        <Input<ScreenStyles>
           label="Название:"
           value={styles}
           onChange={ChangeStyles}
           property="nameModule"
           typeInput="text"
         />
-        <Input<TextStyles>
-          label="Текст:"
-          value={styles}
-          onChange={ChangeStyles}
-          property="name"
-          typeInput="text"
-        />
-        <Input<TextStyles>
-          label="Шрифт:"
-          value={styles}
-          onChange={ChangeStyles}
-          property="fontSize"
-          typeInput="text"
-        />
-        <InputColorWheel<TextStyles>
-          value={styles}
-          property="color"
-          onChange={ChangeStyles}
-          label="Цвет"
+        <DefaultButton
+          width="100%"
+          margin="10px 0px"
+          padding1800="10px"
+          fontSize={20}
+          text={"Удалить экран"}
+          onClick={() => App.deleteScreen(id)}
         />
       </>
     );

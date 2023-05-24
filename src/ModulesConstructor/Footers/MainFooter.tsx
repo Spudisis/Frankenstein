@@ -38,6 +38,7 @@ export const MainFooter = observer((props: Prop) => {
 
   const changeModules = (newModules: Modules | SubModules[]) => {
     const newSection = { ...props, modules: newModules };
+
     App.changeFooterHeader(typeFH.Footer, newSection);
   };
 

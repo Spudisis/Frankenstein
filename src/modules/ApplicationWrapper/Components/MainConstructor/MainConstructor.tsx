@@ -1,8 +1,6 @@
 import { observer } from "mobx-react-lite";
-import React from "react";
 
-import { ScreenMas, SubModules } from "src/domains/ApplicationTypes";
-import { WrapperElem } from "../WrapperElem";
+import { ScreenMas } from "src/domains/ApplicationTypes";
 import { FindComponent } from "../FindComponent/FindComponent";
 import App from "src/store/Application";
 
@@ -14,7 +12,7 @@ export const MainConstructor = observer((elem: ScreenMas) => {
   };
 
   return (
-    <div>
+    <>
       {modules ? (
         <FindComponent
           modules={modules}
@@ -24,6 +22,6 @@ export const MainConstructor = observer((elem: ScreenMas) => {
       ) : (
         <div>Нет ничего, см MainCounstructor</div>
       )}
-    </div>
+    </>
   );
 });

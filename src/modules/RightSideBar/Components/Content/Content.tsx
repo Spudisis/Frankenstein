@@ -30,6 +30,7 @@ export const Content = observer(
         ItemTypesDND.Footer,
         ItemTypesDND.Header,
         ItemTypesDND.Wrapper,
+        ItemTypesDND.Text,
       ],
       drop: ({ id, deleteItemFunc }: ScreenAddElemeny) =>
         handleDeleteDND({ id, deleteItemFunc }),

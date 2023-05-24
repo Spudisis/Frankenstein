@@ -1,12 +1,13 @@
 import React from "react";
 import { ConnectDropTarget, useDrag } from "react-dnd";
-import { typeFH } from "../../domains/ApplicationTypes";
+import { DeleteFuncType, typeFH } from "src/domains/";
 import { CreateId } from "../CreateId/CreateId";
 
 export type PropsDNDHook = {
   name: string;
   options: any;
   parent?: string | typeFH;
+  deleteItemFunc?: DeleteFuncType;
 };
 export type PropDrag = ConnectDropTarget;
 
@@ -23,17 +24,23 @@ export const ItemTypesDND = {
   PicturesButton: "PicturesButton",
   PicturesWrapper: "PicturesWrapper",
   Wrapper: "Wrapper",
-  PicturesText: "PicturesText"
+  PicturesText: "PicturesText",
+  Text: "Text",
 };
 
 export type DropDND = [any, PropDrag];
 
-export const CustomDNDHook = ({ name, options, parent }: PropsDNDHook) => {
+export const CustomDNDHook = ({
+  name,
+  options,
+  parent,
+  deleteItemFunc,
+}: PropsDNDHook) => {
   // console.log(options);
 
   const [collected, drag, dragPreview] = useDrag(() => ({
     type: name,
-    item: { ...options, parent },
+    item: { ...options, parent, deleteItemFunc },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),

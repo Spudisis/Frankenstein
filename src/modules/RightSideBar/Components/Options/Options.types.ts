@@ -7,6 +7,16 @@ export type InputStyles<T> = {
   value: T;
   onChange: (value: T[keyof T], property: keyof T) => void;
 };
+
+export type SelectValues = {
+  readonly value: string;
+  readonly label: string;
+};
+
+export type Options = {
+  options: SelectValues[];
+};
+
 export type TypesStyles = {
   borderRadius: string;
   height: string;
@@ -18,4 +28,20 @@ export type TypesStyles = {
   width: string;
   nameModule: string;
   display: string;
+  fontSize: string;
+  justifyContent: string;
+  alignItems: string;
+  gridTemplateColumns: string;
+  gridColumnGap: string;
+  gridRowGap: string;
 };
+
+enum AlignItemsType {
+  "center",
+}
+
+enum JustifyContentType {
+  "center",
+  "space-between",
+  "space-evenly",
+}

@@ -61,7 +61,11 @@ export const WrapperCustom = ({
     MoveCardFunc,
     elem,
     FindIndex,
-    ItemAccess: [ItemTypesDND.PicturesButton, ItemTypesDND.PicturesWrapper],
+    ItemAccess: [
+      ItemTypesDND.PicturesButton,
+      ItemTypesDND.PicturesWrapper,
+      ItemTypesDND.PicturesText,
+    ],
   });
 
   const changeOptions = ({ options, name }: ChangeOptionsProp) => {

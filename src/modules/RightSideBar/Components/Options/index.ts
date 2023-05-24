@@ -4,3 +4,6 @@ export * from "./Wrapper";
 export * from "./HFOptions";
 export * from "./InputColorWheel";
 export * from "./InputDisplay";
+export * from "./Text";
+export * from "./SelectInput";
+export * from "./Options.constant";

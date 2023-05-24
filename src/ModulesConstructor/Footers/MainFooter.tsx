@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import styled, { css } from "styled-components";
+
 import { CustomDNDHook, changeTarget } from "../../components";
 import { ItemTypesDND } from "../../components/CustomDragNDrop/CustomDNDHook";
 import { FindComponent } from "../../modules/ApplicationWrapper/Components/FindComponent/FindComponent";
@@ -15,20 +15,24 @@ import { BlockEmpty } from "../../UI";
 import App from "src/store/Application";
 import { ChangeOptionsProp } from "src/domains";
 import { CustomDropHook } from "../customDropHook";
+import { StyledFooter } from "./MainFooter.styles";
 
 type Prop = FHObject & { parent?: typeFH | string };
 
 export const MainFooter = observer((props: Prop) => {
-  const { id, options, modules } = props as Required<Prop>;
+  const { id, options, modules, namePrivate, name } = props as Required<Prop>;
+
+  const deleteItemFunc = ({ id }: { id: string }) => {
+    App.changeFooterHeader(typeFH.Footer, {});
+  };
 
   const { drag, isDragging } = CustomDNDHook({
     name: ItemTypesDND.Footer,
     options: props,
+    deleteItemFunc,
   });
 
   const setTarget = () => {
-    const { options, id, namePrivate, name } = props as Required<Prop>;
-    const parent = "";
     changeTarget({ options, name, id, namePrivate }, { changeOptions });
   };
 
@@ -37,59 +41,40 @@ export const MainFooter = observer((props: Prop) => {
     App.changeFooterHeader(typeFH.Footer, newSection);
   };
 
-  const { drop } = CustomDropHook({ changeModules, modules });
+  const newModuleDrop = (newModule: SubModules | Module) => {
+    const AppFooter = App.ApplicationFooter;
+    App.changeFooterHeader(typeFH.Footer, {
+      ...AppFooter,
 
-  const changeOptions = ({ options, name }: ChangeOptionsProp) => {
+      modules: [...(AppFooter.modules ? AppFooter.modules : []), newModule],
+    });
+  };
+
+  const { drop } = CustomDropHook({ newModuleDrop });
+
+  const changeOptions = (propOptions: ChangeOptionsProp) => {
     const newElem = {
       ...props,
-      name: name ? name : props.name,
-      options: options ? options : props.options,
+      name: propOptions.name ? propOptions.name : name,
+      options: propOptions.options ? propOptions.options : options,
     };
     App.changeFooterHeader(typeFH.Footer, newElem);
   };
-  
+
+  let moduleProp = modules as Module[];
+
   return (
     <BlockEmpty
       ref={(node: HTMLButtonElement) => drag(drop(node))}
       isDragging={isDragging}
     >
       <StyledFooter {...options} onClick={() => setTarget()}>
-        {React.useMemo(() => {
-          let moduleProp = modules as Module[];
-
-          return (
-            <FindComponent
-              modules={moduleProp}
-              parent={props.parent}
-              changeModules={changeModules}
-            />
-          );
-        }, [modules, id])}
+        <FindComponent
+          modules={moduleProp}
+          parent={props.parent}
+          changeModules={changeModules}
+        />
       </StyledFooter>
     </BlockEmpty>
   );
 });
-
-const StyledFooter = styled.div<any>`
-  height: ${(props) => (props.height ? props.height : "150px")};
-  border-radius: 0px 0px 25px 25px;
-  overflow: hidden;
-  background-color: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : "yellow"};
-  display: ${(props) => props.display || "block"};
-  ${({ display }) =>
-    display === "flex"
-      ? css`
-          justify-content: ${(props: any) =>
-            props.JustifyContent || "space-evenly"};
-          align-items: ${(props: any) => props.AlignItems || ""};
-        `
-      : display === "grid"
-      ? css`
-          grid-template-columns: ${(props: any) =>
-            props.GridTemplateColumns || "repeat(2, 1fr)"};
-          grid-template-rows: ${(props: any) =>
-            props.GridTemplateRows || "auto"};
-        `
-      : ""}
-`;

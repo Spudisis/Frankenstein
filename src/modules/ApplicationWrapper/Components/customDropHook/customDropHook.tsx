@@ -12,7 +12,7 @@ export const CustomDropHook = ({
   ItemAccess,
 
 }: DropHook) => {
-  const access = [ItemTypesDND.Button, ItemTypesDND.Wrapper];
+  const access = [ItemTypesDND.Button, ItemTypesDND.Wrapper, ItemTypesDND.Text];
 
   if (ItemAccess) {
     access.push(...ItemAccess);

@@ -6,8 +6,14 @@ import { Input } from "../Input";
 import { TypesStyles } from "../Options.types";
 import { InputColorWheel } from "../InputColorWheel";
 import { InputDisplay } from "../InputDisplay";
+import { SelectInput } from "../SelectInput";
+import {
+  OptionsAlign,
+  OptionsGridColumns,
+  OptionsJustify,
+} from "../Options.constant";
 
-type WrapperStyles = Omit<TypesStyles, "name">;
+type WrapperStyles = Omit<TypesStyles, "name" | "fontSize">;
 
 export const WrapperOptions = ({
   options,
@@ -26,6 +32,13 @@ export const WrapperOptions = ({
     margin: options.margin ? options.margin : "0px",
     width: options.width ? options.width : "auto",
     display: options.display ? options.display : "",
+    justifyContent: options.justifyContent ? options.justifyContent : "",
+    alignItems: options.alignItems ? options.alignItems : "",
+    gridTemplateColumns: options.gridTemplateColumns
+      ? options.gridTemplateColumns
+      : "",
+    gridColumnGap: options.gridColumnGap ? options.gridColumnGap : "",
+    gridRowGap: options.gridRowGap ? options.gridRowGap : "",
   });
 
   React.useEffect(() => {
@@ -95,6 +108,49 @@ export const WrapperOptions = ({
       />
 
       <InputDisplay value={styles} onChange={ChangeStyles} property="display" />
+      {styles.display === "flex" && (
+        <>
+          <SelectInput
+            value={styles}
+            onChange={ChangeStyles}
+            label="justify"
+            property="justifyContent"
+            options={OptionsJustify}
+          />
+          <SelectInput
+            value={styles}
+            onChange={ChangeStyles}
+            label="align"
+            property="alignItems"
+            options={OptionsAlign}
+          />
+        </>
+      )}
+      {styles.display === "grid" && (
+        <>
+          <SelectInput
+            value={styles}
+            onChange={ChangeStyles}
+            label="columns"
+            property="gridTemplateColumns"
+            options={OptionsGridColumns}
+          />
+          <Input<WrapperStyles>
+            label="Отступ между колонками:"
+            value={styles}
+            onChange={ChangeStyles}
+            property="gridColumnGap"
+            typeInput="text"
+          />
+          <Input<WrapperStyles>
+            label="Отступ между строчками:"
+            value={styles}
+            onChange={ChangeStyles}
+            property="gridRowGap"
+            typeInput="text"
+          />
+        </>
+      )}
     </>
   );
 };

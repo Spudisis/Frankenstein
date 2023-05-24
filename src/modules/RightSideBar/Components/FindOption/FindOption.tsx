@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ReactElement } from "react";
-import { HFOptions, ButtonOptions, WrapperOptions } from "../Options";
+import { HFOptions, ButtonOptions, WrapperOptions, TextOptions } from "../Options";
 import { observer } from "mobx-react-lite";
 import App from "src/store/Application";
 
@@ -35,6 +35,18 @@ export const FindOption = observer(() => {
     if (target.namePrivate === "Button") {
       mas.push(
         <ButtonOptions
+          key={target.id}
+          options={target.options}
+          id={target.id}
+          name={target.name}
+          namePrivate={target.namePrivate}
+          changeOptions={target.changeOptions}
+        />
+      );
+    }
+    if (target.namePrivate === "Text") {
+      mas.push(
+        <TextOptions
           key={target.id}
           options={target.options}
           id={target.id}

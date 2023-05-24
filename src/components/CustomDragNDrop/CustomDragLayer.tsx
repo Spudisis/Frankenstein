@@ -5,9 +5,12 @@ import { MaxWidth } from "../../UI";
 import { ItemTypesDND } from "./CustomDNDHook";
 
 import { MainFooter, MainHeader } from "../../ModulesConstructor";
-import { Button } from "src/modules/ApplicationWrapper/Components/Elements";
+import {
+  Button,
+  Text,
+} from "src/modules/ApplicationWrapper/Components/Elements";
 import { Module, SubModules } from "src/domains";
-import { MaxWidthButton } from "src/UI/CustomLayoutDND/MaxWidth";
+import { MaxWidthButton, MaxWidthText } from "src/UI/CustomLayoutDND/MaxWidth";
 import { WrapperCustom } from "src/modules/ApplicationWrapper/Components";
 const layerStyles: CSSProperties = {
   position: "fixed",
@@ -69,12 +72,12 @@ export const CustomDragLayer = () => {
         return (
           <MaxWidthButton>
             <Button
-              deleteItemFunc={() => console.log("a")}
+              deleteItemFunc={() => console.log("")}
               newModules={() => console.log("")}
               elem={item as Module}
               parent={""}
-              MoveCardFunc={() => console.log("scam2")}
-              FindIndex={() => console.log("scam")}
+              MoveCardFunc={() => console.log("")}
+              FindIndex={() => console.log("")}
             />
           </MaxWidthButton>
         );
@@ -82,14 +85,27 @@ export const CustomDragLayer = () => {
         return (
           <MaxWidth>
             <WrapperCustom
-              deleteItemFunc={() => console.log("a")}
+              deleteItemFunc={() => console.log("")}
               newModules={() => console.log("")}
               elem={item as SubModules}
               parent={""}
-              MoveCardFunc={() => console.log("scam2")}
-              FindIndex={() => console.log("scam")}
+              MoveCardFunc={() => console.log("")}
+              FindIndex={() => console.log("sam")}
             />
           </MaxWidth>
+        );
+      case ItemTypesDND.PicturesText:
+        return (
+          <MaxWidthText>
+            <Text
+              deleteItemFunc={() => console.log("")}
+              newModules={() => console.log("")}
+              elem={item as SubModules}
+              parent={""}
+              MoveCardFunc={() => console.log("")}
+              FindIndex={() => console.log("")}
+            />
+          </MaxWidthText>
         );
       default:
         return null;

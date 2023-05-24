@@ -263,16 +263,13 @@ export const Pictures = observer(() => {
       alt: "dad",
 
       options: {
-        name: "header1",
-        namePrivate: "Header",
+        name: "text2521",
+        namePrivate: "Text",
         id: "a1411",
         options: {
-          name: "text2",
-          namePrivate: "Text",
-          id: "4w5udsfhsd",
-          options: {
-            color: "yellow",
-          },
+          color: "white",
+          name: "assdddd dd dd dd d dddddddddddd ddddd d d d dd ",
+          fontSize: "19px",
         },
       },
     },
@@ -286,6 +283,8 @@ export const Pictures = observer(() => {
         id: "4w5udsfhsd",
         options: {
           color: "white",
+          name: "gasdsdgs",
+          fontSize: "19px",
         },
       },
     },
@@ -297,6 +296,7 @@ export const Pictures = observer(() => {
       <PicturesRows type={ItemTypesDND.PicturesFooter} masImg={masImg2} />
       <PicturesRows type={ItemTypesDND.PicturesButton} masImg={Buttons} />
       <PicturesRows type={ItemTypesDND.PicturesWrapper} masImg={Wrapper} />
+      <PicturesRows type={ItemTypesDND.PicturesText} masImg={Text} />
     </>
   );
 });

@@ -5,7 +5,15 @@ import { Input } from "../Input";
 import { InputColorWheel } from "../InputColorWheel";
 import { TypesStyles } from "../Options.types";
 
-type ButtonStyles = Omit<TypesStyles, "display">;
+type ButtonStyles = Omit<
+  TypesStyles,
+  | "display"
+  | "justifyContent"
+  | "alignItems"
+  | "gridTemplateColumns"
+  | "gridColumnGap"
+  | "gridRowGap"
+>;
 
 export const ButtonOptions = observer(
   ({
@@ -26,6 +34,7 @@ export const ButtonOptions = observer(
       margin: options.margin ? options.margin : "0px",
       name: options.name ? options.name : "",
       width: options.width ? options.width : "auto",
+      fontSize: options.fontSize ? options.fontSize : "16px",
     });
 
     const ChangeStyles = <T,>(value: T[keyof T], property: keyof T) => {
@@ -92,6 +101,13 @@ export const ButtonOptions = observer(
           value={styles}
           onChange={ChangeStyles}
           property="margin"
+          typeInput="text"
+        />
+        <Input<ButtonStyles>
+          label="Шрифт:"
+          value={styles}
+          onChange={ChangeStyles}
+          property="fontSize"
           typeInput="text"
         />
         <InputColorWheel<ButtonStyles>

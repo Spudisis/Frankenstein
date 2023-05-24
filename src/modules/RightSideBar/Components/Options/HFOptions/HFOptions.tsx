@@ -5,10 +5,24 @@ import { Module, ChangeOptions } from "src/domains";
 import { TypesStyles } from "../Options.types";
 import { InputColorWheel } from "../InputColorWheel";
 import { InputDisplay } from "../InputDisplay";
+import { SelectInput } from "../SelectInput";
+import {
+  OptionsAlign,
+  OptionsGridColumns,
+  OptionsJustify,
+} from "../Options.constant";
 
 type HFStyles = Pick<
   TypesStyles,
-  "nameModule" | "height" | "backgroundColor" | "display"
+  | "nameModule"
+  | "height"
+  | "backgroundColor"
+  | "display"
+  | "justifyContent"
+  | "alignItems"
+  | "gridColumnGap"
+  | "gridTemplateColumns"
+  | "gridRowGap"
 >;
 
 export const HFOptions = observer(
@@ -23,12 +37,18 @@ export const HFOptions = observer(
       height: options.height ? options.height : "auto",
       backgroundColor: options.backgroundColor ? options.backgroundColor : "",
       display: options.display ? options.display : "",
+      justifyContent: options.justifyContent ? options.justifyContent : "",
+      alignItems: options.alignItems ? options.alignItems : "",
+      gridTemplateColumns: options.gridTemplateColumns
+        ? options.gridTemplateColumns
+        : "",
+      gridColumnGap: options.gridColumnGap ? options.gridColumnGap : "",
+      gridRowGap: options.gridRowGap ? options.gridRowGap : "",
     });
 
     React.useEffect(() => {
-      const { height, backgroundColor, display } = styles;
       changeOptions({
-        options: { height, backgroundColor, display },
+        options: styles,
         name: styles.nameModule,
       });
     }, [changeOptions, styles]);
@@ -64,6 +84,49 @@ export const HFOptions = observer(
           onChange={ChangeStyles}
           property="display"
         />
+        {styles.display === "flex" && (
+          <>
+            <SelectInput
+              value={styles}
+              onChange={ChangeStyles}
+              label="justify"
+              property="justifyContent"
+              options={OptionsJustify}
+            />
+            <SelectInput
+              value={styles}
+              onChange={ChangeStyles}
+              label="align"
+              property="alignItems"
+              options={OptionsAlign}
+            />
+          </>
+        )}
+        {styles.display === "grid" && (
+          <>
+            <SelectInput
+              value={styles}
+              onChange={ChangeStyles}
+              label="columns"
+              property="gridTemplateColumns"
+              options={OptionsGridColumns}
+            />
+            <Input<HFStyles>
+              label="Отступ между колонками:"
+              value={styles}
+              onChange={ChangeStyles}
+              property="gridColumnGap"
+              typeInput="text"
+            />
+            <Input<HFStyles>
+              label="Отступ между строчками:"
+              value={styles}
+              onChange={ChangeStyles}
+              property="gridRowGap"
+              typeInput="text"
+            />
+          </>
+        )}
       </>
     );
   }

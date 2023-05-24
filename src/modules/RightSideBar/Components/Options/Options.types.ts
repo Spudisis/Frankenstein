@@ -1,14 +1,11 @@
-export type PropsInput<K extends keyof TypesStyles> = {
+export type PropsInput<T> = {
   label: string;
   typeInput?: string;
-  property: K;
+  property: keyof T;
 };
-export type InputStyles = {
-  value: TypesStyles;
-  onChange: <T extends TypesStyles, K extends keyof T>(
-    value: T[K],
-    property: K
-  ) => void;
+export type InputStyles<T> = {
+  value: T;
+  onChange: (value: T[keyof T], property: keyof T) => void;
 };
 export type TypesStyles = {
   borderRadius: string;
@@ -20,5 +17,5 @@ export type TypesStyles = {
   name: string;
   width: string;
   nameModule: string;
-  display?: string;
+  display: string;
 };

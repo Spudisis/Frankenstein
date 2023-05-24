@@ -64,10 +64,12 @@ export type ParentParent = {
   ParentParent?: string;
 };
 
-export type ScreenAddElemeny = Module & SubModules & {
-  parent?: string;
-  originalIndex?: number;
-};
+export type ScreenAddElemeny = Module &
+  SubModules & {
+    parent?: string;
+    originalIndex?: number;
+    deleteItemFunc?: DeleteFuncType;
+  };
 
 export type FHObject = Partial<{
   name: Name;
@@ -77,3 +79,5 @@ export type FHObject = Partial<{
   options?: Option;
   keyWord?: string;
 }>;
+
+export type DeleteFuncType = ({ id }: { id: string }) => void;

@@ -2,12 +2,11 @@ import React from "react";
 import { InputStyles, PropsInput } from "../Options.types";
 import { Input, Label, Summary, Wrapper } from "./InputDisplay.styles";
 import { MouseEvent } from "react";
-export const InputDisplay = ({
+export const InputDisplay = <T,>({
   value,
   onChange,
-
   property,
-}: InputStyles & Omit<PropsInput<"display">, "label">) => {
+}: InputStyles<T> & Omit<PropsInput<T>, "label">) => {
   const [openStatus, setOpenStatus] = React.useState(true);
 
   const onToggle = (e: MouseEvent<HTMLElement>) => {
@@ -27,7 +26,7 @@ export const InputDisplay = ({
             name="typeBlock"
             value={"flex"}
             checked={value[property] === "flex"}
-            onChange={(e) => onChange(e.target.value, property)}
+            onChange={(e) => onChange(e.target.value as T[keyof T], property)}
           />
         </Label>
         <Label chosen={value[property] === "grid"}>
@@ -37,7 +36,7 @@ export const InputDisplay = ({
             name="typeBlock"
             value={"grid"}
             checked={value[property] === "grid"}
-            onChange={(e) => onChange(e.target.value, property)}
+            onChange={(e) => onChange(e.target.value as T[keyof T], property)}
           />
         </Label>
       </Wrapper>

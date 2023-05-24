@@ -1,11 +1,11 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Module, ParentElem, ParentParent, ChangeOptions } from "src/domains";
-
+import { Module, ChangeOptions } from "src/domains";
 import { Input } from "../Input";
-import App from "src/store/Application";
 import { InputColorWheel } from "../InputColorWheel";
 import { TypesStyles } from "../Options.types";
+
+type ButtonStyles = Omit<TypesStyles, "display">;
 
 export const ButtonOptions = observer(
   ({
@@ -16,7 +16,7 @@ export const ButtonOptions = observer(
     changeOptions,
   }: Pick<Module, "options" | "name" | "namePrivate" | "id"> &
     ChangeOptions) => {
-    const [styles, setStyles] = React.useState<TypesStyles>({
+    const [styles, setStyles] = React.useState<ButtonStyles>({
       nameModule: name ? name : "",
       borderRadius: options.borderRadius ? options.borderRadius : "5px",
       height: options.height ? options.height : "auto",
@@ -28,61 +28,58 @@ export const ButtonOptions = observer(
       width: options.width ? options.width : "auto",
     });
 
-    const ChangeStyles = <T extends TypesStyles, K extends keyof T>(
-      value: T[K],
-      property: K
-    ) => {
+    const ChangeStyles = <T,>(value: T[keyof T], property: keyof T) => {
       setStyles({ ...styles, ...{ [property]: value } });
     };
 
     React.useEffect(() => {
       changeOptions({ options: styles, name: styles.nameModule });
-    }, [styles]);
+    }, [changeOptions, styles]);
 
     return (
       <>
-        <Input
+        <Input<ButtonStyles>
           label="Название:"
           value={styles}
           onChange={ChangeStyles}
           property="nameModule"
           typeInput="text"
         />
-        <Input
+        <Input<ButtonStyles>
           label="Текст в кнопке:"
           value={styles}
           onChange={ChangeStyles}
           property="name"
           typeInput="text"
         />
-        <Input
+        <Input<ButtonStyles>
           label="Высота:"
           value={styles}
           onChange={ChangeStyles}
           property="height"
           typeInput="text"
         />
-        <Input
+        <Input<ButtonStyles>
           label="Ширина:"
           value={styles}
           onChange={ChangeStyles}
           property="width"
           typeInput="text"
         />
-        <InputColorWheel
+        <InputColorWheel<ButtonStyles>
           value={styles}
           onChange={ChangeStyles}
           label="Цвет фона"
           property="backgroundColor"
         />
-        <Input
+        <Input<ButtonStyles>
           label="Бордер радиус:"
           value={styles}
           onChange={ChangeStyles}
           property="borderRadius"
           typeInput="text"
         />
-        <Input
+        <Input<ButtonStyles>
           label="Внутренний отступ:"
           value={styles}
           onChange={ChangeStyles}
@@ -90,14 +87,14 @@ export const ButtonOptions = observer(
           typeInput="text"
         />
 
-        <Input
+        <Input<ButtonStyles>
           label="Внешний отступ:"
           value={styles}
           onChange={ChangeStyles}
           property="margin"
           typeInput="text"
         />
-        <InputColorWheel
+        <InputColorWheel<ButtonStyles>
           value={styles}
           property="color"
           onChange={ChangeStyles}

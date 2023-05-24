@@ -7,7 +7,7 @@ import {
   ParentParent,
   SubModules,
 } from "src/domains/ApplicationTypes";
-import { Button } from "../Elements";
+import { Button, Text } from "../Elements";
 import { PropsDNDHook } from "src/components/CustomDragNDrop/CustomDNDHook";
 import App from "src/store/Application";
 
@@ -40,7 +40,10 @@ export const FindComponent = ({
 
     changeModules && changeModules(newModules);
   };
-
+  const deleteItemFunc = ({ id }: { id: string }) => {
+    const newModules = modules.filter((elem) => elem.id !== id);
+    changeModules && changeModules(newModules);
+  };
   return (
     <>
       {modules &&
@@ -56,6 +59,7 @@ export const FindComponent = ({
                   key={elem.id}
                   parent={parent}
                   newModules={newModules}
+                  deleteItemFunc={deleteItemFunc}
                 />
               );
             }
@@ -69,6 +73,21 @@ export const FindComponent = ({
                   parent={parent}
                   ParentParent={ParentParent}
                   newModules={newModules}
+                  deleteItemFunc={deleteItemFunc}
+                />
+              );
+            }
+            if (elem.namePrivate === "Text") {
+              return (
+                <Text
+                  MoveCardFunc={MoveCardFunc}
+                  FindIndex={FindIndex}
+                  elem={elem}
+                  key={elem.id}
+                  parent={parent}
+                  ParentParent={ParentParent}
+                  newModules={newModules}
+                  deleteItemFunc={deleteItemFunc}
                 />
               );
             }

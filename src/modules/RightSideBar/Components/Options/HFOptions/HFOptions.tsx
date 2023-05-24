@@ -1,12 +1,15 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { Input } from "../Input";
-import App from "src/store/Application";
-import { Module, typeFH, ChangeOptions } from "src/domains";
-import { CustomHook } from "src/modules/RightSideBar/Components/Options/Input/CustomHook";
+import { Module, ChangeOptions } from "src/domains";
 import { TypesStyles } from "../Options.types";
 import { InputColorWheel } from "../InputColorWheel";
 import { InputDisplay } from "../InputDisplay";
+
+type HFStyles = Pick<
+  TypesStyles,
+  "nameModule" | "height" | "backgroundColor" | "display"
+>;
 
 export const HFOptions = observer(
   ({
@@ -15,18 +18,10 @@ export const HFOptions = observer(
     namePrivate,
     changeOptions,
   }: Pick<Module, "options" | "name" | "namePrivate"> & ChangeOptions) => {
-    const FH = namePrivate === "Header" ? typeFH.Header : typeFH.Footer;
-
-    const [styles, setStyles] = React.useState<TypesStyles>({
-      color: options.color ? options.color : "black",
+    const [styles, setStyles] = React.useState<HFStyles>({
       nameModule: name ? name : "",
-      borderRadius: options.borderRadius ? options.borderRadius : "5px",
       height: options.height ? options.height : "auto",
       backgroundColor: options.backgroundColor ? options.backgroundColor : "",
-      padding: options.padding ? options.padding : "2px",
-      margin: options.margin ? options.margin : "0px",
-      name: options.name ? options.name : "",
-      width: options.width ? options.width : "auto",
       display: options.display ? options.display : "",
     });
 
@@ -36,39 +31,35 @@ export const HFOptions = observer(
         options: { height, backgroundColor, display },
         name: styles.nameModule,
       });
-    }, [styles]);
+    }, [changeOptions, styles]);
 
-
-    const ChangeStyles = <T extends TypesStyles, K extends keyof T>(
-      value: T[K],
-      property: K
-    ) => {
+    const ChangeStyles = <T,>(value: T[keyof T], property: keyof T) => {
       setStyles({ ...styles, ...{ [property]: value } });
     };
 
     return (
       <>
-        <Input
+        <Input<HFStyles>
           label="Название:"
           value={styles}
           onChange={ChangeStyles}
           property="nameModule"
           typeInput="text"
         />
-        <Input
+        <Input<HFStyles>
           label="Высота:"
           value={styles}
           onChange={ChangeStyles}
           property="height"
           typeInput="text"
         />
-        <InputColorWheel
+        <InputColorWheel<HFStyles>
           label="Цвет фона:"
           value={styles}
           onChange={ChangeStyles}
           property="backgroundColor"
         />
-        <InputDisplay
+        <InputDisplay<HFStyles>
           value={styles}
           onChange={ChangeStyles}
           property="display"

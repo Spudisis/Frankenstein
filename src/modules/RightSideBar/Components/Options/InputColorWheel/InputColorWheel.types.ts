@@ -1,5 +1,7 @@
+export type Hex = string;
+
 export type WheelObject = {
-  hex: string;
+  hex: Hex;
   hsl: {
     h: number;
     a: number;

@@ -5,6 +5,7 @@ import {
   SubModules,
   Modules,
   ChangeOptionsProp,
+  DeleteFuncType,
 } from "src/domains";
 import { FindComponent } from "../FindComponent/FindComponent";
 import { WrapperStyledDiv } from "./WrapperCustom.styles";
@@ -27,7 +28,11 @@ export const WrapperCustom = ({
   FindIndex,
   parent,
   newModules,
-}: WrapperCustomT & { newModules: (modules: any) => void }) => {
+  deleteItemFunc,
+}: WrapperCustomT & {
+  newModules: (modules: any) => void;
+  deleteItemFunc: DeleteFuncType;
+}) => {
   const { options, modules, id } = elem;
   const module = modules as Module[];
 
@@ -36,12 +41,14 @@ export const WrapperCustom = ({
     changeTarget({ options, name, id, namePrivate }, { changeOptions });
     e.stopPropagation();
   };
+
   const { isDragging, drag } = CustomDragHook({
     elem,
     parent,
     FindIndex,
     MoveCardFunc,
     typeDrag: ItemTypesDND.Wrapper,
+    deleteItemFunc,
   });
 
   const dropFunc = (item: ScreenAddElemeny) => {
@@ -54,7 +61,6 @@ export const WrapperCustom = ({
     MoveCardFunc,
     elem,
     FindIndex,
-
     ItemAccess: [ItemTypesDND.PicturesButton, ItemTypesDND.PicturesWrapper],
   });
 

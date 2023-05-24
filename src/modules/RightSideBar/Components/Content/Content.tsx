@@ -5,6 +5,7 @@ import { observer } from "mobx-react-lite";
 import ApplicationData from "src/store/Application";
 import {
   Module,
+  ScreenAddElemeny,
   ScreenMas,
   SectionEnum,
 } from "../../../../domains/ApplicationTypes";
@@ -30,40 +31,42 @@ export const Content = observer(
         ItemTypesDND.Header,
         ItemTypesDND.Wrapper,
       ],
-      drop: (item: ScreenMas | Module) => handleDeleteDND(item),
+      drop: ({ id, deleteItemFunc }: ScreenAddElemeny) =>
+        handleDeleteDND({ id, deleteItemFunc }),
       collect: (monitor: DropTargetMonitor) => ({
         canDrop: monitor.canDrop(),
         isOver: monitor.isOver(),
       }),
     }));
 
-    const handleDeleteDND = (item: ScreenMas | Module) => {
-      console.log(item);
-      ApplicationData.deleteModulesOrBlock(item);
+    const handleDeleteDND = ({
+      id,
+      deleteItemFunc,
+    }: Pick<ScreenAddElemeny, "id" | "deleteItemFunc">) => {
+      console.log(id);
+      if (deleteItemFunc) deleteItemFunc({ id });
+      else console.log("not found deleteItemFunc");
     };
 
-  //   drop: ({
-  //     elem,
-  //     deleteItem,
-  //   }: {
-  //     elem: ScreenMas | Module;
-  //     deleteItem: { deleteItem: DeleteFunc };
-  //   }) => handleDeleteDND(elem, deleteItem),
-  //   collect: (monitor: DropTargetMonitor) => ({
-  //     canDrop: monitor.canDrop(),
-  //     isOver: monitor.isOver(),
-  //   }),
-  // }));
+    //   drop: ({
+    //     elem,
+    //     deleteItem,
+    //   }: {
+    //     elem: ScreenMas | Module;
+    //     deleteItem: { deleteItem: DeleteFunc };
+    //   }) => handleDeleteDND(elem, deleteItem),
+    //   collect: (monitor: DropTargetMonitor) => ({
+    //     canDrop: monitor.canDrop(),
+    //     isOver: monitor.isOver(),
+    //   }),
+    // }));
 
-  // const handleDeleteDND = (
-  //   elem: ScreenMas | Module,
-  //   deleteItem: { deleteItem: DeleteFunc }
-  // ) => {
-  //   deleteItem.deleteItem(elem.id);
-  // };
-
-
-
+    // const handleDeleteDND = (
+    //   elem: ScreenMas | Module,
+    //   deleteItem: { deleteItem: DeleteFunc }
+    // ) => {
+    //   deleteItem.deleteItem(elem.id);
+    // };
 
     return (
       <ContentWrapper

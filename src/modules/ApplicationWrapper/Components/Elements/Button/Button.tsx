@@ -1,4 +1,8 @@
-import { Module, ParentParent } from "src/domains/ApplicationTypes";
+import {
+  DeleteFuncType,
+  Module,
+  ParentParent,
+} from "src/domains/ApplicationTypes";
 import { StyledButtonFullControlled } from "src/UI/Button/ButtonFullControlled";
 import {
   ItemTypesDND,
@@ -17,11 +21,15 @@ export const Button = ({
   FindIndex,
   ParentParent,
   newModules,
+  deleteItemFunc,
 }: { elem: Module; MoveCardFunc: any; FindIndex: any } & Pick<
   PropsDNDHook,
   "parent"
 > &
-  Pick<ParentParent, "ParentParent"> & { newModules: (n: any) => void }) => {
+  Pick<ParentParent, "ParentParent"> & {
+    newModules: (n: any) => void;
+    deleteItemFunc: DeleteFuncType;
+  }) => {
   const handleSetTarget = (e: MouseEvent) => {
     const { options, id, namePrivate, name } = elem;
 
@@ -38,11 +46,13 @@ export const Button = ({
     console.log(newElem);
     newModules(newElem);
   };
+
   const { isDragging, drag } = CustomDragHook({
     elem,
     FindIndex,
     parent,
     MoveCardFunc,
+    deleteItemFunc,
     typeDrag: ItemTypesDND.Button,
   });
 
@@ -57,7 +67,7 @@ export const Button = ({
       ref={(node: HTMLButtonElement) => drag(drop(node))}
       isDragging={isDragging}
       {...elem.options}
-      onClick={(e: any) => handleSetTarget(e)}
+      onClick={(e: MouseEvent) => handleSetTarget(e)}
     >
       {elem.options.name ? elem.options.name : ""}
     </StyledButtonFullControlled>

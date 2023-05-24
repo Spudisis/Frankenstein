@@ -10,6 +10,7 @@ export const CustomDragHook = ({
   FindIndex,
   MoveCardFunc,
   typeDrag,
+  deleteItemFunc,
 }: DragHook) => {
   const find = FindIndex(elem.id, parent);
   const originalIndex = find ? find.index : -1;
@@ -22,6 +23,7 @@ export const CustomDragHook = ({
         parent,
         ParentParent,
         originalIndex,
+        deleteItemFunc,
       },
       collect: (monitor) => ({
         isDragging: monitor.isDragging(),

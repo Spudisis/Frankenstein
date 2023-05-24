@@ -1,34 +1,23 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 
 import { HeaderOptionsInput } from "src/UI";
 import { InputStyles, PropsInput } from "../Options.types";
 
-export const Input = ({
+export const Input = <T,>({
   value,
   onChange,
   label,
   typeInput,
-  property
-}: InputStyles &
-  PropsInput<
-    | "height"
-    | "margin"
-    | "width"
-    | "name"
-    | "padding"
-    | "borderRadius"
-    | "nameModule"
-  >) => {
+  property,
+}: InputStyles<T> & PropsInput<T>) => {
   return (
     <HeaderOptionsInput>
       <label>{label}</label>
       <input
         type={typeInput}
-        value={value[property]}
-        onChange={e => {
-          // const number = e.target.value.replace(/[^0-9]/g, "");
-
-          onChange(e.target.value, property);
+        value={value[property] as string}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          onChange(e.target.value as T[keyof T], property);
         }}
       />
     </HeaderOptionsInput>

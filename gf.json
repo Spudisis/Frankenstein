@@ -1,341 +1,309 @@
 {
   "header": {
-    "name": "header1",
+    "name": "header2",
     "namePrivate": "Header",
-    "id": "a1411",
+    "id": "dsfjh56jq34",
     "options": {
-      "height": "50px",
-      "backgroundColor": "red",
-      "display": "flex",
-      "JustifyContent": "space-between"
+      "height": "60px",
+      "backgroundColor": "#e7c6c6",
+      "display": "flex"
     },
     "modules": [
+      {
+        "name": "button1",
+        "namePrivate": "Button",
+        "id": "1f08f6b5-3290-4e6d-aee2-abb8dbb35c9b",
+        "options": {
+          "nameModule": "button1",
+          "borderRadius": "5px",
+          "height": "30px",
+          "backgroundColor": "red",
+          "padding": "2px",
+          "color": "black",
+          "margin": "0px",
+          "name": "",
+          "width": "50px"
+        }
+      },
       {
         "name": "5111кпвы",
         "namePrivate": "Button",
         "options": {
-          "name": "but9",
+          "nameModule": "5111кпвы",
+          "borderRadius": "5px",
           "height": "50px",
-          "width": "90px",
-          "display": "flex",
-          "JustifyContent": "center"
+          "backgroundColor": "#3b1515",
+          "padding": "2px",
+          "color": "black",
+          "margin": "0px",
+          "name": "but9",
+          "width": "90px"
         },
-        "id": "ccd162fd-33ed-4778-90ab-271217027b0c"
+        "id": "a112de21-05be-4f00-8313-892c30ad7e20"
+      },
+      {
+        "name": "buttonfsa",
+        "namePrivate": "Button",
+        "id": "sukablyat",
+        "options": {
+          "nameModule": "buttonfsa",
+          "borderRadius": "5px",
+          "height": "30px",
+          "backgroundColor": "green",
+          "padding": "2px",
+          "color": "black",
+          "margin": "0px",
+          "name": "",
+          "width": "50px"
+        }
       }
-    ]
+    ],
+    "parent": 0
   },
   "footer": {
     "name": "Footer2",
     "namePrivate": "Footer",
     "id": "dsfjh56jq34",
-    "options": {
-      "height": "60px",
-      "backgroundColor": "black",
-      "color": "white"
-    },
+    "options": { "height": "6", "backgroundColor": "black", "display": "" },
     "modules": [
       {
         "name": "5111кпвы",
         "namePrivate": "Button",
-        "options": { "name": "but9", "height": "50px", "width": "90px" },
-        "id": "df5d0c02-9608-451c-8b3a-9bee1f67bea8"
+        "options": {
+          "nameModule": "5111кпвы",
+          "borderRadius": "5px",
+          "height": "50px",
+          "backgroundColor": "#7ed321",
+          "padding": "2px",
+          "color": "black",
+          "margin": "0px",
+          "name": "but9",
+          "width": "90px"
+        },
+        "id": "60a04d96-dabe-48af-8e1c-e066c992084a"
+      },
+      {
+        "name": "button3",
+        "namePrivate": "Button",
+        "id": "efd2a2ea-7c12-4e7b-b5eb-60a06806f456",
+        "options": {
+          "nameModule": "button3",
+          "borderRadius": "5px",
+          "height": "50px",
+          "backgroundColor": "#bb4b4b",
+          "padding": "2px",
+          "color": "black",
+          "margin": "0px",
+          "name": "",
+          "width": "60px"
+        }
       },
       {
         "name": "5111кпвы",
         "namePrivate": "Button",
-        "options": { "name": "but9", "height": "50px", "width": "90px" },
-        "id": "392e9376-463c-4301-b007-742b75d26f3f"
+        "options": {
+          "nameModule": "5111кпвы",
+          "borderRadius": "5px",
+          "height": "50px",
+          "backgroundColor": "#aa2525",
+          "padding": "2px",
+          "color": "black",
+          "margin": "0px",
+          "name": "but9",
+          "width": "90px"
+        },
+        "id": "ba9525a2-6a6c-4148-a3e5-f8097f685ba5"
       },
       {
         "name": "5111кпвы",
         "namePrivate": "Button",
-        "options": { "name": "but9", "height": "50px", "width": "90px" },
-        "id": "75b7eb91-1587-4218-b402-18b96c072fb5"
+        "options": {
+          "nameModule": "5111кпвы",
+          "borderRadius": "5px",
+          "height": "50px",
+          "backgroundColor": "#1a48e0",
+          "padding": "2px",
+          "color": "black",
+          "margin": "0px",
+          "name": "but9",
+          "width": "90px"
+        },
+        "id": "1901837d-0ac3-478a-acd5-7ffd4686c060"
       }
-    ]
+    ],
+    "parent": 1
   },
   "screens": [
     {
       "name": "screen new",
       "namePrivate": "newScreen",
-      "id": "a1eb1407-5105-4cc7-8838-b0fbc8b5adbd",
+      "id": "c2084c90-6b4c-4ffc-a765-2aa5f65fb585",
       "options": {},
       "modules": [
         {
-          "name": "button3",
-          "namePrivate": "Button",
-          "id": "1b907540-9ac4-41d4-9032-77a89955518b",
+          "name": "hdhadfhsd",
+          "namePrivate": "Wrapper",
+          "id": "1a95221b-ee34-40e5-a495-329c3f16e443",
           "options": {
-            "height": "50px",
-            "backgroundColor": "pink",
-            "width": "100%"
-          }
-        },
-        {
-          "name": "buttonfsa",
-          "namePrivate": "Button",
-          "id": "7d188c78-cfb0-429e-88e2-6218ab70a0b1",
-          "options": { "height": "30px", "backgroundColor": "green" }
-        },
+            "color": "black",
+            "nameModule": "hdhadfhsd",
+            "borderRadius": "5px",
+            "height": "auto",
+            "backgroundColor": "#000000",
+            "padding": "2px",
+            "margin": "0px",
+            "width": "auto",
+            "display": "grid"
+          },
+          "modules": [
+            {
+              "name": "dsfhdfhdf",
+              "namePrivate": "Button",
+              "id": "96e65185-63a9-44b6-af43-5cf696590549",
+              "options": {
+                "nameModule": "dsfhdfhdf",
+                "borderRadius": "5px",
+                "height": "100px",
+                "backgroundColor": "#bd4d4d",
+                "padding": "2px",
+                "color": "black",
+                "margin": "0px",
+                "name": "ffffhdfdh",
+                "width": "auto"
+              }
+            },
+            {
+              "name": "wrapper1",
+              "namePrivate": "Wrapper",
+              "id": "ed98a540-483f-4dba-ad5b-a5cf7115a584",
+              "options": {
+                "color": "black",
+                "nameModule": "wrapper1",
+                "borderRadius": "5px",
+                "height": "auto",
+                "backgroundColor": "#3d0000",
+                "padding": "2px",
+                "margin": "0px",
+                "name": "",
+                "width": "auto",
+                "display": "grid"
+              },
+              "modules": [
+                {
+                  "name": "buttonfsa",
+                  "namePrivate": "Button",
+                  "id": "ea7a8a8c-0c3d-4d5c-90fd-8baf599f5983",
+                  "options": {
+                    "nameModule": "buttonfsa",
+                    "borderRadius": "5px",
+                    "height": "30px",
+                    "backgroundColor": "#ffffff",
+                    "padding": "2px",
+                    "color": "black",
+                    "margin": "0px",
+                    "name": "",
+                    "width": "auto"
+                  }
+                },
+                {
+                  "name": "buttonfsa",
+                  "namePrivate": "Button",
+                  "id": "b08abcb1-6f36-4c3b-8a7b-3aa3f284cc86",
+                  "options": {
+                    "nameModule": "buttonfsa",
+                    "borderRadius": "5px",
+                    "height": "30px",
+                    "backgroundColor": "#2978ce",
+                    "padding": "2px",
+                    "color": "#d82929",
+                    "margin": "0px",
+                    "name": "",
+                    "width": "auto"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "buttonfsa",
+              "namePrivate": "Button",
+              "id": "560bdc00-8c30-4e32-a3c2-8725328a0f8e",
+              "options": {
+                "nameModule": "buttonfsa",
+                "borderRadius": "5px",
+                "height": "30px",
+                "backgroundColor": "#462424",
+                "padding": "2px",
+                "color": "black",
+                "margin": "0px",
+                "name": "",
+                "width": "auto"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "screen new",
+      "namePrivate": "newScreen",
+      "id": "393758f4-2791-4662-a34d-a0da5f87d9ff",
+      "modules": [
         {
           "name": "wrapper1",
           "namePrivate": "Wrapper",
-          "id": "d1b747c1-7e58-4c6c-a130-f8f05b34f0d1",
+          "id": "7d1c8a54-8939-49b6-a367-c0943dc25f94",
           "options": {
-            "backgroundColor": "green",
-            "display": "flex",
-            "JustifyContent": "center"
+            "color": "black",
+            "nameModule": "wrapper1",
+            "borderRadius": "0px",
+            "height": "auto",
+            "backgroundColor": "#e08332",
+            "padding": "2px",
+            "margin": "0px",
+            "width": "auto",
+            "display": "flex"
           },
           "modules": [
             {
               "name": "buttonfsa",
               "namePrivate": "Button",
-              "id": "6109415f-cdbb-4134-bfc7-86a80b005bcf",
+              "id": "27fc8959-866e-4c47-b080-f7df892d20a9",
               "options": { "height": "30px", "backgroundColor": "green" }
             },
             {
               "name": "buttonfsa",
               "namePrivate": "Button",
-              "id": "bcca37fa-ceff-4534-9952-4a4514e527c0",
+              "id": "ad3f7304-f4a2-4ad0-8a0c-ddd0cf31828d",
               "options": { "height": "30px", "backgroundColor": "yellow" }
-            },
-            {
-              "name": "buttonfsa",
-              "namePrivate": "Button",
-              "id": "75a3701f-b945-42db-aba2-fc5de2db0e74",
-              "options": { "height": "30px", "backgroundColor": "green" }
-            },
-            {
-              "name": "wrapper1",
-              "namePrivate": "Wrapper",
-              "id": "1295a239-9e12-465f-9262-d75110444d47",
-              "options": {
-                "color": "black",
-                "nameModule": "wrapper1",
-                "borderRadius": "5px",
-                "height": "100px",
-                "backgroundColor": "#2c1b1b",
-                "padding": "2px",
-                "margin": "0px",
-                "name": "",
-                "width": "100px",
-                "display": "flex"
-              },
-              "modules": [
-                {
-                  "name": "buttonfsa",
-                  "namePrivate": "Button",
-                  "id": "2ceef412-05da-4f8a-b0d3-9538e831c5cc",
-                  "options": { "height": "30px", "backgroundColor": "green" }
-                },
-                {
-                  "name": "buttonfsa",
-                  "namePrivate": "Button",
-                  "id": "36d1f904-ba11-4f61-a13c-01dfc912df5d",
-                  "options": { "height": "30px", "backgroundColor": "yellow" }
-                }
-              ]
-            },
-            {
-              "name": "wrapper1",
-              "namePrivate": "Wrapper",
-              "id": "70bf8aaa-1c84-4f28-9c48-7d75e496035f",
-              "options": {
-                "backgroundColor": "green",
-                "display": "flex",
-                "JustifyContent": "center"
-              },
-              "modules": [
-                {
-                  "name": "buttonfsa",
-                  "namePrivate": "Button",
-                  "id": "d22dfa75-c9c0-4d22-84cb-019216bdceee",
-                  "options": { "height": "30px", "backgroundColor": "green" }
-                },
-                {
-                  "name": "buttonfsa",
-                  "namePrivate": "Button",
-                  "id": "ce862411-e55c-4cee-ad93-5be30f13a6d4",
-                  "options": { "height": "30px", "backgroundColor": "yellow" }
-                }
-              ]
-            },
-            {
-              "item": {
-                "name": "wrapper1",
-                "namePrivate": "Wrapper",
-                "id": "d1b747c1-7e58-4c6c-a130-f8f05b34f0d1",
-                "options": {
-                  "backgroundColor": "green",
-                  "display": "flex",
-                  "JustifyContent": "center"
-                },
-                "modules": [
-                  {
-                    "name": "buttonfsa",
-                    "namePrivate": "Button",
-                    "id": "6109415f-cdbb-4134-bfc7-86a80b005bcf",
-                    "options": { "height": "30px", "backgroundColor": "green" }
-                  },
-                  {
-                    "name": "buttonfsa",
-                    "namePrivate": "Button",
-                    "id": "bcca37fa-ceff-4534-9952-4a4514e527c0",
-                    "options": { "height": "30px", "backgroundColor": "yellow" }
-                  },
-                  {
-                    "name": "buttonfsa",
-                    "namePrivate": "Button",
-                    "id": "75a3701f-b945-42db-aba2-fc5de2db0e74",
-                    "options": { "height": "30px", "backgroundColor": "green" }
-                  },
-                  {
-                    "name": "wrapper1",
-                    "namePrivate": "Wrapper",
-                    "id": "1295a239-9e12-465f-9262-d75110444d47",
-                    "options": {
-                      "color": "black",
-                      "nameModule": "wrapper1",
-                      "borderRadius": "5px",
-                      "height": "100px",
-                      "backgroundColor": "#2c1b1b",
-                      "padding": "2px",
-                      "margin": "0px",
-                      "name": "",
-                      "width": "100px",
-                      "display": "flex"
-                    },
-                    "modules": [
-                      {
-                        "name": "buttonfsa",
-                        "namePrivate": "Button",
-                        "id": "2ceef412-05da-4f8a-b0d3-9538e831c5cc",
-                        "options": {
-                          "height": "30px",
-                          "backgroundColor": "green"
-                        }
-                      },
-                      {
-                        "name": "buttonfsa",
-                        "namePrivate": "Button",
-                        "id": "36d1f904-ba11-4f61-a13c-01dfc912df5d",
-                        "options": {
-                          "height": "30px",
-                          "backgroundColor": "yellow"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "name": "wrapper1",
-                    "namePrivate": "Wrapper",
-                    "id": "70bf8aaa-1c84-4f28-9c48-7d75e496035f",
-                    "options": {
-                      "backgroundColor": "green",
-                      "display": "flex",
-                      "JustifyContent": "center"
-                    },
-                    "modules": [
-                      {
-                        "name": "buttonfsa",
-                        "namePrivate": "Button",
-                        "id": "d22dfa75-c9c0-4d22-84cb-019216bdceee",
-                        "options": {
-                          "height": "30px",
-                          "backgroundColor": "green"
-                        }
-                      },
-                      {
-                        "name": "buttonfsa",
-                        "namePrivate": "Button",
-                        "id": "ce862411-e55c-4cee-ad93-5be30f13a6d4",
-                        "options": {
-                          "height": "30px",
-                          "backgroundColor": "yellow"
-                        }
-                      }
-                    ]
-                  }
-                ],
-                "parent": "a1eb1407-5105-4cc7-8838-b0fbc8b5adbd",
-                "originalIndex": 0
-              },
-              "id": "26c74c3b-72ea-48d3-881e-f3d96e1fa4aa"
             }
           ]
-        },
-        {
-          "item": {
-            "name": "button3",
-            "namePrivate": "Button",
-            "id": "1b907540-9ac4-41d4-9032-77a89955518b",
-            "options": {
-              "height": "50px",
-              "backgroundColor": "pink",
-              "width": "100%"
-            },
-            "parent": "a1eb1407-5105-4cc7-8838-b0fbc8b5adbd",
-            "originalIndex": 2
-          },
-          "id": "09039a62-de0a-4a50-9318-c122d8d676e3"
-        },
-        {
-          "item": {
-            "name": "button3",
-            "namePrivate": "Button",
-            "id": "1b907540-9ac4-41d4-9032-77a89955518b",
-            "options": {
-              "height": "50px",
-              "backgroundColor": "pink",
-              "width": "100%"
-            },
-            "parent": "a1eb1407-5105-4cc7-8838-b0fbc8b5adbd",
-            "originalIndex": 2
-          },
-          "id": "44d0b954-89e3-4548-b8c6-178e06b21cdf"
-        },
-        {
-          "item": {
-            "name": "button3",
-            "namePrivate": "Button",
-            "id": "1b907540-9ac4-41d4-9032-77a89955518b",
-            "options": {
-              "height": "50px",
-              "backgroundColor": "pink",
-              "width": "100%"
-            },
-            "parent": "a1eb1407-5105-4cc7-8838-b0fbc8b5adbd",
-            "originalIndex": 2
-          },
-          "id": "78a68a32-8636-4c49-af24-95e0fd1411ff"
-        },
-        {
-          "item": {
-            "name": "button3",
-            "namePrivate": "Button",
-            "id": "1b907540-9ac4-41d4-9032-77a89955518b",
-            "options": {
-              "height": "50px",
-              "backgroundColor": "pink",
-              "width": "100%"
-            },
-            "parent": "a1eb1407-5105-4cc7-8838-b0fbc8b5adbd",
-            "originalIndex": 2
-          },
-          "id": "c1ea67e8-82bb-41d7-a4ab-efed6c809046"
-        },
-        {
-          "item": {
-            "name": "buttonfsa",
-            "namePrivate": "Button",
-            "id": "7d188c78-cfb0-429e-88e2-6218ab70a0b1",
-            "options": { "height": "30px", "backgroundColor": "green" },
-            "parent": "a1eb1407-5105-4cc7-8838-b0fbc8b5adbd",
-            "originalIndex": 2
-          },
-          "id": "926b0896-835b-4098-85b6-c9aa54eb0d0e"
         }
-      ]
+      ],
+      "options": {}
+    },
+    {
+      "name": "screen new",
+      "namePrivate": "newScreen",
+      "id": "ed242f2b-35b8-45ee-a21b-c78436f5d58e",
+      "modules": [
+        {
+          "name": "button3",
+          "namePrivate": "Button",
+          "id": "197a8da3-5d82-49b1-b3e1-882916f3e353",
+          "options": {
+            "nameModule": "button3",
+            "borderRadius": "5px",
+            "height": "50px",
+            "backgroundColor": "pink",
+            "padding": "2px",
+            "color": "black",
+            "margin": "0px",
+            "name": "",
+            "width": "100%"
+          }
+        }
+      ],
+      "options": {}
     }
   ]
 }

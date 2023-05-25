@@ -52,7 +52,7 @@ export const Text = ({
     parent,
     MoveCardFunc,
     deleteItemFunc,
-    typeDrag: ItemTypesDND.Text,
+    typeDrag: 'Text',
   });
 
   const { drop } = CustomDropHook({

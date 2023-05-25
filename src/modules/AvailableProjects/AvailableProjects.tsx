@@ -2,6 +2,7 @@ import React from "react";
 import { Wrapper } from "src/components";
 import { StoreProjects } from "./store/Store";
 import { observer } from "mobx-react-lite";
+import { ShowMoreProp } from "src/domains";
 
 export const AvailableProjects = observer(() => {
   const { loading, projects, size, offset, limit } = StoreProjects;
@@ -10,8 +11,8 @@ export const AvailableProjects = observer(() => {
     StoreProjects.getProjects();
   }, [offset]);
 
-  const ShowMore = (event: any) => {
-    StoreProjects.offset = event.selected + 1;
+  const ShowMore = (selectedItem: ShowMoreProp) => {
+    StoreProjects.offset = selectedItem.selected + 1;
   };
 
   return (

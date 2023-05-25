@@ -53,7 +53,7 @@ export const Button = ({
     parent,
     MoveCardFunc,
     deleteItemFunc,
-    typeDrag: ItemTypesDND.Button,
+    typeDrag: "Button",
   });
 
   const { drop } = CustomDropHook({

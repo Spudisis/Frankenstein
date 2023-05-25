@@ -4,7 +4,10 @@ import { PropDrag } from "../../components/CustomDragNDrop/CustomDNDHook";
 
 import { ChildrenProp } from "../ChildrenProp";
 
-export const HeaderMobile = ({ children, refDrag }: ChildrenProp & { refDrag: PropDrag }) => {
+export const HeaderMobile = ({
+  children,
+  refDrag,
+}: ChildrenProp & { refDrag: PropDrag }) => {
   return <StyledHeaderMobile ref={refDrag}>{children}</StyledHeaderMobile>;
 };
 

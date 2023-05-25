@@ -1,7 +1,6 @@
 import React from "react";
 import { ConnectDropTarget, useDrag } from "react-dnd";
 import { DeleteFuncType, typeFH } from "src/domains/";
-import { CreateId } from "../CreateId/CreateId";
 
 export type PropsDNDHook = {
   name: string;
@@ -10,8 +9,7 @@ export type PropsDNDHook = {
   deleteItemFunc?: DeleteFuncType;
 };
 export type PropDrag = ConnectDropTarget;
-
-export type TypeItemTypesDND = {};
+export type ItemType = keyof typeof ItemTypesDND;
 
 export const ItemTypesDND = {
   Header: "Header",

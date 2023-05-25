@@ -1,8 +1,8 @@
 import React from "react";
 
-export const Debounce = (cb: any) => {
+export const Debounce = (cb: Function) => {
   let running = false;
-  let i: any;
+  let i: NodeJS.Timeout;
   return function () {
     if (running) {
       clearTimeout(i);

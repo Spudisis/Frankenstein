@@ -1,7 +1,8 @@
 import React from "react";
-import { Module } from "src/domains";
+import { Module, SubModules } from "src/domains";
+import { FindIndexPropComponent } from "./FindIndexDecompose.types";
 
-export const FindIndexDecompose = ({ modules }: any) => {
+export const FindIndexDecompose = ({ modules }: FindIndexPropComponent) => {
   const FindIndex = React.useCallback(
     (id: string) => {
       if (!modules) {
@@ -9,7 +10,7 @@ export const FindIndexDecompose = ({ modules }: any) => {
       }
 
       const card = modules.filter(
-        (c: Module | undefined) => typeof c !== "undefined" && c.id === id
+        (c: Module | undefined | SubModules) => typeof c !== "undefined" && c.id === id
       )[0];
       if (card) {
         return {

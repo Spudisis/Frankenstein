@@ -1,21 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import styled from "styled-components";
-import { Button, ScreenStyle } from "../../../../UI";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { ParamsScreen } from "../../../../UI/ScreenStyled/ScreenStyled";
-import { observer } from "mobx-react-lite";
-import ApplicationData from "../../../../store/Application";
-// type CreateScreenProps<T> = {
-//   mas: Prop<T>;
-//   newStr: T;
-//   setMas: (n: Prop<T>) => void;
-// };
 
-type Prop<T> = (string | T)[];
+import styled from "styled-components";
+import { Button, ScreenStyle } from "src/UI";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { ParamsScreen } from "src/UI/ScreenStyled/ScreenStyled";
+import { observer } from "mobx-react-lite";
+import ApplicationData from "src/store/Application";
 
 export const CreateScreen = observer(({ margin }: ParamsScreen) => {
-  const handleCreate = (_: any) => {
+  const handleCreate = (_: unknown) => {
     ApplicationData.addScreen();
   };
   return (

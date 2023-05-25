@@ -47,7 +47,7 @@ export const WrapperCustom = ({
     parent,
     FindIndex,
     MoveCardFunc,
-    typeDrag: ItemTypesDND.Wrapper,
+    typeDrag: 'Wrapper',
     deleteItemFunc,
   });
 

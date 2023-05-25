@@ -5,7 +5,7 @@ import { Wrapper } from "src/components/WrapperProjects";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
 import { AuthStore } from "src/store/Auth";
-import { STATUS_LOADING } from "src/domains";
+import { ShowMoreProp } from "src/domains";
 
 export const ProjectsUser = observer(() => {
   const idHostUser = AuthStore.user?.id;
@@ -24,7 +24,7 @@ export const ProjectsUser = observer(() => {
     }
   }, [userId, idHostUser]);
 
-  const ShowMore = (event: any) => {
+  const ShowMore = (event: ShowMoreProp) => {
     StoreProjectsUser.offset = event.selected + 1;
   };
 

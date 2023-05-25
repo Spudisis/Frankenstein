@@ -1,5 +1,5 @@
 import React from "react";
-import { useDrag } from "react-dnd";
+import { DragSourceHookSpec, useDrag } from "react-dnd";
 import { ItemTypesDND } from "src/components/CustomDragNDrop/CustomDNDHook";
 import { DragHook } from "./customDragHook.types";
 
@@ -12,12 +12,12 @@ export const CustomDragHook = ({
   typeDrag,
   deleteItemFunc,
 }: DragHook) => {
-  const find = FindIndex(elem.id, parent);
+  const find = FindIndex(elem.id);
   const originalIndex = find ? find.index : -1;
 
   const [{ isDragging }, drag] = useDrag(
     () => ({
-      type: typeDrag,
+      type: typeDrag as any,
       item: {
         ...elem,
         parent,
@@ -34,7 +34,6 @@ export const CustomDragHook = ({
         const didDrop = monitor.didDrop();
 
         if (!didDrop) {
-          console.log(droppedId, originalIndex);
           MoveCardFunc({
             draggedId: droppedId,
             originalIndex,

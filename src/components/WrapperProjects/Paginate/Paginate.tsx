@@ -2,13 +2,14 @@ import React from "react";
 import ReactPaginate from "react-paginate";
 import s from "./Styles.module.scss";
 import { StylesPagination } from "./Paginate.styles";
+import { PaginateType } from "./Paginate.types";
 export const Paginate = ({
   ShowMore,
   size,
   limit,
   statusLoading,
   page,
-}: any) => {
+}: PaginateType) => {
   const [sizes, setSize] = React.useState(window.innerWidth);
 
   //добавить тротлиег
@@ -27,7 +28,6 @@ export const Paginate = ({
     <StylesPagination load={statusLoading}>
       <ReactPaginate
         forcePage={page}
-        onClick={statusLoading}
         breakLabel="..."
         nextLabel=">"
         onPageChange={ShowMore}

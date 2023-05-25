@@ -9,6 +9,8 @@ export type WrapperTypes = {
   offset: number;
   limit: number;
 
-  ShowMore: (e: any) => void;
+  ShowMore: (selectedItem: { selected: number }) => void;
   path?: string;
 };
+
+

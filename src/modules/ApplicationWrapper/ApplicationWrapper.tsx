@@ -15,11 +15,7 @@ export const ApplicationWrapper = observer(() => {
   const header = ApplicationData.ApplicationHeader;
   const footer = ApplicationData.ApplicationFooter;
 
-  React.useEffect(() => {
-    console.log("update!!");
-  }, [mas]);
   const SaveProjectThrottle = () => {
-    console.log("save");
     App.saveProject();
   };
   const throttledFunc = useThrottle(SaveProjectThrottle, 3000);

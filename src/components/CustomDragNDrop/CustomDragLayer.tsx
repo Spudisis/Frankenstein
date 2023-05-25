@@ -4,12 +4,12 @@ import { useDragLayer } from "react-dnd";
 import { MaxWidth } from "../../UI";
 import { ItemTypesDND } from "./CustomDNDHook";
 
-import { MainFooter, MainHeader } from "../../ModulesConstructor";
+import { FHMain } from "../../modules/ApplicationWrapper/Components/FHMain";
 import {
   Button,
   Text,
 } from "src/modules/ApplicationWrapper/Components/Elements";
-import { Module, SubModules } from "src/domains";
+import { Module, SubModules, typeFH } from "src/domains";
 import { MaxWidthButton, MaxWidthText } from "src/UI/CustomLayoutDND/MaxWidth";
 import { WrapperCustom } from "src/modules/ApplicationWrapper/Components";
 const layerStyles: CSSProperties = {
@@ -59,13 +59,13 @@ export const CustomDragLayer = () => {
         //если драгбл в руках это бокс
         return (
           <MaxWidth>
-            <MainHeader {...item} />
+            <FHMain {...{ ...item, parent: typeFH.Header }} />
           </MaxWidth>
         );
       case ItemTypesDND.PicturesFooter:
         return (
           <MaxWidth>
-            <MainFooter {...item} />
+            <FHMain {...{ ...item, parent: typeFH.Footer }} />
           </MaxWidth>
         );
       case ItemTypesDND.PicturesButton:

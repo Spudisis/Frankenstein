@@ -10,15 +10,12 @@ import {
 } from "../Options";
 import { observer } from "mobx-react-lite";
 import App from "src/store/Application";
+import { typeFH } from "src/domains";
 
 export const FindOption = observer(() => {
   const target = App.target;
-  if (target.namePrivate === "newScreen") {
-    console.log(target.namePrivate);
-  }
+
   const [masOptions, setMasOptions] = React.useState<ReactElement[]>([]);
-  const idHeader = App.ApplicationHeader.id;
-  const idFooter = App.ApplicationFooter.id;
 
   React.useEffect(() => {
     if (!target.id) {
@@ -26,8 +23,13 @@ export const FindOption = observer(() => {
     }
 
     const mas: ReactElement[] = [];
-
-    if (target.id === idHeader || target.id === idFooter) {
+    console.log(target.namePrivate === "Footer");
+    if (
+      target.namePrivate === typeFH[0] ||
+      target.namePrivate === typeFH[1] ||
+      target.namePrivate === "Header" ||
+      target.namePrivate === "Footer"
+    ) {
       mas.push(
         <HFOptions
           key={target.id}

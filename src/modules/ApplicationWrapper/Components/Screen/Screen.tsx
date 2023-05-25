@@ -19,11 +19,6 @@ import {
   Module,
   ScreenAddElemeny,
 } from "../../../../domains/ApplicationTypes";
-import {
-  MainConstructor,
-  MainFooter,
-  MainHeader,
-} from "../../../../ModulesConstructor";
 
 import { useDrop } from "react-dnd";
 import Dragging from "../../../../store/DraggingFH";
@@ -36,6 +31,8 @@ import { STATUS_LOADING } from "src/domains";
 import { ChangeLayoutModule } from "src/utils";
 import { TestStore } from "../../store";
 import { ModalChooseTargetScreenHF } from "../ModalChooseTargetScreenHF";
+import { FHMain } from "../FHMain";
+import { MainConstructor } from "../MainConstructor";
 
 type ScreenProps = ParamsScreen & { elem: ScreenMas } & {
   throttledFunc: () => void;
@@ -50,14 +47,20 @@ export const Screen = observer(
       throttledFunc(); // Вызываем функцию троттлинга при изменении зависимостей
     }, [elem, elem.modules, header, footer, header.modules, footer.modules]);
 
-    const [, dropHeader]: DropDND = useDrop(() => ({
-      accept: [ItemTypesDND.PicturesHeader],
-      drop: (item: FHObject) => SetNewHF(typeFH.Header, item),
-    }));
-    const [, dropFooter]: DropDND = useDrop(() => ({
-      accept: [ItemTypesDND.PicturesFooter],
-      drop: (item: FHObject) => SetNewHF(typeFH.Footer, item),
-    }));
+    const [, dropHeader]: DropDND = useDrop(
+      () => ({
+        accept: [ItemTypesDND.PicturesHeader],
+        drop: (item: FHObject) => SetNewHF(typeFH.Header, item),
+      }),
+      [elem, header]
+    );
+    const [, dropFooter]: DropDND = useDrop(
+      () => ({
+        accept: [ItemTypesDND.PicturesFooter],
+        drop: (item: FHObject) => SetNewHF(typeFH.Footer, item),
+      }),
+      [elem, footer]
+    );
     const [, dropMain]: DropDND = useDrop(() => ({
       accept: [
         ItemTypesDND.Main,
@@ -76,7 +79,7 @@ export const Screen = observer(
     }));
 
     const SetNewHF = (type: typeFH, item: FHObject) => {
-      TestStore.item = item;
+      TestStore.setItem = item;
       TestStore.typeFH = type;
       TestStore.idScreen = elem.id;
       TestStore.openModalChooseHFScreen = true;
@@ -98,29 +101,30 @@ export const Screen = observer(
           {/* Проверяем наличие ключей у хедера, если есть, показываем хедер, если нет - проверяем в каком состоянии драггинг для сета
           хедера и футера, при тру - показывается прозрачный блок, в который можно сетнуть хедер/футер, при фолс - пустой блок
         */}
-          {
-            // elem.uncommonHeader &&
-            // Object.keys(elem.uncommonHeader).length !== 0 &&
-            // elem.uncommonHeader.id ? (
-            //   <HeaderMobile refDrag={dropHeader}>
-            //     <MainHeader
-            //       {...{ ...elem.uncommonHeader, parent: typeFH.Header }}
-            //     />
-            //   </HeaderMobile>
-            // ) :
-            Object.keys(header).length !== 0 && header.id ? (
-              <HeaderMobile refDrag={dropHeader}>
-                <MainHeader {...{ ...header, parent: typeFH.Header }} />
-              </HeaderMobile>
-            ) : Dragging.draggingActive ? (
-              <AbsoluteWrapperBlock
-                refDrag={dropHeader}
-                top={"0px"}
-              ></AbsoluteWrapperBlock>
-            ) : (
-              <div></div>
-            )
-          }
+          {elem.uncommonHeader &&
+          Object.keys(elem.uncommonHeader).length !== 0 &&
+          elem.uncommonHeader.id ? (
+            <HeaderMobile refDrag={dropHeader}>
+              <FHMain
+                {...{
+                  ...elem.uncommonHeader,
+                  parent: typeFH.Header,
+                  idScreen: elem.id,
+                }}
+              />
+            </HeaderMobile>
+          ) : Object.keys(header).length !== 0 && header.id ? (
+            <FooterMobile refDrag={dropHeader}>
+              <FHMain {...{ ...header, parent: typeFH.Header, idScreen: "" }} />
+            </FooterMobile>
+          ) : Dragging.draggingActive ? (
+            <AbsoluteWrapperBlock
+              refDrag={dropHeader}
+              top={"0px"}
+            ></AbsoluteWrapperBlock>
+          ) : (
+            <div></div>
+          )}
 
           <MobileMain refDrag={dropMain}>
             <>
@@ -131,9 +135,21 @@ export const Screen = observer(
           </MobileMain>
 
           {/* та же логика, что и у хедера */}
-          {Object.keys(footer).length !== 0 && footer.id ? (
+          {elem.uncommonFooter &&
+          Object.keys(elem.uncommonFooter).length !== 0 &&
+          elem.uncommonFooter.id ? (
+            <HeaderMobile refDrag={dropFooter}>
+              <FHMain
+                {...{
+                  ...elem.uncommonFooter,
+                  parent: typeFH.Footer,
+                  idScreen: elem.id,
+                }}
+              />
+            </HeaderMobile>
+          ) : Object.keys(footer).length !== 0 && footer.id ? (
             <FooterMobile refDrag={dropFooter}>
-              <MainFooter {...{ ...footer, parent: typeFH.Footer }} />
+              <FHMain {...{ ...footer, parent: typeFH.Footer, idScreen: "" }} />
             </FooterMobile>
           ) : Dragging.draggingActive ? (
             <AbsoluteWrapperBlock

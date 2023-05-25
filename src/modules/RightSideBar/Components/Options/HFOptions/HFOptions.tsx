@@ -48,7 +48,7 @@ export const HFOptions = observer(
       gridColumnGap: options.gridColumnGap ? options.gridColumnGap : "",
       gridRowGap: options.gridRowGap ? options.gridRowGap : "",
     });
-
+    
     React.useEffect(() => {
       changeOptions({
         options: styles,

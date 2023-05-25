@@ -15,10 +15,10 @@ import { LayoutList } from "../LayoutList";
 
 export const ListItems = observer(() => {
   const target = App.target;
-
+  const AppScreens = App.ApplicationScreens;
   const ScreensOptions =
-    App.ApplicationScreens &&
-    App.ApplicationScreens.map((elem: ScreenMas) => {
+    AppScreens &&
+    AppScreens.map((elem: ScreenMas) => {
       const changeModules = (modules: any) => {
         const newScreen = { ...elem, modules: modules };
         App.changeScreen(newScreen);
@@ -42,27 +42,60 @@ export const ListItems = observer(() => {
           options={elem.options}
           active={elem.id === target.id}
           nesting={1}
-          last={elem.modules && elem.modules.length > 0 ? false : true}
-        >
-          {
-            <LayoutList
-              target={target}
-              subModule={elem}
-              changeTarget={changeTarget}
-              key={elem.id}
-              nesting={2}
-              changeModules={changeModules}
-            />
+          last={
+            (elem.modules && elem.modules.length > 0) ||
+            (elem.uncommonFooter && elem.uncommonFooter.id) ||
+            (elem.uncommonHeader && elem.uncommonHeader.id)
+              ? false
+              : true
           }
+        >
+          <>
+            {elem.uncommonFooter &&
+              Object.keys(elem.uncommonFooter).length !== 0 &&
+              elem.uncommonFooter.id && (
+                <HeaderFooter
+                  data={elem.uncommonFooter}
+                  handleChangeTarget={changeTarget}
+                  target={target}
+                  parent={typeFH.Footer}
+                  nesting={2}
+                  screenId={elem.id}
+                />
+              )}
+            {elem.uncommonHeader &&
+              Object.keys(elem.uncommonHeader).length !== 0 &&
+              elem.uncommonHeader.id && (
+                <HeaderFooter
+                  data={elem.uncommonHeader}
+                  handleChangeTarget={changeTarget}
+                  target={target}
+                  parent={typeFH.Header}
+                  nesting={2}
+                  screenId={elem.id}
+                />
+              )}
+            {
+              <LayoutList
+                target={target}
+                subModule={elem}
+                changeTarget={changeTarget}
+                nesting={2}
+                changeModules={changeModules}
+              />
+            }
+          </>
         </Details>
       );
     });
+
   return (
     <>
       <SidebarName>Layout</SidebarName>
       <div>
         {App.ApplicationFooter.id && (
           <HeaderFooter
+            screenId=""
             data={App.ApplicationFooter}
             handleChangeTarget={changeTarget}
             target={target}
@@ -73,6 +106,7 @@ export const ListItems = observer(() => {
       <div>
         {App.ApplicationHeader.id && (
           <HeaderFooter
+            screenId=""
             data={App.ApplicationHeader}
             handleChangeTarget={changeTarget}
             target={target}

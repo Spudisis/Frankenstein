@@ -7,3 +7,4 @@ export * from "./customDropHook";
 export * from "./FindIndexDecompose";
 export * from "./MoveCardDecompose";
 export * from "./ModalChooseTargetScreenHF";
+export * from "./FHMain";

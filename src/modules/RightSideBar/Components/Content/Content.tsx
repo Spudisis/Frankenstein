@@ -45,6 +45,7 @@ export const Content = observer(
       id,
       deleteItemFunc,
     }: Pick<ScreenAddElemeny, "id" | "deleteItemFunc">) => {
+      console.log(id);
       if (deleteItemFunc) {
         App.clearTarget(id);
         deleteItemFunc({ id });

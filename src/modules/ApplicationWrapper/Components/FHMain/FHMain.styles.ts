@@ -28,3 +28,10 @@ export const HFStyles = styled.div<any>`
         `
       : ""}
 `;
+
+export const StyledFooter = styled(HFStyles)`
+  border-radius: 0px 0px 25px 25px;
+`;
+export const HeaderConstructor = styled(HFStyles)`
+  border-radius: 25px 25px 0px 0px;
+`;

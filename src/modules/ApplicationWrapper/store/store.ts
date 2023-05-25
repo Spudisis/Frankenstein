@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { CreateId } from "src/components";
 import { FHObject, typeFH } from "src/domains";
 import Application from "src/store/Application";
 
@@ -9,8 +10,10 @@ class StoreTest {
   test = "";
   openModalChooseHFScreen = false;
   typeFH: null | typeFH = null;
-  item: FHObject | null = null;
-
+  private item: FHObject | null = null;
+  set setItem(value: FHObject | null) {
+    this.item = { ...value, id: CreateId() };
+  }
   idScreen: string = "";
   setHFtoAll() {
     console.log(this.typeFH, this.item);

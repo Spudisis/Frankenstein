@@ -155,6 +155,7 @@ class ApplicationData {
 
   //save (check)
   changeFooterHeader(privateName: typeFH, obj: FHObject) {
+    console.log("set wtf");
     if (privateName === typeFH.Header) {
       this.ApplicationHeader = obj;
     }

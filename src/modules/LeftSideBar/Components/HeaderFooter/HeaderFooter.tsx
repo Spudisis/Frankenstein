@@ -13,24 +13,34 @@ import { LayoutList } from "../LayoutList";
 import { ChangeOptionsProp } from "src/domains";
 
 export const HeaderFooter = observer(
-  ({ data, handleChangeTarget, target, parent }: Props) => {
-    React.useEffect(() => {
-      console.log("TARGETHeaderFooter:" + target.name);
-    }, [target]);
-
+  ({
+    data,
+    handleChangeTarget,
+    target,
+    parent,
+    screenId,
+    nesting = 0,
+  }: Props) => {
     const changeOptions = ({ options, name }: ChangeOptionsProp) => {
+      
       const newElem = {
         ...data,
         name: name ? name : data.name,
         options: options ? options : data.options,
       };
       console.log(newElem);
+      if (screenId) {
+        return App.changeFooterHeaderScreen(parent, newElem, screenId);
+      }
       App.changeFooterHeader(parent, newElem);
     };
 
     const changeModules = (newModules: Modules | SubModules[]) => {
       console.log(newModules);
       const newSection = { ...data, modules: newModules };
+      if (screenId) {
+        return App.changeFooterHeaderScreen(parent, newSection, screenId);
+      }
       App.changeFooterHeader(parent, newSection);
     };
 
@@ -48,14 +58,14 @@ export const HeaderFooter = observer(
           active={data.id === target.id}
           last={data.modules && data.modules.length !== 0 ? false : true}
           id={data.id}
-          nesting={0}
+          nesting={nesting}
         >
           <>
             <LayoutList
               target={target}
               subModule={data}
               changeTarget={handleChangeTarget}
-              nesting={1}
+              nesting={nesting + 1}
               changeModules={changeModules}
             />
           </>

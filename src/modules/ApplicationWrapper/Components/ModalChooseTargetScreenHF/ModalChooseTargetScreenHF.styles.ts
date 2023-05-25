@@ -19,4 +19,15 @@ export const ModalStyled = styled.div`
   height: 300px;
   border-radius: 20px;
   background-color: #2c2c2c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+  color: white;
+`;
+export const Content = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;

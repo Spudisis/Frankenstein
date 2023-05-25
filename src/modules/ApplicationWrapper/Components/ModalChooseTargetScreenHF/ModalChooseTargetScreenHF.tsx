@@ -1,5 +1,9 @@
 import React, { MouseEvent } from "react";
-import { ModalStyled, Wrapper } from "./ModalChooseTargetScreenHF.styles";
+import {
+  ModalStyled,
+  Wrapper,
+  Content,
+} from "./ModalChooseTargetScreenHF.styles";
 import { createPortal } from "react-dom";
 import { TestStore } from "../../store";
 import { DefaultButton } from "src/UI";
@@ -19,16 +23,23 @@ export const ModalChooseTargetScreenHF = () => {
       {createPortal(
         <Wrapper onClick={onClickModal}>
           <ModalStyled ref={ref}>
-            <div>
+            <p>Please choose how you want to add the item: </p>
+            <Content>
               <DefaultButton
+                padding1800="5px 10px"
+                padding="5px 10px"
+                margin="0px"
                 text={"Add to this screen"}
                 onClick={() => TestStore.setHFtoThisScreen()}
               />
               <DefaultButton
+                padding1800="5px 10px"
+                padding="5px 10px"
+                margin="0px"
                 text={"Add to all"}
                 onClick={() => TestStore.setHFtoAll()}
               />
-            </div>
+            </Content>
           </ModalStyled>
         </Wrapper>,
         document.body

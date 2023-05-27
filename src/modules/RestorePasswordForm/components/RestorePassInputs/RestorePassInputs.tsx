@@ -1,6 +1,6 @@
 import React from "react";
-import { Email, PropsEmailInput } from "../Auth/Email";
-import { Password } from "../Auth/Password";
+import { Email, PropsEmailInput } from "src/components/Auth/Email";
+import { Password } from "src/components/Auth/Password";
 
 export const RestorePassInputs = ({
   register,

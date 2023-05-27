@@ -15,7 +15,7 @@ class Store {
   projects: MiniatureProjects[] = [];
   offset = 1;
   limit = 4;
-  locationPath = ''
+  locationPath = "";
 
   get loading() {
     return this.statusLoading;

@@ -7,8 +7,8 @@ import {
   Head,
   StyledErrorReq,
   WrapperAuth,
-} from "../../../UI";
-import { RestorePassInputs } from "src/components/RestorePassword/RestorePassInputs";
+} from "src/UI";
+import { RestorePassInputs } from "./RestorePassInputs";
 import { IFormInput } from "../../Registration/components/Form.types";
 import { AccessCode } from "./AccessCode";
 import { Trans } from "react-i18next";

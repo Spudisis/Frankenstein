@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonHideSideBar } from "src/components";
 import { SideBar } from "src/UI";
-import { Content } from "./Components/Content/Content";
+import { Content } from "./Components";
 import { observer } from "mobx-react-lite";
 
 export const RightSideBar = observer(() => {

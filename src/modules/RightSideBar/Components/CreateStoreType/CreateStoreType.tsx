@@ -3,7 +3,7 @@ import { Pictures, CustomDragLayer } from "../";
 import { Pictures as PicturesStore } from "../../store";
 import { MasType } from "../../RightSideBar.constant";
 
-export const CreateStoreType = React.memo(() => {
+const CreateStoreTypeComponent = () => {
   return (
     <>
       <CustomDragLayer />
@@ -13,4 +13,6 @@ export const CreateStoreType = React.memo(() => {
       })}
     </>
   );
-});
+};
+
+export const CreateStoreType = React.memo(CreateStoreTypeComponent);

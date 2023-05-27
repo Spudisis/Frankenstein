@@ -12,3 +12,4 @@ export * from "./funcChangeOptions";
 // export * from "./deleteItemFunc";
 // export * from './dropElement'
 export * from "./ShowMoreFuncPaginate";
+export * from "./Templates";

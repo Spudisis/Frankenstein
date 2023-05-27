@@ -619,17 +619,7 @@
           "gridRowGap": ""
         },
         "modules": [
-          {
-            "name": "text header",
-            "namePrivate": "Text",
-            "id": "c2bb53e1-24b0-4f76-80e2-c469adba073e",
-            "options": {
-              "nameModule": "text header",
-              "color": "#000000",
-              "name": "Basket",
-              "fontSize": "24px"
-            }
-          }
+          {"name":"text header","namePrivate":"Text","id":"c2bb53e1-24b0-4f76-80e2-c469adba073e","options":{"nameModule":"text header","color":"#000000","name":"Basket","fontSize":"24px"}}
         ],
         "parent": 0,
         "idScreen": "61575d76-ec85-4a81-9d4f-875cee900047"

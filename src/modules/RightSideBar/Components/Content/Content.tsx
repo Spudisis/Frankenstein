@@ -17,6 +17,7 @@ import {
   ItemTypesDND,
 } from "../../../../components/CustomDragNDrop/CustomDNDHook";
 import App from "src/store/Application";
+import { CreateStoreType } from "../CreateStoreType";
 
 export const Content = observer(
   ({ overflow }: Pick<ContentProp, "overflow">) => {
@@ -52,26 +53,6 @@ export const Content = observer(
       } else console.log("not found deleteItemFunc");
     };
 
-    //   drop: ({
-    //     elem,
-    //     deleteItem,
-    //   }: {
-    //     elem: ScreenMas | Module;
-    //     deleteItem: { deleteItem: DeleteFunc };
-    //   }) => handleDeleteDND(elem, deleteItem),
-    //   collect: (monitor: DropTargetMonitor) => ({
-    //     canDrop: monitor.canDrop(),
-    //     isOver: monitor.isOver(),
-    //   }),
-    // }));
-
-    // const handleDeleteDND = (
-    //   elem: ScreenMas | Module,
-    //   deleteItem: { deleteItem: DeleteFunc }
-    // ) => {
-    //   deleteItem.deleteItem(elem.id);
-    // };
-
     return (
       <ContentWrapper
         overflow={overflow}
@@ -100,7 +81,7 @@ export const Content = observer(
         </Wrapper>
         {section === SectionEnum.pictures ? (
           <Section>
-            <Pictures />
+            <CreateStoreType />
           </Section>
         ) : section === SectionEnum.options ? (
           <Section>

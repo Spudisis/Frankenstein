@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { ChildrenProp } from "../ChildrenProp";
 
 type GridProp = {
@@ -7,11 +7,24 @@ type GridProp = {
   columnGap?: string;
   rows?: string;
   rowGap?: string;
+  open?: boolean;
 };
 
-export const Grid = ({ children, columns, columnGap, rows, rowGap }: ChildrenProp & GridProp) => {
+export const Grid = ({
+  children,
+  columns,
+  columnGap,
+  rows,
+  rowGap,
+  open = true,
+}: ChildrenProp & GridProp) => {
   return (
-    <GridStyled columns={columns} columnGap={columnGap} rows={rows} rowGap={rowGap}>
+    <GridStyled
+      columns={columns}
+      columnGap={columnGap}
+      rows={rows}
+      rowGap={rowGap}
+    >
       {children}
     </GridStyled>
   );
@@ -19,6 +32,7 @@ export const Grid = ({ children, columns, columnGap, rows, rowGap }: ChildrenPro
 
 const GridStyled = styled.div<GridProp>`
   display: grid;
+
   grid-template-columns: ${(props) => props.columns || "repeat(3, 1fr)"};
   grid-template-rows: ${(props) => props.rows || "auto"};
   grid-column-gap: ${(props) => props.columnGap || "0px"};

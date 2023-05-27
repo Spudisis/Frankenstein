@@ -1,3 +1,4 @@
+import { ResponseTemplates } from "src/domains/TemplatesAgentResponse";
 import { BasicAgent } from "./Basic";
 
 class TemplatesAgent extends BasicAgent {
@@ -7,14 +8,14 @@ class TemplatesAgent extends BasicAgent {
     });
   }
   async getTemplates(page = 1, limit = 10, type: string) {
-    const { data } = await this._http.get<any>(
+    const { data } = await this._http.get<ResponseTemplates>(
       `/getType?p=${page}&l=${limit}&type=${type}`
     );
     return data;
   }
 
   async getTemplatesUser(page = 1, limit = 10, type?: string) {
-    const { data } = await this._http.get<any>(
+    const { data } = await this._http.get<ResponseTemplates>(
       `/getUser?p=${page}&l=${limit}&type=${type}`
     );
     return data;

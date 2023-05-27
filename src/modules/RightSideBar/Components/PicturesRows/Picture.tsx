@@ -1,23 +1,25 @@
 import React from "react";
 import Dragging from "src/store/DraggingFH";
 import { getEmptyImage } from "react-dnd-html5-backend";
-import { CustomDNDHook, ItemTypesDND } from "../CustomDragNDrop/CustomDNDHook";
-import { TypePicture } from "./PicturesRows";
+import {
+  CustomDNDHook,
+  ItemTypesDND,
+} from "../../../../components/CustomDragNDrop/CustomDNDHook";
 import { Pictures } from "src/UI";
-import { CreateId } from "../CreateId/CreateId";
-import { TypeElem } from "./Picture.types";
+import { TemplateType } from "src/domains";
+
 export const Picture = ({
   elem,
   type,
 }: {
-  elem: TypeElem;
-  type: TypePicture;
+  elem: TemplateType;
+  type: string;
 }) => {
-  const [item, setItem] = React.useState(elem);
+  const layout = JSON.parse(elem.layout);
 
   const { dragPreview, isDragging, drag } = CustomDNDHook({
     name: type,
-    options: item.options,
+    options: layout,
   });
 
   React.useEffect(() => {
@@ -39,10 +41,10 @@ export const Picture = ({
     <Pictures
       refDrag={drag}
       isDragging={isDragging}
-      src={item.src}
-      alt={item.alt}
-      name={item.options.name}
-      key={item.options.id}
+      src={elem.miniature || "notFound"}
+      alt={elem.name}
+      name={elem.name}
+      key={elem.id}
     />
   );
 };

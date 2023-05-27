@@ -8,5 +8,4 @@ export const Section = ({ children }: ChildrenProp) => {
 
 const SectionStyled = styled.div`
   height: 100%;
-  margin-top: 10px;
 `;

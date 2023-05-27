@@ -2,19 +2,13 @@ import React from "react";
 import Dragging from "src/store/DraggingFH";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import {
+  CreateMasItemTypesDND,
   CustomDNDHook,
-  ItemTypesDND,
-} from "../../../../components/CustomDragNDrop/CustomDNDHook";
+} from "src/components/CustomDragNDrop/CustomDNDHook";
 import { Pictures } from "src/UI";
-import { TemplateType } from "src/domains";
+import { PictureTypeProps } from "./Picture.types";
 
-export const Picture = ({
-  elem,
-  type,
-}: {
-  elem: TemplateType;
-  type: string;
-}) => {
+export const Picture = ({ elem, type }: PictureTypeProps) => {
   const layout = JSON.parse(elem.layout);
 
   const { dragPreview, isDragging, drag } = CustomDNDHook({
@@ -23,15 +17,11 @@ export const Picture = ({
   });
 
   React.useEffect(() => {
-    if (
-      type === ItemTypesDND.PicturesFooter ||
-      type === ItemTypesDND.PicturesHeader ||
-      type === ItemTypesDND.PicturesButton ||
-      type === ItemTypesDND.PicturesWrapper
-    ) {
+    const MasType = CreateMasItemTypesDND();
+    if (MasType.includes(type)) {
       Dragging.changeStatusDragging(isDragging);
     }
-  }, [isDragging]);
+  }, [isDragging, type]);
 
   React.useEffect(() => {
     dragPreview(getEmptyImage(), { captureDraggingState: true });

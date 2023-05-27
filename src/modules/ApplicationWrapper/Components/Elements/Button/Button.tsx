@@ -4,15 +4,12 @@ import {
   ParentParent,
 } from "src/domains/ApplicationTypes";
 import { StyledButtonFullControlled } from "src/UI/Button/ButtonFullControlled";
-import {
-  ItemTypesDND,
-  PropsDNDHook,
-} from "src/components/CustomDragNDrop/CustomDNDHook";
-import { useDrag, useDrop } from "react-dnd";
+
 import { changeTarget } from "src/components";
 import { CustomDragHook } from "../../customDragHook";
 import { CustomDropHook } from "../../customDropHook";
 import { ChangeOptionsProp } from "src/domains";
+import { PropsDNDHook } from "src/components/CustomDragNDrop/CustomDNDHook.types";
 
 export const Button = ({
   elem,
@@ -33,7 +30,7 @@ export const Button = ({
   const handleSetTarget = (e: MouseEvent) => {
     const { options, id, namePrivate, name } = elem;
 
-    changeTarget({ options, name, id, namePrivate }, { changeOptions });
+    changeTarget({ obj: { options, name, id, namePrivate }, changeOptions });
     e.stopPropagation();
   };
 

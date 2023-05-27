@@ -16,7 +16,7 @@ import {
   ParentParent,
   SubModules,
 } from "../domains/ApplicationTypes";
-import { ChangeOptions, ProjectDataType, STATUS_LOADING } from "src/domains";
+import { ChangeOptions, ChangeTargetType, ProjectDataType, STATUS_LOADING } from "src/domains";
 import { Project } from "src/http";
 import {
   FOOTER_DEFAULT,
@@ -35,8 +35,7 @@ class ApplicationData {
   }
   private projectInfo: ProjectDataType = PROJECT_INFO_DEFAULT;
   section = SectionEnum.options;
-  target: SubModules & ParentElem & ParentParent & ChangeOptions =
-    TARGET_DEFAULT;
+  target: SubModules & { changeOptions: ChangeOptions } = TARGET_DEFAULT;
   private statusLoading: STATUS_LOADING = STATUS_LOADING.LOADING;
 
   //костыль
@@ -220,7 +219,7 @@ class ApplicationData {
       if (screen.id === id) {
         //если перетаскиваемый элемент в таргете, то надо сменить его родителя в таргете, чтобы можно было дальше изменять не кликая повторно
         if (this.target.id === oldId) {
-          this.target = { ...this.target, parent: screen.id };
+          this.target = { ...this.target };
         }
         //end
         if (screen.modules) {
@@ -251,7 +250,7 @@ class ApplicationData {
     this.ApplicationScreens = mas;
   }
 
-  setTarget(obj: SubModules, { changeOptions }: ChangeOptions) {
+  setTarget({ obj, changeOptions }: ChangeTargetType) {
     if (!obj.id) {
       return null;
     }

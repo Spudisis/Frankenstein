@@ -24,8 +24,9 @@ export const WrapperOptions = ({
   id,
   changeOptions,
   modules,
-}: Pick<SubModules, "modules" | "options" | "name" | "namePrivate" | "id"> &
-  ChangeOptions) => {
+}: Pick<SubModules, "modules" | "options" | "name" | "namePrivate" | "id"> & {
+  changeOptions: ChangeOptions;
+}) => {
   const [styles, setStyles] = React.useState<WrapperStyles>({
     color: options.color ? options.color : "black",
     nameModule: name ? name : "",
@@ -49,10 +50,16 @@ export const WrapperOptions = ({
 
   React.useEffect(() => {
     changeOptions({ options: styles, name: styles.nameModule });
-    App.setTarget(
-      { options: styles, name: styles.nameModule, namePrivate, id, modules },
-      { changeOptions }
-    );
+    App.setTarget({
+      obj: {
+        options: styles,
+        name: styles.nameModule,
+        namePrivate,
+        id,
+        modules,
+      },
+      changeOptions,
+    });
   }, [changeOptions, styles]);
 
   const ChangeStyles = <T,>(value: T[keyof T], property: keyof T) => {

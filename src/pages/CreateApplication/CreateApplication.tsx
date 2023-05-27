@@ -11,10 +11,10 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useNavigate, useParams } from "react-router-dom";
 import App from "src/store/Application";
-
 import { NOT_FOUND } from "src/routes/urlsPages";
 import { STATUS_LOADING } from "src/domains";
 import { observer } from "mobx-react-lite";
+
 export const CreateApplication = observer(() => {
   const { id } = useParams();
 

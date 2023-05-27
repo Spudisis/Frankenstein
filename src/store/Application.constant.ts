@@ -1,3 +1,4 @@
+import { ChangeOptions, ChangeOptionsProp, SubModules } from "src/domains";
 import { v4 as uuidv4 } from "uuid";
 export const DEFAULT_ID = uuidv4();
 
@@ -37,11 +38,11 @@ export const PROJECT_INFO_DEFAULT = {
   createdAt: "",
   updatedAt: "",
 };
-export const TARGET_DEFAULT = {
-  changeOptions: (opt: any) => console.log(""),
+export const TARGET_DEFAULT: SubModules & { changeOptions: ChangeOptions } = {
+  changeOptions: ({ options, name }: ChangeOptionsProp) => console.log(""),
   namePrivate: "",
   id: "",
   name: "",
   options: {},
-  modules: []
+  modules: [],
 };

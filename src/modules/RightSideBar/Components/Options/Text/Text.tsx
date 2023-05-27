@@ -18,8 +18,9 @@ export const TextOptions = observer(
     namePrivate,
     id,
     changeOptions,
-  }: Pick<Module, "options" | "name" | "namePrivate" | "id"> &
-    ChangeOptions) => {
+  }: Pick<Module, "options" | "name" | "namePrivate" | "id"> & {
+    changeOptions: ChangeOptions;
+  }) => {
     const [styles, setStyles] = React.useState<TextStyles>({
       nameModule: name ? name : "",
 
@@ -35,10 +36,10 @@ export const TextOptions = observer(
     React.useEffect(() => {
       changeOptions({ options: styles, name: styles.nameModule });
       //для того тобы актуальный таргет был
-      App.setTarget(
-        { options: styles, name: styles.nameModule, namePrivate, id },
-        { changeOptions }
-      );
+      App.setTarget({
+        obj: { options: styles, name: styles.nameModule, namePrivate, id },
+        changeOptions,
+      });
     }, [changeOptions, styles]);
 
     return (

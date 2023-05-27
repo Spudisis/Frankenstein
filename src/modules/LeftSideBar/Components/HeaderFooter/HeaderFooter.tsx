@@ -22,7 +22,6 @@ export const HeaderFooter = observer(
     nesting = 0,
   }: Props) => {
     const changeOptions = ({ options, name }: ChangeOptionsProp) => {
-      
       const newElem = {
         ...data,
         name: name ? name : data.name,
@@ -50,7 +49,8 @@ export const HeaderFooter = observer(
           namePrivate={data.namePrivate ? data.namePrivate : "Нет namePrivate"}
           name={data.name ? data.name : "Нет name"}
           click={() =>
-            handleChangeTarget(data as Module, {
+            handleChangeTarget({
+              obj: data as Module,
               changeOptions: changeOptions,
             })
           }

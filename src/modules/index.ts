@@ -1,6 +1,6 @@
 export { Header } from "./Header";
 export * from "./LeftSideBar";
-export { RightSideBar } from "./RightSideBar";
+export * from "./RightSideBar";
 export * from "./ApplicationWrapper";
 export { StartModule } from "./StartPageModule";
 export { Registration } from "./Registration";

@@ -59,7 +59,7 @@ export const LayoutList = React.memo(
                   name={module.name}
                   key={module.id}
                   click={() =>
-                    changeTarget(module, { changeOptions: changeOptionsF })
+                    changeTarget({ obj: module, changeOptions: changeOptionsF })
                   }
                   options={module.options}
                   parent={subModule.id}

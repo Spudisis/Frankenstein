@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { PropDrag } from "../../components/CustomDragNDrop/CustomDNDHook";
+
 import { ChildrenProp } from "../ChildrenProp";
+import { ConnectDropTarget } from "react-dnd";
 
 export const MobileMain = ({
   children,
   refDrag,
-}: ChildrenProp & { refDrag: PropDrag }) => {
+}: ChildrenProp & { refDrag: ConnectDropTarget }) => {
   return <MobileMainStyled ref={refDrag}>{children}</MobileMainStyled>;
 };
 

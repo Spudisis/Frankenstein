@@ -1,1 +1,1 @@
-export * from "./AccessDND";
+export * from "./ItemTypesDND";

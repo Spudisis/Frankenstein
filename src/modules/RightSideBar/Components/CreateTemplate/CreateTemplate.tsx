@@ -15,7 +15,7 @@ import {
   Wrapper,
 } from "./CreateTemplate.styles";
 import { ButtonHideSideBar } from "src/components";
-import Select from "react-select";
+
 import { SelectValues } from "../../RightSideBar.constant";
 
 export const CreateTemplate = observer(() => {

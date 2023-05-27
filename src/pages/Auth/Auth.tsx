@@ -1,5 +1,5 @@
-import { Authorization, SelectLanguage } from "../../modules";
-import { ApplicationWrapperStyled, Bgc } from "../../UI";
+import { Authorization, SelectLanguage } from "src/modules";
+import { ApplicationWrapperStyled, Bgc } from "src/UI";
 
 export const Auth = () => {
   return (

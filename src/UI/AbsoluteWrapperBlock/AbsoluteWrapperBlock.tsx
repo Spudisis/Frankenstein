@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { PropDrag } from "../../components/CustomDragNDrop/CustomDNDHook";
 import { ChildrenProp } from "../ChildrenProp";
+import { ConnectDropTarget } from "react-dnd";
 
 type Props = {
   top?: string;
   bottom?: string;
 };
 
-export const AbsoluteWrapperBlock = ({ top, bottom, refDrag }: Props & { refDrag: PropDrag }) => {
+export const AbsoluteWrapperBlock = ({ top, bottom, refDrag }: Props & { refDrag: ConnectDropTarget }) => {
   return <Absolute top={top} bottom={bottom} ref={refDrag}></Absolute>;
 };
 

@@ -1,8 +1,6 @@
 import React from "react";
-
-import { Pictures } from "../Pictures";
-import { CustomDragLayer } from "src/components/CustomDragNDrop/CustomDragLayer";
-import { Pictures as PicturesStore } from "../../store/store";
+import { Pictures, CustomDragLayer } from "../";
+import { Pictures as PicturesStore } from "../../store";
 import { MasType } from "../../RightSideBar.constant";
 
 export const CreateStoreType = React.memo(() => {

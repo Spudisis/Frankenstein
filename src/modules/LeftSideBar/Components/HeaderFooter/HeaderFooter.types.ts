@@ -1,5 +1,5 @@
 import {
-  ChangeOptions,
+  ChangeTargetType,
   FHObject,
   Module,
   ParentElem,
@@ -8,7 +8,7 @@ import {
 
 export type Props = {
   data: FHObject;
-  handleChangeTarget: (obj: Module, changeOptions: ChangeOptions) => void;
+  handleChangeTarget: ({ obj, changeOptions }: ChangeTargetType) => void;
   target: Module & ParentElem;
   parent: typeFH;
   screenId?: string;

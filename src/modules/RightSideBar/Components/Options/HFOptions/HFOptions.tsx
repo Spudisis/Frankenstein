@@ -37,8 +37,9 @@ export const HFOptions = observer(
     id,
     changeOptions,
     modules,
-  }: Pick<SubModules, 'modules' | "options" | "name" | "namePrivate" | "id"> &
-    ChangeOptions) => {
+  }: Pick<SubModules, "modules" | "options" | "name" | "namePrivate" | "id"> & {
+    changeOptions: ChangeOptions;
+  }) => {
     const [styles, setStyles] = React.useState<HFStyles>({
       nameModule: name ? name : "",
       height: options.height ? options.height : "auto",
@@ -60,10 +61,16 @@ export const HFOptions = observer(
         options: styles,
         name: styles.nameModule,
       });
-      App.setTarget(
-        { options: styles, name: styles.nameModule, namePrivate, id, modules },
-        { changeOptions }
-      );
+      App.setTarget({
+        obj: {
+          options: styles,
+          name: styles.nameModule,
+          namePrivate,
+          id,
+          modules,
+        },
+        changeOptions,
+      });
     }, [changeOptions, styles]);
 
     const ChangeStyles = <T,>(value: T[keyof T], property: keyof T) => {

@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { PropDrag } from "../../components/CustomDragNDrop/CustomDNDHook";
 import { ChildrenProp } from "../ChildrenProp";
+import { ConnectDropTarget } from "react-dnd";
 
 export const FooterMobile = ({
   children,
   refDrag,
-}: ChildrenProp & { refDrag: PropDrag }) => {
+}: ChildrenProp & { refDrag: ConnectDropTarget }) => {
   return <StyledFooter ref={refDrag}>{children}</StyledFooter>;
 };
 const StyledFooter = styled.div`

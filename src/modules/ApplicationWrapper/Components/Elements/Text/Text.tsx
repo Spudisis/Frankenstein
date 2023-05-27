@@ -6,13 +6,11 @@ import {
   Module,
   ParentParent,
 } from "src/domains";
-import {
-  ItemTypesDND,
-  PropsDNDHook,
-} from "src/components/CustomDragNDrop/CustomDNDHook";
+
 import { changeTarget } from "src/components";
 import { CustomDragHook } from "../../customDragHook";
 import { CustomDropHook } from "../../customDropHook";
+import { PropsDNDHook } from "src/components/CustomDragNDrop/CustomDNDHook.types";
 
 export const Text = ({
   elem,
@@ -33,7 +31,7 @@ export const Text = ({
   const handleSetTarget = (e: MouseEvent) => {
     const { options, id, namePrivate, name } = elem;
 
-    changeTarget({ options, name, id, namePrivate }, { changeOptions });
+    changeTarget({ obj: { options, name, id, namePrivate }, changeOptions });
     e.stopPropagation();
   };
 
@@ -52,7 +50,7 @@ export const Text = ({
     parent,
     MoveCardFunc,
     deleteItemFunc,
-    typeDrag: 'Text',
+    typeDrag: "Text",
   });
 
   const { drop } = CustomDropHook({

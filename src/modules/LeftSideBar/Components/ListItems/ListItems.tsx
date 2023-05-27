@@ -38,7 +38,7 @@ export const ListItems = observer(() => {
           id={elem.id}
           key={elem.id}
           namePrivate={elem.namePrivate}
-          click={() => changeTarget(elem, { changeOptions: changeOptionsF })}
+          click={() => changeTarget({ obj: elem, changeOptions: changeOptionsF })}
           options={elem.options}
           active={elem.id === target.id}
           nesting={1}

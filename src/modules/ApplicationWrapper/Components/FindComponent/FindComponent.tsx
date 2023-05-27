@@ -8,10 +8,7 @@ import {
   SubModules,
 } from "src/domains/ApplicationTypes";
 import { Button, Text } from "../Elements";
-import { PropsDNDHook } from "src/components/CustomDragNDrop/CustomDNDHook";
-import App from "src/store/Application";
-
-import update from "immutability-helper";
+import { PropsDNDHook } from "src/components/CustomDragNDrop/CustomDNDHook.types";
 import { WrapperCustom } from "../WrapperCustom";
 import { FindIndexDecompose } from "../FindIndexDecompose";
 import { MoveCardDecompose } from "../MoveCardDecompose";

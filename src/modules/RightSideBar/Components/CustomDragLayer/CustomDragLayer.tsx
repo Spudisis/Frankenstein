@@ -1,10 +1,10 @@
 import type { CSSProperties } from "react";
 import type { XYCoord } from "react-dnd";
 import { useDragLayer } from "react-dnd";
-import { MaxWidth } from "../../UI";
-import { ItemTypesDND } from "./CustomDNDHook";
+import { MaxWidth } from "src/UI";
+import { ItemTypesDNDPictures } from "src/constants";
 
-import { FHMain } from "../../modules/ApplicationWrapper/Components/FHMain";
+import { FHMain } from "../../../ApplicationWrapper/Components/FHMain";
 import {
   Button,
   Text,
@@ -12,6 +12,7 @@ import {
 import { Module, SubModules, typeFH } from "src/domains";
 import { MaxWidthButton, MaxWidthText } from "src/UI/CustomLayoutDND/MaxWidth";
 import { WrapperCustom } from "src/modules/ApplicationWrapper/Components";
+
 const layerStyles: CSSProperties = {
   position: "fixed",
   pointerEvents: "none",
@@ -37,10 +38,6 @@ function getItemStyles(initialOffset: XYCoord | null) {
   };
 }
 
-export interface CustomDragLayerProps {
-  snapToGrid: boolean;
-}
-
 export const CustomDragLayer = () => {
   const { itemType, isDragging, item, initialOffset } = useDragLayer(
     (monitor) => ({
@@ -55,20 +52,20 @@ export const CustomDragLayer = () => {
 
   function renderItem() {
     switch (itemType) {
-      case ItemTypesDND.PicturesHeader:
+      case ItemTypesDNDPictures.PicturesHeader:
         //если драгбл в руках это бокс
         return (
           <MaxWidth>
             <FHMain {...{ ...item, parent: typeFH.Header }} />
           </MaxWidth>
         );
-      case ItemTypesDND.PicturesFooter:
+      case ItemTypesDNDPictures.PicturesFooter:
         return (
           <MaxWidth>
             <FHMain {...{ ...item, parent: typeFH.Footer }} />
           </MaxWidth>
         );
-      case ItemTypesDND.PicturesButton:
+      case ItemTypesDNDPictures.PicturesButton:
         return (
           <MaxWidthButton>
             <Button
@@ -81,7 +78,7 @@ export const CustomDragLayer = () => {
             />
           </MaxWidthButton>
         );
-      case ItemTypesDND.PicturesWrapper:
+      case ItemTypesDNDPictures.PicturesWrapper:
         console.log(item);
         return (
           <MaxWidth>
@@ -95,7 +92,7 @@ export const CustomDragLayer = () => {
             />
           </MaxWidth>
         );
-      case ItemTypesDND.PicturesText:
+      case ItemTypesDNDPictures.PicturesText:
         return (
           <MaxWidthText>
             <Text

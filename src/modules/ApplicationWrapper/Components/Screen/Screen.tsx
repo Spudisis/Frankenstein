@@ -12,16 +12,14 @@ import {
 
 import { useDrop } from "react-dnd";
 
-import {
-  DropDND,
-  ItemTypesDND,
-} from "../../../../components/CustomDragNDrop/CustomDNDHook";
+import { DropDND } from "src/components/CustomDragNDrop/CustomDNDHook.types";
 
 import { ChangeLayoutModule } from "src/utils";
 import { TestStore } from "../../store";
 import { ModalChooseTargetScreenHF } from "../ModalChooseTargetScreenHF";
 import { ChooseFH } from "../FHMain";
 import { MainConstructor } from "../MainConstructor";
+import { ItemTypesDNDAll } from "src/constants";
 
 type ScreenProps = ParamsScreen & { elem: ScreenMas } & {
   throttledFunc: () => void;
@@ -46,7 +44,7 @@ export const Screen = observer(
 
     const [, dropHeader]: DropDND = useDrop(
       () => ({
-        accept: [ItemTypesDND.PicturesHeader],
+        accept: [ItemTypesDNDAll.PicturesHeader],
         drop: (item: FHObject) => SetNewHF(typeFH.Header, item),
       }),
       [elem, header]
@@ -54,20 +52,20 @@ export const Screen = observer(
 
     const [, dropFooter]: DropDND = useDrop(
       () => ({
-        accept: [ItemTypesDND.PicturesFooter],
+        accept: [ItemTypesDNDAll.PicturesFooter],
         drop: (item: FHObject) => SetNewHF(typeFH.Footer, item),
       }),
       [elem, footer]
     );
-    
+
     const [, dropMain]: DropDND = useDrop(() => ({
       accept: [
-        ItemTypesDND.Main,
-        ItemTypesDND.Button,
-        ItemTypesDND.Wrapper,
-        ItemTypesDND.PicturesButton,
-        ItemTypesDND.PicturesWrapper,
-        ItemTypesDND.PicturesText,
+        ItemTypesDNDAll.Main,
+        ItemTypesDNDAll.Button,
+        ItemTypesDNDAll.Wrapper,
+        ItemTypesDNDAll.PicturesButton,
+        ItemTypesDNDAll.PicturesWrapper,
+        ItemTypesDNDAll.PicturesText,
       ],
       drop: (item: ScreenAddElemeny) => {
         if (TestStore.test !== item.id) {

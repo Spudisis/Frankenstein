@@ -4,11 +4,11 @@ import { observer } from "mobx-react-lite";
 import { CustomDNDHook, changeTarget } from "src/components";
 import { FindComponent } from "../FindComponent/FindComponent";
 import { BlockEmpty } from "src/UI";
-import { ItemTypesDND } from "src/components/CustomDragNDrop/CustomDNDHook";
 import App from "src/store/Application";
 import { ChangeOptionsProp } from "src/domains";
 import { CustomDropHook } from "./customDropHook";
 import { HeaderConstructor, StyledFooter } from "./FHMain.styles";
+import { ItemTypesDND } from "src/constants";
 
 type Prop = FHObject & { parent: typeFH; idScreen?: string };
 
@@ -72,7 +72,10 @@ export const FHMain = observer((props: Prop) => {
   const { drop } = CustomDropHook({ newModuleDrop });
 
   const setTarget = () => {
-    changeTarget({ options, name, id, namePrivate, modules }, { changeOptions });
+    changeTarget({
+      obj: { options, name, id, namePrivate, modules },
+      changeOptions,
+    });
   };
 
   const changeOptions = (propOptions: ChangeOptionsProp) => {

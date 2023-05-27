@@ -1,22 +1,35 @@
 import { observer } from "mobx-react-lite";
-
-import { PicturesRows } from "../PicturesRows/PicturesRows";
 import React from "react";
-import { PicturesTypeStore } from "../../store/store";
+import { StyledButton } from "./Pictures.styles";
+import { Grid } from "src/UI";
+import { Picture } from "..";
+import { MappingPictures } from "./Pictures.types";
 
-export const Pictures = observer(
-  ({ type, store }: { type: string; store: PicturesTypeStore }) => {
-    console.log(type);
-    React.useEffect(() => {
-      store.getTemplates(type);
-    }, [store, type]);
+export const Pictures = observer(({ type, store }: MappingPictures) => {
 
-    return (
-      <>
-        {store.templates.length > 0 && (
-          <PicturesRows type={type} masImg={store.templates} store={store} />
-        )}
-      </>
-    );
-  }
-);
+  React.useEffect(() => {
+    store.getTemplates(type);
+  }, [store, type]);
+
+  const handleClick = () => {
+    store.open = !store.open;
+  };
+
+  return (
+    <>
+      {store.templates.length > 0 && (
+        <>
+          <StyledButton onClick={() => handleClick()}>{type}</StyledButton>
+
+          {store.open && (
+            <Grid open={store.open} columns="repeat(2, 1fr)" rowGap="10px">
+              {store.templates.map((elem, index) => {
+                return <Picture elem={elem} type={type} key={elem.id} />;
+              })}
+            </Grid>
+          )}
+        </>
+      )}
+    </>
+  );
+});

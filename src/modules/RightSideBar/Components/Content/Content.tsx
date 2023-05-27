@@ -1,24 +1,17 @@
 import React from "react";
-import { Section, Wrapper, ContentWrapper, Button } from "../../../../UI";
-import { ContentProp } from "../../../../UI/SideBar/Content/Content";
+import { Section, Wrapper, ContentWrapper, Button } from "src/UI";
+import { ContentProp } from "src/UI/SideBar/Content/Content";
 import { observer } from "mobx-react-lite";
 import ApplicationData from "src/store/Application";
-import {
-  Module,
-  ScreenAddElemeny,
-  ScreenMas,
-  SectionEnum,
-} from "../../../../domains/ApplicationTypes";
+import { ScreenAddElemeny, SectionEnum } from "src/domains/ApplicationTypes";
 import { FindOption } from "../FindOption/FindOption";
-import { Pictures } from "../Pictures/Pictures";
+
 import { DropTargetMonitor, useDrop } from "react-dnd";
-import {
-  DropDND,
-  ItemTypesDND,
-} from "../../../../components/CustomDragNDrop/CustomDNDHook";
+import { DropDND } from "src/components/CustomDragNDrop/CustomDNDHook.types";
 import App from "src/store/Application";
 import { CreateStoreType } from "../CreateStoreType";
 import { CreateTemplate } from "../CreateTemplate";
+import { ItemTypesDND } from "src/constants";
 
 export const Content = observer(
   ({ overflow }: Pick<ContentProp, "overflow">) => {
@@ -47,7 +40,6 @@ export const Content = observer(
       id,
       deleteItemFunc,
     }: Pick<ScreenAddElemeny, "id" | "deleteItemFunc">) => {
-      console.log(id);
       if (deleteItemFunc) {
         App.clearTarget(id);
         deleteItemFunc({ id });

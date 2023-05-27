@@ -1,8 +1,8 @@
 import React from "react";
 import { useDrop } from "react-dnd";
-import { ItemTypesDND } from "src/components/CustomDragNDrop/CustomDNDHook";
 import { ScreenAddElemeny } from "src/domains";
 import { DropHook } from "./customDropHook.types";
+import { ItemTypesDND } from "src/constants";
 
 export const CustomDropHook = ({
   dropFunc,

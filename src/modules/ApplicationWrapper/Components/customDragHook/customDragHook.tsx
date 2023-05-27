@@ -1,6 +1,5 @@
 import React from "react";
-import { DragSourceHookSpec, useDrag } from "react-dnd";
-import { ItemTypesDND } from "src/components/CustomDragNDrop/CustomDNDHook";
+import {  useDrag } from "react-dnd";
 import { DragHook } from "./customDragHook.types";
 
 export const CustomDragHook = ({

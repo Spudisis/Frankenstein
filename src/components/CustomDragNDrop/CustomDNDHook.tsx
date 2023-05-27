@@ -1,32 +1,18 @@
 import React from "react";
-import { ConnectDropTarget, useDrag } from "react-dnd";
-import { DeleteFuncType, typeFH } from "src/domains/";
+import { useDrag } from "react-dnd";
 
-export type PropsDNDHook = {
-  name: string;
-  options: any;
-  parent?: string | typeFH;
-  deleteItemFunc?: DeleteFuncType;
+import { PropsDNDHook } from "./CustomDNDHook.types";
+import { ItemTypesDNDPictures } from "src/constants";
+
+export const CreateMasItemTypesDND = () => {
+  const MasType: string[] = [];
+  for (const key in ItemTypesDNDPictures) {
+    const value =
+      ItemTypesDNDPictures[key as keyof typeof ItemTypesDNDPictures];
+    MasType.push(value);
+  }
+  return MasType;
 };
-export type PropDrag = ConnectDropTarget;
-export type ItemType = keyof typeof ItemTypesDND;
-
-export const ItemTypesDND = {
-  Header: "Header",
-  Footer: "Footer",
-  Any: "any",
-  Main: "Main",
-  Button: "Button",
-  PicturesHeader: "PicturesHeader",
-  PicturesFooter: "PicturesFooter",
-  PicturesButton: "PicturesButton",
-  PicturesWrapper: "PicturesWrapper",
-  Wrapper: "Wrapper",
-  PicturesText: "PicturesText",
-  Text: "Text",
-};
-
-export type DropDND = [any, PropDrag];
 
 export const CustomDNDHook = ({
   name,
@@ -34,8 +20,6 @@ export const CustomDNDHook = ({
   parent,
   deleteItemFunc,
 }: PropsDNDHook) => {
-  // console.log(options);
-
   const [collected, drag, dragPreview] = useDrag(() => ({
     type: name,
     item: { ...options, parent, deleteItemFunc },

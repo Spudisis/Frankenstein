@@ -14,7 +14,8 @@ type ButtonStyles = Omit<
   | "alignItems"
   | "gridTemplateColumns"
   | "gridColumnGap"
-  | "gridRowGap" | 'flexDirection'
+  | "gridRowGap"
+  | "flexDirection"
 >;
 
 export const ButtonOptions = ({
@@ -23,7 +24,9 @@ export const ButtonOptions = ({
   namePrivate,
   id,
   changeOptions,
-}: Pick<Module, "options" | "name" | "namePrivate" | "id"> & ChangeOptions) => {
+}: Pick<Module, "options" | "name" | "namePrivate" | "id"> & {
+  changeOptions: ChangeOptions;
+}) => {
   const [styles, setStyles] = React.useState<ButtonStyles>({
     nameModule: name ? name : "",
     borderRadius: options.borderRadius ? options.borderRadius : "5px",
@@ -59,10 +62,10 @@ export const ButtonOptions = ({
     changeOptions({ options: styles, name: styles.nameModule });
     // для того тобы актуальный таргет был
 
-    App.setTarget(
-      { options: styles, name: styles.nameModule, namePrivate, id },
-      { changeOptions }
-    );
+    App.setTarget({
+      obj: { options: styles, name: styles.nameModule, namePrivate, id },
+      changeOptions,
+    });
   }, [changeOptions, styles]);
 
   const Screens = App.ApplicationScreens?.map((screen) => {

@@ -11,16 +11,14 @@ import { FindComponent } from "../FindComponent/FindComponent";
 import { WrapperStyledDiv } from "./WrapperCustom.styles";
 import { WrapperCustomT } from "./WrapperCustom.types";
 import { useDrag, useDrop } from "react-dnd";
-import {
-  DropDND,
-  ItemTypesDND,
-} from "src/components/CustomDragNDrop/CustomDNDHook";
+import { DropDND } from "src/components/CustomDragNDrop/CustomDNDHook.types";
 import { changeTarget } from "src/components";
 import Application from "src/store/Application";
 import { ChangeLayoutModule } from "src/utils";
 import { TestStore } from "../../store";
 import { CustomDragHook } from "../customDragHook";
 import { CustomDropHook } from "../customDropHook";
+import { ItemTypesDNDPictures } from "src/constants";
 
 export const WrapperCustom = ({
   elem,
@@ -38,10 +36,10 @@ export const WrapperCustom = ({
 
   const handleSetTarget = (e: MouseEvent) => {
     const { options, id, namePrivate, name, modules } = elem;
-    changeTarget(
-      { options, name, id, namePrivate, modules },
-      { changeOptions }
-    );
+    changeTarget({
+      obj: { options, name, id, namePrivate, modules },
+      changeOptions,
+    });
     e.stopPropagation();
   };
 
@@ -65,9 +63,9 @@ export const WrapperCustom = ({
     elem,
     FindIndex,
     ItemAccess: [
-      ItemTypesDND.PicturesButton,
-      ItemTypesDND.PicturesWrapper,
-      ItemTypesDND.PicturesText,
+      ItemTypesDNDPictures.PicturesButton,
+      ItemTypesDNDPictures.PicturesWrapper,
+      ItemTypesDNDPictures.PicturesText,
     ],
   });
 

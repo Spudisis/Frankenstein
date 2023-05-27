@@ -1,8 +1,7 @@
-import {
-  ChangeOptions,
+import type {
+  ChangeTargetType,
   FHObject,
   Module,
-  Modules,
   ParentElem,
   ParentParent,
   ScreenMas,
@@ -12,7 +11,7 @@ import {
 export type NestingLayout = {
   target: Module & ParentElem & ParentParent;
   subModule: ScreenMas | SubModules | FHObject;
-  changeTarget: (obj: Module, changeOptions: ChangeOptions) => void;
+  changeTarget: ({ obj, changeOptions }: ChangeTargetType) => void;
   nesting?: number;
   changeModules: (n: any) => any;
 };

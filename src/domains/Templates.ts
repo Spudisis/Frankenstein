@@ -10,3 +10,10 @@ export type TemplateType = {
   updatedAt: String;
   userId: number;
 };
+export type CreateTemplateType = {
+  name: string;
+  privateStatus: boolean;
+  type: string;
+  layout: string;
+  miniature?: string;
+};

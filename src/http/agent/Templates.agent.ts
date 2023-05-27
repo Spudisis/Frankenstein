@@ -1,5 +1,6 @@
 import { ResponseTemplates } from "src/domains/TemplatesAgentResponse";
 import { BasicAgent } from "./Basic";
+import { CreateTemplateType } from "src/domains";
 
 class TemplatesAgent extends BasicAgent {
   constructor() {
@@ -11,6 +12,7 @@ class TemplatesAgent extends BasicAgent {
     const { data } = await this._http.get<ResponseTemplates>(
       `/getType?p=${page}&l=${limit}&type=${type}`
     );
+    console.log(data.rows);
     return data;
   }
 
@@ -21,8 +23,7 @@ class TemplatesAgent extends BasicAgent {
     return data;
   }
 
-  async createTemplate(body: any) {
-    //{ name, privateStatus, type, layout, miniature }
+  async createTemplate(body: CreateTemplateType) {
     const { data } = await this._http.post(`/create`, body);
     return data;
   }

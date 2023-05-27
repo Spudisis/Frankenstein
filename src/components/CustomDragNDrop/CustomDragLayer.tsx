@@ -15,7 +15,7 @@ import { WrapperCustom } from "src/modules/ApplicationWrapper/Components";
 const layerStyles: CSSProperties = {
   position: "fixed",
   pointerEvents: "none",
-  zIndex: 100,
+  zIndex: 10000,
   left: 0,
   top: 0,
   width: "100%",
@@ -82,6 +82,7 @@ export const CustomDragLayer = () => {
           </MaxWidthButton>
         );
       case ItemTypesDND.PicturesWrapper:
+        console.log(item);
         return (
           <MaxWidth>
             <WrapperCustom

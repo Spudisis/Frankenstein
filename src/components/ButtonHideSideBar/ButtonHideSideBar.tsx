@@ -9,6 +9,8 @@ type HideSideBar = {
   left?: string;
   right?: string;
   deg: string;
+  createTemplate?: boolean;
+  hide?: boolean;
 };
 
 export const ButtonHideSideBar = ({
@@ -16,13 +18,22 @@ export const ButtonHideSideBar = ({
   left,
   right,
   deg,
+  hide = false,
+  createTemplate = false,
 }: HideSideBar) => {
   const handleClick = () => {
     changeVisible();
   };
-  
+
   return (
-    <ButtonHide clickF={handleClick} rotate={deg} left={left} right={right}>
+    <ButtonHide
+      clickF={handleClick}
+      rotate={deg}
+      left={left}
+      right={right}
+      createTemplate={createTemplate}
+      hide={hide}
+    >
       <svg
         width="18"
         height="95"

@@ -18,6 +18,7 @@ import {
 } from "../../../../components/CustomDragNDrop/CustomDNDHook";
 import App from "src/store/Application";
 import { CreateStoreType } from "../CreateStoreType";
+import { CreateTemplate } from "../CreateTemplate";
 
 export const Content = observer(
   ({ overflow }: Pick<ContentProp, "overflow">) => {
@@ -86,6 +87,7 @@ export const Content = observer(
         ) : section === SectionEnum.options ? (
           <Section>
             <FindOption />
+            <CreateTemplate />
           </Section>
         ) : (
           <Section>

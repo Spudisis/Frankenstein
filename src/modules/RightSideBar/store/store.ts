@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { STATUS_LOADING, TemplateType } from "src/domains";
+import { CreateTemplateType, STATUS_LOADING, TemplateType } from "src/domains";
 import { Templates } from "src/http";
 
 export class Pictures {
@@ -26,7 +26,18 @@ export class Pictures {
       console.log(error);
     }
   }
-}
-const store = new Pictures();
 
-export type PicturesTypeStore = typeof store;
+  async createTemplate(body: CreateTemplateType) {
+    try {
+      this.statusLoading = STATUS_LOADING.LOADING;
+      await Templates.createTemplate(body);
+      this.statusLoading = STATUS_LOADING.SUCCESS;
+    } catch (error) {
+      this.statusLoading = STATUS_LOADING.ERROR;
+      console.log(error);
+    }
+  }
+}
+export const StorePictures = new Pictures();
+
+export type PicturesTypeStore = typeof StorePictures;

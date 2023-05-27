@@ -43,4 +43,5 @@ export const TARGET_DEFAULT = {
   id: "",
   name: "",
   options: {},
+  modules: []
 };

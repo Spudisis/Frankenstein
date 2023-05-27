@@ -1,17 +1,11 @@
 import React from "react";
-import { ItemTypesDND } from "src/components/CustomDragNDrop/CustomDNDHook";
+
 import { Pictures } from "../Pictures";
 import { CustomDragLayer } from "src/components/CustomDragNDrop/CustomDragLayer";
 import { Pictures as PicturesStore } from "../../store/store";
+import { MasType } from "../../RightSideBar.constant";
 
-export const CreateStoreType = () => {
-  const MasType = [
-    ItemTypesDND.PicturesHeader,
-    ItemTypesDND.PicturesFooter,
-    ItemTypesDND.PicturesButton,
-    ItemTypesDND.PicturesWrapper,
-    ItemTypesDND.PicturesText,
-  ];
+export const CreateStoreType = React.memo(() => {
   return (
     <>
       <CustomDragLayer />
@@ -21,4 +15,4 @@ export const CreateStoreType = () => {
       })}
     </>
   );
-};
+});

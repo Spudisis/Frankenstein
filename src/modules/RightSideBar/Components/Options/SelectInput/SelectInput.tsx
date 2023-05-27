@@ -15,6 +15,7 @@ export const SelectInput = <T,>({
       {label}
       <StyledSelect>
         <Select
+        
           className="basic-single"
           classNamePrefix="select"
           defaultValue={find[0]}

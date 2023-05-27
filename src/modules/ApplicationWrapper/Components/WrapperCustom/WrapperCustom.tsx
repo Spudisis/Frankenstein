@@ -37,8 +37,11 @@ export const WrapperCustom = ({
   const module = modules as Module[];
 
   const handleSetTarget = (e: MouseEvent) => {
-    const { options, id, namePrivate, name } = elem;
-    changeTarget({ options, name, id, namePrivate }, { changeOptions });
+    const { options, id, namePrivate, name, modules } = elem;
+    changeTarget(
+      { options, name, id, namePrivate, modules },
+      { changeOptions }
+    );
     e.stopPropagation();
   };
 
@@ -47,7 +50,7 @@ export const WrapperCustom = ({
     parent,
     FindIndex,
     MoveCardFunc,
-    typeDrag: 'Wrapper',
+    typeDrag: "Wrapper",
     deleteItemFunc,
   });
 

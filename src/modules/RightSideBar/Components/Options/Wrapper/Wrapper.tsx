@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Module, ChangeOptions } from "src/domains";
+import { Module, ChangeOptions, SubModules } from "src/domains";
 
 import { Input } from "../Input";
 import { TypesStyles } from "../Options.types";
@@ -23,7 +23,9 @@ export const WrapperOptions = ({
   namePrivate,
   id,
   changeOptions,
-}: Pick<Module, "options" | "name" | "namePrivate" | "id"> & ChangeOptions) => {
+  modules,
+}: Pick<SubModules, "modules" | "options" | "name" | "namePrivate" | "id"> &
+  ChangeOptions) => {
   const [styles, setStyles] = React.useState<WrapperStyles>({
     color: options.color ? options.color : "black",
     nameModule: name ? name : "",
@@ -35,7 +37,7 @@ export const WrapperOptions = ({
     width: options.width ? options.width : "auto",
     border: options.border ? options.border : "none",
     display: options.display ? options.display : "",
-    flexDirection: options.flexDirection ? options.flexDirection: 'row',
+    flexDirection: options.flexDirection ? options.flexDirection : "row",
     justifyContent: options.justifyContent ? options.justifyContent : "",
     alignItems: options.alignItems ? options.alignItems : "",
     gridTemplateColumns: options.gridTemplateColumns
@@ -48,7 +50,7 @@ export const WrapperOptions = ({
   React.useEffect(() => {
     changeOptions({ options: styles, name: styles.nameModule });
     App.setTarget(
-      { options: styles, name: styles.nameModule, namePrivate, id },
+      { options: styles, name: styles.nameModule, namePrivate, id, modules },
       { changeOptions }
     );
   }, [changeOptions, styles]);
@@ -139,7 +141,7 @@ export const WrapperOptions = ({
             property="alignItems"
             options={OptionsAlign}
           />
-           <SelectInput
+          <SelectInput
             value={styles}
             onChange={ChangeStyles}
             label="direction"

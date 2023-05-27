@@ -38,6 +38,7 @@ export const FindOption = observer(() => {
           name={target.name}
           id={target.id}
           changeOptions={target.changeOptions}
+          modules={target.modules}
         />
       );
     }
@@ -74,6 +75,7 @@ export const FindOption = observer(() => {
           name={target.name}
           namePrivate={target.namePrivate}
           changeOptions={target.changeOptions}
+          modules={target.modules}
         />
       );
     }

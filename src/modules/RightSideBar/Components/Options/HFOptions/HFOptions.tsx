@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { Input } from "../Input";
-import { Module, ChangeOptions } from "src/domains";
+import { Module, ChangeOptions, SubModules } from "src/domains";
 import { TypesStyles } from "../Options.types";
 import { InputColorWheel } from "../InputColorWheel";
 import { InputDisplay } from "../InputDisplay";
@@ -36,7 +36,8 @@ export const HFOptions = observer(
     namePrivate,
     id,
     changeOptions,
-  }: Pick<Module, "options" | "name" | "namePrivate" | "id"> &
+    modules,
+  }: Pick<SubModules, 'modules' | "options" | "name" | "namePrivate" | "id"> &
     ChangeOptions) => {
     const [styles, setStyles] = React.useState<HFStyles>({
       nameModule: name ? name : "",
@@ -60,7 +61,7 @@ export const HFOptions = observer(
         name: styles.nameModule,
       });
       App.setTarget(
-        { options: styles, name: styles.nameModule, namePrivate, id },
+        { options: styles, name: styles.nameModule, namePrivate, id, modules },
         { changeOptions }
       );
     }, [changeOptions, styles]);

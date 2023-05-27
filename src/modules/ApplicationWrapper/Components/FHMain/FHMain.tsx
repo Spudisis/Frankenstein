@@ -72,7 +72,7 @@ export const FHMain = observer((props: Prop) => {
   const { drop } = CustomDropHook({ newModuleDrop });
 
   const setTarget = () => {
-    changeTarget({ options, name, id, namePrivate }, { changeOptions });
+    changeTarget({ options, name, id, namePrivate, modules }, { changeOptions });
   };
 
   const changeOptions = (propOptions: ChangeOptionsProp) => {

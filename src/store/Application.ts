@@ -35,7 +35,7 @@ class ApplicationData {
   }
   private projectInfo: ProjectDataType = PROJECT_INFO_DEFAULT;
   section = SectionEnum.options;
-  target: Module & ParentElem & ParentParent & ChangeOptions = TARGET_DEFAULT;
+  target: SubModules & ParentElem & ParentParent & ChangeOptions = TARGET_DEFAULT;
   private statusLoading: STATUS_LOADING = STATUS_LOADING.LOADING;
 
   //костыль
@@ -360,7 +360,7 @@ class ApplicationData {
     this.target.options = { ...this.target.options, ...options };
   }
 
-  setTarget(obj: Module, { changeOptions }: ChangeOptions) {
+  setTarget(obj: SubModules, { changeOptions }: ChangeOptions) {
     if (!obj.id) {
       return null;
     }

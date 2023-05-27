@@ -27,10 +27,12 @@ export type TypesStyles = {
   name: string;
   width: string;
   nameModule: string;
+  border: string;
   display: string;
   fontSize: string;
   justifyContent: string;
   alignItems: string;
+  flexDirection: string;
   gridTemplateColumns: string;
   gridColumnGap: string;
   gridRowGap: string;

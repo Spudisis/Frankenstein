@@ -19,3 +19,8 @@ export const OptionsGridColumns: SelectValues[] = [
   { value: "4", label: "4" },
   { value: "5", label: "5" },
 ];
+
+export const OptionFlexDirection: SelectValues[] = [
+  { value: "row", label: "row" },
+  { value: "column", label: "column" },
+];

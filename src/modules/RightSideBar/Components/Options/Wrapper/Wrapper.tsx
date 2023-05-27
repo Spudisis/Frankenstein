@@ -8,6 +8,7 @@ import { InputColorWheel } from "../InputColorWheel";
 import { InputDisplay } from "../InputDisplay";
 import { SelectInput } from "../SelectInput";
 import {
+  OptionFlexDirection,
   OptionsAlign,
   OptionsGridColumns,
   OptionsJustify,
@@ -32,7 +33,9 @@ export const WrapperOptions = ({
     padding: options.padding ? options.padding : "2px",
     margin: options.margin ? options.margin : "0px",
     width: options.width ? options.width : "auto",
+    border: options.border ? options.border : "none",
     display: options.display ? options.display : "",
+    flexDirection: options.flexDirection ? options.flexDirection: 'row',
     justifyContent: options.justifyContent ? options.justifyContent : "",
     alignItems: options.alignItems ? options.alignItems : "",
     gridTemplateColumns: options.gridTemplateColumns
@@ -91,6 +94,13 @@ export const WrapperOptions = ({
         typeInput="text"
       />
       <Input<WrapperStyles>
+        label="Бордер:"
+        value={styles}
+        onChange={ChangeStyles}
+        property="border"
+        typeInput="text"
+      />
+      <Input<WrapperStyles>
         label="Внутренний отступ:"
         value={styles}
         onChange={ChangeStyles}
@@ -128,6 +138,13 @@ export const WrapperOptions = ({
             label="align"
             property="alignItems"
             options={OptionsAlign}
+          />
+           <SelectInput
+            value={styles}
+            onChange={ChangeStyles}
+            label="direction"
+            property="flexDirection"
+            options={OptionFlexDirection}
           />
         </>
       )}

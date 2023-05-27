@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { Option } from "src/domains";
 export const HFStyles = styled.div<any>`
   height: ${(props) => (props.height ? props.height : "150px")};
-
+  border: ${(props)=>props.border || 'none'};
   overflow: hidden;
   background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "yellow"};
@@ -12,6 +12,7 @@ export const HFStyles = styled.div<any>`
       ? css`
           justify-content: ${(props: Option) => props.justifyContent || ""};
           align-items: ${(props: Option) => props.alignItems || ""};
+          flex-direction: ${(props:Option)=> props.flexDirection || 'row'};
         `
       : display === "grid"
       ? css`

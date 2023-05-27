@@ -7,6 +7,7 @@ import { InputColorWheel } from "../InputColorWheel";
 import { InputDisplay } from "../InputDisplay";
 import { SelectInput } from "../SelectInput";
 import {
+  OptionFlexDirection,
   OptionsAlign,
   OptionsGridColumns,
   OptionsJustify,
@@ -24,6 +25,8 @@ type HFStyles = Pick<
   | "gridColumnGap"
   | "gridTemplateColumns"
   | "gridRowGap"
+  | "border"
+  | "flexDirection"
 >;
 
 export const HFOptions = observer(
@@ -39,16 +42,18 @@ export const HFOptions = observer(
       nameModule: name ? name : "",
       height: options.height ? options.height : "auto",
       backgroundColor: options.backgroundColor ? options.backgroundColor : "",
+      border: options.border ? options.border : "none",
       display: options.display ? options.display : "",
       justifyContent: options.justifyContent ? options.justifyContent : "",
       alignItems: options.alignItems ? options.alignItems : "",
+      flexDirection: options.flexDirection ? options.flexDirection : "row",
       gridTemplateColumns: options.gridTemplateColumns
         ? options.gridTemplateColumns
         : "",
       gridColumnGap: options.gridColumnGap ? options.gridColumnGap : "",
       gridRowGap: options.gridRowGap ? options.gridRowGap : "",
     });
-    
+
     React.useEffect(() => {
       changeOptions({
         options: styles,
@@ -80,6 +85,13 @@ export const HFOptions = observer(
           property="height"
           typeInput="text"
         />
+        <Input<HFStyles>
+          label="Бордер:"
+          value={styles}
+          onChange={ChangeStyles}
+          property="border"
+          typeInput="text"
+        />
         <InputColorWheel<HFStyles>
           label="Цвет фона:"
           value={styles}
@@ -106,6 +118,13 @@ export const HFOptions = observer(
               label="align"
               property="alignItems"
               options={OptionsAlign}
+            />
+            <SelectInput
+              value={styles}
+              onChange={ChangeStyles}
+              label="direction"
+              property="flexDirection"
+              options={OptionFlexDirection}
             />
           </>
         )}

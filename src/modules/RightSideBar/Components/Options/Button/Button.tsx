@@ -14,7 +14,7 @@ type ButtonStyles = Omit<
   | "alignItems"
   | "gridTemplateColumns"
   | "gridColumnGap"
-  | "gridRowGap"
+  | "gridRowGap" | 'flexDirection'
 >;
 
 export const ButtonOptions = ({
@@ -32,6 +32,7 @@ export const ButtonOptions = ({
     padding: options.padding ? options.padding : "2px",
     color: options.color ? options.color : "black",
     margin: options.margin ? options.margin : "0px",
+    border: options.border ? options.border : "none",
     name: options.name ? options.name : "",
     width: options.width ? options.width : "auto",
     fontSize: options.fontSize ? options.fontSize : "16px",
@@ -109,6 +110,13 @@ export const ButtonOptions = ({
         value={styles}
         onChange={ChangeStyles}
         property="borderRadius"
+        typeInput="text"
+      />
+      <Input<ButtonStyles>
+        label="Бордер:"
+        value={styles}
+        onChange={ChangeStyles}
+        property="border"
         typeInput="text"
       />
       <Input<ButtonStyles>

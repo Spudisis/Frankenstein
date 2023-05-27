@@ -5,7 +5,7 @@ import { Module } from "../../domains/ApplicationTypes";
 export const StyledButtonFullControlled = styled.button<any>`
   width: ${(props) => props.width || "auto"};
   height: ${(props) => props.height || "auto"};
-  border: ${(props) => props.border || "1px solid black"};
+  border: ${(props) => props.border || "none"};
   outline: none;
   border-radius: ${(props) => props.borderRadius || "5px"};
   color: ${(props) => props.color || "black"};

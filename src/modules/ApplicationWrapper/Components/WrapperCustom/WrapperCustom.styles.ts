@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 export const WrapperStyledDiv = styled.div<Option>`
   width: ${(props) => props.width || "auto"};
   height: ${(props) => props.height || "auto"};
-  border: ${(props) => props.border || "1px solid black"};
+  border: ${(props) => props.border || "none"};
   outline: none;
   border-radius: ${(props) => props.borderRadius || "5px"};
   color: ${(props) => props.color || "black"};
@@ -17,6 +17,7 @@ export const WrapperStyledDiv = styled.div<Option>`
       ? css`
           justify-content: ${(props: Option) => props.justifyContent || ""};
           align-items: ${(props: Option) => props.alignItems || ""};
+          flex-direction: ${(props:Option)=> props.flexDirection || 'row'};
         `
       : display === "grid"
       ? css`

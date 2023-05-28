@@ -1,8 +1,16 @@
 import { Option, SubModules } from "./ApplicationTypes";
 
-export type ChangeOptions = ({ options, name }: ChangeOptionsProp) => void;
+export type ChangeOptions = ({
+  options,
+  name,
+  scrollable,
+}: ChangeOptionsProp) => void;
 
-export type ChangeOptionsProp = { options: Option; name: string };
+export type ChangeOptionsProp = {
+  options: Option;
+  name: string;
+  scrollable?: string;
+};
 
 export type ChangeTargetType = {
   obj: SubModules;

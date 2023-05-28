@@ -1,22 +1,20 @@
-import { autorun, makeAutoObservable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { CreateId } from "../components";
 
 import {
+  ChangeOptions,
+  ChangeTargetType,
+  ProjectDataType,
+  STATUS_LOADING,
   ScreenAddElemeny,
   FHObject,
-  Module,
   ParentElem,
   ScreenMas,
   SectionEnum,
   typeFH,
-  id,
-  Name,
-  Option,
-  OptionsFH,
   ParentParent,
   SubModules,
-} from "../domains/ApplicationTypes";
-import { ChangeOptions, ChangeTargetType, ProjectDataType, STATUS_LOADING } from "src/domains";
+} from "src/domains";
 import { Project } from "src/http";
 import {
   FOOTER_DEFAULT,

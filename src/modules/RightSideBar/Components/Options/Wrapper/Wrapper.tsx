@@ -1,5 +1,5 @@
 import React from "react";
-import { ChangeOptions, SubModules } from "src/domains";
+import { ChangeOptions, SubModules, WrapperStyles } from "src/domains";
 import { Input } from "../Input";
 import { TypesStyles } from "../Options.types";
 import { InputColorWheel } from "../InputColorWheel";
@@ -13,11 +13,6 @@ import {
   OptionsScrollable,
 } from "../Options.constant";
 import App from "src/store/Application";
-
-type WrapperStyles = Omit<
-  TypesStyles,
-  "name" | "fontSize" | "actions" | "textAlign"
->;
 
 export const WrapperOptions = ({
   options,
@@ -52,7 +47,7 @@ export const WrapperOptions = ({
   });
 
   React.useEffect(() => {
-    changeOptions({ options: styles, name: styles.nameModule });
+    changeOptions({ options: styles, name: styles.nameModule, scrollable: styles.scrollable });
     App.setTarget({
       obj: {
         options: styles,

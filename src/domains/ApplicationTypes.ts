@@ -1,6 +1,8 @@
+import { TypesStyles } from "./OptionsItemJson";
+
 export type Name = string;
 
-export type Option = any | OptionsFH;
+export type Option = Partial<TypesStyles>;
 
 export type id = string;
 
@@ -9,7 +11,7 @@ export type Modules = (Module | undefined)[] | undefined;
 export type Module = {
   name: Name;
   namePrivate: string;
-  options?: Option;
+  options: Option;
   id: id;
   keyWord?: string;
 };
@@ -19,7 +21,7 @@ export interface ScreenMas {
   namePrivate: string;
   id: id;
   modules?: SubModules[];
-  options?: Option;
+  options: Option;
   keyWord?: string;
   uncommonHeader?: FHObject;
   uncommonFooter?: FHObject;
@@ -30,15 +32,10 @@ export interface SubModules {
   namePrivate: string;
   id: id;
   modules?: Modules;
-  options?: Option;
+  options: Option;
   keyWord?: string;
+  scrollable?: string;
 }
-
-// interface ApplicationT {
-//   footer?: ScreenMas;
-//   header?: ScreenMas;
-//   screens?: ScreenMas[];
-// }
 
 export enum typeFH {
   "Header",

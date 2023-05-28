@@ -6,14 +6,13 @@ import {
   Modules,
   ChangeOptionsProp,
   DeleteFuncType,
+  WrapperStyles,
 } from "src/domains";
 import { FindComponent } from "../FindComponent/FindComponent";
 import { WrapperStyledDiv } from "./WrapperCustom.styles";
 import { WrapperCustomT } from "./WrapperCustom.types";
-import { useDrag, useDrop } from "react-dnd";
-import { DropDND } from "src/components/CustomDragNDrop/CustomDNDHook.types";
 import { changeTarget } from "src/components";
-import Application from "src/store/Application";
+
 import { ChangeLayoutModule } from "src/utils";
 import { TestStore } from "../../store";
 import { CustomDragHook } from "../customDragHook";
@@ -27,14 +26,11 @@ export const WrapperCustom = ({
   parent,
   newModules,
   deleteItemFunc,
-}: WrapperCustomT & {
-  newModules: (modules: any) => void;
-  deleteItemFunc: DeleteFuncType;
-}) => {
+}: WrapperCustomT) => {
   const { options, modules, id } = elem;
   const module = modules as Module[];
 
-  const handleSetTarget = (e: MouseEvent) => {
+  const handleSetTarget = (e: React.MouseEvent<HTMLDivElement>) => {
     const { options, id, namePrivate, name, modules } = elem;
     changeTarget({
       obj: { options, name, id, namePrivate, modules },
@@ -43,7 +39,7 @@ export const WrapperCustom = ({
     e.stopPropagation();
   };
 
-  const { isDragging, drag } = CustomDragHook({
+  const { drag } = CustomDragHook({
     elem,
     parent,
     FindIndex,
@@ -69,11 +65,12 @@ export const WrapperCustom = ({
     ],
   });
 
-  const changeOptions = ({ options, name }: ChangeOptionsProp) => {
+  const changeOptions = ({ options, name, scrollable }: ChangeOptionsProp) => {
     const newElem = {
       ...elem,
       name: name ? name : elem.name,
       options: options ? options : elem.options,
+      scrollable: scrollable ? scrollable : elem.scrollable,
     };
     newModules(newElem);
   };
@@ -90,19 +87,16 @@ export const WrapperCustom = ({
   return (
     <>
       <WrapperStyledDiv
-        ref={(node: HTMLButtonElement) => drag(drop(node))}
-        isDragging={isDragging}
-        {...options}
-        onClick={(e: MouseEvent) => handleSetTarget(e)}
+        ref={(node: HTMLDivElement) => drag(drop(node))}
+        {...(options as WrapperStyles)}
+        onClick={handleSetTarget}
       >
-        {/* <div ref={dropMain}> */}
         <FindComponent
           modules={module}
           parent={parent as string}
           ParentParent={id}
           changeModules={changeModules}
         />
-        {/* </div> */}
       </WrapperStyledDiv>
     </>
   );

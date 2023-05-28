@@ -13,3 +13,4 @@ export * from "./funcChangeOptions";
 // export * from './dropElement'
 export * from "./ShowMoreFuncPaginate";
 export * from "./Templates";
+export * from "./OptionsItemJson";

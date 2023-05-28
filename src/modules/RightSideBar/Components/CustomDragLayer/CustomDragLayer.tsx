@@ -79,7 +79,6 @@ export const CustomDragLayer = () => {
           </MaxWidthButton>
         );
       case ItemTypesDNDPictures.PicturesWrapper:
-        console.log(item);
         return (
           <MaxWidth>
             <WrapperCustom

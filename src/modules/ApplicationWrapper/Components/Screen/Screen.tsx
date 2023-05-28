@@ -14,7 +14,6 @@ import { useDrop } from "react-dnd";
 
 import { DropDND } from "src/components/CustomDragNDrop/CustomDNDHook.types";
 
-import { ChangeLayoutModule } from "src/utils";
 import { TestStore } from "../../store";
 import { ModalChooseTargetScreenHF } from "../ModalChooseTargetScreenHF";
 import { ChooseFH } from "../FHMain";
@@ -58,23 +57,6 @@ export const Screen = observer(
       [elem, footer]
     );
 
-    const [, dropMain]: DropDND = useDrop(() => ({
-      accept: [
-        ItemTypesDNDAll.Main,
-        ItemTypesDNDAll.Button,
-        ItemTypesDNDAll.Wrapper,
-        ItemTypesDNDAll.PicturesButton,
-        ItemTypesDNDAll.PicturesWrapper,
-        ItemTypesDNDAll.PicturesText,
-      ],
-      drop: (item: ScreenAddElemeny) => {
-        if (TestStore.test !== item.id) {
-          ChangeLayoutModule({ item, id: elem.id });
-        }
-        TestStore.test = "";
-      },
-    }));
-
     const SetNewHF = (type: typeFH, item: FHObject) => {
       TestStore.setItem = item;
       TestStore.typeFH = type;
@@ -103,7 +85,7 @@ export const Screen = observer(
             typeFH={typeFH.Header}
           />
 
-          <MobileMain refDrag={dropMain}>
+          <MobileMain>
             <>
               {elem.modules && elem.modules.length !== 0 && (
                 <MainConstructor {...elem} />

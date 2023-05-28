@@ -11,9 +11,8 @@ import {
 import { FindComponent } from "../FindComponent/FindComponent";
 import { WrapperStyledDiv } from "./WrapperCustom.styles";
 import { WrapperCustomT } from "./WrapperCustom.types";
-import { changeTarget } from "src/components";
+import { CreateId, changeTarget } from "src/components";
 
-import { ChangeLayoutModule } from "src/utils";
 import { TestStore } from "../../store";
 import { CustomDragHook } from "../customDragHook";
 import { CustomDropHook } from "../customDropHook";
@@ -49,10 +48,14 @@ export const WrapperCustom = ({
   });
 
   const dropFunc = (item: ScreenAddElemeny) => {
-    TestStore.test = item.id;
-    ChangeLayoutModule({ item, id: String(parent), parent: elem.id });
+    addModule({ ...item, id: CreateId() });
   };
-
+  const addModule = (newModule: Module | SubModules) => {
+    console.log(elem!.modules!.length);
+    const newModules = [...(elem.modules ? elem.modules : []), newModule];
+    console.log(newModules!.length);
+    changeModules && changeModules(newModules);
+  };
   const { drop } = CustomDropHook({
     dropFunc,
     MoveCardFunc,
@@ -72,6 +75,7 @@ export const WrapperCustom = ({
       options: options ? options : elem.options,
       scrollable: scrollable ? scrollable : elem.scrollable,
     };
+
     newModules(newElem);
   };
 
@@ -81,6 +85,8 @@ export const WrapperCustom = ({
 
       modules: newEl,
     };
+
+    console.log(newElem.id);
     newModules(newElem);
   };
 

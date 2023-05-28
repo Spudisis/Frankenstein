@@ -18,15 +18,76 @@ export const FOOTER_DEFAULT = {
   modules: [],
   options: {},
 };
+export const DEFAULT_SCREEN_WRAPPER = {
+  options: {
+    color: "black",
+    borderRadius: "0px",
+    height: "100%",
+    backgroundColor: "#FFFFFF",
+    padding: "2px",
+    margin: "0px",
+    width: "auto",
+    border: "none",
+    display: "grid",
+    flexDirection: "row",
+    justifyContent: "",
+    alignItems: "",
+    gridTemplateColumns: "2",
+    gridColumnGap: "",
+    gridRowGap: "",
+  },
+  name: "wrapper1",
+  namePrivate: "Wrapper",
+  id: "f83db156-ebb0-40dc-a98d-1199c8b75c54",
+  modules: [],
+  scrollable: "false",
+};
 export const SCREEN_DEFAULT = [
   {
     name: "screen new",
     namePrivate: "newScreen",
     id: DEFAULT_ID,
     options: {},
-    modules: [],
+    modules: [DEFAULT_SCREEN_WRAPPER],
+    uncommonHeader: {},
+    uncommonFooter: {},
   },
 ];
+
+export const SCREEN_OBJECT = {
+  name: "screen new",
+  namePrivate: "newScreen",
+  id: DEFAULT_ID,
+  options: {},
+  modules: [
+    {
+      options: {
+        color: "black",
+        borderRadius: "0px",
+        height: "100%",
+        backgroundColor: "#2a5799",
+        padding: "2px",
+        margin: "0px",
+        width: "auto",
+        border: "none",
+        display: "grid",
+        flexDirection: "row",
+        justifyContent: "",
+        alignItems: "",
+        gridTemplateColumns: "2",
+        gridColumnGap: "",
+        gridRowGap: "",
+      },
+      name: "wrapper1",
+      namePrivate: "Wrapper",
+      id: "f83db156-ebb0-40dc-a98d-1199c8b75c54",
+      modules: [],
+      scrollable: "false",
+    },
+  ],
+  uncommonHeader: {},
+  uncommonFooter: {},
+};
 
 export const PROJECT_INFO_DEFAULT = {
   id: 0,

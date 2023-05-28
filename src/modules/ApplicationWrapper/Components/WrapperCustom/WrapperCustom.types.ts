@@ -1,4 +1,10 @@
-import { DeleteFuncType, SubModules, WrapperStyles, typeFH } from "src/domains";
+import {
+  DeleteFuncType,
+  Module,
+  SubModules,
+  WrapperStyles,
+  typeFH,
+} from "src/domains";
 
 export type WrapperCustomT = {
   elem: SubModules;
@@ -9,4 +15,3 @@ export type WrapperCustomT = {
   newModules: (modules: any) => void;
   deleteItemFunc: DeleteFuncType;
 };
-

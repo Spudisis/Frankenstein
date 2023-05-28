@@ -10,7 +10,6 @@ export const CustomDropHook = ({
   elem,
   FindIndex,
   ItemAccess,
-
 }: DropHook) => {
   const access = [ItemTypesDND.Button, ItemTypesDND.Wrapper, ItemTypesDND.Text];
 
@@ -18,10 +17,14 @@ export const CustomDropHook = ({
     access.push(...ItemAccess);
   }
 
-  const [, drop] = useDrop(
+  const [{ isDrop, getDropResult }, drop] = useDrop(
     () => ({
       accept: access,
-      drop: (item: ScreenAddElemeny) => {
+      drop: (item: ScreenAddElemeny, monitor) => {
+        const didDrop = monitor.didDrop();
+        if (didDrop) {
+          return;
+        }
         if (dropFunc) dropFunc(item);
       },
       hover(item: ScreenAddElemeny) {
@@ -36,8 +39,12 @@ export const CustomDropHook = ({
           }
         }
       },
+      collect: (monitor) => ({
+        isDrop: monitor.didDrop(),
+        getDropResult: monitor.getDropResult(),
+      }),
     }),
     [FindIndex, MoveCardFunc]
   );
-  return { drop };
+  return { drop, isDrop, getDropResult };
 };

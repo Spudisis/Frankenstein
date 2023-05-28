@@ -1,12 +1,6 @@
 import React from "react";
 
-import {
-  FHObject,
-  Module,
-  Modules,
-  ParentParent,
-  SubModules,
-} from "src/domains/ApplicationTypes";
+import { Module, ParentParent, SubModules } from "src/domains/ApplicationTypes";
 import { Button, Text } from "../Elements";
 import { PropsDNDHook } from "src/components/CustomDragNDrop/CustomDNDHook.types";
 import { WrapperCustom } from "../WrapperCustom";
@@ -34,13 +28,14 @@ export const FindComponent = ({
       }
       return elem;
     });
-
+    console.log(newModules);
     changeModules && changeModules(newModules);
   };
   const deleteItemFunc = ({ id }: { id: string }) => {
     const newModules = modules.filter((elem) => elem.id !== id);
     changeModules && changeModules(newModules);
   };
+
   return (
     <>
       {modules &&

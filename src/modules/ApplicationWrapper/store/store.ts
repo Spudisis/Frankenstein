@@ -7,7 +7,7 @@ class StoreTest {
   constructor() {
     makeAutoObservable(this, {});
   }
-  test = "";
+
   openModalChooseHFScreen = false;
   typeFH: null | typeFH = null;
   private item: FHObject | null = null;

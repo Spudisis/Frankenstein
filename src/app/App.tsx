@@ -20,6 +20,21 @@ const App = observer(() => {
     i18n.changeLanguage(locale);
   }, [locale]);
 
+  const fibonacci = (length: number) => {
+    let a = 0,
+      b = 1;
+    let res = 0;
+    for (let i = 2; i <= length; i++) {
+      res = a + b;
+      a = b;
+      b = res;
+    }
+
+    return res;
+  };
+
+  console.log(fibonacci(10));
+
   const loading = AuthStore.loading === STATUS_LOADING.LOADING;
 
   return (

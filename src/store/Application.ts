@@ -17,6 +17,7 @@ import {
 } from "src/domains";
 import { Project } from "src/http";
 import {
+  DEFAULT_SCREEN_WRAPPER,
   FOOTER_DEFAULT,
   HEADER_DEFAULT,
   PROJECT_INFO_DEFAULT,
@@ -123,7 +124,7 @@ class ApplicationData {
       name: "screen new",
       namePrivate: "newScreen",
       id: CreateId(),
-      modules: [],
+      modules: [{ ...DEFAULT_SCREEN_WRAPPER, id: CreateId() }],
       options: {},
     });
   }
@@ -181,71 +182,6 @@ class ApplicationData {
       }
       return elem;
     });
-  }
-
-  changeModules({
-    item,
-    id,
-    parent,
-    ParentParent,
-    oldId,
-  }: { item: ScreenAddElemeny; id: string; oldId: string } & ParentElem &
-    ParentParent) {
-    //если совпадает, то не добавляется
-    if (id === item.parent) {
-      return null;
-    }
-    console.log(item.parent, parent, id, oldId);
-    const copyItem = Object.assign({}, item);
-    delete copyItem["parent"];
-    delete copyItem["originalIndex"];
-    // console.log(copyItem);
-    if (!this.ApplicationScreens) {
-      return null;
-    }
-    const mas = this.ApplicationScreens.map((screen) => {
-      if (screen.id === item.parent) {
-        const modules = screen.modules?.filter((module) => {
-          if (module !== undefined && module.id !== oldId) {
-            return module;
-          }
-          return null;
-        });
-
-        return { ...screen, modules: modules };
-      }
-      if (screen.id === id) {
-        //если перетаскиваемый элемент в таргете, то надо сменить его родителя в таргете, чтобы можно было дальше изменять не кликая повторно
-        if (this.target.id === oldId) {
-          this.target = { ...this.target };
-        }
-        //end
-        if (screen.modules) {
-          if (ParentParent) {
-            const addToTwoDeepModule = screen.modules.map((module) => {
-              if (module.id === ParentParent) {
-                if (module.modules) {
-                  return { ...module, modules: [...module.modules, copyItem] };
-                }
-                return { ...module, modules: [copyItem] };
-              }
-              return module;
-            });
-            return { ...screen, modules: addToTwoDeepModule };
-          }
-          if (this.prevAddModuleId === item.id) {
-            return screen;
-          }
-          return { ...screen, modules: [...screen.modules, copyItem] };
-        } else {
-          return { ...screen, modules: [copyItem] };
-        }
-      }
-
-      return screen;
-    });
-    this.prevAddModuleId = item.id;
-    this.ApplicationScreens = mas;
   }
 
   setTarget({ obj, changeOptions }: ChangeTargetType) {

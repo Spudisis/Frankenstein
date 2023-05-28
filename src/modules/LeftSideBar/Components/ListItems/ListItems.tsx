@@ -1,13 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { Details, SidebarName } from "src/UI";
-import {
-  ChangeOptionsProp,
-  Modules,
-  ScreenMas,
-  SubModules,
-  typeFH,
-} from "src/domains";
+import { ChangeOptionsProp, ScreenMas, typeFH } from "src/domains";
 import App from "src/store/Application";
 import { changeTarget } from "src/components";
 import { HeaderFooter } from "../HeaderFooter/HeaderFooter";
@@ -38,7 +32,9 @@ export const ListItems = observer(() => {
           id={elem.id}
           key={elem.id}
           namePrivate={elem.namePrivate}
-          click={() => changeTarget({ obj: elem, changeOptions: changeOptionsF })}
+          click={() =>
+            changeTarget({ obj: elem, changeOptions: changeOptionsF })
+          }
           options={elem.options}
           active={elem.id === target.id}
           nesting={1}

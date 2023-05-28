@@ -9,25 +9,31 @@ import {
   Button,
   CheckBox,
   CustomSelect,
+  IconHide,
   InputText,
   Label,
   StyledForm,
   Wrapper,
 } from "./CreateTemplate.styles";
-import { ButtonHideSideBar } from "src/components";
 
 import { SelectValues } from "../../RightSideBar.constant";
 
 export const CreateTemplate = observer(() => {
-  const [view, setView] = React.useState(true);
+  const statusOpenLocalStorage = localStorage.getItem("CreateTemplate");
+  const [view, setView] = React.useState(
+    statusOpenLocalStorage ? JSON.parse(statusOpenLocalStorage) : true
+  );
 
-  const changeVisibleCreateTemplate = () => setView(!view);
+  const changeVisibleCreateTemplate = () => {
+    setView(!view);
+    localStorage.setItem("CreateTemplate", JSON.stringify(!view));
+  };
 
   const target = App.target;
   const {
     register,
     setValue,
-    formState: { errors },
+
     handleSubmit,
   } = useForm<CreateTemplateType>({
     mode: "onBlur",
@@ -53,13 +59,9 @@ export const CreateTemplate = observer(() => {
     <>
       {target.namePrivate && (
         <Wrapper>
-          <ButtonHideSideBar
-            createTemplate
-            hide={view}
-            changeVisible={changeVisibleCreateTemplate}
-            left="50%"
-            deg={"-90deg"}
-          />
+          <IconHide onClick={changeVisibleCreateTemplate}>
+            Create template
+          </IconHide>
 
           <StyledForm onSubmit={handleSubmit(onSubmit)} view={view}>
             <Label>

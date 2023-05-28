@@ -102,7 +102,10 @@ const ElementHead = styled.div<PropStyled>`
   padding-left: ${(props) =>
     props.nesting ? props.nesting * 30 + "px" : "0px"};
 
-  ${(props) => (props.active ? "border: 1px solid #adadad" : "")};
+  ${(props) =>
+    props.active
+      ? "border: 1px solid #adadad"
+      : "border: 1px solid rgba(255,255,255,0)"};
   /* @media screen and (hover: hover) {
     :hover {
       border: 1px solid #adadad;

@@ -1,5 +1,5 @@
 import { ContentWrapper } from "src/UI/SideBar/Content/Content";
-import { Button, Wrapper } from "src/UI";
+import { Button, Section, Wrapper } from "src/UI";
 
 import { TypeContent } from "./Content.types";
 import { ParamsProject } from "../ParamsProject";
@@ -26,7 +26,7 @@ export const Content = ({ overflow, section, setSection }: TypeContent) => {
           active={section === true}
         ></Button>
       </Wrapper>
-      {section ? <ListItems /> : <ParamsProject />}
+      <Section>{section ? <ListItems /> : <ParamsProject />}</Section>
     </ContentWrapper>
   );
 };

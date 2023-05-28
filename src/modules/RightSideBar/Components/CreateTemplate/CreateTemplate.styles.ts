@@ -1,11 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Select from "react-select";
 
 export const Wrapper = styled.div`
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  transition: 0.3s ease all;
+  display: block;
+  position: relative;
 `;
 
 export const StyledForm = styled.form<{ view: boolean }>`
@@ -65,5 +63,21 @@ export const CustomSelect = styled(Select)`
   z-index: 1001;
   & .Select__indicator .Select__dropdown-indicator {
     color: black;
+  }
+`;
+export const IconHide = styled.button`
+  outline: none;
+  background-color: inherit;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 22px;
+  @media screen and (hover: hover) {
+    &:hover {
+      background-color: #141414;
+    }
   }
 `;

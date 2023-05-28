@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { ChildrenProp } from "../../ChildrenProp";
 
 type ButtonHideProp = {
@@ -6,8 +6,6 @@ type ButtonHideProp = {
   clickF: () => void;
   left?: string;
   right?: string;
-  createTemplate?: boolean;
-  hide?: boolean;
 };
 
 export const ButtonHide = ({
@@ -16,8 +14,6 @@ export const ButtonHide = ({
   clickF,
   left,
   right,
-  createTemplate = false,
-  hide = false,
 }: ChildrenProp & ButtonHideProp) => {
   return (
     <ButtonHideStyled
@@ -25,8 +21,6 @@ export const ButtonHide = ({
       rotate={rotate}
       left={left}
       right={right}
-      createTemplate={createTemplate}
-      hide={hide}
     >
       {children}
     </ButtonHideStyled>
@@ -53,16 +47,4 @@ export const ButtonHideStyled = styled.button<Omit<ButtonHideProp, "clickF">>`
       fill: black;
     }
   }
-  ${({ createTemplate }) =>
-    createTemplate &&
-    css`
-      ${(props: any) =>
-        props.hide
-          ? "transform: translate(-50%, -50%);"
-          : "transform: translate(-600%, -50%);"};
-      ${(props: any) => (props.hide ? "top: -5px" : "bottom: -120px")};
-      svg path {
-        fill: #585757;
-      }
-    `}
 `;

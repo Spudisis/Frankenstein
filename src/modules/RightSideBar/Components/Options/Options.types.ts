@@ -30,6 +30,7 @@ export type TypesStyles = {
   border: string;
   display: string;
   fontSize: string;
+  textAlign: string;
   justifyContent: string;
   alignItems: string;
   flexDirection: string;

@@ -16,6 +16,7 @@ type ButtonStyles = Omit<
   | "gridColumnGap"
   | "gridRowGap"
   | "flexDirection"
+  | "textAlign"
 >;
 
 export const ButtonOptions = ({

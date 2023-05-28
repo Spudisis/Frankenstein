@@ -5,10 +5,12 @@ import { TypesStyles } from "../Options.types";
 import { Input } from "../Input";
 import { InputColorWheel } from "../InputColorWheel";
 import App from "src/store/Application";
+import { SelectInput } from "../SelectInput";
+import { OptionAlignText } from "../Options.constant";
 
 type TextStyles = Pick<
   TypesStyles,
-  "color" | "nameModule" | "name" | "fontSize"
+  "color" | "nameModule" | "name" | "fontSize" | "textAlign"
 >;
 
 export const TextOptions = observer(
@@ -27,6 +29,7 @@ export const TextOptions = observer(
       color: options.color ? options.color : "black",
       name: options.name ? options.name : "",
       fontSize: options.fontSize ? options.fontSize : "16px",
+      textAlign: options.textAlign ? options.textAlign : "start",
     });
 
     const ChangeStyles = <T,>(value: T[keyof T], property: keyof T) => {
@@ -70,6 +73,13 @@ export const TextOptions = observer(
           property="color"
           onChange={ChangeStyles}
           label="Цвет"
+        />
+        <SelectInput<TextStyles>
+          value={styles}
+          onChange={ChangeStyles}
+          label="Link to screen"
+          property="textAlign"
+          options={OptionAlignText}
         />
       </>
     );

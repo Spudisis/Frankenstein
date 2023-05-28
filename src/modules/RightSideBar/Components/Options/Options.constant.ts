@@ -24,3 +24,10 @@ export const OptionFlexDirection: SelectValues[] = [
   { value: "row", label: "row" },
   { value: "column", label: "column" },
 ];
+
+export const OptionAlignText: SelectValues[] = [
+  { value: "start", label: "По левому краю" },
+  { value: "end", label: "По правому краю" },
+  { value: "center", label: "По центру" },
+  { value: "justify", label: "По ширине" },
+];

@@ -15,7 +15,10 @@ import {
 } from "../Options.constant";
 import App from "src/store/Application";
 
-type WrapperStyles = Omit<TypesStyles, "name" | "fontSize" | "actions">;
+type WrapperStyles = Omit<
+  TypesStyles,
+  "name" | "fontSize" | "actions" | "textAlign"
+>;
 
 export const WrapperOptions = ({
   options,

@@ -1,7 +1,5 @@
 import React from "react";
-
-import { Module, ChangeOptions, SubModules } from "src/domains";
-
+import { ChangeOptions, SubModules } from "src/domains";
 import { Input } from "../Input";
 import { TypesStyles } from "../Options.types";
 import { InputColorWheel } from "../InputColorWheel";
@@ -12,6 +10,7 @@ import {
   OptionsAlign,
   OptionsGridColumns,
   OptionsJustify,
+  OptionsScrollable,
 } from "../Options.constant";
 import App from "src/store/Application";
 
@@ -49,6 +48,7 @@ export const WrapperOptions = ({
       : "",
     gridColumnGap: options.gridColumnGap ? options.gridColumnGap : "",
     gridRowGap: options.gridRowGap ? options.gridRowGap : "",
+    scrollable: options.scrollable ? options.scrollable : "false",
   });
 
   React.useEffect(() => {
@@ -133,7 +133,13 @@ export const WrapperOptions = ({
         onChange={ChangeStyles}
         label="Цвет"
       />
-
+      <SelectInput
+        value={styles}
+        onChange={ChangeStyles}
+        label="scrollable"
+        property="scrollable"
+        options={OptionsScrollable}
+      />
       <InputDisplay value={styles} onChange={ChangeStyles} property="display" />
       {styles.display === "flex" && (
         <>

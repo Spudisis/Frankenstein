@@ -17,6 +17,7 @@ type ButtonStyles = Omit<
   | "gridRowGap"
   | "flexDirection"
   | "textAlign"
+  | "scrollable"
 >;
 
 export const ButtonOptions = ({

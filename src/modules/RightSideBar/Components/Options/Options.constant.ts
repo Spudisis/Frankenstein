@@ -31,3 +31,8 @@ export const OptionAlignText: SelectValues[] = [
   { value: "center", label: "По центру" },
   { value: "justify", label: "По ширине" },
 ];
+
+export const OptionsScrollable: SelectValues[] = [
+  { value: "true", label: "Yes" },
+  { value: "false", label: "No" },
+];

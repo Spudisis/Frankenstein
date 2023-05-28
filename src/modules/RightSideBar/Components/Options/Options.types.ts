@@ -31,6 +31,7 @@ export type TypesStyles = {
   display: string;
   fontSize: string;
   textAlign: string;
+  scrollable: string;
   justifyContent: string;
   alignItems: string;
   flexDirection: string;

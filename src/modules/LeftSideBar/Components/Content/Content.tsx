@@ -4,8 +4,9 @@ import { Button, Section, Wrapper } from "src/UI";
 import { TypeContent } from "./Content.types";
 import { ParamsProject } from "../ParamsProject";
 import { ListItems } from "../ListItems";
+import React from "react";
 
-export const Content = ({ overflow, section, setSection }: TypeContent) => {
+export const ContentComponent = ({ overflow, section, setSection }: TypeContent) => {
   return (
     <ContentWrapper overflow={overflow}>
       <Wrapper height="auto" borderBottom={"1px solid black"} padding="0px">
@@ -30,3 +31,5 @@ export const Content = ({ overflow, section, setSection }: TypeContent) => {
     </ContentWrapper>
   );
 };
+
+export const Content = React.memo(ContentComponent)

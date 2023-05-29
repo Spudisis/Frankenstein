@@ -94,7 +94,7 @@ const ButtonStyled = styled.button<ButtonStyledT>`
     ${(props) =>
       props.hover
         ? `&:hover {
-      background-color: var(--color-bgc-button-active)`
+      background-color: var(--color-bgc-button-active);  box-sizing: border-box;`
         : ""}
   }
 `;

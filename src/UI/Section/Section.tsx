@@ -9,7 +9,7 @@ export const Section = ({ children }: ChildrenProp) => {
 const SectionStyled = styled.div`
   height: 100%;
   position: relative;
-  overflow-y: auto;
+  overflow: auto;
   &::-webkit-scrollbar {
     width: 10px;
   }

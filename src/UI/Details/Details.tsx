@@ -88,7 +88,9 @@ export const Details = ({
 
 const DetailsStyled = styled.div`
   font-size: 14px;
-  width: 100%;
+
+  display: grid;
+
   cursor: pointer;
   position: relative;
   padding: initial;
@@ -106,9 +108,4 @@ const ElementHead = styled.div<PropStyled>`
     props.active
       ? "border: 1px solid #adadad"
       : "border: 1px solid rgba(255,255,255,0)"};
-  /* @media screen and (hover: hover) {
-    :hover {
-      border: 1px solid #adadad;
-    }
-  } */
 `;

@@ -6,6 +6,8 @@ type ButtonHideProp = {
   clickF: () => void;
   left?: string;
   right?: string;
+  onMouseDown?: any;
+  onMouseUp?: any;
 };
 
 export const ButtonHide = ({
@@ -14,6 +16,8 @@ export const ButtonHide = ({
   clickF,
   left,
   right,
+  onMouseDown,
+  onMouseUp,
 }: ChildrenProp & ButtonHideProp) => {
   return (
     <ButtonHideStyled
@@ -21,6 +25,8 @@ export const ButtonHide = ({
       rotate={rotate}
       left={left}
       right={right}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
     >
       {children}
     </ButtonHideStyled>

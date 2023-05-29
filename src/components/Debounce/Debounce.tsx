@@ -1,24 +1,18 @@
 import React from "react";
 
-export const Debounce = (cb: Function) => {
-  let running = false;
-  let i: NodeJS.Timeout;
-  return function () {
-    if (running) {
-      clearTimeout(i);
-      i = setTimeout(() => {
-        running = false;
 
-        cb();
-      }, 300);
-    } else {
-      i = setTimeout(() => {
-        running = false;
+//value - отслеживаемая переменная
+//debouncesValue использовать в массиве зависимостей, в теле useEffect actions
+export const Debounce = <T,>(value: T, delay?: number): T => {
+  const [debouncedValue, setDebouncedValue] = React.useState<T>(value);
 
-        cb();
-      }, 50);
-    }
+  React.useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);
 
-    running = true;
-  };
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
 };

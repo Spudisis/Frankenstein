@@ -1,6 +1,11 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 
-export function useThrottle(func: any, delay: number, cleanUp = false) {
+export const useThrottle = (
+  func: any,
+
+  delay: number,
+  cleanUp = false
+) => {
   const timeoutRef = useRef<null | NodeJS.Timeout>(null);
   const isFunctionRunning = useRef(false);
 
@@ -11,16 +16,16 @@ export function useThrottle(func: any, delay: number, cleanUp = false) {
     }
   }
 
-  function runFunction() {
-    func();
+  function runFunction(e: any) {
+    func(e);
     isFunctionRunning.current = false;
   }
 
-  return () => {
+  return (e?: any) => {
     if (!isFunctionRunning.current) {
       isFunctionRunning.current = true;
       clearTimer();
-      timeoutRef.current = setTimeout(runFunction, delay);
+      timeoutRef.current = setTimeout(() => runFunction(e), delay);
     }
   };
-}
+};

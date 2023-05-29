@@ -7,7 +7,7 @@ import ApplicationData from "../../store/Application";
 import { ScreenMas } from "../../domains/ApplicationTypes";
 import { ApplicationBuild, Container } from "../../UI";
 import App from "src/store/Application";
-import { useThrottle } from "./Components";
+import { useThrottle } from "src/components";
 import { STATUS_LOADING } from "src/domains";
 
 export const ApplicationWrapper = observer(() => {

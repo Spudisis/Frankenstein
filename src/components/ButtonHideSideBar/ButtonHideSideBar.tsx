@@ -6,6 +6,8 @@ type HideSideBar = {
   left?: string;
   right?: string;
   deg: string;
+  onMouseDown?: any;
+  onMouseUp?: any;
 };
 
 export const ButtonHideSideBar = ({
@@ -13,13 +15,22 @@ export const ButtonHideSideBar = ({
   left,
   right,
   deg,
+  onMouseDown,
+  onMouseUp,
 }: HideSideBar) => {
   const handleClick = () => {
     changeVisible();
   };
 
   return (
-    <ButtonHide clickF={handleClick} rotate={deg} left={left} right={right}>
+    <ButtonHide
+      clickF={handleClick}
+      rotate={deg}
+      left={left}
+      right={right}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+    >
       <svg
         width="18"
         height="95"

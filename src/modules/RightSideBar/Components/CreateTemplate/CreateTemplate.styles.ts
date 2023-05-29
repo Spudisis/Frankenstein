@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 `;
 
 export const StyledForm = styled.form<{ view: boolean }>`
-  background-color: var(--color-bgc-button-active);
+  background-color: inherit;
   height: auto;
 
   width: 100%;
@@ -18,7 +18,7 @@ export const StyledForm = styled.form<{ view: boolean }>`
 export const InputText = styled.input`
   background-color: inherit;
   border-radius: 10px;
-  border: 2px solid var(--color-bgc-sidebar);
+  border: 2px solid #4b4b4b;
 
   padding: 5px;
   width: 100%;

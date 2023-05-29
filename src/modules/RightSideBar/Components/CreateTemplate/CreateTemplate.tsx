@@ -17,6 +17,8 @@ import {
 } from "./CreateTemplate.styles";
 
 import { SelectValues } from "../../RightSideBar.constant";
+import { FileUploader } from "src/components";
+import { ACCEPT_FILES } from "src/constants";
 
 export const CreateTemplate = observer(() => {
   const statusOpenLocalStorage = localStorage.getItem("CreateTemplate");
@@ -33,8 +35,10 @@ export const CreateTemplate = observer(() => {
   const {
     register,
     setValue,
-
+    formState: { errors },
     handleSubmit,
+    watch,
+    setError,
   } = useForm<CreateTemplateType>({
     mode: "onBlur",
     resolver: RESOLVER,
@@ -48,8 +52,28 @@ export const CreateTemplate = observer(() => {
     setValue("layout", JSON.stringify(target));
   }, [setValue, target]);
 
-  const onSubmit: SubmitHandler<CreateTemplateType> = (data) =>
+  const onSubmit: SubmitHandler<CreateTemplateType> = (data) => {
+    const Files = data.miniature;
+    if (Files && Files.length > 0) {
+      console.log(data);
+      if (Files.length > 1) {
+        return setError("miniature", {
+          type: "length",
+          message: "1 image only",
+        });
+      }
+      const checkTypeFile = ACCEPT_FILES.every(
+        (type) => Files[0].type !== type
+      );
+      if (checkTypeFile) {
+        return setError("miniature", {
+          type: "type",
+          message: "wrong type image, only .png .jpg",
+        });
+      }
+    }
     StorePictures.createTemplate(data);
+  };
 
   const handleChangeType = (value: string) => {
     setValue("type", value);
@@ -85,6 +109,14 @@ export const CreateTemplate = observer(() => {
                 onChange={(e: any) => handleChangeType(e?.value || "")}
               />
             </Label>
+
+            <FileUploader<CreateTemplateType>
+              register={register}
+              errors={errors}
+              nameProperty="miniature"
+              watch={watch}
+              acceptFiles={ACCEPT_FILES}
+            />
             <Button
               disabled={StorePictures.statusLoading === STATUS_LOADING.LOADING}
             >

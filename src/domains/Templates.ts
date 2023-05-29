@@ -15,5 +15,5 @@ export type CreateTemplateType = {
   privateStatus: boolean;
   type: string;
   layout: string;
-  miniature?: string;
+  miniature?: File[];
 };

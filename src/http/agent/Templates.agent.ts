@@ -24,7 +24,17 @@ class TemplatesAgent extends BasicAgent {
   }
 
   async createTemplate(body: CreateTemplateType) {
-    const { data } = await this._http.post(`/create`, body);
+    const formData = new FormData();
+    formData.append("name", body.name);
+    formData.append("privateStatus", `${body.privateStatus}`);
+    formData.append("type", body.type);
+    formData.append("layout", body.layout);
+
+    if (body.miniature) {
+      formData.append("miniature", body.miniature[0]);
+    }
+
+    const { data } = await this._http.post(`/create`, formData);
     return data;
   }
   async update(body: any) {

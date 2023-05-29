@@ -6,6 +6,5 @@ const FORM_SCHEMA = yup.object().shape({
   privateStatus: yup.boolean(),
   type: yup.string().required("confirmReqPass"),
   layout: yup.string().required("confirmReqPass"),
-  miniature: yup.string(),
 });
 export const RESOLVER = yupResolver(FORM_SCHEMA);

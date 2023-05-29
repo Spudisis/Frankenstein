@@ -27,6 +27,7 @@ export const Form = observer(({ AddProject, statusLoading }: FormType) => {
 
   const onSubmit: SubmitHandler<OptionCreate> = (data) => {
     const Files = data.miniature;
+    console.log(Files);
     if (Files && Files.length > 0) {
       if (Files.length > 1) {
         return setError("miniature", {

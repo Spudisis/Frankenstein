@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonHideSideBar, Debounce, useThrottle } from "src/components";
 import { SideBar } from "src/UI";
-import { Content } from "./Components/Content/Content";
+import { Content } from "./Components";
 
 export const LeftSideBar = () => {
   const widthLocalStorage = localStorage.getItem("widthLeftSideBar");
@@ -24,8 +24,10 @@ export const LeftSideBar = () => {
     setIsDown(true);
   }, []);
 
-  const handleMouseUp = React.useCallback(() => {
+  const handleMouseUp = React.useCallback((e: MouseEvent) => {
     setIsDown(false);
+    setChangeStatus(true);
+    e.stopPropagation();
   }, []);
 
   const handleMove = React.useCallback((e: MouseEvent) => {

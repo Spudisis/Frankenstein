@@ -4,7 +4,7 @@ import { CreateTemplateType } from "src/domains";
 
 class TemplatesAgent extends BasicAgent {
   constructor() {
-    super(process.env.REACT_APP_URL_BACK + "templates", {
+    super(process.env.REACT_APP_URL_BACK_API + "templates", {
       withCredentials: true,
     });
   }

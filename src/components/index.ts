@@ -19,3 +19,4 @@ export * from "./PaymentBuffElem";
 export * from "./NamePage";
 export * from "./WrapperDoubleGrid";
 export * from "./Throttle";
+export * from "./FileUploader";

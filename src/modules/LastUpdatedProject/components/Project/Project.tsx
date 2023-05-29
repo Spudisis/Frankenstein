@@ -19,7 +19,11 @@ export const Project = ({
     <Link to={BUILD_URL + uid}>
       <Wrapper>
         <Image
-          src={miniature ? miniature : placeholder}
+          src={
+            miniature
+              ? process.env.REACT_APP_URL_BACKEND + miniature
+              : placeholder
+          }
           alt={`${name} project miniature`}
           bgc={!miniature}
         />

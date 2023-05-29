@@ -4,7 +4,7 @@ import { BasicAgent } from "./Basic";
 
 class UserAgent extends BasicAgent {
   constructor() {
-    super(process.env.REACT_APP_URL_BACK + "person", { withCredentials: true });
+    super(process.env.REACT_APP_URL_BACK_API + "person", { withCredentials: true });
   }
   async Registration(body: Pick<IFormInput, "Email" | "password">) {
     const res = await this._http.post(`/registration`, {

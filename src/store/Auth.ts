@@ -42,7 +42,7 @@ class Auth {
   async checkAuth() {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_URL_BACK}person/refresh`,
+        `${process.env.REACT_APP_URL_BACK_API}person/refresh`,
         { withCredentials: true }
       );
       localStorage.setItem("token", data.accessToken);

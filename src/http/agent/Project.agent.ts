@@ -11,16 +11,27 @@ import { BasicAgent } from "./Basic";
 
 class ProjectAgent extends BasicAgent {
   constructor() {
-    super(process.env.REACT_APP_URL_BACK + "projects", {
+    super(process.env.REACT_APP_URL_BACK_API + "projects", {
       withCredentials: true,
     });
   }
   //have
   async createProject(params: OptionCreate) {
     console.log(params);
+    const formData = new FormData();
+
+    formData.append("projectName", params.projectName);
+    formData.append("statusAccess", `${params.statusAccess}`);
+    if (params.miniature && params.miniature[0]) {
+      formData.append("miniature", params.miniature[0]);
+    } else {
+      formData.append("miniature", "");
+    }
+
+    console.log(formData);
     const res = await this._http.post<CreateProjectResponse>(
       `/createnew`,
-      params
+      formData
     );
     return res;
   }

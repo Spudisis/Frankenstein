@@ -12,11 +12,15 @@ export const CreateProject = observer(() => {
   const { loading } = StoreProjectCreate;
   const redirect = useNavigate();
 
-  const AddProject = async ({ projectName, statusAccess }: OptionCreate) => {
-    console.log(projectName, statusAccess);
+  const AddProject = async ({
+    projectName,
+    statusAccess,
+    miniature,
+  }: OptionCreate) => {
     const uid = await StoreProjectCreate.createNewProject({
       projectName,
       statusAccess,
+      miniature,
     });
     if (!uid) {
       return;

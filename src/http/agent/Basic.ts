@@ -25,7 +25,7 @@ export class BasicAgent {
           originRequest._isRetry = true;
           try {
             const { data } = await axios.get<any>(
-              `${process.env.REACT_APP_URL_BACK}person/refresh`,
+              `${process.env.REACT_APP_URL_BACK_API}person/refresh`,
               { withCredentials: true }
             );
 

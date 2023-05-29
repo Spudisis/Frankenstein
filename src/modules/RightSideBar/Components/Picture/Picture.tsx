@@ -31,7 +31,10 @@ export const Picture = ({ elem, type }: PictureTypeProps) => {
     <Pictures
       refDrag={drag}
       isDragging={isDragging}
-      src={elem.miniature || "notFound"}
+      src={
+        elem.miniature ||
+        "https://i.mycdn.me/image?id=814327925848&t=0&plc=WEB&tkn=*GsdCWAmDvjL9x0vo-r1OjNdHSKY"
+      }
       alt={elem.name}
       name={elem.name}
       key={elem.id}

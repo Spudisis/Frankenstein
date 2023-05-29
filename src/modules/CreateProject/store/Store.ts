@@ -16,15 +16,22 @@ class CreateProject {
     this.statusLoading = value;
   }
 
-  async createNewProject({ projectName, statusAccess }: OptionCreate) {
+  async createNewProject({
+    projectName,
+    statusAccess,
+    miniature,
+  }: OptionCreate) {
     try {
       this.loading = STATUS_LOADING.LOADING;
 
-      //uid project return
-      const { data } = await Project.createProject({ projectName, statusAccess });
+      const { data } = await Project.createProject({
+        projectName,
+        statusAccess,
+        miniature,
+      });
 
       this.loading = STATUS_LOADING.SUCCESS;
-      return data.projectUid
+      return data.projectUid;
     } catch (error) {
       console.log(error);
       this.loading = STATUS_LOADING.ERROR;

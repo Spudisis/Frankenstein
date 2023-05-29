@@ -54,6 +54,15 @@ export const ParamsProject = observer(() => {
           margin="10px 0px"
         />
         <DefaultButton
+          text={"Run build"}
+          padding1800="5px 10px"
+          fontSize={22}
+          width="100%"
+          disabled={statusLoad}
+          onClick={() => ProjectOption.runBuild({ uid: App.project.uid })}
+          margin="10px 0px"
+        />
+        <DefaultButton
           text={"Delete project"}
           padding1800="5px 10px"
           fontSize={22}

@@ -10,7 +10,16 @@ module.exports = {
   devtool: "source-map",
 
   resolve: {
-    extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+    extensions: [
+      ".webpack.js",
+      ".web.js",
+      ".ts",
+      ".tsx",
+      ".js",
+      ".png",
+      ".jpeg",
+      ".svg",
+    ],
   },
 
   module: {

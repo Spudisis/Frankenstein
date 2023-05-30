@@ -32,7 +32,7 @@ export const DEFAULT_SCREEN_WRAPPER = {
     flexDirection: "row",
     justifyContent: "",
     alignItems: "",
-    gridTemplateColumns: "2",
+    gridTemplateColumns: "1",
     gridColumnGap: "",
     gridRowGap: "",
   },

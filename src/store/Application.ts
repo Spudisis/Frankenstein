@@ -89,6 +89,7 @@ class ApplicationData {
 
   async saveProject() {
     try {
+      console.log(this.ApplicationScreens);
       const newLayout = JSON.stringify({
         header: this.ApplicationHeader,
         footer: this.ApplicationFooter,
@@ -121,11 +122,9 @@ class ApplicationData {
       return (this.ApplicationScreens = SCREEN_DEFAULT);
     }
     this.ApplicationScreens?.push({
-      name: "screen new",
-      namePrivate: "newScreen",
+      ...SCREEN_DEFAULT[0],
       id: CreateId(),
       modules: [{ ...DEFAULT_SCREEN_WRAPPER, id: CreateId() }],
-      options: {},
     });
   }
 
@@ -171,7 +170,7 @@ class ApplicationData {
       return null;
     }
 
-    this.ApplicationScreens = this.ApplicationScreens.map((elem) => {
+    const newScreens = this.ApplicationScreens.map((elem) => {
       if (idScreen === elem.id) {
         if (privateName === typeFH.Footer) {
           return { ...elem, uncommonFooter: obj };
@@ -180,8 +179,10 @@ class ApplicationData {
           return { ...elem, uncommonHeader: obj };
         }
       }
-      return elem;
+      return { ...elem };
     });
+    console.log(newScreens);
+    this.ApplicationScreens = newScreens;
   }
 
   setTarget({ obj, changeOptions }: ChangeTargetType) {

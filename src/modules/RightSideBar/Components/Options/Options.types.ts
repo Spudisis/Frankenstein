@@ -28,17 +28,23 @@ export type TypesStyles = {
   width: string;
   nameModule: string;
   border: string;
-  display: string;
+
   fontSize: string;
+
   textAlign: string;
   scrollable: string;
+
+  actions: Actions;
+} & TypeDisplayOptions;
+
+export type TypeDisplayOptions = {
+  display: string;
   justifyContent: string;
   alignItems: string;
   flexDirection: string;
   gridTemplateColumns: string;
   gridColumnGap: string;
   gridRowGap: string;
-  actions: Actions;
 };
 
 export type Actions = {

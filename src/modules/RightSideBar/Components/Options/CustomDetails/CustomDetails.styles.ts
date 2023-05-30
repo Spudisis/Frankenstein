@@ -24,6 +24,7 @@ export const Wrapper = styled.div`
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
 `;
 
 export const Label = styled.label<{ chosen: boolean }>`

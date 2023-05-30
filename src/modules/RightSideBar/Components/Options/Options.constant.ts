@@ -36,3 +36,8 @@ export const OptionsScrollable: SelectValues[] = [
   { value: "true", label: "Yes" },
   { value: "false", label: "No" },
 ];
+
+export const OptionDisplay: SelectValues[] = [
+  { value: "flex", label: "Flex" },
+  { value: "grid", label: "Grid" },
+];

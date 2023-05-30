@@ -1,17 +1,11 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { Input } from "../Input";
-import { Module, ChangeOptions, SubModules } from "src/domains";
+import { ChangeOptions, SubModules } from "src/domains";
 import { TypesStyles } from "../Options.types";
 import { InputColorWheel } from "../InputColorWheel";
-import { InputDisplay } from "../InputDisplay";
-import { SelectInput } from "../SelectInput";
-import {
-  OptionFlexDirection,
-  OptionsAlign,
-  OptionsGridColumns,
-  OptionsJustify,
-} from "../Options.constant";
+import { InputDisplay } from "../InputDisplay/InputDisplay";
+
 import App from "src/store/Application";
 
 type HFStyles = Pick<
@@ -106,61 +100,7 @@ export const HFOptions = observer(
           onChange={ChangeStyles}
           property="backgroundColor"
         />
-        <InputDisplay<HFStyles>
-          value={styles}
-          onChange={ChangeStyles}
-          property="display"
-        />
-        {styles.display === "flex" && (
-          <>
-            <SelectInput
-              value={styles}
-              onChange={ChangeStyles}
-              label="justify"
-              property="justifyContent"
-              options={OptionsJustify}
-            />
-            <SelectInput
-              value={styles}
-              onChange={ChangeStyles}
-              label="align"
-              property="alignItems"
-              options={OptionsAlign}
-            />
-            <SelectInput
-              value={styles}
-              onChange={ChangeStyles}
-              label="direction"
-              property="flexDirection"
-              options={OptionFlexDirection}
-            />
-          </>
-        )}
-        {styles.display === "grid" && (
-          <>
-            <SelectInput
-              value={styles}
-              onChange={ChangeStyles}
-              label="columns"
-              property="gridTemplateColumns"
-              options={OptionsGridColumns}
-            />
-            <Input<HFStyles>
-              label="Отступ между колонками:"
-              value={styles}
-              onChange={ChangeStyles}
-              property="gridColumnGap"
-              typeInput="text"
-            />
-            <Input<HFStyles>
-              label="Отступ между строчками:"
-              value={styles}
-              onChange={ChangeStyles}
-              property="gridRowGap"
-              typeInput="text"
-            />
-          </>
-        )}
+        <InputDisplay<HFStyles> styles={styles} ChangeStyles={ChangeStyles} />
       </>
     );
   }

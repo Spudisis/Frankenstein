@@ -1,45 +1,82 @@
 import React from "react";
-import { InputStyles, PropsInput } from "../Options.types";
-import { Input, Label, Summary, Wrapper } from "./InputDisplay.styles";
-import { MouseEvent } from "react";
-export const InputDisplay = <T,>({
-  value,
-  onChange,
-  property,
-}: InputStyles<T> & Omit<PropsInput<T>, "label">) => {
-  const [openStatus, setOpenStatus] = React.useState(true);
+import { CustomDetails } from "../CustomDetails";
+import { SelectInput } from "../SelectInput";
+import {
+  OptionDisplay,
+  OptionFlexDirection,
+  OptionsAlign,
+  OptionsGridColumns,
+  OptionsJustify,
+} from "../Options.constant";
+import { Input } from "../Input";
+import { TypeInputDisplay } from "./InputDisplay.types";
+import { TypeDisplayOptions } from "../Options.types";
 
-  const onToggle = (e: MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    setOpenStatus(!openStatus);
-  };
+export const InputDisplay = <T extends TypeDisplayOptions>({
+  styles,
+  ChangeStyles,
+}: TypeInputDisplay<T>) => {
   return (
-    <details open={openStatus}>
-      <Summary open={openStatus} onClick={(e) => onToggle(e)}>
-        Расположение элементов
-      </Summary>
-      <Wrapper>
-        <Label chosen={value[property] === "flex"}>
-          flex
-          <Input
-            type="radio"
-            name="typeBlock"
-            value={"flex"}
-            checked={value[property] === "flex"}
-            onChange={(e) => onChange(e.target.value as T[keyof T], property)}
-          />
-        </Label>
-        <Label chosen={value[property] === "grid"}>
-          grid
-          <Input
-            type="radio"
-            name="typeBlock"
-            value={"grid"}
-            checked={value[property] === "grid"}
-            onChange={(e) => onChange(e.target.value as T[keyof T], property)}
-          />
-        </Label>
-      </Wrapper>
-    </details>
+    <CustomDetails>
+      <>
+        <SelectInput<T>
+          value={styles}
+          onChange={ChangeStyles}
+          label="Display"
+          property={"display"}
+          options={OptionDisplay}
+        />
+        {styles.display === "flex" && (
+          <>
+            <SelectInput<T>
+              value={styles}
+              onChange={ChangeStyles}
+              label="justify"
+              property={"justifyContent"}
+              options={OptionsJustify}
+            />
+            <SelectInput<T>
+              value={styles}
+              onChange={ChangeStyles}
+              label="align"
+              property="alignItems"
+              options={OptionsAlign}
+            />
+            <SelectInput<T>
+              value={styles}
+              onChange={ChangeStyles}
+              label="direction"
+              property="flexDirection"
+              options={OptionFlexDirection}
+            />
+          </>
+        )}
+        {styles.display === "grid" && (
+          <>
+            <SelectInput<T>
+              value={styles}
+              onChange={ChangeStyles}
+              label="columns"
+              property="gridTemplateColumns"
+              options={OptionsGridColumns}
+            />
+            <Input<T>
+              label="Отступ между колонками:"
+              value={styles}
+              onChange={ChangeStyles}
+              property="gridColumnGap"
+              typeInput="text"
+            />
+            <Input<T>
+              label="Отступ между строчками:"
+              value={styles}
+              onChange={ChangeStyles}
+              property="gridRowGap"
+              typeInput="text"
+            />
+          </>
+        )}
+      </>
+    </CustomDetails>
   );
 };

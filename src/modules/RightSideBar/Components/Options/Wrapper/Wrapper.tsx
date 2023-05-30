@@ -1,18 +1,12 @@
 import React from "react";
 import { ChangeOptions, SubModules, WrapperStyles } from "src/domains";
 import { Input } from "../Input";
-import { TypesStyles } from "../Options.types";
 import { InputColorWheel } from "../InputColorWheel";
-import { InputDisplay } from "../InputDisplay";
 import { SelectInput } from "../SelectInput";
-import {
-  OptionFlexDirection,
-  OptionsAlign,
-  OptionsGridColumns,
-  OptionsJustify,
-  OptionsScrollable,
-} from "../Options.constant";
+import { OptionsScrollable } from "../Options.constant";
+
 import App from "src/store/Application";
+import { InputDisplay } from "../InputDisplay/InputDisplay";
 
 export const WrapperOptions = ({
   options,
@@ -47,7 +41,11 @@ export const WrapperOptions = ({
   });
 
   React.useEffect(() => {
-    changeOptions({ options: styles, name: styles.nameModule, scrollable: styles.scrollable });
+    changeOptions({
+      options: styles,
+      name: styles.nameModule,
+      scrollable: styles.scrollable,
+    });
     App.setTarget({
       obj: {
         options: styles,
@@ -128,64 +126,17 @@ export const WrapperOptions = ({
         onChange={ChangeStyles}
         label="Цвет"
       />
-      <SelectInput
+      <SelectInput<WrapperStyles>
         value={styles}
         onChange={ChangeStyles}
         label="scrollable"
         property="scrollable"
         options={OptionsScrollable}
       />
-      <InputDisplay value={styles} onChange={ChangeStyles} property="display" />
-      {styles.display === "flex" && (
-        <>
-          <SelectInput
-            value={styles}
-            onChange={ChangeStyles}
-            label="justify"
-            property="justifyContent"
-            options={OptionsJustify}
-          />
-          <SelectInput
-            value={styles}
-            onChange={ChangeStyles}
-            label="align"
-            property="alignItems"
-            options={OptionsAlign}
-          />
-          <SelectInput
-            value={styles}
-            onChange={ChangeStyles}
-            label="direction"
-            property="flexDirection"
-            options={OptionFlexDirection}
-          />
-        </>
-      )}
-      {styles.display === "grid" && (
-        <>
-          <SelectInput
-            value={styles}
-            onChange={ChangeStyles}
-            label="columns"
-            property="gridTemplateColumns"
-            options={OptionsGridColumns}
-          />
-          <Input<WrapperStyles>
-            label="Отступ между колонками:"
-            value={styles}
-            onChange={ChangeStyles}
-            property="gridColumnGap"
-            typeInput="text"
-          />
-          <Input<WrapperStyles>
-            label="Отступ между строчками:"
-            value={styles}
-            onChange={ChangeStyles}
-            property="gridRowGap"
-            typeInput="text"
-          />
-        </>
-      )}
+      <InputDisplay<WrapperStyles>
+        styles={styles}
+        ChangeStyles={ChangeStyles}
+      />
     </>
   );
 };

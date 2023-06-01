@@ -1,16 +1,16 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable } from 'mobx'
 
 class DraggingFH {
-  draggingActive = false;
+  draggingActive = false
 
-  constructor() {
-    makeAutoObservable(this, {}, { deep: true });
+  constructor () {
+    makeAutoObservable(this, {}, { deep: true })
   }
 
-  changeStatusDragging(status: boolean) {
-    this.draggingActive = status;
+  changeStatusDragging (status: boolean) {
+    this.draggingActive = status
   }
 }
 
-const App = new DraggingFH();
-export default App;
+const App = new DraggingFH()
+export default App

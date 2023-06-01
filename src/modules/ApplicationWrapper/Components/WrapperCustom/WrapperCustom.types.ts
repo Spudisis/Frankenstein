@@ -1,17 +1,17 @@
 import {
-  DeleteFuncType,
+  type DeleteFuncType,
   Module,
-  SubModules,
+  type SubModules,
   WrapperStyles,
-  typeFH,
-} from "src/domains";
+  type typeFH
+} from 'src/domains'
 
 export type WrapperCustomT = {
-  elem: SubModules;
-  MoveCardFunc: any;
-  FindIndex: any;
-  parent: string | typeFH | undefined;
+  elem: SubModules
+  MoveCardFunc: any
+  FindIndex: any
+  parent: string | typeFH | undefined
 } & {
-  newModules: (modules: any) => void;
-  deleteItemFunc: DeleteFuncType;
-};
+  newModules: (modules: any) => void
+  deleteItemFunc: DeleteFuncType
+}

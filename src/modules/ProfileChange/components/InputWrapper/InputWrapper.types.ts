@@ -1,5 +1,5 @@
-import { ReactElement } from "react";
+import { type ReactElement } from 'react'
 
-export type InputT = {
-  children: ReactElement[] | ReactElement;
-};
+export interface InputT {
+  children: ReactElement[] | ReactElement
+}

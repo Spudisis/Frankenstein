@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ButtonMenu = styled.button`
   background-color: rgba(0, 0, 0, 0);
@@ -12,7 +12,7 @@ export const ButtonMenu = styled.button`
       color: gray;
     }
   }
-`;
+`
 
 export const Modal = styled.div`
   position: fixed;
@@ -26,16 +26,16 @@ export const Modal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+`
 
 export const WrapperLinks = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-row-gap: 20px;
-`;
+`
 
 export const ButtonClose = styled.div`
   position: absolute;
   right: 30px;
   top: 30px;
-`;
+`

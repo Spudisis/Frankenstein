@@ -1,1 +1,1 @@
-export * from "./customDragHook";
+export * from './customDragHook'

@@ -1,5 +1,5 @@
-import { Module, Modules, SubModules } from "src/domains";
+import { type Module, Modules, type SubModules } from 'src/domains'
 
-export type CustomDropHF = {
-  newModuleDrop: (newModules: Module | SubModules) => void;
-};
+export interface CustomDropHF {
+  newModuleDrop: (newModules: Module | SubModules) => void
+}

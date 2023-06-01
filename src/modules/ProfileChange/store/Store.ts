@@ -1,69 +1,73 @@
-import { makeAutoObservable } from "mobx";
-import { STATUS_LOADING, UserInfoChange } from "src/domains";
-import { User } from "src/http";
-import { UserInfoT } from "../ProfileChange.types";
+import { makeAutoObservable } from 'mobx'
+import { STATUS_LOADING, type UserInfoChange } from 'src/domains'
+import { User } from 'src/http'
+import { type UserInfoT } from '../ProfileChange.types'
 
 class ChangeProfile {
-  constructor() {
-    makeAutoObservable(this, {});
+  constructor () {
+    makeAutoObservable(this, {})
   }
 
-  private msgError: string = "";
-  private userInfo: UserInfoChange | null = null;
-  private oldNickname: string | null = null;
-  private statusLoading: STATUS_LOADING = STATUS_LOADING.LOADING;
-  get loading() {
-    return this.statusLoading;
-  }
-  set loading(value) {
-    this.statusLoading = value;
-  }
-  get info() {
-    return this.userInfo;
-  }
-  get err() {
-    return this.msgError;
+  private msgError = ''
+  private userInfo: UserInfoChange | null = null
+  private oldNickname: string | null = null
+  private statusLoading: STATUS_LOADING = STATUS_LOADING.LOADING
+  get loading () {
+    return this.statusLoading
   }
 
-  async getUserInfo(id: string) {
+  set loading (value) {
+    this.statusLoading = value
+  }
+
+  get info () {
+    return this.userInfo
+  }
+
+  get err () {
+    return this.msgError
+  }
+
+  async getUserInfo (id: string) {
     try {
-      this.statusLoading = STATUS_LOADING.LOADING;
-      const { data } = await User.getInfoByUserId(id);
-      this.userInfo = { nickname: data.nickname, tiers: data.tiers };
-      this.oldNickname = data.nickname;
-      console.log(data);
-      this.statusLoading = STATUS_LOADING.SUCCESS;
+      this.statusLoading = STATUS_LOADING.LOADING
+      const { data } = await User.getInfoByUserId(id)
+      this.userInfo = { nickname: data.nickname, tiers: data.tiers }
+      this.oldNickname = data.nickname
+      console.log(data)
+      this.statusLoading = STATUS_LOADING.SUCCESS
     } catch (error) {
-      this.statusLoading = STATUS_LOADING.ERROR;
-      console.log(error);
+      this.statusLoading = STATUS_LOADING.ERROR
+      console.log(error)
     }
   }
-  async changeUserInfo({
+
+  async changeUserInfo ({
     nickname,
-    password,
-  }: Omit<UserInfoT, "passwordRepeat">) {
+    password
+  }: Omit<UserInfoT, 'passwordRepeat'>) {
     try {
-      this.statusLoading = STATUS_LOADING.LOADING;
+      this.statusLoading = STATUS_LOADING.LOADING
       if (!this.oldNickname) {
-        throw new Error();
+        throw new Error()
       }
 
       await User.changeInfoUser({
         oldNickname: this.oldNickname,
         nickname,
-        password,
-      });
+        password
+      })
 
-      this.statusLoading = STATUS_LOADING.SUCCESS;
-      return true;
+      this.statusLoading = STATUS_LOADING.SUCCESS
+      return true
     } catch (error: any) {
-      this.statusLoading = STATUS_LOADING.ERROR;
-      console.log(error);
+      this.statusLoading = STATUS_LOADING.ERROR
+      console.log(error)
 
-      this.msgError = error.response.data.message;
-      return false;
+      this.msgError = error.response.data.message
+      return false
     }
   }
 }
 
-export const ProfileChange = new ChangeProfile();
+export const ProfileChange = new ChangeProfile()

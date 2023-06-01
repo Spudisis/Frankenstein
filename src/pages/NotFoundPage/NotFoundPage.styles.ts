@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledNotFound = styled.div`
   color: white;
@@ -14,4 +14,4 @@ export const StyledNotFound = styled.div`
   @media screen and (max-width: 450px) {
     font-size: 26px;
   }
-`;
+`

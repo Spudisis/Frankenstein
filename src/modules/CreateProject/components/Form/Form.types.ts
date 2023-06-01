@@ -1,11 +1,11 @@
-import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { OptionCreate, STATUS_LOADING } from "src/domains";
+import { type FieldErrors, type UseFormRegister } from 'react-hook-form'
+import { type OptionCreate, type STATUS_LOADING } from 'src/domains'
 
-export type FormType = {
-  AddProject: ({ projectName, statusAccess }: OptionCreate) => void;
-  statusLoading: STATUS_LOADING;
-};
-export type PropsInputs = {
-  register: UseFormRegister<OptionCreate>;
-  errors: FieldErrors<OptionCreate>;
-};
+export interface FormType {
+  AddProject: ({ projectName, statusAccess }: OptionCreate) => void
+  statusLoading: STATUS_LOADING
+}
+export interface PropsInputs {
+  register: UseFormRegister<OptionCreate>
+  errors: FieldErrors<OptionCreate>
+}

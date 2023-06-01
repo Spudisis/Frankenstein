@@ -1,1 +1,1 @@
-export * from "./CreateApplication";
+export * from './CreateApplication'

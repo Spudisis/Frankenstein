@@ -1,12 +1,12 @@
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { type FieldErrors, type UseFormRegister } from 'react-hook-form'
 
 export interface UserInfoT {
-  password: string;
-  passwordRepeat: string;
-  nickname: string;
+  password: string
+  passwordRepeat: string
+  nickname: string
 }
-export type PropsInput = {
-  register: UseFormRegister<UserInfoT>;
-  repeatPass?: boolean;
-  errors: FieldErrors<UserInfoT>;
-};
+export interface PropsInput {
+  register: UseFormRegister<UserInfoT>
+  repeatPass?: boolean
+  errors: FieldErrors<UserInfoT>
+}

@@ -1,1 +1,1 @@
-export * from "./RestorePassInputs";
+export * from './RestorePassInputs'

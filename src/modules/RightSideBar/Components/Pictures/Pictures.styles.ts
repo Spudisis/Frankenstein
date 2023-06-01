@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledButton = styled.button`
   outline: none;
@@ -7,4 +7,4 @@ export const StyledButton = styled.button`
   color: white;
   font-size: 22px;
   padding: 10px 0px;
-`;
+`

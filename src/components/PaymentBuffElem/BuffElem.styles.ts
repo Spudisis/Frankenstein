@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const IconSpan = styled.span<{ access: boolean }>`
-  color: ${(props) => (props.access ? "green" : "red")};
+  color: ${(props) => (props.access ? 'green' : 'red')};
   justify-self: center;
   font-size: 22px;
   padding-right: 5px;
-`;
+`
 export const Grid = styled.div`
   font-size: 18px;
   display: grid;
@@ -14,4 +14,4 @@ export const Grid = styled.div`
   @media screen and (max-width: 460px) {
     font-size: 16px;
   }
-`;
+`

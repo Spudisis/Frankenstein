@@ -1,3 +1,3 @@
-import { TemplateType } from "src/domains";
+import { type TemplateType } from 'src/domains'
 
-export type PictureTypeProps = { elem: TemplateType; type: string };
+export interface PictureTypeProps { elem: TemplateType, type: string }

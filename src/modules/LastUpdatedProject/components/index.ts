@@ -1,2 +1,2 @@
-export * from "./NotFoundProject";
+export * from './NotFoundProject'
 export * from './Project'

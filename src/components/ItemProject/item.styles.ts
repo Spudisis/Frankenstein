@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { MinHeight } from "./item.constant";
+import styled from 'styled-components'
+import { MinHeight } from './item.constant'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -15,13 +15,13 @@ export const Wrapper = styled.div`
       box-shadow: 0px 0px 2px 2px gray;
     }
   }
-`;
+`
 
 export const Image = styled.img<{ bgc: boolean }>`
   object-fit: contain;
   height: 200px;
-  background-color: ${(props) => (props.bgc ? "#2c2c2c" : "")};
-`;
+  background-color: ${(props) => (props.bgc ? '#2c2c2c' : '')};
+`
 
 export const Title = styled.h4`
   display: block;
@@ -30,7 +30,7 @@ export const Title = styled.h4`
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 280px;
-`;
+`
 
 export const LastEdit = styled.span`
   display: block;
@@ -40,7 +40,7 @@ export const LastEdit = styled.span`
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 280px;
-`;
+`
 
 export const Info = styled.div`
   border: 1px solid #4b4b4b;
@@ -48,4 +48,4 @@ export const Info = styled.div`
   height: 60px;
 
   border-radius: 0px 0px 10px 10px;
-`;
+`

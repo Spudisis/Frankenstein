@@ -1,1 +1,1 @@
-export * from "./WrapperCustom";
+export * from './WrapperCustom'

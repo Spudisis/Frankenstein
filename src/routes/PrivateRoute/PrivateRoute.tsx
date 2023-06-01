@@ -1,15 +1,15 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
-import { PrivateRouteType } from "./PrivateRoute.types";
+import React from 'react'
+import { Navigate } from 'react-router-dom'
+import { type PrivateRouteType } from './PrivateRoute.types'
 
 export const ProtectedRoute = ({
   auth,
-  redirectPath = "/helloPage",
-  children,
+  redirectPath = '/helloPage',
+  children
 }: PrivateRouteType) => {
   if (!auth) {
-    return <Navigate to={redirectPath} replace />;
+    return <Navigate to={redirectPath} replace />
   }
 
-  return children;
-};
+  return children
+}

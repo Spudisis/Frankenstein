@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ApplicationWrapperStyled = styled.div`
   display: flex;
@@ -9,10 +9,10 @@ export const ApplicationWrapperStyled = styled.div`
   @media screen and (max-width: 768px) {
     display: grid;
   }
-`;
+`
 
 export const ApplicationBuild = styled.div`
   display: flex;
   min-height: 100%;
   align-items: center;
-`;
+`

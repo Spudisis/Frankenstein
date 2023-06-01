@@ -1,4 +1,4 @@
-export type TypeBuff = {
-  name: string;
-  access: boolean;
-};
+export interface TypeBuff {
+  name: string
+  access: boolean
+}

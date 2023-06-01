@@ -1,6 +1,6 @@
-import { ReactElement } from "react";
+import { type ReactElement } from 'react'
 
-export type TypeLoad = {
-  children: ReactElement[] | ReactElement;
-  loading: boolean;
-};
+export interface TypeLoad {
+  children: ReactElement[] | ReactElement
+  loading: boolean
+}

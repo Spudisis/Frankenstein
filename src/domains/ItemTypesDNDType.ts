@@ -1,3 +1,3 @@
-import { ItemTypesDNDAll } from "src/constants";
+import { type ItemTypesDNDAll } from 'src/constants'
 
-export type ItemType = keyof typeof ItemTypesDNDAll;
+export type ItemType = keyof typeof ItemTypesDNDAll

@@ -1,17 +1,18 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable } from 'mobx'
 
 class TestStore {
-  constructor() {
-    makeAutoObservable(this, {});
+  constructor () {
+    makeAutoObservable(this, {})
   }
-  modules: any = [];
-  parent: string = "";
-  change(modules: any, item: any, parent: string) {
+
+  modules: any = []
+  parent = ''
+  change (modules: any, item: any, parent: string) {
     this.modules = modules.map((elem: any) => {
       if (elem.id === item.id) {
-        return item;
+        return item
       }
-      return elem;
-    });
+      return elem
+    })
   }
 }

@@ -1,5 +1,5 @@
-export type UserInfoGlobal = {
-  email: string;
-  id: number;
-  isActivated: boolean;
-};
+export interface UserInfoGlobal {
+  email: string
+  id: number
+  isActivated: boolean
+}

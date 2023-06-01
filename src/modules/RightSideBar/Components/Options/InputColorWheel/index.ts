@@ -1,1 +1,1 @@
-export * from "./InputColorWheel";
+export * from './InputColorWheel'

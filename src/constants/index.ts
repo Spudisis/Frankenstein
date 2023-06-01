@@ -1,2 +1,2 @@
-export * from "./ItemTypesDND";
-export * from "./acceptLoadTypeImages";
+export * from './ItemTypesDND'
+export * from './acceptLoadTypeImages'

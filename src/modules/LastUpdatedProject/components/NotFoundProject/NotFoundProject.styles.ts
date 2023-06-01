@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   color: white;
@@ -8,4 +8,4 @@ export const Wrapper = styled.div`
   align-items: center;
   text-align: center;
   padding: 10px;
-`;
+`

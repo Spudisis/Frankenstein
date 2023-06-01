@@ -1,4 +1,4 @@
-export type UpdProjectType = {
-  projectUid: string;
-  newLayout: string;
-};
+export interface UpdProjectType {
+  projectUid: string
+  newLayout: string
+}

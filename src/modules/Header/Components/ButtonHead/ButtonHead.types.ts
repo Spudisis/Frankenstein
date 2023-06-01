@@ -1,3 +1,3 @@
-export type TypeButton = {
-  text: string;
-};
+export interface TypeButton {
+  text: string
+}

@@ -1,16 +1,16 @@
 import {
-  ChangeTargetType,
-  FHObject,
-  Module,
-  ParentElem,
-  typeFH,
-} from "src/domains";
+  type ChangeTargetType,
+  type FHObject,
+  type Module,
+  type ParentElem,
+  type typeFH
+} from 'src/domains'
 
-export type Props = {
-  data: FHObject;
-  handleChangeTarget: ({ obj, changeOptions }: ChangeTargetType) => void;
-  target: Module & ParentElem;
-  parent: typeFH;
-  screenId?: string;
-  nesting?: number;
-};
+export interface Props {
+  data: FHObject
+  handleChangeTarget: ({ obj, changeOptions }: ChangeTargetType) => void
+  target: Module & ParentElem
+  parent: typeFH
+  screenId?: string
+  nesting?: number
+}

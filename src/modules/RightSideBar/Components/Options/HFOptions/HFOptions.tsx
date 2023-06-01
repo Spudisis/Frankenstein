@@ -36,7 +36,7 @@ export const HFOptions = observer(
   }) => {
     const [styles, setStyles] = React.useState<HFStyles>({
       nameModule: name ? name : "",
-      height: options.height ? options.height : "auto",
+      height: options.height ? options.height : "100px",
       backgroundColor: options.backgroundColor ? options.backgroundColor : "",
       border: options.border ? options.border : "none",
       display: options.display ? options.display : "",

@@ -1,2 +1,2 @@
-export { SideBar } from "./SideBar";
-export { ContentWrapper } from "./Content/Content";
+export { SideBar } from './SideBar'
+export { ContentWrapper } from './Content/Content'

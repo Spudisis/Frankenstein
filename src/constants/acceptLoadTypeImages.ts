@@ -1,1 +1,1 @@
-export const ACCEPT_FILES = ["image/png", "image/jpeg"];
+export const ACCEPT_FILES = ['image/png', 'image/jpeg']

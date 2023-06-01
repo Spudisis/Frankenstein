@@ -1,11 +1,11 @@
-import { SubModules, Module } from "src/domains";
+import { type SubModules, type Module } from 'src/domains'
 
-export type FindIndexPropComponent = {
-  modules: SubModules[] | Module[];
-};
+export interface FindIndexPropComponent {
+  modules: SubModules[] | Module[]
+}
 
 export type FindIndexFunc = (id: string) => {
-  card: Module;
-  index: number;
-  id: string;
-} | null;
+  card: Module
+  index: number
+  id: string
+} | null

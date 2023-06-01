@@ -1,1 +1,1 @@
-export * from "./PaymentPlan";
+export * from './PaymentPlan'

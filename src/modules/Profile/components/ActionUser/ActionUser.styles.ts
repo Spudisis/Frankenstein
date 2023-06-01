@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledWrapper = styled.div`
   margin-top: 30px;
 
   display: flex;
   justify-content: space-between;
-`;
+`
 
 export const StyledButton = styled.button<{ color?: string }>`
   color: white;
@@ -14,7 +14,7 @@ export const StyledButton = styled.button<{ color?: string }>`
   font-size: 18px;
   cursor: pointer;
   background-color: ${(props) =>
-    props.color ? props.color : "var(--color-bgc-button-active)"};
+    props.color ? props.color : 'var(--color-bgc-button-active)'};
   border: 1px solid var(--color-bgc-button-active);
   transition: 0.2s ease;
   @media (hover: hover) {
@@ -26,4 +26,4 @@ export const StyledButton = styled.button<{ color?: string }>`
     background-color: gray;
     cursor: wait;
   }
-`;
+`

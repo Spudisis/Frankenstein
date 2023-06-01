@@ -1,42 +1,43 @@
-import { makeAutoObservable } from "mobx";
-import { OptionCreate, STATUS_LOADING } from "src/domains";
-import { Project } from "src/http";
+import { makeAutoObservable } from 'mobx'
+import { type OptionCreate, STATUS_LOADING } from 'src/domains'
+import { Project } from 'src/http'
 
 class CreateProject {
-  constructor() {
-    makeAutoObservable(this, {});
+  constructor () {
+    makeAutoObservable(this, {})
   }
 
-  private statusLoading: STATUS_LOADING = STATUS_LOADING.SUCCESS;
+  private statusLoading: STATUS_LOADING = STATUS_LOADING.SUCCESS
 
-  get loading() {
-    return this.statusLoading;
-  }
-  set loading(value) {
-    this.statusLoading = value;
+  get loading () {
+    return this.statusLoading
   }
 
-  async createNewProject({
+  set loading (value) {
+    this.statusLoading = value
+  }
+
+  async createNewProject ({
     projectName,
     statusAccess,
-    miniature,
+    miniature
   }: OptionCreate) {
     try {
-      this.loading = STATUS_LOADING.LOADING;
+      this.loading = STATUS_LOADING.LOADING
 
       const { data } = await Project.createProject({
         projectName,
         statusAccess,
-        miniature,
-      });
+        miniature
+      })
 
-      this.loading = STATUS_LOADING.SUCCESS;
-      return data.projectUid;
+      this.loading = STATUS_LOADING.SUCCESS
+      return data.projectUid
     } catch (error) {
-      console.log(error);
-      this.loading = STATUS_LOADING.ERROR;
+      console.log(error)
+      this.loading = STATUS_LOADING.ERROR
     }
   }
 }
 
-export const StoreProjectCreate = new CreateProject();
+export const StoreProjectCreate = new CreateProject()

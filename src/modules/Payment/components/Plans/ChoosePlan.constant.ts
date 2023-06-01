@@ -1,1 +1,1 @@
-export const Plans = [];
+export const Plans = []

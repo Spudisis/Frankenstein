@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PaymentRoot = styled.div`
   color: white;
@@ -16,7 +16,7 @@ export const PaymentRoot = styled.div`
   @media screen and (max-width: 380px) {
     min-height: 450px;
   }
-`;
+`
 export const OverlayStyle = styled.div`
   position: absolute;
   top: 0;
@@ -24,17 +24,17 @@ export const OverlayStyle = styled.div`
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.8);
-`;
+`
 
 export const ImageBack = styled.div<{ img: string }>`
   position: absolute;
 
-  background-image: url(${(props) => (props.img ? props.img : "")});
+  background-image: url(${(props) => (props.img ? props.img : '')});
   background-size: cover;
   background-position: center center;
   height: 100%;
   width: 100%;
-`;
+`
 
 export const InfoBlock = styled.div`
   padding: 10px;
@@ -47,4 +47,4 @@ export const InfoBlock = styled.div`
   justify-content: space-between;
   height: 100%;
   width: 100%;
-`;
+`

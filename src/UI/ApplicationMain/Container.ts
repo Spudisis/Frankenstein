@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: block;
@@ -20,4 +19,4 @@ export const Container = styled.div`
 
     box-shadow: inset 0 0 6px rgb(0, 0, 0);
   }
-`;
+`

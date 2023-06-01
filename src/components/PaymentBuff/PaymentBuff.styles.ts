@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Grid = styled.div`
   margin: 10px 0px;
@@ -9,4 +9,4 @@ export const Grid = styled.div`
   @media screen and (max-width: 380px) {
     grid-template-columns: 1fr;
   }
-`;
+`

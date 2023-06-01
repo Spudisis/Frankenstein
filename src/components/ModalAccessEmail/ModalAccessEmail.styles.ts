@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Modal = styled.div`
   position: fixed;
@@ -11,7 +11,7 @@ export const Modal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 export const ModalContent = styled.div`
   width: 400px;
   height: 300px;
@@ -27,12 +27,12 @@ export const ModalContent = styled.div`
     width: 100%;
     border-radius: 0px;
   }
-`;
+`
 
 export const Info = styled.h2`
   color: #fff;
   text-align: center;
-`;
+`
 
 export const ButtonClose = styled.button`
   position: absolute;
@@ -49,4 +49,4 @@ export const ButtonClose = styled.button`
       color: gray;
     }
   }
-`;
+`

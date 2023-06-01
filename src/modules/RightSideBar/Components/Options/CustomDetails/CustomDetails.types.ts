@@ -1,5 +1,5 @@
-import { ReactElement } from "react";
+import { type ReactElement } from 'react'
 
-export type InputDisplayProps = {
-  children: ReactElement;
-};
+export interface InputDisplayProps {
+  children: ReactElement
+}

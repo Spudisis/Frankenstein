@@ -1,1 +1,1 @@
-export * from "./Throttle";
+export * from './Throttle'

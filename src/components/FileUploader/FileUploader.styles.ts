@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledFileUpload = styled.label`
   input {
@@ -28,8 +28,8 @@ export const StyledFileUpload = styled.label`
       border: 1px solid #777373;
     }
   }
-`;
+`
 export const ErrorMessage = styled.p`
   color: red;
   font-size: 16px;
-`;
+`

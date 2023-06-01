@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   width: 100%;
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.3);
-`;
+`
 
 export const ModalStyled = styled.div`
   position: absolute;
@@ -25,9 +25,9 @@ export const ModalStyled = styled.div`
   align-items: center;
   padding: 10px;
   color: white;
-`;
+`
 export const Content = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-`;
+`

@@ -1,1 +1,1 @@
-export * from "./ModalAccessEmail";
+export * from './ModalAccessEmail'

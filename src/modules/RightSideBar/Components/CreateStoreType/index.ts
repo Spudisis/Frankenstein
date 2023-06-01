@@ -1,1 +1,1 @@
-export * from "./CreateStoreType";
+export * from './CreateStoreType'

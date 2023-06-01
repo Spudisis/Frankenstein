@@ -10,9 +10,9 @@ import {
   ChangeProfile,
   CreateProject,
   CreateApplication,
-  NotFoundPage,
-} from "src/pages";
-import { Routes, Route } from "react-router-dom";
+  NotFoundPage
+} from 'src/pages'
+import { Routes, Route } from 'react-router-dom'
 import {
   HelloPage,
   BUILD,
@@ -26,15 +26,15 @@ import {
   PROFILE_ID,
   CHANGE_PROFILE,
   PROJECTS,
-  NOT_FOUND,
-} from "./urlsPages";
-import { ProtectedRoute } from "./PrivateRoute/PrivateRoute";
-import { AuthStore } from "../store/Auth";
-import { observer } from "mobx-react-lite";
-import { ModalAccessEmail } from "src/components";
-
+  NOT_FOUND
+} from './urlsPages'
+import { ProtectedRoute } from './PrivateRoute/PrivateRoute'
+import { AuthStore } from '../store/Auth'
+import { observer } from 'mobx-react-lite'
+import { ModalAccessEmail } from 'src/components'
+import React from 'react'
 export const Routers = observer(() => {
-  const { auth } = AuthStore;
+  const { auth } = AuthStore
 
   return (
     <Routes>
@@ -149,5 +149,5 @@ export const Routers = observer(() => {
         }
       />
     </Routes>
-  );
-});
+  )
+})

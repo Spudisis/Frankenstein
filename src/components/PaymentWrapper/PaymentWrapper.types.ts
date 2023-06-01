@@ -1,6 +1,6 @@
-import { ReactElement } from "react";
+import { type ReactElement } from 'react'
 
-export type WrapperTypes = {
-  children: ReactElement[] | ReactElement;
-  selectImage: string;
-};
+export interface WrapperTypes {
+  children: ReactElement[] | ReactElement
+  selectImage: string
+}

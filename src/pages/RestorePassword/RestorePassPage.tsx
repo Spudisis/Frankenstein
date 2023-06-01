@@ -1,6 +1,6 @@
-import React from "react";
-import { RestorePassForm, SelectLanguage } from "../../modules";
-import { ApplicationWrapperStyled, Bgc } from "../../UI";
+import React from 'react'
+import { RestorePassForm, SelectLanguage } from '../../modules'
+import { ApplicationWrapperStyled, Bgc } from '../../UI'
 
 export const RestorePassPage = () => {
   return (
@@ -10,5 +10,5 @@ export const RestorePassPage = () => {
         <RestorePassForm />
       </ApplicationWrapperStyled>
     </Bgc>
-  );
-};
+  )
+}

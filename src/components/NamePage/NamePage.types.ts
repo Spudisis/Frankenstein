@@ -1,3 +1,3 @@
-export type TypeNamePage = {
-  name: string;
-};
+export interface TypeNamePage {
+  name: string
+}

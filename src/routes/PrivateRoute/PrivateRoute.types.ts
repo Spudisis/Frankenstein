@@ -1,7 +1,7 @@
-import { ReactElement } from "react";
+import { type ReactElement } from 'react'
 
-export type PrivateRouteType = {
-  children: ReactElement;
-  auth: boolean;
-  redirectPath?: string;
-};
+export interface PrivateRouteType {
+  children: ReactElement
+  auth: boolean
+  redirectPath?: string
+}

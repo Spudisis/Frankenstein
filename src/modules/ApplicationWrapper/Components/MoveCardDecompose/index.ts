@@ -1,1 +1,1 @@
-export * from "./MoveCardDecompose";
+export * from './MoveCardDecompose'

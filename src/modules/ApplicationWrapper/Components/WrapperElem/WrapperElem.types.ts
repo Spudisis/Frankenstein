@@ -1,6 +1,6 @@
-import { SubModules, id } from "src/domains";
+import { type SubModules, type id } from 'src/domains'
 
-export type TypesScreenFind = {
-  modules: SubModules[];
-  parent: id;
-};
+export interface TypesScreenFind {
+  modules: SubModules[]
+  parent: id
+}

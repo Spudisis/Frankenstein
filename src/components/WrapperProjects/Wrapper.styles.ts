@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledWrapper = styled.div`
   display: grid;
@@ -18,22 +18,22 @@ export const StyledWrapper = styled.div`
   @media screen and (max-width: 440px) {
     grid-template-columns: repeat(1, 290px);
   }
-`;
+`
 
 export const Root = styled.div`
   @media screen and (max-width: 1170px) {
     margin: 0px 10px;
   }
-`;
+`
 
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-`;
+`
 
 export const InfoProject = styled.p`
   color: white;
   font-size: 20px;
-`;
+`

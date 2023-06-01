@@ -1,2 +1,2 @@
-export * from "./FindIndexDecompose";
-export * from "./FindIndexDecompose.types";
+export * from './FindIndexDecompose'
+export * from './FindIndexDecompose.types'

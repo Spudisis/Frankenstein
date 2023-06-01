@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StylesPagination = styled.div<{ load: boolean }>`
   ul {
@@ -10,12 +10,12 @@ export const StylesPagination = styled.div<{ load: boolean }>`
     li {
       margin: 0 10px;
       border-radius: 50%;
-      cursor: ${(props) => (props.load ? "wait" : "pointer")};
+      cursor: ${(props) => (props.load ? 'wait' : 'pointer')};
       display: block;
       background-color: ${(props) =>
         props.load
-          ? "rgba(var(--color-bgc-button-active), 0.1)"
-          : "var(--color-bgc-button-active)"};
+          ? 'rgba(var(--color-bgc-button-active), 0.1)'
+          : 'var(--color-bgc-button-active)'};
       border: 1px solid var(--color-bgc-button-active);
       width: 40px;
       height: 40px;
@@ -31,4 +31,4 @@ export const StylesPagination = styled.div<{ load: boolean }>`
       }
     }
   }
-`;
+`

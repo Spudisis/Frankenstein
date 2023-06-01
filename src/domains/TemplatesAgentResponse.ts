@@ -1,6 +1,6 @@
-import { TemplateType } from "./Templates";
+import { type TemplateType } from './Templates'
 
-export type ResponseTemplates = {
-  count: number;
-  rows: TemplateType[];
-};
+export interface ResponseTemplates {
+  count: number
+  rows: TemplateType[]
+}

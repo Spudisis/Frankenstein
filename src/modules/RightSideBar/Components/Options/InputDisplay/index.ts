@@ -1,1 +1,1 @@
-export * from "./InputDisplay";
+export * from './InputDisplay'

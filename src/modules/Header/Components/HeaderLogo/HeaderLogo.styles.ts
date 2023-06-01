@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import logo from "../../assets/logo.png";
+import styled from 'styled-components'
+import logo from '../../assets/logo.png'
 
 export const StyledLogo = styled.div`
   width: 80px;
@@ -12,4 +12,4 @@ export const StyledLogo = styled.div`
     height: 170px;
     margin-bottom: 20px;
   }
-`;
+`

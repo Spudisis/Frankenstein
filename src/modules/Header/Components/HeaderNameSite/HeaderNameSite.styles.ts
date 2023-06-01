@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Head = styled.h1`
   font-weight: 700;
@@ -8,4 +8,4 @@ export const Head = styled.h1`
   @media screen and (max-width: 600px) {
     font-size: 26px;
   }
-`;
+`

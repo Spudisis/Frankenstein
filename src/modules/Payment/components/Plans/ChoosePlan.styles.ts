@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Grid = styled.div`
   width: 100%;
@@ -24,17 +24,17 @@ export const Grid = styled.div`
   @media screen and (max-width: 380px) {
     grid-template-rows: repeat(3, 500px);
   }
-`;
+`
 
 export const Content = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
   flex-direction: column;
-`;
+`
 
 export const Head = styled.h4`
   text-align: center;
   font-size: 24px;
   border-bottom: 1px solid gray;
-`;
+`

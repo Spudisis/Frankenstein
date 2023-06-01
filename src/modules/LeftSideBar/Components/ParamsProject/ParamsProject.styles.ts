@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   margin: 0px 5px;
-`;
+`
 
 export const BgcModal = styled.div`
   position: absolute;
@@ -11,7 +11,7 @@ export const BgcModal = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.6);
-`;
+`
 
 export const ModalStyled = styled.div`
   width: 350px;
@@ -24,7 +24,7 @@ export const ModalStyled = styled.div`
   transform: translate(-50%, -50%);
   border-radius: 15px;
   z-index: 1010;
-`;
+`
 
 export const Content = styled.div`
   padding: 30px;
@@ -37,7 +37,7 @@ export const Content = styled.div`
   user-select: none;
   line-height: 1.3;
   position: relative;
-`;
+`
 
 export const InputDelete = styled.input`
   border-radius: 10px;
@@ -49,11 +49,11 @@ export const InputDelete = styled.input`
   &:disabled {
     color: gray;
   }
-`;
+`
 export const Error = styled.p`
   font-size: 16px;
   color: red;
-`;
+`
 export const CloseModalStyled = styled.button`
   position: absolute;
   right: 15px;
@@ -63,4 +63,4 @@ export const CloseModalStyled = styled.button`
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0);
   border: 0px;
-`;
+`

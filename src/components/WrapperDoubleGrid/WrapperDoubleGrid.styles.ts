@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   display: grid;
@@ -10,4 +10,4 @@ export const Wrapper = styled.div`
     grid-template-columns: repeat(1, 1fr);
     grid-row-gap: 20px;
   }
-`;
+`

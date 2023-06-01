@@ -1,1 +1,1 @@
-export * from "./ProjectName";
+export * from './ProjectName'

@@ -1,3 +1,3 @@
-import { PicturesTypeStore } from "../../store/store";
+import { type PicturesTypeStore } from '../../store/store'
 
-export type MappingPictures = { type: string; store: PicturesTypeStore };
+export interface MappingPictures { type: string, store: PicturesTypeStore }

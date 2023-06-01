@@ -1,5 +1,5 @@
-import { ReactElement } from "react";
+import { type ReactElement } from 'react'
 
-export type WrapperFBType = {
-  children: ReactElement | ReactElement[];
-};
+export interface WrapperFBType {
+  children: ReactElement | ReactElement[]
+}

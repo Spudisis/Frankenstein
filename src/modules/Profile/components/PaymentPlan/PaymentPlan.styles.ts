@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledSection = styled.p`
   font-size: 22px;
   @media screen and (max-width: 460px) {
     font-size: 18px;
   }
-`;
+`
 
 export const StyledNameTier = styled.h4`
   font-size: 24px;
@@ -14,7 +14,7 @@ export const StyledNameTier = styled.h4`
   @media screen and (max-width: 460px) {
     font-size: 20px;
   }
-`;
+`
 
 export const BlockButton = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ export const BlockButton = styled.div`
     align-items: center;
     text-align: center;
   }
-`;
+`
 export const ChangeButton = styled.button`
   background-color: var(--color-bgc-button-active);
   border: 1px solid var(--color-bgc-button-active);
@@ -48,4 +48,4 @@ export const ChangeButton = styled.button`
     cursor: wait;
     background-color: gray;
   }
-`;
+`

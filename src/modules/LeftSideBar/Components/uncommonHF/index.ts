@@ -1,1 +1,1 @@
-export * from "./uncommonHF";
+export * from './uncommonHF'

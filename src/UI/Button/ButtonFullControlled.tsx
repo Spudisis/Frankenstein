@@ -1,6 +1,4 @@
-import React from "react";
 import styled from "styled-components";
-import { Module } from "../../domains/ApplicationTypes";
 
 export const StyledButtonFullControlled = styled.button<any>`
   width: ${(props) => props.width || "auto"};

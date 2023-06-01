@@ -1,1 +1,1 @@
-export * from "./RestorePassPage";
+export * from './RestorePassPage'

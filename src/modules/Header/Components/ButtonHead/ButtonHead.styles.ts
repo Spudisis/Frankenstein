@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 export const ButtonHeader = styled.button`
   background-color: var(--color-bgc-button-active);
   border: 1px solid var(--color-bgc-button-active);
@@ -27,4 +27,4 @@ export const ButtonHeader = styled.button`
     width: 150px;
     font-size: 22px;
   }
-`;
+`

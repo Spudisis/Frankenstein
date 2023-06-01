@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const DefaultWrapper = styled.div`
   max-width: 1170px;
@@ -9,4 +9,4 @@ export const DefaultWrapper = styled.div`
   @media screen and (max-width: 1200px) {
     margin: 0px 10px;
   }
-`;
+`

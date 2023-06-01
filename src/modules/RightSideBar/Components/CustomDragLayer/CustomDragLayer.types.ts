@@ -1,3 +1,3 @@
 export interface CustomDragLayerProps {
-  snapToGrid: boolean;
+  snapToGrid: boolean
 }

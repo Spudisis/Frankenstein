@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const TextStyled = styled.span<any>`
-  font-size: ${(props) => props.fontSize || "16px"};
-  color: ${(props) => props.color || "#000000"};
-  text-align: ${(props) => props.textAlign || "start"};
-`;
+  font-size: ${(props) => props.fontSize || '16px'};
+  color: ${(props) => props.color || '#000000'};
+  text-align: ${(props) => props.textAlign || 'start'};
+`

@@ -1,1 +1,1 @@
-export * from "./NotFoundPerson";
+export * from './NotFoundPerson'

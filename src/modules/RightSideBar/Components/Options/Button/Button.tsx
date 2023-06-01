@@ -32,14 +32,14 @@ export const ButtonOptions = ({
   const [styles, setStyles] = React.useState<ButtonStyles>({
     nameModule: name ? name : "",
     borderRadius: options.borderRadius ? options.borderRadius : "5px",
-    height: options.height ? options.height : "auto",
+    height: options.height ? options.height : "50px",
     backgroundColor: options.backgroundColor ? options.backgroundColor : "",
     padding: options.padding ? options.padding : "2px",
     color: options.color ? options.color : "black",
     margin: options.margin ? options.margin : "0px",
     border: options.border ? options.border : "none",
     name: options.name ? options.name : "",
-    width: options.width ? options.width : "auto",
+    width: options.width ? options.width : "50px",
     fontSize: options.fontSize ? options.fontSize : "16px",
     actions: options.actions
       ? options.actions

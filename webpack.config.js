@@ -3,7 +3,8 @@ const path = require("path");
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    filename: "./dist/bundle.js",
+    path: path.resolve(__dirname, "./dist"),
+    filename: "[name]/bundle.js",
   },
 
   // Включить карты кода для отладки вывода webpack
@@ -23,7 +24,8 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
+      { test: /\.ts?$/, loader: "ts-loader" },
       { test: /\.tsx?$/, loader: "ts-loader" },
       { test: /\.css$/, use: "css-loader" },
     ],

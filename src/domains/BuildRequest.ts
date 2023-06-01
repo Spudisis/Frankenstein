@@ -1,3 +1,3 @@
-import { ProjectDataType } from "./ProjectData";
+import { type ProjectDataType } from './ProjectData'
 
-export type StartBuild = Pick<ProjectDataType, "uid">;
+export type StartBuild = Pick<ProjectDataType, 'uid'>

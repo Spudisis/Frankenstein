@@ -1,5 +1,5 @@
-export type OptionCreate = {
-  projectName: string;
-  statusAccess: boolean;
-  miniature?: File[];
-};
+export interface OptionCreate {
+  projectName: string
+  statusAccess: boolean
+  miniature?: File[]
+}

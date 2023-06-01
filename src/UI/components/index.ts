@@ -1,2 +1,2 @@
-export { ButtonHide } from "./ButtonHideSideBar/ButtonHideSideBar";
-export { Pictures } from "./PicturesRows/Pictures";
+export { ButtonHide } from './ButtonHideSideBar/ButtonHideSideBar'
+export { Pictures } from './PicturesRows/Pictures'

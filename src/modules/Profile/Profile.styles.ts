@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Grid = styled.div`
   display: grid;
@@ -11,7 +11,7 @@ export const Grid = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: auto;
   }
-`;
+`
 export const SectionProfile = styled.section`
   margin: 10px 0px 30px;
-`;
+`

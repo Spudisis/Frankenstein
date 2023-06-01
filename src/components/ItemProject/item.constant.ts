@@ -1,1 +1,1 @@
-export const MinHeight = 260;
+export const MinHeight = 260

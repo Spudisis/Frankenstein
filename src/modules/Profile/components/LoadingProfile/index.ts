@@ -1,2 +1,2 @@
-export * from "./LoadingProfile";
-export * from "./LoadingTiers";
+export * from './LoadingProfile'
+export * from './LoadingTiers'

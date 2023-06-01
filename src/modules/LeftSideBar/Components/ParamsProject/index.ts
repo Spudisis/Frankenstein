@@ -1,1 +1,1 @@
-export * from "./ParamsProject";
+export * from './ParamsProject'

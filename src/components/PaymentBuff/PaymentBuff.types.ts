@@ -1,3 +1,3 @@
-export type BuffType = {
-  tier: string;
-};
+export interface BuffType {
+  tier: string
+}

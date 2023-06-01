@@ -1,1 +1,1 @@
-export * from "./ChangeInfoProfile";
+export * from './ChangeInfoProfile'

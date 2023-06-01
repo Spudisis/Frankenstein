@@ -1,16 +1,10 @@
-import React from "react";
-import { Trans } from "react-i18next";
-import { AuthInput, ErrorLabel } from "../../UI";
-import { PropsEmailInput } from "./Email";
+import React from 'react'
+import { Trans } from 'react-i18next'
+import { AuthInput, ErrorLabel } from '../../UI'
+import { type PropsEmailInput } from './Email'
 
 export const Password = ({ register, repeatPass, errors }: PropsEmailInput) => {
-  const bool = repeatPass
-    ? errors.passwordRepeat?.type
-      ? true
-      : false
-    : errors.password?.type
-    ? true
-    : false;
+  const bool = repeatPass ? !!errors.passwordRepeat?.type : !!errors.password?.type
   return (
     <AuthInput error={bool}>
       <label>
@@ -22,7 +16,7 @@ export const Password = ({ register, repeatPass, errors }: PropsEmailInput) => {
         <input
           aria-invalid={bool}
           type="password"
-          {...register(repeatPass ? "passwordRepeat" : "password")}
+          {...register(repeatPass ? 'passwordRepeat' : 'password')}
           placeholder="*****"
         />
       </label>
@@ -30,9 +24,7 @@ export const Password = ({ register, repeatPass, errors }: PropsEmailInput) => {
         <>
           {errors.passwordRepeat?.message && (
             <ErrorLabel>
-              <Trans
-                i18nKey={`Auth.errors.${errors.passwordRepeat?.message}`}
-              ></Trans>
+              <Trans i18nKey={`Auth.errors.${errors.passwordRepeat?.message}`}></Trans>
             </ErrorLabel>
           )}
         </>
@@ -40,13 +32,11 @@ export const Password = ({ register, repeatPass, errors }: PropsEmailInput) => {
         <>
           {errors.password?.message && (
             <ErrorLabel>
-              <Trans
-                i18nKey={`Auth.errors.${errors.password?.message}`}
-              ></Trans>
+              <Trans i18nKey={`Auth.errors.${errors.password?.message}`}></Trans>
             </ErrorLabel>
           )}
         </>
       )}
     </AuthInput>
-  );
-};
+  )
+}

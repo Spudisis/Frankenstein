@@ -10,17 +10,13 @@ class TemplatesAgent extends BasicAgent {
   }
 
   async getTemplates (page = 1, limit = 10, type: string) {
-    const { data } = await this._http.get<ResponseTemplates>(
-      `/getType?p=${page}&l=${limit}&type=${type}`
-    )
+    const { data } = await this._http.get<ResponseTemplates>(`/getType?p=${page}&l=${limit}&type=${type}`)
     console.log(data.rows)
     return data
   }
 
   async getTemplatesUser (page = 1, limit = 10, type?: string) {
-    const { data } = await this._http.get<ResponseTemplates>(
-      `/getUser?p=${page}&l=${limit}&type=${type}`
-    )
+    const { data } = await this._http.get<ResponseTemplates>(`/getUser?p=${page}&l=${limit}&type=${type}`)
     return data
   }
 

@@ -1,57 +1,66 @@
-import { useTranslation } from "react-i18next";
-import React from "react";
-import styled from "styled-components";
+import { useTranslation } from 'react-i18next'
+import React from 'react'
+import styled from 'styled-components'
 
-import rusFlag from "./assets/russianFlag/Flag_of_Russia.svg";
-import USA from "./assets/usaFlag/Flag_of_the_United_States.svg";
-type A = {};
+import rusFlag from './assets/russianFlag/Flag_of_Russia.svg'
+import USA from './assets/usaFlag/Flag_of_the_United_States.svg'
+
 export const SelectLanguage = () => {
-  const { i18n } = useTranslation();
-  const [isOpen, setIsOpen] = React.useState(false);
+  const { i18n } = useTranslation()
+  const [isOpen, setIsOpen] = React.useState(false)
 
   const languages = [
-    { id: 1, lang: "ru", name: "RUS" },
-    { id: 2, lang: "en", name: "ENG" },
-  ];
+    { id: 1, lang: 'ru', name: 'RUS' },
+    { id: 2, lang: 'en', name: 'ENG' }
+  ]
 
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+    i18n.changeLanguage(lng)
+  }
 
   return (
     <>
-      <Wrapper onClick={() => setIsOpen(!isOpen)} tabIndex={0}>
+      <Wrapper
+        onClick={() => {
+          setIsOpen(!isOpen)
+        }}
+        tabIndex={0}
+      >
         {!isOpen
           ? languages.map((elem, index) => {
-              if (i18n.language.slice(0, 2) === elem.lang) {
-                return (
+            if (i18n.language.slice(0, 2) === elem.lang) {
+              return (
                   <Li
                     tabIndex={-index}
                     key={elem.id}
-                    onClick={() => changeLanguage(elem.lang)}
+                    onClick={() => {
+                      changeLanguage(elem.lang)
+                    }}
                   >
-                    <img src={elem.lang === "ru" ? rusFlag : USA} alt="" />
+                    <img src={elem.lang === 'ru' ? rusFlag : USA} alt="" />
                     {elem.name}
                   </Li>
-                );
-              }
-            })
+              )
+            }
+          })
           : languages.map((elem, index) => {
-              return (
+            return (
                 <Li
                   tabIndex={-index}
                   key={elem.id}
-                  onClick={() => changeLanguage(elem.lang)}
+                  onClick={() => {
+                    changeLanguage(elem.lang)
+                  }}
                 >
-                  <img src={elem.lang === "ru" ? rusFlag : USA} alt="" />
+                  <img src={elem.lang === 'ru' ? rusFlag : USA} alt="" />
                   {elem.name}
                 </Li>
-              );
-            })}
+            )
+          })}
       </Wrapper>
     </>
-  );
-};
+  )
+}
 
 const Wrapper = styled.ul`
   width: 120px;
@@ -67,7 +76,7 @@ const Wrapper = styled.ul`
   cursor: pointer;
   z-index: 1000;
   background-color: var(--color-bgc-button-active);
-`;
+`
 
 const Li = styled.li`
   height: 40px;
@@ -78,4 +87,4 @@ const Li = styled.li`
     width: 39px;
     height: 21px;
   }
-`;
+`

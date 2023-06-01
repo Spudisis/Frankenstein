@@ -1,6 +1,6 @@
-import React from "react";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { MinHeight } from "./item.constant";
+import React from 'react'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { MinHeight } from './item.constant'
 
 export const SkeletonItem = () => {
   return (
@@ -9,5 +9,5 @@ export const SkeletonItem = () => {
         <Skeleton count={1} borderRadius={10} height={MinHeight} />
       </SkeletonTheme>
     </div>
-  );
-};
+  )
+}

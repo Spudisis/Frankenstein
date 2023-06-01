@@ -17,11 +17,7 @@ class CreateProject {
     this.statusLoading = value
   }
 
-  async createNewProject ({
-    projectName,
-    statusAccess,
-    miniature
-  }: OptionCreate) {
+  async createNewProject ({ projectName, statusAccess, miniature }: OptionCreate) {
     try {
       this.loading = STATUS_LOADING.LOADING
 

@@ -13,9 +13,7 @@ export const StylesPagination = styled.div<{ load: boolean }>`
       cursor: ${(props) => (props.load ? 'wait' : 'pointer')};
       display: block;
       background-color: ${(props) =>
-        props.load
-          ? 'rgba(var(--color-bgc-button-active), 0.1)'
-          : 'var(--color-bgc-button-active)'};
+        props.load ? 'rgba(var(--color-bgc-button-active), 0.1)' : 'var(--color-bgc-button-active)'};
       border: 1px solid var(--color-bgc-button-active);
       width: 40px;
       height: 40px;

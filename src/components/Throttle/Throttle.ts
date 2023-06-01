@@ -25,7 +25,9 @@ export const useThrottle = (
     if (!isFunctionRunning.current) {
       isFunctionRunning.current = true
       clearTimer()
-      timeoutRef.current = setTimeout(() => { runFunction(e) }, delay)
+      timeoutRef.current = setTimeout(() => {
+        runFunction(e)
+      }, delay)
     }
   }
 }

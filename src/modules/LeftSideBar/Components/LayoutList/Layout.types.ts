@@ -1,12 +1,4 @@
-import type {
-  ChangeTargetType,
-  FHObject,
-  Module,
-  ParentElem,
-  ParentParent,
-  ScreenMas,
-  SubModules
-} from 'src/domains'
+import type { ChangeTargetType, FHObject, Module, ParentElem, ParentParent, ScreenMas, SubModules } from 'src/domains'
 
 export interface NestingLayout {
   target: Module & ParentElem & ParentParent

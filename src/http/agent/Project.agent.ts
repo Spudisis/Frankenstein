@@ -23,17 +23,14 @@ class ProjectAgent extends BasicAgent {
 
     formData.append('projectName', params.projectName)
     formData.append('statusAccess', `${params.statusAccess}`)
-    if ((params.miniature != null) && params.miniature[0]) {
+    if (params.miniature != null && params.miniature[0]) {
       formData.append('miniature', params.miniature[0])
     } else {
       formData.append('miniature', '')
     }
 
     console.log(formData)
-    const res = await this._http.post<CreateProjectResponse>(
-      '/createnew',
-      formData
-    )
+    const res = await this._http.post<CreateProjectResponse>('/createnew', formData)
     return res
   }
 
@@ -52,17 +49,13 @@ class ProjectAgent extends BasicAgent {
   }
 
   async getUserProjects (id: number, limit = 10, offset = 0) {
-    const res = await this._http.get<UserProjectType>(
-      `/my-projects?p=${offset}&l=${limit}&userId=${id}`
-    )
+    const res = await this._http.get<UserProjectType>(`/my-projects?p=${offset}&l=${limit}&userId=${id}`)
     return res
   }
 
   // have
   async getProjects (limit = 10, offset = 1) {
-    const res: any = await this._http.get(
-      `/public-projects?p=${offset}&l=${limit}`
-    )
+    const res: any = await this._http.get(`/public-projects?p=${offset}&l=${limit}`)
     console.log(res)
     // ?limit=${limit}&offset=${offset}
     return res

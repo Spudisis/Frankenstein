@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 export const WrapperAuth = styled.div`
   background-color: #2c2c2c;
@@ -24,4 +24,4 @@ export const WrapperAuth = styled.div`
   @media screen and (max-width: 360px) {
     padding: 10px;
   }
-`;
+`

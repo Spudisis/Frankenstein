@@ -1,7 +1,7 @@
-import React from "react";
-import { WrapperFBType } from "./WrapperDoubleGrid.types";
-import { Wrapper } from "./WrapperDoubleGrid.styles";
+import React from 'react'
+import { type WrapperFBType } from './WrapperDoubleGrid.types'
+import { Wrapper } from './WrapperDoubleGrid.styles'
 
 export const WrapperDoubleGrid = ({ children }: WrapperFBType) => {
-  return <Wrapper>{children}</Wrapper>;
-};
+  return <Wrapper>{children}</Wrapper>
+}

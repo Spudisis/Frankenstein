@@ -1,10 +1,6 @@
 import { type Option, type SubModules } from './ApplicationTypes'
 
-export type ChangeOptions = ({
-  options,
-  name,
-  scrollable
-}: ChangeOptionsProp) => void
+export type ChangeOptions = ({ options, name, scrollable }: ChangeOptionsProp) => void
 
 export interface ChangeOptionsProp {
   options: Option

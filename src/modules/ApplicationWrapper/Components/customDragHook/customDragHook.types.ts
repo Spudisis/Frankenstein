@@ -1,4 +1,3 @@
-
 import { type DeleteFuncType, type Module, type ParentParent, type SubModules } from 'src/domains'
 import { type FindIndexFunc } from '../FindIndexDecompose'
 import { type ItemType } from 'src/domains/ItemTypesDNDType'

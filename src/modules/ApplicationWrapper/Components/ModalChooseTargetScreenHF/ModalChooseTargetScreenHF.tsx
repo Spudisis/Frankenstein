@@ -1,22 +1,18 @@
-import React, { MouseEvent } from "react";
-import {
-  ModalStyled,
-  Wrapper,
-  Content,
-} from "./ModalChooseTargetScreenHF.styles";
-import { createPortal } from "react-dom";
-import { TestStore } from "../../store";
-import { DefaultButton } from "src/UI";
+import React, { type MouseEvent } from 'react'
+import { ModalStyled, Wrapper, Content } from './ModalChooseTargetScreenHF.styles'
+import { createPortal } from 'react-dom'
+import { TestStore } from '../../store'
+import { DefaultButton } from 'src/UI'
 
 export const ModalChooseTargetScreenHF = () => {
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = React.useRef<HTMLDivElement>(null)
 
   const onClickModal = (e: MouseEvent<HTMLDivElement>) => {
     if (ref.current && !ref.current.contains(e.target as Node)) {
-      return (TestStore.openModalChooseHFScreen = false);
+      return (TestStore.openModalChooseHFScreen = false)
     }
-    return null;
-  };
+    return null
+  }
 
   return (
     <>
@@ -29,15 +25,19 @@ export const ModalChooseTargetScreenHF = () => {
                 padding1800="5px 10px"
                 padding="5px 10px"
                 margin="0px"
-                text={"Add to this screen"}
-                onClick={() => TestStore.setHFtoThisScreen()}
+                text={'Add to this screen'}
+                onClick={() => {
+                  TestStore.setHFtoThisScreen()
+                }}
               />
               <DefaultButton
                 padding1800="5px 10px"
                 padding="5px 10px"
                 margin="0px"
-                text={"Add to all"}
-                onClick={() => TestStore.setHFtoAll()}
+                text={'Add to all'}
+                onClick={() => {
+                  TestStore.setHFtoAll()
+                }}
               />
             </Content>
           </ModalStyled>
@@ -45,5 +45,5 @@ export const ModalChooseTargetScreenHF = () => {
         document.body
       )}
     </>
-  );
-};
+  )
+}

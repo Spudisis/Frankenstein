@@ -1,18 +1,11 @@
-import React from "react";
-import { Trans } from "react-i18next";
-import { ErrorLabel } from "src/UI";
-import { PropsInput } from "../../ProfileChange.types";
-import { InputWrapper } from "../InputWrapper";
-
+import React from 'react'
+import { Trans } from 'react-i18next'
+import { ErrorLabel } from 'src/UI'
+import { type PropsInput } from '../../ProfileChange.types'
+import { InputWrapper } from '../InputWrapper'
 
 export const Password = ({ register, repeatPass, errors }: PropsInput) => {
-  const bool = repeatPass
-    ? errors.passwordRepeat?.type
-      ? true
-      : false
-    : errors.password?.type
-    ? true
-    : false;
+  const bool = repeatPass ? !!errors.passwordRepeat?.type : !!errors.password?.type
   return (
     <InputWrapper>
       <label>
@@ -24,7 +17,7 @@ export const Password = ({ register, repeatPass, errors }: PropsInput) => {
         <input
           aria-invalid={bool}
           type="password"
-          {...register(repeatPass ? "passwordRepeat" : "password")}
+          {...register(repeatPass ? 'passwordRepeat' : 'password')}
           placeholder="*****"
         />
       </label>
@@ -32,9 +25,7 @@ export const Password = ({ register, repeatPass, errors }: PropsInput) => {
         <>
           {errors.passwordRepeat?.message && (
             <ErrorLabel>
-              <Trans
-                i18nKey={`Auth.errors.${errors.passwordRepeat?.message}`}
-              ></Trans>
+              <Trans i18nKey={`Auth.errors.${errors.passwordRepeat?.message}`}></Trans>
             </ErrorLabel>
           )}
         </>
@@ -42,13 +33,11 @@ export const Password = ({ register, repeatPass, errors }: PropsInput) => {
         <>
           {errors.password?.message && (
             <ErrorLabel>
-              <Trans
-                i18nKey={`Auth.errors.${errors.password?.message}`}
-              ></Trans>
+              <Trans i18nKey={`Auth.errors.${errors.password?.message}`}></Trans>
             </ErrorLabel>
           )}
         </>
       )}
     </InputWrapper>
-  );
-};
+  )
+}

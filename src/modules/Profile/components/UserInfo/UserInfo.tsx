@@ -1,10 +1,10 @@
-import { observer } from "mobx-react-lite";
-import React from "react";
-import { StoreProfile } from "../../store";
-import { Block, InfoField, NameField, Wrapper } from "./UserInfo.styles";
+import { observer } from 'mobx-react-lite'
+import React from 'react'
+import { StoreProfile } from '../../store'
+import { Block, InfoField, NameField, Wrapper } from './UserInfo.styles'
 
 export const UserInfo = observer(() => {
-  const { user } = StoreProfile;
+  const { user } = StoreProfile
 
   return (
     <Wrapper>
@@ -21,5 +21,5 @@ export const UserInfo = observer(() => {
         <InfoField>{user?.tiers}</InfoField>
       </Block>
     </Wrapper>
-  );
-});
+  )
+})

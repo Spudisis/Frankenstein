@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { ChildrenProp } from "../../ChildrenProp";
+import React from 'react'
+import styled from 'styled-components'
+import { type ChildrenProp } from '../../ChildrenProp'
 
 export const HeaderOptionsInput = ({ children }: ChildrenProp) => {
-  return <StyledOptionsInputs>{children}</StyledOptionsInputs>;
-};
+  return <StyledOptionsInputs>{children}</StyledOptionsInputs>
+}
 
 const StyledOptionsInputs = styled.div`
   color: white;
@@ -19,4 +19,4 @@ const StyledOptionsInputs = styled.div`
     background-color: inherit;
     width: 200px;
   }
-`;
+`

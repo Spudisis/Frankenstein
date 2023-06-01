@@ -39,7 +39,7 @@ export interface SubModules {
 
 export enum typeFH {
   'Header',
-  'Footer',
+  'Footer'
 }
 
 export interface OptionsFH {
@@ -50,7 +50,7 @@ export interface OptionsFH {
 
 export enum SectionEnum {
   'pictures',
-  'options',
+  'options'
 }
 
 export interface ParentElem {

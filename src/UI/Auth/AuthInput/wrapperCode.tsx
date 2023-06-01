@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const WrapperCode = styled.div`
   display: grid;
 
   grid-template-columns: 50% 50%;
   align-items: center;
-`;
-export const ButtonCode = styled.button.attrs({ type: "button" })`
+`
+export const ButtonCode = styled.button.attrs({ type: 'button' })`
   background-color: var(--color-bgc-button-active);
   border: 1px solid var(--color-bgc-button-active);
   font-size: 24px;
@@ -29,4 +29,4 @@ export const ButtonCode = styled.button.attrs({ type: "button" })`
     background-color: var(--color-bgc-button-active);
     cursor: wait;
   }
-`;
+`

@@ -1,26 +1,19 @@
-import React from "react";
-import { ButtonHide } from "../../UI";
+import React from 'react'
+import { ButtonHide } from '../../UI'
 
-type HideSideBar = {
-  changeVisible: () => void;
-  left?: string;
-  right?: string;
-  deg: string;
-  onMouseDown?: any;
-  onMouseUp?: any;
-};
+interface HideSideBar {
+  changeVisible: () => void
+  left?: string
+  right?: string
+  deg: string
+  onMouseDown?: any
+  onMouseUp?: any
+}
 
-export const ButtonHideSideBar = ({
-  changeVisible,
-  left,
-  right,
-  deg,
-  onMouseDown,
-  onMouseUp,
-}: HideSideBar) => {
+export const ButtonHideSideBar = ({ changeVisible, left, right, deg, onMouseDown, onMouseUp }: HideSideBar) => {
   const handleClick = () => {
-    changeVisible();
-  };
+    changeVisible()
+  }
 
   return (
     <ButtonHide
@@ -31,20 +24,11 @@ export const ButtonHideSideBar = ({
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
     >
-      <svg
-        width="18"
-        height="95"
-        viewBox="0 0 18 95"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="18" height="95" viewBox="0 0 18 95" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask id="path-1-inside-1_5_43" fill="white">
           <path d="M0 0C9.94112 0 18 8.05888 18 18V77C18 86.9411 9.94112 95 0 95V0Z" />
         </mask>
-        <path
-          d="M0 0C9.94112 0 18 8.05888 18 18V77C18 86.9411 9.94112 95 0 95V0Z"
-          fill="#2C2C2C"
-        />
+        <path d="M0 0C9.94112 0 18 8.05888 18 18V77C18 86.9411 9.94112 95 0 95V0Z" fill="#2C2C2C" />
         <path
           d="M0 -1C10.4934 -1 19 7.50659 19 18H17C17 8.61116 9.38884 1 0 1V-1ZM19 77C19 87.4934 10.4934 96 0 96V94C9.38884 94 17 86.3888 17 77H19ZM0 95V0V95ZM0 -1C10.4934 -1 19 7.50659 19 18V77C19 87.4934 10.4934 96 0 96V94C9.38884 94 17 86.3888 17 77V18C17 8.61116 9.38884 1 0 1V-1Z"
           fill="#3E3D3D"
@@ -52,5 +36,5 @@ export const ButtonHideSideBar = ({
         />
       </svg>
     </ButtonHide>
-  );
-};
+  )
+}

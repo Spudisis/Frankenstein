@@ -1,8 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { EmptyButton, SignWithStyled } from "../../UI";
-import { Trans } from "react-i18next";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'
+import { EmptyButton, SignWithStyled } from '../../UI'
+import { Trans } from 'react-i18next'
 
 export const SignWith = () => {
   return (
@@ -25,5 +25,5 @@ export const SignWith = () => {
         </EmptyButton>
       </div>
     </SignWithStyled>
-  );
-};
+  )
+}

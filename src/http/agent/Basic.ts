@@ -17,17 +17,12 @@ export class BasicAgent {
       },
       async (error) => {
         const originRequest = error.config
-        if (
-          error.response.status === 401 &&
-          error.config &&
-          !error.config._isRetry
-        ) {
+        if (error.response.status === 401 && error.config && !error.config._isRetry) {
           originRequest._isRetry = true
           try {
-            const { data } = await axios.get<any>(
-              `${process.env.REACT_APP_URL_BACK_API}person/refresh`,
-              { withCredentials: true }
-            )
+            const { data } = await axios.get<any>(`${process.env.REACT_APP_URL_BACK_API}person/refresh`, {
+              withCredentials: true
+            })
 
             localStorage.setItem('token', data.accessToken)
             return await this._http.request(originRequest)

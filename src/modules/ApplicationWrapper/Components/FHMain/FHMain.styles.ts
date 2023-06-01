@@ -4,8 +4,7 @@ export const HFStyles = styled.div<any>`
   height: ${(props) => (props.height ? props.height : '150px')};
   border: ${(props) => props.border || 'none'};
   overflow: hidden;
-  background-color: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : 'yellow'};
+  background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : 'yellow')};
   display: ${(props) => props.display || 'block'};
   ${({ display }) =>
     display === 'flex'
@@ -17,9 +16,7 @@ export const HFStyles = styled.div<any>`
       : display === 'grid'
       ? css`
           grid-template-columns: ${(props: Option) =>
-            props.gridTemplateColumns
-              ? `repeat(${props.gridTemplateColumns}, 1fr)`
-              : 'repeat(1, 1fr)'};
+            props.gridTemplateColumns ? `repeat(${props.gridTemplateColumns}, 1fr)` : 'repeat(1, 1fr)'};
           grid-column-gap: ${(props: Option) =>
             // 2-5
             props.gridColumnGap || '0px'};

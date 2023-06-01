@@ -1,27 +1,23 @@
-import { observer } from "mobx-react-lite";
+import { observer } from 'mobx-react-lite'
 
-import { ScreenMas } from "src/domains/ApplicationTypes";
-import { FindComponent } from "../FindComponent/FindComponent";
-import App from "src/store/Application";
+import { type ScreenMas } from 'src/domains/ApplicationTypes'
+import { FindComponent } from '../FindComponent/FindComponent'
+import App from 'src/store/Application'
 
 export const MainConstructor = observer((elem: ScreenMas) => {
-  const { id, modules } = elem;
+  const { id, modules } = elem
   const changeModules = (modules: any) => {
-    const newScreen = { ...elem, modules: modules };
-    App.changeScreen(newScreen);
-  };
+    const newScreen = { ...elem, modules }
+    App.changeScreen(newScreen)
+  }
 
   return (
     <>
       {modules ? (
-        <FindComponent
-          modules={modules}
-          parent={id}
-          changeModules={changeModules}
-        />
+        <FindComponent modules={modules} parent={id} changeModules={changeModules} />
       ) : (
         <div>Нет ничего, см MainCounstructor</div>
       )}
     </>
-  );
-});
+  )
+})

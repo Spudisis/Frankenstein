@@ -46,10 +46,9 @@ class Auth {
 
   async checkAuth () {
     try {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_URL_BACK_API as string | ''}person/refresh`,
-        { withCredentials: true }
-      )
+      const { data } = await axios.get(`${process.env.REACT_APP_URL_BACK_API as string | ''}person/refresh`, {
+        withCredentials: true
+      })
       localStorage.setItem('token', data.accessToken)
       this.userInfo = data.user
       // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions

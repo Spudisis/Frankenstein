@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ErrorLabel = styled.label`
   color: red;
@@ -8,4 +8,4 @@ export const ErrorLabel = styled.label`
   @media screen and (max-width: 500px) {
     font-size: 14px;
   }
-`;
+`

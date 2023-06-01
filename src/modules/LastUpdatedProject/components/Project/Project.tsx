@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { MiniatureProjects } from "src/domains";
-import { BUILD_URL } from "src/routes/urlsPages";
-import { Wrapper, Image, Information, Str } from "./Project.styles";
-import placeholder from "src/assets/placeholder.png";
-import { formatDateTime } from "src/utils";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { type MiniatureProjects } from 'src/domains'
+import { BUILD_URL } from 'src/routes/urlsPages'
+import { Wrapper, Image, Information, Str } from './Project.styles'
+import placeholder from 'src/assets/placeholder.png'
+import { formatDateTime } from 'src/utils'
 export const Project = ({
   id,
   uid,
@@ -13,17 +13,13 @@ export const Project = ({
   statusAccess,
   layout,
   updatedAt,
-  createdAt,
+  createdAt
 }: MiniatureProjects) => {
   return (
     <Link to={BUILD_URL + uid}>
       <Wrapper>
         <Image
-          src={
-            miniature
-              ? process.env.REACT_APP_URL_BACKEND + miniature
-              : placeholder
-          }
+          src={miniature ? process.env.REACT_APP_URL_BACKEND + miniature : placeholder}
           alt={`${name} project miniature`}
           bgc={!miniature}
         />
@@ -36,5 +32,5 @@ export const Project = ({
         </Information>
       </Wrapper>
     </Link>
-  );
-};
+  )
+}

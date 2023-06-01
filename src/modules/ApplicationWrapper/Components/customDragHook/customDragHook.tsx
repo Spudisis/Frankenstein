@@ -1,6 +1,6 @@
-import React from "react";
-import {  useDrag } from "react-dnd";
-import { DragHook } from "./customDragHook.types";
+import React from 'react'
+import { useDrag } from 'react-dnd'
+import { type DragHook } from './customDragHook.types'
 
 export const CustomDragHook = ({
   elem,
@@ -9,10 +9,10 @@ export const CustomDragHook = ({
   FindIndex,
   MoveCardFunc,
   typeDrag,
-  deleteItemFunc,
+  deleteItemFunc
 }: DragHook) => {
-  const find = FindIndex(elem.id);
-  const originalIndex = find ? find.index : -1;
+  const find = FindIndex(elem.id)
+  const originalIndex = find ? find.index : -1
 
   const [{ isDragging }, drag] = useDrag(
     () => ({
@@ -22,27 +22,27 @@ export const CustomDragHook = ({
         parent,
         ParentParent,
         originalIndex,
-        deleteItemFunc,
+        deleteItemFunc
       },
       collect: (monitor) => ({
-        isDragging: monitor.isDragging(),
+        isDragging: monitor.isDragging()
       }),
       end: (item, monitor) => {
-        const { id: droppedId, originalIndex } = item;
+        const { id: droppedId, originalIndex } = item
 
-        const didDrop = monitor.didDrop();
+        const didDrop = monitor.didDrop()
 
         if (!didDrop) {
           MoveCardFunc({
             draggedId: droppedId,
             originalIndex,
             parentButton: parent,
-            ParentParent: ParentParent,
-          });
+            ParentParent
+          })
         }
-      },
+      }
     }),
     [parent, originalIndex, elem.id, MoveCardFunc, ParentParent]
-  );
-  return { isDragging, drag };
-};
+  )
+  return { isDragging, drag }
+}

@@ -1,1 +1,1 @@
-export * from "./ApplicationWrapper";
+export * from './ApplicationWrapper'

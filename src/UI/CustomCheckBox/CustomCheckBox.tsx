@@ -1,14 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import { PropsErrorsBool } from "../Auth/AuthInput/AuthInput";
-import { ChildrenProp } from "../ChildrenProp";
+import React from 'react'
+import styled from 'styled-components'
+import { type PropsErrorsBool } from '../Auth/AuthInput/AuthInput'
+import { type ChildrenProp } from '../ChildrenProp'
 
-export const CustomCheckBox = ({
-  children,
-  error,
-}: ChildrenProp & PropsErrorsBool) => {
-  return <CheckBox error={error}>{children}</CheckBox>;
-};
+export const CustomCheckBox = ({ children, error }: ChildrenProp & PropsErrorsBool) => {
+  return <CheckBox error={error}>{children}</CheckBox>
+}
 
 const CheckBox = styled.div<PropsErrorsBool>`
   position: relative;
@@ -28,14 +25,14 @@ const CheckBox = styled.div<PropsErrorsBool>`
       }
     }
     span::before {
-      content: "";
+      content: '';
       display: inline-block;
       width: 25px;
 
       height: 25px;
       flex-shrink: 0;
       flex-grow: 0;
-      border: 1px solid ${(props) => (props.error ? "red" : "#adb5bd")};
+      border: 1px solid ${(props) => (props.error ? 'red' : '#adb5bd')};
 
       border-radius: 50%;
       margin-right: 0.5em;
@@ -45,7 +42,7 @@ const CheckBox = styled.div<PropsErrorsBool>`
     }
     & > input:checked + span::before {
       background-color: white;
-      border: 3px solid ${(props) => (props.error ? "red" : "#adb5bd")};
+      border: 3px solid ${(props) => (props.error ? 'red' : '#adb5bd')};
     }
     input {
       position: absolute;
@@ -53,4 +50,4 @@ const CheckBox = styled.div<PropsErrorsBool>`
       opacity: 0;
     }
   }
-`;
+`

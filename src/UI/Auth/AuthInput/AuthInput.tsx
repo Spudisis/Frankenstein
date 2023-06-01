@@ -1,17 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { ChildrenProp } from "../../ChildrenProp";
+import React from 'react'
+import styled from 'styled-components'
+import { type ChildrenProp } from '../../ChildrenProp'
 
-export type PropsErrorsBool = {
-  error?: boolean;
-};
+export interface PropsErrorsBool {
+  error?: boolean
+}
 
-export const AuthInput = ({
-  children,
-  error,
-}: ChildrenProp & PropsErrorsBool) => {
-  return <Input error={error}>{children}</Input>;
-};
+export const AuthInput = ({ children, error }: ChildrenProp & PropsErrorsBool) => {
+  return <Input error={error}>{children}</Input>
+}
 
 const Input = styled.div<PropsErrorsBool>`
   position: relative;
@@ -30,7 +27,7 @@ const Input = styled.div<PropsErrorsBool>`
     }
   }
   input {
-    border: 1px solid ${(props) => (props.error ? "red" : "black")};
+    border: 1px solid ${(props) => (props.error ? 'red' : 'black')};
     color: black;
     background-color: #d9d9d9;
     border-radius: 0px;
@@ -49,4 +46,4 @@ const Input = styled.div<PropsErrorsBool>`
   @media screen and (max-width: 1800px) {
     margin-bottom: 18px;
   }
-`;
+`

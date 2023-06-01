@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react'
 import {
-  ScreenAddElemeny,
-  Module,
-  SubModules,
-  Modules,
-  ChangeOptionsProp,
+  type ScreenAddElemeny,
+  type Module,
+  type SubModules,
+  type Modules,
+  type ChangeOptionsProp,
   DeleteFuncType,
-  WrapperStyles,
-} from "src/domains";
-import { FindComponent } from "../FindComponent/FindComponent";
-import { WrapperStyledDiv } from "./WrapperCustom.styles";
-import { WrapperCustomT } from "./WrapperCustom.types";
-import { CreateId, changeTarget } from "src/components";
+  type WrapperStyles
+} from 'src/domains'
+import { FindComponent } from '../FindComponent/FindComponent'
+import { WrapperStyledDiv } from './WrapperCustom.styles'
+import { type WrapperCustomT } from './WrapperCustom.types'
+import { CreateId, changeTarget } from 'src/components'
 
-import { TestStore } from "../../store";
-import { CustomDragHook } from "../customDragHook";
-import { CustomDropHook } from "../customDropHook";
-import { ItemTypesDNDPictures } from "src/constants";
+import { TestStore } from '../../store'
+import { CustomDragHook } from '../customDragHook'
+import { CustomDropHook } from '../customDropHook'
+import { ItemTypesDNDPictures } from 'src/constants'
 
 export const WrapperCustom = ({
   elem,
@@ -24,38 +24,38 @@ export const WrapperCustom = ({
   FindIndex,
   parent,
   newModules,
-  deleteItemFunc,
+  deleteItemFunc
 }: WrapperCustomT) => {
-  const { options, modules, id } = elem;
-  const module = modules as Module[];
+  const { options, modules, id } = elem
+  const module = modules as Module[]
 
   const handleSetTarget = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { options, id, namePrivate, name, modules } = elem;
+    const { options, id, namePrivate, name, modules } = elem
     changeTarget({
       obj: { options, name, id, namePrivate, modules },
-      changeOptions,
-    });
-    e.stopPropagation();
-  };
+      changeOptions
+    })
+    e.stopPropagation()
+  }
 
   const { drag } = CustomDragHook({
     elem,
     parent,
     FindIndex,
     MoveCardFunc,
-    typeDrag: "Wrapper",
-    deleteItemFunc,
-  });
+    typeDrag: 'Wrapper',
+    deleteItemFunc
+  })
 
   const dropFunc = (item: ScreenAddElemeny) => {
-    addModule({ ...item, id: CreateId() });
-  };
+    addModule({ ...item, id: CreateId() })
+  }
   const addModule = (newModule: Module | SubModules) => {
-    console.log(elem!.modules!.length);
-    const newModules = [...(elem.modules ? elem.modules : []), newModule];
-    console.log(newModules!.length);
-    changeModules && changeModules(newModules);
-  };
+    console.log(elem.modules!.length)
+    const newModules = [...(elem.modules ? elem.modules : []), newModule]
+    console.log(newModules.length)
+    changeModules && changeModules(newModules)
+  }
   const { drop } = CustomDropHook({
     dropFunc,
     MoveCardFunc,
@@ -64,31 +64,31 @@ export const WrapperCustom = ({
     ItemAccess: [
       ItemTypesDNDPictures.PicturesButton,
       ItemTypesDNDPictures.PicturesWrapper,
-      ItemTypesDNDPictures.PicturesText,
-    ],
-  });
+      ItemTypesDNDPictures.PicturesText
+    ]
+  })
 
   const changeOptions = ({ options, name, scrollable }: ChangeOptionsProp) => {
     const newElem = {
       ...elem,
-      name: name ? name : elem.name,
-      options: options ? options : elem.options,
-      scrollable: scrollable ? scrollable : elem.scrollable,
-    };
+      name: name || elem.name,
+      options: options || elem.options,
+      scrollable: scrollable || elem.scrollable
+    }
 
-    newModules(newElem);
-  };
+    newModules(newElem)
+  }
 
   const changeModules = (newEl: SubModules[] | Modules) => {
     const newElem = {
       ...elem,
 
-      modules: newEl,
-    };
+      modules: newEl
+    }
 
-    console.log(newElem.id);
-    newModules(newElem);
-  };
+    console.log(newElem.id)
+    newModules(newElem)
+  }
 
   return (
     <>
@@ -97,13 +97,8 @@ export const WrapperCustom = ({
         {...(options as WrapperStyles)}
         onClick={handleSetTarget}
       >
-        <FindComponent
-          modules={module}
-          parent={parent as string}
-          ParentParent={id}
-          changeModules={changeModules}
-        />
+        <FindComponent modules={module} parent={parent as string} ParentParent={id} changeModules={changeModules} />
       </WrapperStyledDiv>
     </>
-  );
-};
+  )
+}

@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { ChildrenProp } from "../../ChildrenProp";
+import React from 'react'
+import styled from 'styled-components'
+import { type ChildrenProp } from '../../ChildrenProp'
 
 export const SignWithStyled = ({ children }: ChildrenProp) => {
-  return <StyledSignWith>{children}</StyledSignWith>;
-};
+  return <StyledSignWith>{children}</StyledSignWith>
+}
 const StyledSignWith = styled.div`
   color: white;
   margin: 11px 0 0px;
@@ -24,4 +24,4 @@ const StyledSignWith = styled.div`
   @media screen and (max-width: 500px) {
     margin: 6px 0 0px;
   }
-`;
+`

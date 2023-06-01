@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react'
 
 export const ChangeInfoProfile = () => {
-  return <div>ChangeInfoProfile</div>;
-};
+  return <div>ChangeInfoProfile</div>
+}

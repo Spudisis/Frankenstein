@@ -1,5 +1,5 @@
-import React from "react";
-import ContentLoader from "react-content-loader";
+import React from 'react'
+import ContentLoader from 'react-content-loader'
 
 export const CaptchaLoader = () => (
   <ContentLoader
@@ -13,4 +13,4 @@ export const CaptchaLoader = () => (
   >
     <rect x="0" y="0" rx="3" ry="3" width="300" height="75" />
   </ContentLoader>
-);
+)

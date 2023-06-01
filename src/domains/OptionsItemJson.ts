@@ -29,7 +29,4 @@ export interface Actions {
   }
 }
 
-export type WrapperStyles = Omit<
-TypesStyles,
-'name' | 'fontSize' | 'actions' | 'textAlign'
->
+export type WrapperStyles = Omit<TypesStyles, 'name' | 'fontSize' | 'actions' | 'textAlign'>

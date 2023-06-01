@@ -1,21 +1,18 @@
-import React from "react";
-import { CustomDetails } from "../CustomDetails";
-import { SelectInput } from "../SelectInput";
+import React from 'react'
+import { CustomDetails } from '../CustomDetails'
+import { SelectInput } from '../SelectInput'
 import {
   OptionDisplay,
   OptionFlexDirection,
   OptionsAlign,
   OptionsGridColumns,
-  OptionsJustify,
-} from "../Options.constant";
-import { Input } from "../Input";
-import { TypeInputDisplay } from "./InputDisplay.types";
-import { TypeDisplayOptions } from "../Options.types";
+  OptionsJustify
+} from '../Options.constant'
+import { Input } from '../Input'
+import { type TypeInputDisplay } from './InputDisplay.types'
+import { type TypeDisplayOptions } from '../Options.types'
 
-export const InputDisplay = <T extends TypeDisplayOptions>({
-  styles,
-  ChangeStyles,
-}: TypeInputDisplay<T>) => {
+export const InputDisplay = <T extends TypeDisplayOptions>({ styles, ChangeStyles }: TypeInputDisplay<T>) => {
   return (
     <CustomDetails>
       <>
@@ -23,16 +20,16 @@ export const InputDisplay = <T extends TypeDisplayOptions>({
           value={styles}
           onChange={ChangeStyles}
           label="Display"
-          property={"display"}
+          property={'display'}
           options={OptionDisplay}
         />
-        {styles.display === "flex" && (
+        {styles.display === 'flex' && (
           <>
             <SelectInput<T>
               value={styles}
               onChange={ChangeStyles}
               label="justify"
-              property={"justifyContent"}
+              property={'justifyContent'}
               options={OptionsJustify}
             />
             <SelectInput<T>
@@ -51,7 +48,7 @@ export const InputDisplay = <T extends TypeDisplayOptions>({
             />
           </>
         )}
-        {styles.display === "grid" && (
+        {styles.display === 'grid' && (
           <>
             <SelectInput<T>
               value={styles}
@@ -78,5 +75,5 @@ export const InputDisplay = <T extends TypeDisplayOptions>({
         )}
       </>
     </CustomDetails>
-  );
-};
+  )
+}

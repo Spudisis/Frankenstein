@@ -33,9 +33,7 @@ class Restore {
     }
   }
 
-  async restorePassword (
-    body: Pick<IFormInput, 'Email' | 'password' | 'accessCode'>
-  ) {
+  async restorePassword (body: Pick<IFormInput, 'Email' | 'password' | 'accessCode'>) {
     try {
       this.loading = STATUS_LOADING.LOADING
       const { data } = await User.restorePassword(body)

@@ -1,11 +1,7 @@
-import { Block, Wrapper, HeaderWrapper } from "src/UI";
-import { HeaderLogo, HeaderNameSite, Menu } from "./Components/";
-import {
-  StyledMedia650,
-  StyledMedia650View,
-  StyledMedia840,
-} from "./Header.styles";
-import { Links } from "./Components/Links";
+import { Block, Wrapper, HeaderWrapper } from 'src/UI'
+import { HeaderLogo, HeaderNameSite, Menu } from './Components/'
+import { StyledMedia650, StyledMedia650View, StyledMedia840 } from './Header.styles'
+import { Links } from './Components/Links'
 export const Header = () => {
   return (
     <HeaderWrapper>
@@ -30,5 +26,5 @@ export const Header = () => {
         </StyledMedia650View>
       </Wrapper>
     </HeaderWrapper>
-  );
-};
+  )
+}

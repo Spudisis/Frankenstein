@@ -1,36 +1,27 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { StoreProfile } from "./store";
-import {
-  ActionUser,
-  LoadingProfile,
-  NotFoundPerson,
-  PaymentPlan,
-  UserInfo,
-} from "./components";
-import { Grid, SectionProfile } from "./Profile.styles";
-import { AuthStore } from "src/store/Auth";
-import { observer } from "mobx-react-lite";
-import { STATUS_LOADING } from "src/domains";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import { LoadingTiers } from "./components";
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import { StoreProfile } from './store'
+import { ActionUser, LoadingProfile, NotFoundPerson, PaymentPlan, UserInfo, LoadingTiers } from './components'
+import { Grid, SectionProfile } from './Profile.styles'
+import { AuthStore } from 'src/store/Auth'
+import { observer } from 'mobx-react-lite'
+import { STATUS_LOADING } from 'src/domains'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 export const Profile = observer(() => {
-  const { userId } = useParams();
+  const { userId } = useParams()
 
   React.useLayoutEffect(() => {
     if (userId) {
-      StoreProfile.getUser(userId);
-      StoreProfile.idUser = userId;
-      StoreProfile.userSelf = StoreProfile.idUser
-        ? AuthStore.user?.id === +StoreProfile.idUser
-        : false;
+      StoreProfile.getUser(userId)
+      StoreProfile.idUser = userId
+      StoreProfile.userSelf = StoreProfile.idUser ? AuthStore.user?.id === +StoreProfile.idUser : false
     }
-  }, [userId]);
-  const loading = StoreProfile.loading === STATUS_LOADING.LOADING;
+  }, [userId])
+  const loading = StoreProfile.loading === STATUS_LOADING.LOADING
 
   if (StoreProfile.loading === STATUS_LOADING.ERROR) {
-    return <NotFoundPerson />;
+    return <NotFoundPerson />
   }
   return (
     <SectionProfile>
@@ -44,5 +35,5 @@ export const Profile = observer(() => {
         </LoadingTiers>
       </Grid>
     </SectionProfile>
-  );
-});
+  )
+})

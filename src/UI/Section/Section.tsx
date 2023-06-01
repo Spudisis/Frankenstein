@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { ChildrenProp } from "../ChildrenProp";
+import React from 'react'
+import styled from 'styled-components'
+import { type ChildrenProp } from '../ChildrenProp'
 
 export const Section = ({ children }: ChildrenProp) => {
-  return <SectionStyled>{children}</SectionStyled>;
-};
+  return <SectionStyled>{children}</SectionStyled>
+}
 
 const SectionStyled = styled.div`
   height: 100%;
@@ -22,4 +22,4 @@ const SectionStyled = styled.div`
 
     box-shadow: inset 0 0 6px rgb(0, 0, 0);
   }
-`;
+`

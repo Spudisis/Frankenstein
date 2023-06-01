@@ -1,10 +1,10 @@
-import React from "react";
-import { WrapperStart } from "../../../UI";
-import { Link } from "react-router-dom";
-import { Authorization } from "../../../routes/urlsPages";
-import { Trans, useTranslation } from "react-i18next";
+import React from 'react'
+import { WrapperStart } from '../../../UI'
+import { Link } from 'react-router-dom'
+import { Authorization } from '../../../routes/urlsPages'
+import { Trans, useTranslation } from 'react-i18next'
 export const Hello = () => {
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslation()
   return (
     <WrapperStart>
       <h2>
@@ -16,5 +16,5 @@ export const Hello = () => {
         <Trans i18nKey="helloPage.buttonName">Sign in</Trans>
       </Link>
     </WrapperStart>
-  );
-};
+  )
+}

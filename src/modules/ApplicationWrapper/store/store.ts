@@ -18,7 +18,7 @@ class StoreTest {
   idScreen = ''
   setHFtoAll () {
     console.log(this.typeFH, this.item)
-    if (this.typeFH !== null && (this.item != null)) {
+    if (this.typeFH !== null && this.item != null) {
       console.log('ye')
       Application.changeFooterHeader(this.typeFH, this.item)
     }
@@ -27,12 +27,8 @@ class StoreTest {
   }
 
   setHFtoThisScreen () {
-    if (this.typeFH !== null && (this.item != null) && this.idScreen) {
-      Application.changeFooterHeaderScreen(
-        this.typeFH,
-        this.item,
-        this.idScreen
-      )
+    if (this.typeFH !== null && this.item != null && this.idScreen) {
+      Application.changeFooterHeaderScreen(this.typeFH, this.item, this.idScreen)
     }
 
     this.clear()

@@ -45,9 +45,7 @@ class UserAgent extends BasicAgent {
     return res
   }
 
-  async restorePassword (
-    body: Pick<IFormInput, 'Email' | 'password' | 'accessCode'>
-  ) {
+  async restorePassword (body: Pick<IFormInput, 'Email' | 'password' | 'accessCode'>) {
     const res = await this._http.patch('/restorePassword', {
       email: body.Email,
       password: body.password,

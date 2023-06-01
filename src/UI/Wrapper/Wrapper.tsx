@@ -1,16 +1,16 @@
-import styled from "styled-components";
-import { ChildrenProp } from "../ChildrenProp";
+import styled from 'styled-components'
+import { type ChildrenProp } from '../ChildrenProp'
 
 type WrapperProp = ChildrenProp & {
-  justify?: string;
-  height?: string;
-  borderBottom?: string;
-  direction?: string;
-  position?: string;
-  overflow?: string;
-  padding?: string;
-  background?: string;
-};
+  justify?: string
+  height?: string
+  borderBottom?: string
+  direction?: string
+  position?: string
+  overflow?: string
+  padding?: string
+  background?: string
+}
 
 export const Wrapper = ({
   children,
@@ -21,7 +21,7 @@ export const Wrapper = ({
   position,
   overflow,
   padding,
-  background,
+  background
 }: WrapperProp) => {
   return (
     <WrapperStyled
@@ -36,22 +36,22 @@ export const Wrapper = ({
     >
       {children}
     </WrapperStyled>
-  );
-};
+  )
+}
 
-type WrapperStyledProp = Omit<WrapperProp, "children">;
+type WrapperStyledProp = Omit<WrapperProp, 'children'>
 
 const WrapperStyled = styled.div<WrapperStyledProp>`
-  padding: ${(props) => props.padding || "0px 10px"};
+  padding: ${(props) => props.padding || '0px 10px'};
   display: flex;
-  justify-content: ${(props) => props.justify || "space-between"};
+  justify-content: ${(props) => props.justify || 'space-between'};
   width: 100%;
-  flex-direction: ${(props) => props.direction || "row"};
-  border-bottom: ${(props) => props.borderBottom || "none"};
-  height: ${(props) => props.height || "inherit"};
+  flex-direction: ${(props) => props.direction || 'row'};
+  border-bottom: ${(props) => props.borderBottom || 'none'};
+  height: ${(props) => props.height || 'inherit'};
   align-items: center;
   max-height: 100%;
-  background: ${(props) => props.background || "inherit"};
-  overflow: ${(props) => props.overflow || "none"};
-  position: ${(props) => props.position || "static"};
-`;
+  background: ${(props) => props.background || 'inherit'};
+  overflow: ${(props) => props.overflow || 'none'};
+  position: ${(props) => props.position || 'static'};
+`

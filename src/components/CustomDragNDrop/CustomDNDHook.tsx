@@ -1,34 +1,28 @@
-import React from "react";
-import { useDrag } from "react-dnd";
+import React from 'react'
+import { useDrag } from 'react-dnd'
 
-import { PropsDNDHook } from "./CustomDNDHook.types";
-import { ItemTypesDNDPictures } from "src/constants";
+import { type PropsDNDHook } from './CustomDNDHook.types'
+import { ItemTypesDNDPictures } from 'src/constants'
 
 export const CreateMasItemTypesDND = () => {
-  const MasType: string[] = [];
+  const MasType: string[] = []
   for (const key in ItemTypesDNDPictures) {
-    const value =
-      ItemTypesDNDPictures[key as keyof typeof ItemTypesDNDPictures];
-    MasType.push(value);
+    const value = ItemTypesDNDPictures[key as keyof typeof ItemTypesDNDPictures]
+    MasType.push(value)
   }
-  return MasType;
-};
+  return MasType
+}
 
-export const CustomDNDHook = ({
-  name,
-  options,
-  parent,
-  deleteItemFunc,
-}: PropsDNDHook) => {
+export const CustomDNDHook = ({ name, options, parent, deleteItemFunc }: PropsDNDHook) => {
   const [collected, drag, dragPreview] = useDrag(() => ({
     type: name,
     item: { ...options, parent, deleteItemFunc },
     collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
+      isDragging: !!monitor.isDragging()
+    })
+  }))
 
-  const isDragging = collected.isDragging;
+  const isDragging = collected.isDragging
 
-  return { collected, isDragging, drag, dragPreview };
-};
+  return { collected, isDragging, drag, dragPreview }
+}

@@ -138,9 +138,7 @@ class ApplicationData {
   deleteScreen (id: string) {
     if (this.ApplicationScreens != null) {
       this.clearTarget()
-      this.ApplicationScreens = this.ApplicationScreens?.filter(
-        (elem) => elem.id !== id
-      )
+      this.ApplicationScreens = this.ApplicationScreens?.filter((elem) => elem.id !== id)
     }
   }
 
@@ -164,11 +162,7 @@ class ApplicationData {
     }
   }
 
-  changeFooterHeaderScreen (
-    privateName: typeFH,
-    obj: FHObject,
-    idScreen: string
-  ) {
+  changeFooterHeaderScreen (privateName: typeFH, obj: FHObject, idScreen: string) {
     if (this.ApplicationScreens == null) {
       return null
     }

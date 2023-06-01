@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
-import styled from "styled-components";
-import { JsxElement } from "typescript";
+import styled from 'styled-components'
+import { JsxElement } from 'typescript'
 
-export const Head = ({ text }: { text: string| JSX.Element }) => {
-  return <Head3h>{text}</Head3h>;
-};
+export const Head = ({ text }: { text: string | JSX.Element }) => {
+  return <Head3h>{text}</Head3h>
+}
 
 const Head3h = styled.h3`
   margin-bottom: 24px;
@@ -21,4 +21,4 @@ const Head3h = styled.h3`
     text-align: center;
     margin-bottom: 5px;
   }
-`;
+`

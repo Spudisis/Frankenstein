@@ -1,28 +1,22 @@
-import React from "react";
-import ReactPaginate from "react-paginate";
-import s from "./Styles.module.scss";
-import { StylesPagination } from "./Paginate.styles";
-import { PaginateType } from "./Paginate.types";
-export const Paginate = ({
-  ShowMore,
-  size,
-  limit,
-  statusLoading,
-  page,
-}: PaginateType) => {
-  const [sizes, setSize] = React.useState(window.innerWidth);
+import React from 'react'
+import ReactPaginate from 'react-paginate'
+import s from './Styles.module.scss'
+import { StylesPagination } from './Paginate.styles'
+import { type PaginateType } from './Paginate.types'
+export const Paginate = ({ ShowMore, size, limit, statusLoading, page }: PaginateType) => {
+  const [sizes, setSize] = React.useState(window.innerWidth)
 
-  //добавить тротлиег
+  // добавить тротлиег
   const resizeHandler = (e: Event) => {
-    setSize((e.currentTarget as Window).innerWidth);
-  };
+    setSize((e.currentTarget as Window).innerWidth)
+  }
 
   React.useEffect(() => {
-    window.addEventListener("resize", resizeHandler);
+    window.addEventListener('resize', resizeHandler)
     return () => {
-      window.removeEventListener("resize", resizeHandler);
-    };
-  }, []);
+      window.removeEventListener('resize', resizeHandler)
+    }
+  }, [])
 
   return (
     <StylesPagination load={statusLoading}>
@@ -40,5 +34,5 @@ export const Paginate = ({
         activeClassName={`${s.activeClassName}`}
       />
     </StylesPagination>
-  );
-};
+  )
+}

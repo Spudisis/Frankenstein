@@ -1,6 +1,10 @@
-import React from "react";
-import { Header } from "../../modules";
+import React from 'react'
+import { Header } from '../../modules'
 
 export const TemplatesPage = () => {
-  return <div><Header /></div>;
-};
+  return (
+    <div>
+      <Header />
+    </div>
+  )
+}

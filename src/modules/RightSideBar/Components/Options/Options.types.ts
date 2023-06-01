@@ -55,11 +55,11 @@ export interface Actions {
 }
 
 enum AlignItemsType {
-  'center',
+  'center'
 }
 
 enum JustifyContentType {
   'center',
   'space-between',
-  'space-evenly',
+  'space-evenly'
 }

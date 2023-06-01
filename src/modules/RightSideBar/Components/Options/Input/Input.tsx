@@ -1,15 +1,9 @@
-import React, { ChangeEvent } from "react";
+import React, { type ChangeEvent } from 'react'
 
-import { HeaderOptionsInput } from "src/UI";
-import { InputStyles, PropsInput } from "../Options.types";
+import { HeaderOptionsInput } from 'src/UI'
+import { type InputStyles, type PropsInput } from '../Options.types'
 
-export const Input = <T,>({
-  value,
-  onChange,
-  label,
-  typeInput,
-  property,
-}: InputStyles<T> & PropsInput<T>) => {
+export const Input = <T,>({ value, onChange, label, typeInput, property }: InputStyles<T> & PropsInput<T>) => {
   return (
     <HeaderOptionsInput>
       <label>{label}</label>
@@ -17,9 +11,9 @@ export const Input = <T,>({
         type={typeInput}
         value={value[property] as string}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          onChange(e.target.value as T[keyof T], property);
+          onChange(e.target.value as T[keyof T], property)
         }}
       />
     </HeaderOptionsInput>
-  );
-};
+  )
+}

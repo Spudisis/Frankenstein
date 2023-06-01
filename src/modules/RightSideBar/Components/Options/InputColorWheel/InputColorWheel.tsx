@@ -1,29 +1,27 @@
-import React from "react";
-import { HeaderOptionsInput } from "src/UI";
-import { SketchPicker } from "react-color";
-import { Hex, WheelObject } from "./InputColorWheel.types";
-import { WheelButton, WrapperWheel } from "./InputColorWheel.styles";
-import { InputStyles, PropsInput } from "../Options.types";
+import React from 'react'
+import { HeaderOptionsInput } from 'src/UI'
+import { SketchPicker } from 'react-color'
+import { type Hex, type WheelObject } from './InputColorWheel.types'
+import { WheelButton, WrapperWheel } from './InputColorWheel.styles'
+import { type InputStyles, type PropsInput } from '../Options.types'
 
-export const InputColorWheel = <T,>({
-  value,
-  onChange,
-  label,
-  property,
-}: InputStyles<T> & PropsInput<T>) => {
-  const [open, setOpen] = React.useState(false);
-  const WheelRef = React.useRef<HTMLDivElement>(null);
+export const InputColorWheel = <T,>({ value, onChange, label, property }: InputStyles<T> & PropsInput<T>) => {
+  const [open, setOpen] = React.useState(false)
+  const WheelRef = React.useRef<HTMLDivElement>(null)
 
   const onClickModal = (e: globalThis.MouseEvent) => {
     if (WheelRef.current && !WheelRef.current.contains(e.target as Node)) {
-      return setOpen(false);
+      setOpen(false)
+      return
     }
-    return null;
-  };
+    return null
+  }
   React.useEffect(() => {
-    document.body.addEventListener("click", onClickModal);
-    return () => document.body.removeEventListener("click", onClickModal);
-  }, []);
+    document.body.addEventListener('click', onClickModal)
+    return () => {
+      document.body.removeEventListener('click', onClickModal)
+    }
+  }, [])
 
   return (
     <div ref={WheelRef}>
@@ -31,7 +29,9 @@ export const InputColorWheel = <T,>({
         <label>{label}</label>
         <WheelButton
           bgcColor={value[property] as Hex}
-          onClick={() => setOpen(!open)}
+          onClick={() => {
+            setOpen(!open)
+          }}
         ></WheelButton>
         <>
           {open && (
@@ -39,9 +39,9 @@ export const InputColorWheel = <T,>({
               <WrapperWheel>
                 <SketchPicker
                   color={value}
-                  onChange={(e: WheelObject) =>
+                  onChange={(e: WheelObject) => {
                     onChange(e.hex as T[keyof T], property)
-                  }
+                  }}
                 />
               </WrapperWheel>
             </>
@@ -49,5 +49,5 @@ export const InputColorWheel = <T,>({
         </>
       </HeaderOptionsInput>
     </div>
-  );
-};
+  )
+}

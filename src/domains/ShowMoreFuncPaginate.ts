@@ -1,1 +1,3 @@
-export interface ShowMoreProp { selected: number }
+export interface ShowMoreProp {
+  selected: number
+}

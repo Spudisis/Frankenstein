@@ -13,8 +13,7 @@ export const StyledButton = styled.button<{ color?: string }>`
   padding: 10px 15px;
   font-size: 18px;
   cursor: pointer;
-  background-color: ${(props) =>
-    props.color ? props.color : 'var(--color-bgc-button-active)'};
+  background-color: ${(props) => (props.color ? props.color : 'var(--color-bgc-button-active)')};
   border: 1px solid var(--color-bgc-button-active);
   transition: 0.2s ease;
   @media (hover: hover) {

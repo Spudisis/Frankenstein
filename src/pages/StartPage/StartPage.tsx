@@ -1,5 +1,5 @@
-import React from "react";
-import { SelectLanguage, StartModule } from "../../modules";
+import React from 'react'
+import { SelectLanguage, StartModule } from '../../modules'
 
 export const StartPage = () => {
   return (
@@ -7,5 +7,5 @@ export const StartPage = () => {
       <SelectLanguage />
       <StartModule />
     </>
-  );
-};
+  )
+}

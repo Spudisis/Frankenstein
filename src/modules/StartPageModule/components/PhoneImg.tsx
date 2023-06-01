@@ -1,8 +1,8 @@
-import React from "react";
-import { Image } from "../../../UI";
-import phone from "../assets/phone.png";
-import phoneAvif from "../assets/PhoneAvif.avif";
-import phoneWebp from "../assets/PhoneWebp.webp";
+import React from 'react'
+import { Image } from '../../../UI'
+import phone from '../assets/phone.png'
+import phoneAvif from '../assets/PhoneAvif.avif'
+import phoneWebp from '../assets/PhoneWebp.webp'
 export const PhoneImg = () => {
   return (
     <Image>
@@ -12,5 +12,5 @@ export const PhoneImg = () => {
         <img src={phone} alt="phone" />
       </picture>
     </Image>
-  );
-};
+  )
+}

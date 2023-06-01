@@ -1,7 +1,7 @@
-import React from "react";
-import { Bgc } from "../../UI";
-import { Hello } from "./components/Hello";
-import { PhoneImg } from "./components/PhoneImg";
+import React from 'react'
+import { Bgc } from '../../UI'
+import { Hello } from './components/Hello'
+import { PhoneImg } from './components/PhoneImg'
 
 export const StartModule = () => {
   return (
@@ -9,5 +9,5 @@ export const StartModule = () => {
       <PhoneImg />
       <Hello />
     </Bgc>
-  );
-};
+  )
+}

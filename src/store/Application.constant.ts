@@ -100,7 +100,9 @@ export const PROJECT_INFO_DEFAULT = {
   updatedAt: ''
 }
 export const TARGET_DEFAULT: SubModules & { changeOptions: ChangeOptions } = {
-  changeOptions: ({ options, name }: ChangeOptionsProp) => { console.log('') },
+  changeOptions: ({ options, name }: ChangeOptionsProp) => {
+    console.log('')
+  },
   namePrivate: '',
   id: '',
   name: '',

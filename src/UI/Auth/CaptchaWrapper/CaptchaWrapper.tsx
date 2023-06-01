@@ -1,22 +1,20 @@
-import React, { Ref, RefObject } from "react";
-import styled from "styled-components";
-import { ChildrenProp } from "../../ChildrenProp";
+import React, { type Ref, RefObject } from 'react'
+import styled from 'styled-components'
+import { type ChildrenProp } from '../../ChildrenProp'
 
-type Props = {
-  captchaRes: boolean | null;
-};
+interface Props {
+  captchaRes: boolean | null
+}
 
-type RefProps = Ref<HTMLDivElement>;
+type RefProps = Ref<HTMLDivElement>
 
-export const CaptchaWrapper = React.forwardRef(
-  (props: ChildrenProp & Props, ref: RefProps) => {
-    return (
-      <CaptchaWrapperStyled captchaRes={props.captchaRes} ref={ref}>
-        {props.children}
-      </CaptchaWrapperStyled>
-    );
-  }
-);
+export const CaptchaWrapper = React.forwardRef((props: ChildrenProp & Props, ref: RefProps) => {
+  return (
+    <CaptchaWrapperStyled captchaRes={props.captchaRes} ref={ref}>
+      {props.children}
+    </CaptchaWrapperStyled>
+  )
+})
 
 export const CaptchaWrapperStyled = styled.div<Props>`
   margin: 20px 0px;
@@ -24,10 +22,10 @@ export const CaptchaWrapperStyled = styled.div<Props>`
   & > div > div {
     ${(props) =>
       props.captchaRes === false
-        ? "border: 1px solid red"
+        ? 'border: 1px solid red'
         : props.captchaRes === true
-        ? "border: 1px solid green"
-        : ""};
+        ? 'border: 1px solid green'
+        : ''};
   }
   @media screen and (max-width: 1800px) {
     margin: 10px 0px;
@@ -36,4 +34,4 @@ export const CaptchaWrapperStyled = styled.div<Props>`
   @media screen and (max-width: 500px) {
     margin: 5px 0px 10px;
   }
-`;
+`

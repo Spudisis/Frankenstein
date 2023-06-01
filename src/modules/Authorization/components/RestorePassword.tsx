@@ -1,8 +1,8 @@
-import React from "react";
-import { Trans } from "react-i18next";
-import { Link } from "react-router-dom";
-import { RestorePassword as RPass } from "../../../routes/urlsPages";
-import { StyledRestorePass } from "../../../UI";
+import React from 'react'
+import { Trans } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { RestorePassword as RPass } from '../../../routes/urlsPages'
+import { StyledRestorePass } from '../../../UI'
 
 export const RestorePassword = () => {
   return (
@@ -11,5 +11,5 @@ export const RestorePassword = () => {
         <Trans i18nKey="Auth.ForgetPass">Forget Password?</Trans>
       </Link>
     </StyledRestorePass>
-  );
-};
+  )
+}

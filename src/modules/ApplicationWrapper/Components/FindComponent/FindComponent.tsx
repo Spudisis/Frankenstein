@@ -1,48 +1,48 @@
-import React from "react";
+import React from 'react'
 
-import { Module, ParentParent, SubModules } from "src/domains/ApplicationTypes";
-import { Button, Text } from "../Elements";
-import { PropsDNDHook } from "src/components/CustomDragNDrop/CustomDNDHook.types";
-import { WrapperCustom } from "../WrapperCustom";
-import { FindIndexDecompose } from "../FindIndexDecompose";
-import { MoveCardDecompose } from "../MoveCardDecompose";
+import { type Module, type ParentParent, type SubModules } from 'src/domains/ApplicationTypes'
+import { Button, Text } from '../Elements'
+import { type PropsDNDHook } from 'src/components/CustomDragNDrop/CustomDNDHook.types'
+import { WrapperCustom } from '../WrapperCustom'
+import { FindIndexDecompose } from '../FindIndexDecompose'
+import { MoveCardDecompose } from '../MoveCardDecompose'
 
 export const FindComponent = ({
   modules,
   parent,
   ParentParent,
-  changeModules,
+  changeModules
 }: {
-  modules: Module[] | SubModules[];
-  changeModules?: (modules: any) => void;
-} & Pick<PropsDNDHook, "parent"> &
-  Pick<ParentParent, "ParentParent">) => {
-  const { FindIndex } = FindIndexDecompose({ modules });
+  modules: Module[] | SubModules[]
+  changeModules?: (modules: any) => void
+} & Pick<PropsDNDHook, 'parent'> &
+Pick<ParentParent, 'ParentParent'>) => {
+  const { FindIndex } = FindIndexDecompose({ modules })
 
-  const { MoveCardFunc } = MoveCardDecompose({ modules, changeModules });
+  const { MoveCardFunc } = MoveCardDecompose({ modules, changeModules })
 
   const newModules = (changeModule: any, id?: string) => {
     const newModules = modules.map((elem) => {
       if (elem.id === changeModule.id) {
-        return changeModule;
+        return changeModule
       }
-      return elem;
-    });
-    console.log(newModules);
-    changeModules && changeModules(newModules);
-  };
+      return elem
+    })
+    console.log(newModules)
+    changeModules && changeModules(newModules)
+  }
   const deleteItemFunc = ({ id }: { id: string }) => {
-    const newModules = modules.filter((elem) => elem.id !== id);
-    changeModules && changeModules(newModules);
-  };
+    const newModules = modules.filter((elem) => elem.id !== id)
+    changeModules && changeModules(newModules)
+  }
 
   return (
     <>
       {modules &&
         modules.map((elem: Module | SubModules | undefined) => {
-          if (typeof elem !== "undefined") {
-            if (elem.namePrivate === "Wrapper") {
-              const obj = elem as SubModules;
+          if (typeof elem !== 'undefined') {
+            if (elem.namePrivate === 'Wrapper') {
+              const obj = elem as SubModules
               return (
                 <WrapperCustom
                   elem={obj}
@@ -53,9 +53,9 @@ export const FindComponent = ({
                   newModules={newModules}
                   deleteItemFunc={deleteItemFunc}
                 />
-              );
+              )
             }
-            if (elem.namePrivate === "Button") {
+            if (elem.namePrivate === 'Button') {
               return (
                 <Button
                   MoveCardFunc={MoveCardFunc}
@@ -67,9 +67,9 @@ export const FindComponent = ({
                   newModules={newModules}
                   deleteItemFunc={deleteItemFunc}
                 />
-              );
+              )
             }
-            if (elem.namePrivate === "Text") {
+            if (elem.namePrivate === 'Text') {
               return (
                 <Text
                   MoveCardFunc={MoveCardFunc}
@@ -81,10 +81,10 @@ export const FindComponent = ({
                   newModules={newModules}
                   deleteItemFunc={deleteItemFunc}
                 />
-              );
+              )
             }
           }
         })}
     </>
-  );
-};
+  )
+}

@@ -42,10 +42,7 @@ class ChangeProfile {
     }
   }
 
-  async changeUserInfo ({
-    nickname,
-    password
-  }: Omit<UserInfoT, 'passwordRepeat'>) {
+  async changeUserInfo ({ nickname, password }: Omit<UserInfoT, 'passwordRepeat'>) {
     try {
       this.statusLoading = STATUS_LOADING.LOADING
       if (!this.oldNickname) {

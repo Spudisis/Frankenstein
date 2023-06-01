@@ -1,10 +1,4 @@
-import {
-  type ChangeTargetType,
-  type FHObject,
-  type Module,
-  type ParentElem,
-  type typeFH
-} from 'src/domains'
+import type { ChangeTargetType, FHObject, Module, ParentElem, typeFH } from 'src/domains'
 
 export interface Props {
   data: FHObject

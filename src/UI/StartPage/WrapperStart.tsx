@@ -1,23 +1,23 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
-import { ChildrenProp } from "../ChildrenProp";
+import React from 'react'
+import styled, { keyframes } from 'styled-components'
+import { type ChildrenProp } from '../ChildrenProp'
 
 export const WrapperStart = ({ children }: ChildrenProp) => {
-  return <WrapperStartPage>{children}</WrapperStartPage>;
-};
+  return <WrapperStartPage>{children}</WrapperStartPage>
+}
 const breatheAnimationButton = keyframes`
   0% {  opacity: 0.6; transform: translate(30px, 20px); }
   100% {  opacity: 1; }
-`;
+`
 const breatheAnimationText = keyframes`
   0% {  opacity: 0.6; transform: translate(-30px, -20px); }
   100% {  opacity: 1; }
-`;
+`
 const BorderAnimation = keyframes`
   100% {
     transform: rotate(1turn);
   }
-`;
+`
 
 const WrapperStartPage = styled.div`
   display: flex;
@@ -104,7 +104,7 @@ const WrapperStartPage = styled.div`
       }
     }
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       z-index: -2;
       left: -50%;
@@ -126,7 +126,7 @@ const WrapperStartPage = styled.div`
       }
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
 
       z-index: -1;
@@ -139,4 +139,4 @@ const WrapperStartPage = styled.div`
       transition: 0.3s ease;
     }
   }
-`;
+`

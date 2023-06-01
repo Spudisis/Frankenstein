@@ -1,5 +1,5 @@
-import { Authorization, SelectLanguage } from "src/modules";
-import { ApplicationWrapperStyled, Bgc } from "src/UI";
+import { Authorization, SelectLanguage } from 'src/modules'
+import { ApplicationWrapperStyled, Bgc } from 'src/UI'
 
 export const Auth = () => {
   return (
@@ -9,5 +9,5 @@ export const Auth = () => {
         <Authorization />
       </ApplicationWrapperStyled>
     </Bgc>
-  );
-};
+  )
+}

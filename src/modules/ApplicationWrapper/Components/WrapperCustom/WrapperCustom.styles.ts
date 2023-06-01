@@ -18,18 +18,14 @@ export const WrapperStyledDiv = styled.div.attrs(({ ref, onClick }) => ({
   ${({ display }) =>
     display === 'flex'
       ? css`
-          justify-content: ${(props: WrapperStyles) =>
-            props.justifyContent || ''};
+          justify-content: ${(props: WrapperStyles) => props.justifyContent || ''};
           align-items: ${(props: WrapperStyles) => props.alignItems || ''};
-          flex-direction: ${(props: WrapperStyles) =>
-            props.flexDirection || 'row'};
+          flex-direction: ${(props: WrapperStyles) => props.flexDirection || 'row'};
         `
       : display === 'grid'
       ? css`
           grid-template-columns: ${(props: WrapperStyles) =>
-            props.gridTemplateColumns
-              ? `repeat(${props.gridTemplateColumns}, 1fr)`
-              : 'repeat(1, 1fr)'};
+            props.gridTemplateColumns ? `repeat(${props.gridTemplateColumns}, 1fr)` : 'repeat(1, 1fr)'};
           grid-column-gap: ${(props: WrapperStyles) =>
             // 2-5
             props.gridColumnGap || '0px'};

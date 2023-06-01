@@ -39,11 +39,7 @@ class Store {
       if (!this.userIdProjects) {
         throw new Error('Нет id')
       }
-      const { data } = await Project.getUserProjects(
-        this.userIdProjects,
-        this.limit,
-        this.offset
-      )
+      const { data } = await Project.getUserProjects(this.userIdProjects, this.limit, this.offset)
       this.size = data.userProjects.count
 
       this.projects = data.userProjects.rows

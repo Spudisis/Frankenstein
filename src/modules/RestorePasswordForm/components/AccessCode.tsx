@@ -1,18 +1,18 @@
-import React from "react";
-import { UseFormSetError } from "react-hook-form";
-import { Trans } from "react-i18next";
+import React from 'react'
+import { type UseFormSetError } from 'react-hook-form'
+import { Trans } from 'react-i18next'
 
-import { PropsEmailInput } from "../../../components/Auth/Email";
-import { AuthInput, ButtonCode, ErrorLabel, WrapperCode } from "../../../UI";
-import { IFormInput } from "../../Registration/components/Form.types";
+import { type PropsEmailInput } from '../../../components/Auth/Email'
+import { AuthInput, ButtonCode, ErrorLabel, WrapperCode } from '../../../UI'
+import { type IFormInput } from '../../Registration/components/Form.types'
 
-type Props = {
-  handleClick: () => void;
-  sendCode: boolean;
-  setSendInterval: (b: boolean) => void;
-  setError: UseFormSetError<IFormInput>;
-  disabled: boolean;
-};
+interface Props {
+  handleClick: () => void
+  sendCode: boolean
+  setSendInterval: (b: boolean) => void
+  setError: UseFormSetError<IFormInput>
+  disabled: boolean
+}
 
 export const AccessCode = ({
   register,
@@ -21,59 +21,51 @@ export const AccessCode = ({
   sendCode,
   setSendInterval,
   setError,
-  disabled,
+  disabled
 }: PropsEmailInput & Props) => {
-  const [time, setTime] = React.useState(60);
+  const [time, setTime] = React.useState(60)
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      sendCode && setTime((time) => time - 1);
-    }, 1000);
+      sendCode && setTime((time) => time - 1)
+    }, 1000)
     if (sendCode) {
-      setError("accessCode", { message: "CheckEmail" });
+      setError('accessCode', { message: 'CheckEmail' })
     }
     return () => {
-      clearInterval(interval);
-    };
-  }, [sendCode]);
+      clearInterval(interval)
+    }
+  }, [sendCode])
   React.useEffect(() => {
     if (time === 0) {
-      setSendInterval(false);
-      setTime(60);
+      setSendInterval(false)
+      setTime(60)
     }
-  }, [time]);
+  }, [time])
   return (
-    <AuthInput error={errors.accessCode?.message ? true : false}>
+    <AuthInput error={!!errors.accessCode?.message}>
       <label>
-        <Trans i18nKey={"Auth.PassRecovery.AccessCode"}>Access code</Trans>
+        <Trans i18nKey={'Auth.PassRecovery.AccessCode'}>Access code</Trans>
 
         <WrapperCode>
-          <input
-            {...register("accessCode")}
-            type="text"
-            placeholder="***-***"
-          />
+          <input {...register('accessCode')} type="text" placeholder="***-***" />
           <ButtonCode
-            onClick={() => handleClick()}
-            disabled={sendCode || disabled ? true : false}
+            onClick={() => {
+              handleClick()
+            }}
+            disabled={!!(sendCode || disabled)}
           >
-            {!sendCode ? (
-              <Trans i18nKey={"Auth.PassRecovery.giveMeCode"}>Send code</Trans>
-            ) : (
-              time
-            )}
+            {!sendCode ? <Trans i18nKey={'Auth.PassRecovery.giveMeCode'}>Send code</Trans> : time}
           </ButtonCode>
         </WrapperCode>
       </label>
       <>
         {errors.accessCode?.message && (
           <ErrorLabel>
-            <Trans
-              i18nKey={`Auth.errors.${errors.accessCode?.message}`}
-            ></Trans>
+            <Trans i18nKey={`Auth.errors.${errors.accessCode?.message}`}></Trans>
           </ErrorLabel>
         )}
       </>
     </AuthInput>
-  );
-};
+  )
+}

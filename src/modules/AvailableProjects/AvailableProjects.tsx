@@ -1,19 +1,23 @@
-import React from "react";
-import { Wrapper } from "src/components";
-import { StoreProjects } from "./store/Store";
-import { observer } from "mobx-react-lite";
-import { ShowMoreProp } from "src/domains";
+import React from 'react'
+import { Wrapper } from 'src/components'
+import { StoreProjects } from './store/Store'
+import { observer } from 'mobx-react-lite'
+import { type ShowMoreProp } from 'src/domains'
+import { useLocation } from 'react-router-dom'
+import { main } from 'src/routes/urlsPages'
 
 export const AvailableProjects = observer(() => {
-  const { loading, projects, size, offset, limit } = StoreProjects;
-
+  const { loading, projects, size, offset, limit } = StoreProjects
+  const location = useLocation()
   React.useEffect(() => {
-    StoreProjects.getProjects();
-  }, [offset]);
+    if ([main].includes(location.pathname)) {
+      StoreProjects.getProjects()
+    }
+  }, [offset, limit])
 
   const ShowMore = (selectedItem: ShowMoreProp) => {
-    StoreProjects.offset = selectedItem.selected + 1;
-  };
+    StoreProjects.offset = selectedItem.selected + 1
+  }
 
   return (
     <Wrapper
@@ -25,5 +29,5 @@ export const AvailableProjects = observer(() => {
       limit={limit}
       nameSection="Проекты пользователей"
     />
-  );
-});
+  )
+})

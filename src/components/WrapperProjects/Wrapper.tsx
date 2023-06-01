@@ -1,46 +1,25 @@
-import React from "react";
+import React from 'react'
 
-import {
-  StyledWrapper,
-  Root,
-  ButtonWrapper,
-  InfoProject,
-} from "./Wrapper.styles";
-import { MiniatureProjects } from "src/domains";
-import { DefaultButton, NameSection } from "src/UI";
-import { Trans } from "react-i18next";
+import { StyledWrapper, Root, ButtonWrapper, InfoProject } from './Wrapper.styles'
+import { type MiniatureProjects, STATUS_LOADING } from 'src/domains'
+import { DefaultButton, NameSection } from 'src/UI'
+import { Trans } from 'react-i18next'
 
-import { STATUS_LOADING } from "src/domains";
-import { observer } from "mobx-react-lite";
-import { Item, SkeletonItem } from "src/components";
-import { WrapperTypes } from "./Wrapper.types";
-import { Paginate } from "./Paginate/Paginate";
-import { PROJECTS } from "src/routes/urlsPages";
-import { Link } from "react-router-dom";
+import { observer } from 'mobx-react-lite'
+import { Item, SkeletonItem } from 'src/components'
+import { type WrapperTypes } from './Wrapper.types'
+import { Paginate } from './Paginate/Paginate'
+import { PROJECTS } from 'src/routes/urlsPages'
+import { Link } from 'react-router-dom'
 
 export const Wrapper = observer(
-  ({
-    projects,
-    size,
-    loading,
-    offset,
-    limit,
-    nameSection,
-    path,
-    ShowMore,
-  }: WrapperTypes) => {
-    const statusLoading = loading === STATUS_LOADING.LOADING;
-    const emptyArray = Array(limit).fill(undefined);
+  ({ projects, size, loading, offset, limit, nameSection, path, ShowMore }: WrapperTypes) => {
+    const statusLoading = loading === STATUS_LOADING.LOADING
+    const emptyArray = Array(limit).fill(undefined)
     return (
       <Root>
         <NameSection>
-          <Trans
-            i18nKey={
-              nameSection === "Мои проекты"
-                ? "UsersProjects.name"
-                : "UsersProjects.availableName"
-            }
-          >
+          <Trans i18nKey={nameSection === 'Мои проекты' ? 'UsersProjects.name' : 'UsersProjects.availableName'}>
             {nameSection}
           </Trans>
         </NameSection>
@@ -48,10 +27,8 @@ export const Wrapper = observer(
           <>
             <StyledWrapper>
               {!statusLoading
-                ? projects.map((item: MiniatureProjects) => (
-                    <Item key={item.id} {...item} />
-                  ))
-                : emptyArray.map((_,index) => <SkeletonItem key={index}  />)}
+                ? projects.map((item: MiniatureProjects) => <Item key={item.id} {...item} />)
+                : emptyArray.map((_, index) => <SkeletonItem key={index} />)}
             </StyledWrapper>
 
             {size > offset && (
@@ -85,6 +62,6 @@ export const Wrapper = observer(
           </>
         )}
       </Root>
-    );
+    )
   }
-);
+)

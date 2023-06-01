@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SidebarName = styled.h3`
   font-weight: 400;
@@ -7,4 +7,4 @@ export const SidebarName = styled.h3`
   text-align: center;
   color: var(--color-text);
   margin: 10px 0px;
-`;
+`

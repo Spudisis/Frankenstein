@@ -1,7 +1,7 @@
-import React from "react";
-import { Bgc, DefaultWrapper } from "src/UI";
-import { Header } from "src/modules";
-import { StyledNotFound } from "./NotFoundPage.styles";
+import React from 'react'
+import { Bgc, DefaultWrapper } from 'src/UI'
+import { Header } from 'src/modules'
+import { StyledNotFound } from './NotFoundPage.styles'
 
 export const NotFoundPage = () => {
   return (
@@ -13,5 +13,5 @@ export const NotFoundPage = () => {
         </StyledNotFound>
       </DefaultWrapper>
     </Bgc>
-  );
-};
+  )
+}

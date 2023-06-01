@@ -1,31 +1,31 @@
-import { observer } from "mobx-react-lite";
-import React from "react";
-import { Details, SidebarName } from "src/UI";
-import { ChangeOptionsProp, ScreenMas, typeFH } from "src/domains";
-import App from "src/store/Application";
-import { changeTarget } from "src/components";
-import { HeaderFooter } from "../HeaderFooter/HeaderFooter";
-import { LayoutList } from "../LayoutList";
+import { observer } from 'mobx-react-lite'
+import React from 'react'
+import { Details, SidebarName } from 'src/UI'
+import { type ChangeOptionsProp, type ScreenMas, typeFH } from 'src/domains'
+import App from 'src/store/Application'
+import { changeTarget } from 'src/components'
+import { HeaderFooter } from '../HeaderFooter/HeaderFooter'
+import { LayoutList } from '../LayoutList'
 
 export const ListItemsComponent = () => {
-  const target = App.target;
-  const AppScreens = App.ApplicationScreens;
+  const target = App.target
+  const AppScreens = App.ApplicationScreens
   const ScreensOptions = React.useMemo(
     () =>
       AppScreens &&
       AppScreens.map((elem: ScreenMas) => {
         const changeModules = (modules: any) => {
-          const newScreen = { ...elem, modules: modules };
-          App.changeScreen(newScreen);
-        };
+          const newScreen = { ...elem, modules }
+          App.changeScreen(newScreen)
+        }
         const changeOptionsF = ({ options, name }: ChangeOptionsProp) => {
           const newElem = {
             ...elem,
-            name: name ? name : elem.name,
-            options: options ? options : elem.options,
-          };
-          App.changeScreen(newElem);
-        };
+            name: name || elem.name,
+            options: options || elem.options
+          }
+          App.changeScreen(newElem)
+        }
 
         return (
           <Details
@@ -33,45 +33,41 @@ export const ListItemsComponent = () => {
             id={elem.id}
             key={elem.id}
             namePrivate={elem.namePrivate}
-            click={() =>
+            click={() => {
               changeTarget({ obj: elem, changeOptions: changeOptionsF })
-            }
+            }}
             options={elem.options}
             active={elem.id === target.id}
             nesting={1}
             last={
-              (elem.modules && elem.modules.length > 0) ||
-              (elem.uncommonFooter && elem.uncommonFooter.id) ||
-              (elem.uncommonHeader && elem.uncommonHeader.id)
-                ? false
-                : true
+              !(
+                (elem.modules && elem.modules.length > 0) ||
+                (elem.uncommonFooter && elem.uncommonFooter.id) ||
+                (elem.uncommonHeader && elem.uncommonHeader.id)
+              )
             }
           >
             <>
-              {elem.uncommonFooter &&
-                Object.keys(elem.uncommonFooter).length !== 0 &&
-                elem.uncommonFooter.id && (
-                  <HeaderFooter
-                    data={elem.uncommonFooter}
-                    handleChangeTarget={changeTarget}
-                    target={target}
-                    parent={typeFH.Footer}
-                    nesting={2}
-                    screenId={elem.id}
-                  />
-                )}
-              {elem.uncommonHeader &&
-                Object.keys(elem.uncommonHeader).length !== 0 &&
-                elem.uncommonHeader.id && (
-                  <HeaderFooter
-                    data={elem.uncommonHeader}
-                    handleChangeTarget={changeTarget}
-                    target={target}
-                    parent={typeFH.Header}
-                    nesting={2}
-                    screenId={elem.id}
-                  />
-                )}
+              {elem.uncommonFooter && Object.keys(elem.uncommonFooter).length !== 0 && elem.uncommonFooter.id && (
+                <HeaderFooter
+                  data={elem.uncommonFooter}
+                  handleChangeTarget={changeTarget}
+                  target={target}
+                  parent={typeFH.Footer}
+                  nesting={2}
+                  screenId={elem.id}
+                />
+              )}
+              {elem.uncommonHeader && Object.keys(elem.uncommonHeader).length !== 0 && elem.uncommonHeader.id && (
+                <HeaderFooter
+                  data={elem.uncommonHeader}
+                  handleChangeTarget={changeTarget}
+                  target={target}
+                  parent={typeFH.Header}
+                  nesting={2}
+                  screenId={elem.id}
+                />
+              )}
               {
                 <LayoutList
                   target={target}
@@ -83,10 +79,10 @@ export const ListItemsComponent = () => {
               }
             </>
           </Details>
-        );
+        )
       }),
     [AppScreens, target]
-  );
+  )
 
   return (
     <>
@@ -116,9 +112,11 @@ export const ListItemsComponent = () => {
 
       {ScreensOptions && (
         <Details
-          namePrivate={"Screens"}
+          namePrivate={'Screens'}
           name="Screens"
-          click={() => console.log("")}
+          click={() => {
+            console.log('')
+          }}
           options={App.ApplicationScreens}
           nesting={0}
         >
@@ -126,6 +124,6 @@ export const ListItemsComponent = () => {
         </Details>
       )}
     </>
-  );
-};
-export const ListItems = observer(ListItemsComponent);
+  )
+}
+export const ListItems = observer(ListItemsComponent)

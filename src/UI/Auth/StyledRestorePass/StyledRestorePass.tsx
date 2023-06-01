@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledRestorePass = styled.div`
   a {
@@ -10,4 +10,4 @@ export const StyledRestorePass = styled.div`
       }
     }
   }
-`;
+`

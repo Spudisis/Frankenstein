@@ -1,5 +1,5 @@
 <h1 align="center">Frankenstein</h1>
-<p>Конструктор мобильных приложений</p>
+<p fontSize='20px'>Конструктор мобильных приложений через готовые темплейты, настройку темплейтов и скринов. Билд осуществляется при помощи билд-системы, на выходе которого дается APK</p>
 <p>Стэк технологий:</p>
 <ul>
     <li>React</li>
@@ -20,7 +20,7 @@
 <img src="./screens/pageUserProject.png" alt="pageUserProject"/>
 <img src="./screens/profilePage.png" alt="profilePage"/>
 <img src='./screens/pageProject.png' alt='pageProject' />
-<img src="./screens/exampleProject.png" alt="exampleProject"/>
 <img src="./screens/layers.png" alt="layers"/>
 <img src="./screens/options.png" alt="options"/>
 <img src="./screens/dndTemplate.png" alt="dndTemplate"/>
+<img src="./screens/exampleProject.png" alt="exampleProject"/>

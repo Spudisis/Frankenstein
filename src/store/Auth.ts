@@ -3,7 +3,7 @@ import { STATUS_LOADING, type UserInfoGlobal } from '../domains'
 import axios from 'axios'
 
 class Auth {
-  constructor () {
+  constructor() {
     makeAutoObservable(this, {}, { deep: true })
   }
 
@@ -12,43 +12,44 @@ class Auth {
   private modalOpen = false
   private userInfo: UserInfoGlobal | null = null
 
-  get auth () {
+  get auth() {
     return this.authStatus
   }
 
-  set auth (value) {
+  set auth(value) {
     this.authStatus = value
   }
 
-  get loading () {
+  get loading() {
     return this.statusLoading
   }
 
-  set loading (value) {
+  set loading(value) {
     this.statusLoading = value
   }
 
-  get user () {
+  get user() {
     return this.userInfo
   }
 
-  set user (value) {
+  set user(value) {
     this.userInfo = value
   }
 
-  get modal (): boolean {
+  get modal(): boolean {
     return this.modalOpen
   }
 
-  set modal (value) {
+  set modal(value) {
     this.modalOpen = value
   }
 
-  async checkAuth () {
+  async checkAuth() {
     try {
       const { data } = await axios.get(`${process.env.REACT_APP_URL_BACK_API as string | ''}person/refresh`, {
-        withCredentials: true
+        withCredentials: true,
       })
+
       localStorage.setItem('token', data.accessToken)
       this.userInfo = data.user
       // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions

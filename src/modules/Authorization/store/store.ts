@@ -5,27 +5,28 @@ import { type IFormInput } from 'src/modules/Registration/components/Form.types'
 import { AuthStore } from 'src/store/Auth'
 
 class Authorization {
-  constructor () {
+  constructor() {
     makeAutoObservable(this, {})
   }
 
   private statusLoading: STATUS_LOADING = STATUS_LOADING.SUCCESS
-  get loading () {
+  get loading() {
     return this.statusLoading
   }
 
-  set loading (value) {
+  set loading(value) {
     this.statusLoading = value
   }
 
   error = 'Непредвиденная ошибка'
 
-  async Authorization (body: Pick<IFormInput, 'Email' | 'password'>) {
+  async Authorization(body: Pick<IFormInput, 'Email' | 'password'>) {
     try {
       this.loading = STATUS_LOADING.LOADING
       console.log(body)
 
       const { data } = await User.Authorization(body)
+      console.log(data.userData.accessToken)
       localStorage.setItem('token', data.userData.accessToken)
 
       // global store
